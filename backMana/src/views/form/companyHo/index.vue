@@ -335,7 +335,7 @@
             })
               .then((res) => {
                 if (res.status === 200) {
-                  item = res.data.data
+                  this.worlds[index] = res.data.data
                   this.$message({
                     message: '文字上传成功',
                     type: 'success'

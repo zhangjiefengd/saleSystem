@@ -222,7 +222,6 @@
               data: {}
             }).then(res => {
               if (res.status === 200) {
-                console.log(res.data.data)
                 this.cultureText.splice(index, 1)
                 this.worldNum = this.worldNum - 1
                 this.$message({
@@ -270,6 +269,7 @@
                     type: 'success'
                   })
                   this.cultureText[i].id = res.data.data.id
+                  this.listen[i] = res.data.data
                 }
               })
           } else if (this.cultureText[i].title !== this.listen[i].title || this.cultureText[i].content !== this.listen[i].content) {

@@ -41,7 +41,6 @@
         height: 100%;
       }
     }
-
     .loginInfo {
       position: fixed;
       width: px2rem(450);
@@ -57,26 +56,22 @@
       @include fj(center);
       flex-direction: column;
       align-items: center;
-
       .loginWelcome {
         width: px2rem(234);
         height: px2rem(90);
         @include fj(center);
         flex-direction: column;
         align-items: center;
-
         .loginText1 {
           font-size: px2rem(33);
           letter-spacing: 1px;
           color: #3aa7ff;
         }
-
         .loginText2 {
           font-size: px2rem(22);
           color: #5c5c5c;
         }
       }
-
       #loginUser {
         width: px2rem(360);
         height: px2rem(200);
@@ -101,18 +96,15 @@
           float: right;
           text-align: right;
           font-size: px2rem(18);
-
           input {
             height: px2rem(22);
           }
         }
       }
-
       .loginInBottom {
         width: px2rem(360);
         height: px2rem(65);
         margin-top: px2rem(100);
-
         input {
           width: 100%;
           height: 100%;
