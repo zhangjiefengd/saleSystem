@@ -49,7 +49,7 @@
   background-color: #edf0f5;
 }
 .homePage {
-  width: 50%;
+  width: 40%;
   height: 100%;
   background-size: cover;
   position: relative;
@@ -61,8 +61,8 @@
     align-items: center;
     margin-top: px2rem(100);
     .homeLogo {
-      width: px2rem(500);
-      height: px2rem(300);
+      width: px2rem(400);
+      height: px2rem(250);
       position: relative;
       img {
         width: 100%;
@@ -72,7 +72,7 @@
   }
   .projectList {
     width: 100%;
-    height: 37%;
+    height: 35%;
     @include fj(center);
     align-items: center;
     margin: px2rem(60) 0;
@@ -85,7 +85,7 @@
       margin-top: 4%;
       li {
         width: px2rem(250);
-        height: px2rem(90);
+        height: px2rem(80);
         background-color: rgba(98, 98, 100, 0.53);
         @include fj(space-around);
         align-items: center;
