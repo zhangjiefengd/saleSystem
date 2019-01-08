@@ -1,17 +1,17 @@
 <template>
-  <div class="brandCulture">
+  <div class="brandCulture" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
     <div class="brandCulturePhoto">
       <img :src="brandCultureImage" alt="">
     </div>
     <div class="brandCultureWords">
       <ul class="brandCultureScroll">
         <li v-for="(title, index) in brandCultureTitle" :key="index" :class="[index==0?'styleNull':'']">
-          <p class="brandCultureTitle"> {{ title.content }} </p>
-          <p class="brandCultureContent">  {{ brandCultureContent[index].content }} </p>
+          <p class="brandCultureTitle"> {{ title.title }} </p>
+          <p class="brandCultureContent">  {{ title.content }} </p>
         </li>
       </ul>
       <div class="honorWordRemind" v-if="wordRemind">
-        <img v-if="brandCultureNum>4" src="@/assets/img/brand/honorWordRemind.png" alt="">
+        <img src="@/assets/img/brand/honorWordRemind.png" alt="">
       </div>
     </div>
   </div>
@@ -86,25 +86,42 @@ export default {
       brandCultureImage: '',
       brandCultureTitle: '',
       brandCultureContent: '',
-      brandCultureNum: '',
-      wordRemind: true
+      brandCultureNum: Number,
+      wordRemind: true,
+      head: 'http://118.24.113.182:80/',
+      backgroundImage: ''
     }
   },
   created() {
-    this.$axios.get('/culture')
-      .then(res=>{
-        this.brandCultureImage = res.data.data.demonstrationImage.min
-        this.brandCultureTitle = res.data.data.title
-        this.brandCultureContent = res.data.data.content
-        this.brandCultureNum = res.data.data.title.length
+    this.$axios.get('/brand/enterpriseCulture/get')
+      .then(res => {
+        this.brandCultureTitle = res.data.data
+        this.brandCultureNum = res.data.data.length
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseCulture/image/get')
+      .then(res => {
+        this.brandCultureImage = this.getImage(res.data.data.mainImageLocation, 3)
+        this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
+      })
+      .catch(error => {
+        console.log(error)
       })
     this.$nextTick(()=>{
       document.title = '企业文化'
     })
   },
+  methods: {
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+    }
+  },
   mounted () {
     setTimeout(()=>{
-      if (brandCultureScroll.offsetHeight == brandCultureScroll.scrollHeight) {
+      if (brandCultureScroll.offsetHeight === brandCultureScroll.scrollHeight) {
         this.wordRemind = false;
       }else {
         this.wordRemind = true;
@@ -114,7 +131,7 @@ export default {
     brandCultureScroll.addEventListener('scroll', ()=>{
       var allheight = parseInt(brandCultureScroll.scrollHeight);
       var judeHeight = Math.ceil(brandCultureScroll.scrollTop) + Math.ceil(brandCultureScroll.offsetHeight);
-      if (allheight == judeHeight) {
+      if (allheight <= judeHeight+1) {
         this.wordRemind = false;
       }else if (allheight > judeHeight) {
         this.wordRemind = true;

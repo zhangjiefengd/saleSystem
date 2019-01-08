@@ -1,24 +1,24 @@
 <template>
-  <div class="brandHonor">
+  <div class="brandHonor" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
     <div class="brandHonorScroll">
       <div class="brandHonorPhoto">
         <div class="brandHonorPhotoLeft" @click="brandHonorLeftChange">
           <img src="@/assets/img/brand/left.png" alt="">
         </div>
         <transition-group tag="ul" :name="change">
-          <li v-for="(photo, index) in brandHonorPhoto"  v-show="index == imageNum">
-            <img :src="photo.image.min" alt="">
+          <li v-for="(photo, index) in brandHonorPhoto" :key="index" v-show="index == imageNum">
+            <img :src="photo.image" alt="">
           </li>
         </transition-group>
         <div class="brandHonorPhotoRight" @click="brandHonorRightChange">
           <img src="@/assets/img/brand/right.png" alt="">
-        </div>  
+        </div>
       </div>
       <div class="brandHonorIntro">
         <ul class="brandHonorwords">
-          <li v-for="(word, index) in brandHonorWords" >
+          <li v-for="(word, index) in brandHonorWords" :key="index">
             <img src="@/assets/img/brand/honorWordLogo.png" alt="">
-            <span>{{ word.content }}</span>
+            <span>{{ word.enterpriseHonorInfo }}</span>
           </li>
         </ul>
       </div>
@@ -41,10 +41,11 @@
     width:  80%;
     height: px2rem(1100);
     overflow-y: auto;
+    margin-top: 4rem;
   }
   .brandHonorPhoto {
     width: 100%;
-    height: px2rem(685);
+    height: px2rem(500);
     position: relative;
     overflow: hidden;
     @include fj();
@@ -88,12 +89,15 @@
       width: 100%;
       li {
         margin-top: px2rem(30);
+        @include fj(flex-start);
+        align-items: center;
         img {
           width: px2rem(36);
           height: px2rem(28);
+          margin-right: px2rem(10);
         }
         span {
-          @include fontSize(28);
+          @include fontSize(30);
           color: #fff;
           @include lineHeight(50);
         }
@@ -150,14 +154,37 @@ export default {
       brandHonorWords: '',
       imageNum: 0,
       change: '',
-      wordRemind: true
+      wordRemind: true,
+      head: 'http://118.24.113.182:80/',
+      backgroundImage: ''
     }
   },
   created() {
-    this.$axios.get('/honor')
-      .then(res=>{
-        this.brandHonorPhoto = res.data.data.images
-        this.brandHonorWords = res.data.data.texts
+    this.$axios.get('/brand/enterpriseHonor/get')
+      .then(res => {
+        this.brandHonorWords = res.data.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
+      .then(res => {
+        this.background = this.getImage(res.data.data.imageLocation, 3)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseHonor/honorImage/get')
+      .then(res => {
+        this.brandHonorPhoto = res.data.data
+        this.brandHonorPhoto.map((item, index) => {
+          if (item.imageLocation) {
+            this.brandHonorPhoto[index].image = this.getImage(item.imageLocation, 1)
+          }
+        })
+      })
+      .catch(error => {
+        console.log(error)
       })
     this.$nextTick(()=>{
       if (document.body.clientHeight > 750) {
@@ -199,6 +226,10 @@ export default {
       if (this.imageNum > this.brandHonorPhoto.length-1) {
         this.imageNum = 0;
       }
+    },
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
     }
   }
 }

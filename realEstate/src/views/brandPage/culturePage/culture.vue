@@ -16,8 +16,8 @@
               </ul>
               <div class="Intro">
                 <div class="worldIntro" v-for="(title, index) in titles" :key="index">
-                  <h3 v-if="title.content !== null">{{ title.content }}</h3>
-                  <p v-if="contents[index].content !== null">{{ contents[index].content }}</p>
+                  <h3 v-if="title.content !== null">{{ title.title }}</h3>
+                  <p v-if="title.content !== null">{{ title.content }}</p>
                 </div>
               </div>
           </div>
@@ -30,60 +30,70 @@
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 
 export default {
-  name: "honor",
-  data() {
+  name: 'honor',
+  data () {
     return {
       background: '',
       titles: '',
       contents: '',
       culturePicture: '',
       backBig: '',
-      culBig: ''
+      culBig: '',
+      head: 'http://118.24.113.182:80/'
     }
-   
   },
-  created() {
-    this.$axios.get("/culture")
-			.then(res => {
-        // console.log(res.data.culture.data)
-				// this.background = res.data.backgroundImage.filePath;
-				this.titles = res.data.data.title;
-        this.contents = res.data.data.content;
-        this.culturePicture = res.data.data.demonstrationImage.min;
-        this.background = res.data.data.backgroundImage.min;
-        // this.backBig = res.data.data.backgroundImage.fileName;
-        // this.culBig = res.data.data.demonstrationImage.fileName;
-        if (screen.width > 1024){
-          this.backBig = res.data.data.backgroundImage.fileName;
-          this.culBig = res.data.data.demonstrationImage.fileName;
-        }else {
-          this.backBig = res.data.data.backgroundImage.middle;
-          this.culBig = res.data.data.demonstrationImage.middle;
+  created () {
+    this.$axios.get('/brand/enterpriseCulture/get')
+      .then(res => {
+        if (res.data.data) {
+          this.titles = res.data.data
+          this.contents = res.data.data.content
         }
-			})
-			.catch(error => {
-      console.log(error);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseCulture/image/get')
+      .then(res => {
+        if (res.data.data) {
+          this.culturePicture = this.getImage(res.data.data.mainImageLocation, 1)
+          this.background = this.getImage(res.data.data.backgroundImageLocation, 1)
+          if (screen.width > 1024) {
+            this.backBig = this.getImage(res.data.data.backgroundImageLocation, 1)
+            this.culBig = this.getImage(res.data.data.mainImageLocation, 1)
+          } else {
+            this.backBig = this.getImage(res.data.data.backgroundImageLocation, 2)
+            this.culBig = this.getImage(res.data.data.mainImageLocation, 2)
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error)
       })
   },
   methods: {
-	},
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+    }
+  },
   watch: {
-    backBig() {
+    backBig () {
       var ele = document.querySelector('.honor');
-      var imgUrl = this.backBig;
-      var imgObject = new Image();
+      var imgUrl = this.backBig
+      var imgObject = new Image()
 
-      imgObject.src = imgUrl;
+      imgObject.src = imgUrl
       imgObject.onload = function () {
-        this.background = imgUrl;
+        this.background = imgUrl
         // console.log(this.imgProjectBack);
         document.getElementsByClassName('back')[0].src = this.background;
-          // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+        // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
         ele.setAttribute('class', 'honor complete');
-        
+
       }
     },
-    culBig() {
+    culBig () {
       var ele = document.querySelector('.culture');
       var imgUrl = this.culturePicture;
       var imgObject = new Image();
@@ -93,9 +103,8 @@ export default {
         this.culturePicture = imgUrl;
         // console.log(this.imgProjectBack);
         ele.src = this.culturePicture;
-          // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+        // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
         ele.setAttribute('class', 'culture complete');
-        
       }
     }
   }
@@ -107,8 +116,8 @@ export default {
 @import '../../../styles/mixin.scss';
 #honor {
   width: transverse(1620);
-	height: 100%;
-	float: left;
+  height: 100%;
+  float: left;
   position: relative;
   >img {
     width: 100%;

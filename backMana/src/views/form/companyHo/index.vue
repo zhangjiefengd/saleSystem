@@ -294,7 +294,7 @@
         }
         this.worlds[index].enterpriseHonorInfo = world[2 * index + 1].value
       },
-      async submitForm() {
+      submitForm() {
         // var iconStyle = document.getElementsByClassName('allSubmit')[0]
         // iconStyle.firstChild.style.color = '#3aa7ff'
         // iconStyle.firstChild.style.backgroundColor = '#edf0f5'
@@ -373,7 +373,7 @@
             var imageFile = this.honorPhoto[i].imageFile
             fd.append('imageFile', imageFile)
             this.honorPhoto[i].loading = true
-            await this.upHonorImage(fd, config)
+            this.upHonorImage(fd, config)
               .then(res => {
                 if (res.status === 200) {
                   this.$message({

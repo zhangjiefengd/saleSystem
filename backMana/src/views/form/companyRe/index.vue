@@ -6,9 +6,8 @@
           <div id="upload">
             <form action="introduce/image" enctype="multipart/form-data" method="post" id="imgform">
               <div id="imglist" v-if="worlds !== null">
-                <div  v-loading="bgcLoading" element-loading-text="图片上传中" class="img" v-for="(image, index) in images" :key="index">
+                <div  v-loading="image.bgcLoading" element-loading-text="图片上传中" class="img" v-for="(image, index) in images" :key="index">
                   <img v-if="image.image !== null" :src="image.image" alt="">
-                  <img v-if="image.image == null" src="../../../assets/img/default/2.jpg" alt="">
                   <div class="deleteimg" @click="deleteImg(index)">X</div>
                 </div>
                 <div id="updiv">
@@ -113,8 +112,7 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: 'http://118.24.113.182:80/',
-        bgcLoading: false
+        head: 'http://118.24.113.182:80/'
       }
     },
     created() {
@@ -138,7 +136,8 @@
           var oFileUrl = this.getUrl(b.files[0])
           var oimage = {
             image: oFileUrl,
-            imageLocation: b.files[0]
+            imageLocation: b.files[0],
+            bgcLoading: false
           }
           this.images.push(oimage)
         } else {
@@ -161,6 +160,11 @@
               this.title = res.data.data.enterpriseName
               this.content = res.data.data.enterpriseIntroduction
               this.videoMp4 = res.data.data.videoUrl
+            } else {
+              this.worlds = {
+                enterpriseName: '请输入企业名称',
+                enterpriseIntroduction: '输入企业介绍'
+              }
             }
           })
           .catch(error => {
@@ -293,7 +297,7 @@
           if (!item.id) {
             var upImage = new FormData()
             upImage.append('imageFile', item.imageLocation)
-            this.bgcLoading = true
+            this.images[index].bgcLoading = true
             this.$axios.post('/brand/enterpriseIntroduction/image/add', upImage, config)
               .then(res => {
                 if (res.status === 200) {
@@ -302,7 +306,7 @@
                     type: 'success'
                   })
                   this.images[index].id = res.data.data.id
-                  this.bgcLoading = true
+                  this.images[index].bgcLoading = false
                 }
               })
               .catch(res => {

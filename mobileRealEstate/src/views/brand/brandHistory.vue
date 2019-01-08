@@ -1,21 +1,21 @@
 <template>
-  <div class="brandHistory">
+  <div class="brandHistory" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
     <div class="brandHistoryBox" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
       <transition-group :name="change">
-        <div class="brandHistoryPhoto" v-for="(image, index1) in brandHistory"  v-show="index1==brandHistoryNum">
-          <img v-if="image.image !== null" :src="image.image.min" alt="">
+        <div class="brandHistoryPhoto" v-for="(image, index1) in brandHistory" :key="index1*10" v-show="index1==brandHistoryNum">
+          <img v-if="image.image !== null" :src="image.image" alt="">
         </div>
-        <div class="brandHistorywords" v-for="(image, index) in brandHistory"  v-show="index==brandHistoryNum">
+        <div class="brandHistorywords" v-for="(image, index) in brandHistory" :key="image.id" v-show="index==brandHistoryNum">
           <div class="brandHistoryHead">
-            {{ image.begin }} - {{ image.end }} (第 {{ index+1 }} 阶段)
+            {{ image.step }} (第 {{ index+1 }} 阶段)
           </div>
           <div class="brandHistoryBody">
             <div>
               <p class="brandHistoryTitle">
-                {{ image.title }}
+                {{ image.developTitle }}
               </p>
               <p class="brandHistoryContent">
-                {{ image.content }}
+                {{ image.enterpriseDevelopInfo }}
               </p>
             </div>
           </div>
@@ -24,7 +24,7 @@
     </div>
     <div class="brandHistoryNum">
       <ul>
-        <li v-for="(a, index) in brandHistory"  :class="[{changeStyle: index==brandHistoryNum}]" @click="changeBrandHistory(index)">
+        <li v-for="(a, index) in brandHistory" :key="index" :class="[{changeStyle: index==brandHistoryNum}]" @click="changeBrandHistory(index)">
           {{ index+1 }}
         </li>
       </ul>
@@ -104,8 +104,8 @@
         @include lineHeight(48);
         text-align: center;
         color: #ffdba1;
-        border-right: 1px solid #c79f62;   
-        border-left: 1px solid #c79f62;   
+        border-right: 1px solid #c79f62;
+        border-left: 1px solid #c79f62;
       }
     }
   }
@@ -149,16 +149,30 @@ export default {
       change: '',
       startX: 0,
       endX: 0,
-      x: 0
+      x: 0,
+      head: 'http://118.24.113.182:80/',
+      backgroundImage: ''
     }
   },
   created() {
-    this.$axios.get('/history')
-      .then(res=>{
+    this.$axios.get('/brand/enterpriseDevelop/get')
+      .then(res => {
         this.brandHistory = res.data.data
+        this.brandHistory.map((item, index) => {
+          if (item.enterpriseDevelopImageLocation) {
+            this.brandHistory[index].image = this.getImage(item.enterpriseDevelopImageLocation, 3)
+          }
+        })
       })
       .catch(error => {
-        console.log(error);
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
+      .then(res => {
+        this.backgroundImage = this.getImage(res.data.data.imageLocation, 3)
+      })
+      .catch(error => {
+        console.log(error)
       })
     this.$nextTick(()=>{
       document.title = '发展历程'
@@ -195,7 +209,11 @@ export default {
           this.brandHistoryNum = 0;
         }
 			}
-		}
+		},
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+    }
   }
 }
 </script>

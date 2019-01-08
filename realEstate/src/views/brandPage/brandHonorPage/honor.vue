@@ -5,17 +5,17 @@
       <ul class="worlds">
         <li v-for="(world, index) in worlds" :key="index">
           <img src="@/assets/img/brandBGC/worldLogo.png" alt="">
-          <span>{{ world.content }}</span>
+          <span>{{ world.enterpriseHonorInfo }}</span>
         </li>
       </ul>
       <div class="picture">
         <div class="left" @click="leftChange">
           <img src="@/assets/img/brandBGC/left.png" alt="">
         </div>
-        <img class="hide"  :src="photo.image.fileName" v-for="(photo, index) in honorPhoto" :key="index" alt="" :class="[{show: index==imageNum}]">
+        <img class="hide" v-if="photo.image" :src="photo.image" v-for="(photo, index) in honorPhoto" :key="index" alt="" :class="[{show: index==imageNum}]">
         <div class="right" @click="rightRight">
           <img src="@/assets/img/brandBGC/right.png" alt="">
-        </div>  
+        </div>
       </div>
     </div>
   </div>
@@ -24,8 +24,8 @@
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 
 export default {
-  name: "honor",
-  data() {
+  name: 'honor',
+  data () {
     return {
       background: '',
       honorPhoto: '',
@@ -35,64 +35,84 @@ export default {
       right: '',
       worlds: '',
       imageNum: 0,
-      backBig: ''
+      backBig: '',
+      head: 'http://118.24.113.182:80/'
     }
-   
+
   },
-  created() {
-    this.$axios.get("/honor")
-			.then(res => {
-        console.log(res.data)
-        this.background = res.data.data.backgroundImage.min;
-        if (screen.width > 1024){
-          this.backBig = res.data.data.backgroundImage.fileName;
-        }else {
-          this.backBig = res.data.data.backgroundImage.middle;
+  created () {
+    this.$axios.get('/brand/enterpriseHonor/get')
+      .then(res => {
+        if (res.data.data) {
+          this.worlds = res.data.data
         }
-        // this.backBig = res.data.data.backgroundImage.fileName;
-				this.worlds = res.data.data.texts;
-				// this.back = res.data.enterprise.Images.back;
-				this.honorPhoto = res.data.data.images;
-				// this.worldLogo = res.data.honor.Images.worldLogo;
-				// this.left = res.data.honor.Images.left;
-				// this.right = res.data.honor.Images.right;
-			})
-			.catch(error => {
-      console.log(error);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
+      .then(res => {
+        if (res.data.data) {
+          this.background = this.getImage(res.data.data.imageLocation, 1)
+          if (screen.width > 1024) {
+            this.backBig = this.getImage(res.data.data.imageLocation, 1)
+          } else {
+            this.backBig = this.getImage(res.data.data.imageLocation, 2)
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseHonor/honorImage/get')
+      .then(res => {
+        if (res.data.data) {
+          this.honorPhoto = res.data.data
+          this.honorPhoto.map((item, index) => {
+            if (item.imageLocation) {
+              this.honorPhoto[index].image = this.getImage(item.imageLocation, 1)
+            }
+          })
+        }
+      })
+      .catch(error => {
+        console.log(error)
       })
   },
   methods: {
-		clickBack: function() {
-			this.$router.push({path: '/index'});
+    clickBack: function() {
+      this.$router.push({path: '/index'})
     },
-    leftChange() {
-      this.imageNum--;
+    leftChange () {
+      this.imageNum--
       if (this.imageNum < 0) {
-        this.imageNum = this.honorPhoto.length-1;
+        this.imageNum = this.honorPhoto.length - 1
       }
     },
-    rightRight() {
-      this.imageNum++;
-      if (this.imageNum > this.honorPhoto.length-1) {
-        this.imageNum = 0;
+    rightRight () {
+      this.imageNum++
+      if (this.imageNum > this.honorPhoto.length - 1) {
+        this.imageNum = 0
       }
+    },
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
     }
-	},
+  },
   watch: {
-    backBig() {
-      var ele = document.querySelector('.honor');
-      var imgUrl = this.backBig;
-      var imgObject = new Image();
+    backBig () {
+      var ele = document.querySelector('.honor')
+      var imgUrl = this.backBig
+      var imgObject = new Image()
 
-      imgObject.src = imgUrl;
+      imgObject.src = imgUrl
       imgObject.onload = function () {
-        let time = setInterval(() => {
-          this.background = imgUrl;
-          // console.log(this.imgProjectBack);
-          document.getElementsByClassName('back')[0].src = this.background;
-            // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
-          ele.setAttribute('class', 'honor complete');
-        }, 100);
+        var time = setInterval(() => {
+          this.background = imgUrl
+          document.getElementsByClassName('back')[0].src = this.background
+          ele.setAttribute('class', 'honor complete')
+        }, 100)
       }
     }
   }
@@ -104,8 +124,8 @@ export default {
 @import '../../../styles/mixin.scss';
 #honor {
   width: transverse(1620);
-	height: 100%;
-	float: left;
+  height: 100%;
+  float: left;
   position: relative;
   >img {
     width: 100%;

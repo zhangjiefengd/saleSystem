@@ -39,19 +39,27 @@ export default {
       Num: 0,
       leftBottom: 'leftBottom',
       borderRight: 'borderRight',
-      backgroundImage: ''
+      backgroundImage: '',
+      head: 'http://118.24.113.182:80/'
     }
   },
   created(){
-    this.$axios.get('/honor')
-      .then(res=>{
-        this.backgroundImage = res.data.data.backgroundImage.min
+    this.$axios.get('/brand/enterpriseCulture/image/get')
+      .then(res => {
+        this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
+      })
+      .catch(error => {
+        console.log(error)
       })
   },
   methods: {
 		clickBack: function() {
 			this.$router.push({path: '/index'});
-		}
+		},
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+    }
   }
 }
 </script>
