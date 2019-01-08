@@ -4,13 +4,13 @@
       <div class="brandIntroPhoto touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
         <transition-group tag="ul" :name="change">
           <li v-for="(image, index) in brandIntroPhoto"  v-show="index == imageNum">
-            <img :src="image.image.min" alt="">
+            <img :src="image.image" alt="">
           </li>
         </transition-group>
       </div>
       <div class="brandIntroNum">
         <ul class="spot">
-          <li v-for="(image, index) in brandIntroPhoto" :class="[{changeStyle: index==imageNum}]"></li>
+          <li v-for="(image, index) in brandIntroPhoto"  :class="[{changeStyle: index==imageNum}]"></li>
         </ul>
       </div>
       <div class="brandIntroVideo"  @click="brandVideo">
@@ -22,7 +22,9 @@
         {{ brandIntroTitle }}
       </p>
       <p class="brandIntroWordContent">
-        {{ brandIntroContent }}
+        <span class="brandIntroContent">
+          {{ brandIntroContent }}
+        </span>
       </p>
     </div>
     <div class="brandIntroWordRemind" v-show="wordRemind">
@@ -31,6 +33,7 @@
   </div>
 </template>
 <script>
+import getImage from '../../utils/getImage.js'
 export default {
   name: 'brandIntro',
   data() {
@@ -44,15 +47,30 @@ export default {
 			endX: 0,
       x: 0,
       change: '',
-      wordRemind: true
+      wordRemind: true,
+      head: 'http://118.24.113.182:80/'
     }
   },
   created() {
-    this.$axios.get("/introduction")
-      .then(res=>{
-        this.brandIntroPhoto = res.data.data.images
-        this.brandIntroTitle = res.data.data.title
-        this.brandIntroContent = res.data.data.content
+    this.$axios.get('/brand/enterpriseIntroduction/get')
+      .then(res => {
+        this.brandIntroTitle = res.data.data.enterpriseName
+        this.brandIntroContent = res.data.data.enterpriseIntroduction
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.post('/brand/enterpriseIntroduction/image/get')
+      .then(res => {
+        this.brandIntroPhoto = res.data.data
+        this.brandIntroPhoto.map((item, index) => {
+          if (item.imageLocation) {
+            this.brandIntroPhoto[index].image = getImage(item.imageLocation, 1)
+          }
+        })
+      })
+      .catch(error => {
+        console.log(error)
       })
     this.$nextTick(()=>{
       document.title = '企业介绍'
@@ -62,6 +80,8 @@ export default {
     })
   },
   mounted () {
+    var parentBox = document.getElementsByClassName('brandIntroWordContent')[0]
+    var contentBox = document.getElementsByClassName('brandIntroContent')[0]
     setTimeout(()=>{
       if (brandWorldScroll.offsetHeight == brandWorldScroll.scrollHeight) {
         this.wordRemind = false;
@@ -71,6 +91,7 @@ export default {
     },100);
     var brandWorldScroll = document.getElementsByClassName('brandIntroWordContent')[0];
     brandWorldScroll.addEventListener('scroll', ()=>{
+      console.log(parentBox.scrollHeight, contentBox.scrollHeight)
       var allheight = parseInt(brandWorldScroll.scrollHeight);
       var judeHeight = Math.ceil(brandWorldScroll.scrollTop) + Math.ceil(brandWorldScroll.offsetHeight);
       if (allheight == judeHeight || allheight+1 == judeHeight || allheight == judeHeight+1) {
@@ -100,19 +121,6 @@ export default {
       clearInterval(this.timer);
       this.startX = parseInt(ev.touches[0].clientX);
       var imageStyle = document.getElementsByClassName('brandIntroPhoto')[0].children[0];
-      // var imageLeft = parseInt(document.getElementsByClassName('brandIntroPhoto')[0].children[0].children[0].style.left);
-      // var imageWidth = imageStyle.children[this.imageNum].offsetWidth;
-      // imageStyle.children[this.imageNum].style.left = 0;
-      // if (this.imageNum == 0) {
-      //   imageStyle.children[imageStyle.children.length-1].style.left = - imageWidth + 'px';
-      // }else {
-      //   imageStyle.children[this.imageNum-1].style.left = - imageWidth + 'px';
-      // }
-      // if (this.imageNum == imageStyle.children.length-1) {
-      //   imageStyle.children[0].style.left = imageWidth + 'px';
-      // }else {
-      //   imageStyle.children[this.imageNum+1].style.left = imageWidth + 'px';
-      // }
 		},
 		touchmove(ev) {
       this.endX = parseInt(ev.touches[0].clientX);
@@ -134,13 +142,10 @@ export default {
 		brandVideo() {
 			this.$router.push({path: '/brand/mp4'});
     },
-    // watch: {
-    //   worldScroll() {
-    //     this.$nextTick(() => {
-    //       console.log(document.getElementsByClassName('brandIntroWordContent')[0].scrollTop,document.getElementsByClassName('brandIntroWordContent')[0].scrollHeight)
-    //     })
-    //   }
-    // }
+    getImage (data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+    }
   }
 }
 </script>
@@ -242,6 +247,9 @@ export default {
       margin-top: 1rem;
       color: #fffffe;
       overflow-y: auto;
+      span {
+        display: block;
+      }
     }
   }
   .brandIntroWordRemind {

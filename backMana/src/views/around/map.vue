@@ -17,11 +17,12 @@ import {getUrl} from '../../utils/urlGet.js'
 import {checkChange} from '../../utils/urlGet.js'
 import {modify} from '../../utils/urlGet.js'
 import {modifyCome} from '../../utils/urlGet.js'
+import ip from '../../../static/ip'
 export default {
     data() {
         return {
             imgBack: "",
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
         }
     },
     created() {
@@ -42,8 +43,12 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
-            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         tiJiao() {   
             let formdata = new FormData();

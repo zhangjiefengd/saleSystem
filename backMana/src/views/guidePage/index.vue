@@ -42,6 +42,7 @@ import {checkChange} from '../../utils/urlGet.js'
 import {modify} from '../../utils/urlGet.js'
 import {modifyCome} from '../../utils/urlGet.js'
 import qs from 'qs'
+import ip from '../../../static/ip'
 export default {
   data() {
     return {
@@ -52,7 +53,7 @@ export default {
       "appear": "none",
       "appearCome": "block",
       "success": [],
-      "head": 'http://118.24.113.182:80/'
+      head: ip + ':80/',
     }
   },
   created() {
@@ -61,11 +62,13 @@ export default {
       // 切块图片
       if (res.data.data && res.data.data.backgroundImageLocation) {
         const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
-        this.imgBack = this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
+        this.imgBack = this.getImage(res.data.data.backgroundImageLocation, 3);
+        //  this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
       }
       if (res.data.data && res.data.data.projectLogoLocation) {
         const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
-        this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
+        this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
+        // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
       }
       //获取文字
       if (res.data.data && res.data.data.projectHost && res.data.data.projectLocation && res.data.data.projectHotline) {
@@ -93,6 +96,14 @@ export default {
     this.modifyWord();
   },
   methods: {
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
     tiJiao() {   
       let formdata = new FormData();
       if ($('#imgGuideBack') && document.getElementById('imgGuideBack').files[0]) {

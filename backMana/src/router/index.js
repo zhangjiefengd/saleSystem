@@ -76,12 +76,12 @@ export const constantRouterMap = [
       component: () => import('@/views/homepage/index'),
       meta: { title: '电脑端', icon: 'form' }
     },
-      {
-        path: 'mobile',
-        name: 'mobile',
-        component: () => import('@/views/homepage/mobile'),
-        meta: { title: '移动端', icon: 'form' }
-      }]
+    {
+      path: 'mobile',
+      name: 'mobile',
+      component: () => import('@/views/homepage/mobile'),
+      meta: { title: '移动端', icon: 'form' }
+    }]
   },
   {
     path: '/houseDis',
@@ -139,7 +139,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/proInt/index',
     meta: {
-      requireAuth: true,
+      requireAuth: true
     },
     children: [
       {

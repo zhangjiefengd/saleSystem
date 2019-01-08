@@ -12,6 +12,7 @@
 
 <script type="text/ecmascript-6">
 import qs from 'qs';
+import ip from '../../../../static/ip'
 var time = null;  //  在这里定义time 为null 
 export default {
     data() {

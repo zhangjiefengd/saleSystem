@@ -93,6 +93,7 @@
 <script type="text/ecmascript-6">
 import {getUrl} from '../../utils/urlGet.js'//获取预览图片地址
 import qs from 'qs';
+import ip from '../../../static/ip'
 export default {
     data() {
         return {
@@ -111,7 +112,7 @@ export default {
             placeReduceTypeVisibility: 'none',
             public: [],//公共设施
             parkView: [],//园林景观
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
             dialogImageUrl: '',
             dialogVisible: false,
             filePicPublic: {},
@@ -145,8 +146,12 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
-            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         //增加公共设施
         addPublic() {

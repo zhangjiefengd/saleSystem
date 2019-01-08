@@ -52,6 +52,7 @@ import addSample from './components/frames/addSample.vue'
 import addHouseTypePic from './components/frames/addHouseTypePic.vue'
 import addRoomType from './components/frames/addRoomType.vue'
 import reduceRoomType from './components/frames/reduceRoomType.vue'
+import ip from '../../../static/ip'
 
     export default {
         name: 'homepage',

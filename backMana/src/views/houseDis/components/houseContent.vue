@@ -29,6 +29,7 @@
 
 <script>
 import qs from 'qs'
+import ip from '../../../../static/ip'
 export default {
     name: 'houseContent',
     data() {
@@ -37,7 +38,7 @@ export default {
             chaPic: require('../../../assets/img/cha.png'),//叉图片
             sampleRoomImage: [],
             houseTypeImage: {},
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
             chaDisplay: 'none',//户型图的叉叉是否显现
             dialogImageUrl: '',
             dialogVisible: false,
@@ -134,11 +135,11 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
+            const imgSplit = data.split(/\_|\./g)
             let index = i;
             while (imgSplit.length - 1 <= index) {
                 index--;
-            } 
+            }
             return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         //增加样板间

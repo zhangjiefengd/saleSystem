@@ -6,29 +6,28 @@
     <div class="content">
       <div class="content1">
         <div class="pictureIntro">
-          <div class="hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
+          <div class="hide" v-for="(world, index) in worlds" :class="[{show: index==number}]">
             <!-- <img v-lazy="worlds[index].image.fileName" alt=""> -->
-            <img v-if="world.image !== null" :src="worlds[index].image.fileName" alt="">
-            <img v-if="world.image == null" src="" alt="">
+            <img v-if="world.image !== null" :src="world.image" alt="">
           </div>
         </div>
         <div class="worldIntro">
           <div>
             <div class="worldIntroTop">
-              <div class="world hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
+              <div class="world hide" v-for="(world, index) in worlds" :class="[{show: index==number}]">
                 <div class="title">
-                  {{ world.begin }} - {{ world.end }} (第 {{ index+1 }} 阶段)
+                  {{ world.step }} (第 {{ index+1 }} 阶段)
                 </div>
                 <h3>
-                  {{ world.title }}
+                  {{ world.developTitle }}
                 </h3>
                 <p>
-                  {{ world.content }}
+                  {{ world.enterpriseDevelopInfo }}
                 </p>
               </div>
             </div>
             <ul class="worldIntroBottom">
-              <li v-for="(Image,index) in worlds" :key="index" :class="[{changeStyle: index==number}]" @click="changeAll(index)">
+              <li v-for="(Image,index) in worlds"  :class="[{changeStyle: index==number}]" @click="changeAll(index)">
                 {{ index+1 }}
               </li>
             </ul>
@@ -40,62 +39,83 @@
 </template>
 <script>
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
-
+import ip from '../../../../static/ip'
 export default {
-  name: "develop",
+  name: 'develop',
   data() {
     return {
       background: '',
       worlds: '',
       number: 0,
       num: 0,
-      backBig: ''
+      backBig: '',
+      head: ip + ':80/'
     }
   },
-  created() {
-    this.$axios.get("/history")
-			.then(res => {
-        this.background = res.data.data[0].backgroundImage.min;
-        if (screen.width > 1024){
-          this.backBig = res.data.data[0].backgroundImage.fileName;
-        }else {
-          this.backBig = res.data.data[0].backgroundImage.middle;
+  created () {
+    this.$axios.get('/brand/enterpriseDevelop/get')
+      .then(res => {
+        if (res.data.data) {
+          this.num = res.data.data.length
+          this.worlds = res.data.data
+          this.worlds.map((item, index) => {
+            if (item.enterpriseDevelopImageLocation) {
+              this.worlds[index].image = this.getImage(item.enterpriseDevelopImageLocation, 1)
+            }
+          })
         }
-        // this.backBig = res.data.data[0].backgroundImage.fileName;
-        this.num = res.data.data.length;
-        // console.log(res.data)
-        this.worlds = res.data.data;
-        // console.log(res.data.data)
-			})
-			.catch(error => {
-        console.log(error);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
+      .then(res => {
+        if (res.data.data) {
+          this.background = this.getImage(res.data.data.imageLocation, 1)
+          if (screen.width > 1024) {
+            this.backBig = this.getImage(res.data.data.imageLocation, 1)
+          } else {
+            this.backBig = this.getImage(res.data.data.imageLocation, 2)
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error)
       })
   },
   methods: {
-		clickBack: function() {
-			this.$router.push({path: '/index'});
+    clickBack: function() {
+      this.$router.push({path: '/index'})
     },
     changeAll(index) {
-      this.number = index;
-    }
-	},
-  watch: {
-    backBig() {
-      var ele = document.querySelector('.honor');
-      var imgUrl = this.backBig;
-      var imgObject = new Image();
-
-      imgObject.src = imgUrl;
-      // let time = setInterval(() => {
-        imgObject.onload = function () {
-          let time = setInterval(() => {
-          this.background = imgUrl;
-          // console.log(this.imgProjectBack);
-          document.getElementsByClassName('back')[0].src = this.background;
-            // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
-          ele.setAttribute('class', 'honor complete');
-          }, 100);
+      this.number = index
+    },
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
         }
+          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
+  },
+  watch: {
+    backBig () {
+      var ele = document.querySelector('.honor');
+      var imgUrl = this.backBig
+      var imgObject = new Image()
+
+      imgObject.src = imgUrl
+      // let time = setInterval(() => {
+      imgObject.onload = function () {
+        let time = setInterval(() => {
+          this.background = imgUrl
+          // console.log(this.imgProjectBack);
+          document.getElementsByClassName('back')[0].src = this.background
+          // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+          ele.setAttribute('class', 'honor complete')
+        }, 100)
+      }
       // }, 100);
     }
   }
@@ -106,8 +126,8 @@ export default {
 @import "../../../styles/mixin.scss";
 #develop {
   width: transverse(1620);
-	height: 100%;
-	float: left;
+  height: 100%;
+  float: left;
   position: relative;
   >img {
     width: 100%;
