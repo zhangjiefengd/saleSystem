@@ -38,7 +38,7 @@
             <li v-for="(image, index) in images" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
           </ul>
           <div class="introduce">
-            <img src="../../../assets/img/brandBGC/worldBgc.png" alt="">
+            <img :style="{backgroundCOlor: imgColor}" src="../../../assets/img/brandBGC/worldBgc.png" alt="">
             <div class="worldFather">
               <div class="worldIntro">
                 <div class="worldTitle">
@@ -79,10 +79,9 @@
             </div>
 
             <button class="allSubmit" type="button" @click="submitForm" value="保存">
-              <!--<svg class="icon" aria-hidden="true">-->
-                <!--<use xlink:href="#icon-zhengque"></use>-->
-              <!--</svg>-->
-              全部提交
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zhengque"></use>
+              </svg>
             </button>
           </div>
           <router-view></router-view>
@@ -112,7 +111,8 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: 'http://118.24.113.182:80/'
+        head: 'http://118.24.113.182:80/',
+        imgColor: '#eee'
       }
     },
     created() {
@@ -358,11 +358,8 @@
     position: absolute;
     right: 0;
     bottom: 0;
-
-    &:hover {
-      color: #54b3ff;
-      background-color: #d3ecfd;
-    }
+    color: #54b3ff;
+    background-color: #d3ecfd;
   }
 
   #updiv {

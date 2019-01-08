@@ -29,10 +29,9 @@
       <div class="box">
         <div id="honor" v-loading="bgcLoading" element-loading-text="背景图片上传中">
           <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
-            <!--<svg class="icon" aria-hidden="true">-->
-              <!--<use xlink:href="#icon-zhengque"></use>-->
-            <!--</svg>-->
-            全部提交
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zhengque"></use>
+            </svg>
           </button>
           <label class="changebgc" for="bFile" style="border-radius: 10px;">
             <img style="width: 100%;height:100%;" src="../../../assets/img/brandBGC/changeBGC.png">
@@ -421,11 +420,8 @@
     z-index: 99;
     right: 0;
     bottom: 0;
-
-    &:hover {
-      color: #54b3ff;
-      background-color: #d3ecfd;
-    }
+    color: #54b3ff;
+    background-color: #d3ecfd;
   }
 
   .honorTop {
