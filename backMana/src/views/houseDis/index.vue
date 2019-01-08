@@ -66,6 +66,7 @@ import reduceRoomType from './components/frames/reduceRoomType.vue'
         },
         data() {
             return {
+                yes: true,
                 houseTypeFrame: 'none',//增加户型的弹框
                 markVisibility: 'none',//遮罩层显现
                 sampleFrame: 'none',//样板间显现
@@ -95,10 +96,10 @@ import reduceRoomType from './components/frames/reduceRoomType.vue'
             },
 
             //点击切换户型内容
-            conveyIndex(name) {
-                this.$refs.content.$emit('conveyIndex', name);//给内容传户型索引
-                this.$refs.sample.$emit('conveyIndex', name);//给样板间添加框提供索引
-                this.$refs.houseType.$emit('conveyIndex', name);//给户型图添加框提供索引
+            conveyIndex(name, id) {
+                this.$refs.content.$emit('conveyIndex', name, id);//给内容传户型索引
+                this.$refs.sample.$emit('conveyIndex', name, id);//给样板间添加框提供索引
+                this.$refs.houseType.$emit('conveyIndex', name, id);//给户型图添加框提供索引
             },
 
             //增加样板间图片
@@ -197,9 +198,8 @@ import reduceRoomType from './components/frames/reduceRoomType.vue'
     justify-content: center;
     align-items: center;
     background-color: #EDF0F5;
-    position: relative;
     .page {
-        margin-top: -20px;
+        margin-top: -80px;
         width: px2rem(1455);
         height: px2rem(750);
         // border: px2rem(2) solid #304156;
@@ -233,5 +233,8 @@ import reduceRoomType from './components/frames/reduceRoomType.vue'
         top: 0;
         left: 0;
     }
+}
+.el-loading-parent--relative {
+    position: initial!important;
 }
 </style>

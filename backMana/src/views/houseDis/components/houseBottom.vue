@@ -1,7 +1,7 @@
 <template>
     <div class="houseChoose">
         <li v-for="(house, index) in houseType"  :key='index'>
-            <div class="clickType" @click="clickHouseType(index)" @dblclick="update"  :style="{backgroundColor: clickColor[index]}">
+            <div class="clickType" @click="clickHouseType(index)" @dblclick="update(index)"  :style="{backgroundColor: clickColor[index]}">
                 {{ house.houseTypeName }}
             </div>
             <img :src="chachaPic" class="chaHouse" :style="{display: visibility[index]}" @click='deleteHouseType(index)'>     
@@ -80,7 +80,7 @@ export default {
                 this.visibility[index] = 'block';//让小叉叉出现
                 this.clickColor[index] = '#304156';//让点击盒子变色
                 this.clickNum = index;
-                this.$emit('conveyIndex', this.houseType[index].houseTypeName);
+                this.$emit('conveyIndex', this.houseType[index].houseTypeName, this.houseType[index].id);
             }, 300);   //大概时间300ms
         },
         //增加户型
@@ -115,10 +115,10 @@ export default {
             });
         },
         //双击修改户型名
-        update(e) {
+        update(index) {
             clearTimeout(time);  //清除
             if (this.doubleClickNum == 0) {
-                e.target.innerHTML = "<input id='houseTypeUpdate' style='width: 65px' value=" + e.target.innerHTML.trim() + ">";
+                document.getElementsByClassName('clickType')[index].innerHTML = "<input id='houseTypeUpdate' style='width: 65px' value=" + document.getElementsByClassName('clickType')[index].innerHTML.trim() + ">";
                 this.doubleClickNum = 1;
                 document.onkeydown=(event) => {
                     const eventKey = event || window.event || arguments.callee.caller.arguments[0];
@@ -128,7 +128,7 @@ export default {
                             'Content-Type': 'application/x-www-form-urlencoded' 
                         };
                         const updateData = {
-                            id: this.houseType[this.clickNum].id,
+                            id: this.houseType[index].id,
                             houseTypeName: updateInput.value     
                         };
                         this.$axios.post('/house/houseType/update', updateData, config).then((res) => {
@@ -137,6 +137,7 @@ export default {
                                     message: '修改成功！',
                                     type: 'success'
                                 });
+                                document.getElementsByClassName('clickType')[index].innerHTML = updateInput.value;
                             } else {
                                 this.$message({
                                     message: '户型名不能重复！',
@@ -146,7 +147,6 @@ export default {
                         }).catch((err) => {
                             this.$message.error('修改失败！');
                         });
-                        e.target.innerHTML = updateInput.value;
                     }
                     this.doubleClickNum = 0;
                 };
@@ -172,7 +172,7 @@ export default {
     align-items: center;
     cursor: pointer;
     position: absolute;
-    top: 90%;
+    top: 87%;
     left: 50%;
     transform: translateX(-50%);
         // left: 300px;

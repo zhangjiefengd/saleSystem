@@ -33,6 +33,7 @@ Vue.prototype.$axios = Axios
 // this.$axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // Vue.use(getUrl);
 Axios.defaults.baseURL = global.BASE_URL
+Axios.defaults.withCredentials = true;
 Vue.prototype.$axios = Axios
 Vue.config.productionTip = false
 

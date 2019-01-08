@@ -35,7 +35,7 @@
                 <form action="">
                     <label>图片内容：</label>
                     <select class="placeType" ref='selectA'>
-                        <option v-for='place in placeType' :value="place.placeTypeName" >{{ place.placeTypeName }}</option>
+                        <option v-for='place in placeType' :value="place.id" >{{ place.placeTypeName }}</option>
                     </select>
                     <img :src="addHouse" class="addPark" @click="addParkType" /><img class="addPark" :src="decrease" @click="reduceParkType"/><br>
                     <label>文件上传:</label><input type="file" ref="picA" @change="showSelectPublic" style="display:none" /><br>
@@ -52,7 +52,7 @@
                 <form action="">
                     <label>图片内容：</label>
                     <select class="placeType" ref='selectB'>
-                        <option v-for='place in placeType' :value="place.placeTypeName" >{{ place.placeTypeName }}</option>
+                        <option v-for='place in placeType' :value="place.id" >{{ place.placeTypeName }}</option>
                     </select>
                     <img :src="addHouse" class="addPark" @click="addParkType" /><img class="addPark" :src="decrease" @click="reduceParkType"/><br>
                     <label>文件上传:</label><input type="file" ref="picB" @change="showSelectPark" style="display:none" /><br>
@@ -224,7 +224,7 @@ export default {
         submitPublic() {
             if (this.filePicPublic && this.$refs.selectA.value) {
                 let formdata = new FormData();
-                formdata.append('placeType', this.$refs.selectA.value);
+                formdata.append('placeTypeId', this.$refs.selectA.value);
                 formdata.append('imageType', 1);
                 formdata.append('imageFile', this.filePicPublic);
                 const config = {
@@ -269,7 +269,7 @@ export default {
         submitPark() {
             if (this.filePicPark && this.$refs.selectB.value) {
                 let formdata = new FormData();
-                formdata.append('placeType', this.$refs.selectB.value);
+                formdata.append('placeTypeId', this.$refs.selectB.value);
                 formdata.append('imageType', 0);
                 formdata.append('imageFile', this.filePicPark);
                 const config = {
@@ -377,7 +377,7 @@ export default {
     align-items: center;
     background-color: #EDF0F5;
     .page {
-        margin-top: -20px;
+        margin-top: -80px;
         width: px2rem(1455);
         height: px2rem(750);
         .pageOne {
@@ -589,8 +589,8 @@ export default {
             @include sc(px2rem(30), #304156);
             font-weight: 600;
             position: absolute;
-            top: 28%;
-            left: 61%;
+            top: 28.8%;
+            left: 63%;
             // transform: translate(0, -70%);
             .placeTitle {
                 width: 100%;
@@ -643,5 +643,8 @@ export default {
             }
         }
     }
+}
+.el-loading-parent--relative {
+    position: initial!important;
 }
 </style>

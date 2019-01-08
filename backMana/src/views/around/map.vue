@@ -27,10 +27,10 @@ export default {
     created() {
         this.$axios.post("/surround/surroundingFacilities/get")
             .then(res => {
-                this.imgBack = this.getImage(res.data.data.imageLocation, 1);
+                res.data.data && res.data.data.imageLocation ? this.imgBack = this.getImage(res.data.data.imageLocation, 1) : "";
             })
             .catch(error => {
-                this.$message.error('获取失败！');
+                this.$message.error('获取失败,请上传内容！');
         });
     },
     mounted() {
@@ -82,12 +82,14 @@ export default {
     height: px2rem(900);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background-color: #EDF0F5;
     .page {
         width: px2rem(1400);
         height: px2rem(scale(1500));
         background-repeat: no-repeat;
         background-size: 100% 100%;
+        position: relative;
         #gai {
             width: px2rem(103);
             height: px2rem(34);
@@ -126,6 +128,8 @@ export default {
         }
     }
 }
-
+.el-loading-parent--relative {
+    position: initial!important;
+}
 
 </style>

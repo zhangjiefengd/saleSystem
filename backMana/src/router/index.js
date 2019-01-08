@@ -33,7 +33,23 @@ export const constantRouterMap = [
       requireAuth: true,
     },
   },
-
+  // {  
+  //   path: '/proSelect',
+  //   component: Layout,            
+  //   meta: {
+  //     requireAuth: true,
+  //   },
+  //   redirect: '/proSelect/index',
+  //   children: [{
+  //     path: 'index',
+  //     name: 'proSelect',
+  //     component: () => import('@/views/projectSelect/index'),
+  //     meta: {
+  //       title: '项目选择',
+  //       icon: 'table'
+  //     }
+  //   }]
+  // },
   {
     path: '/guidePage',
     component: Layout,
@@ -89,7 +105,7 @@ export const constantRouterMap = [
     path: '/company',
     name: 'Form',
     component: Layout,
-    redirct: './company/comapnyRe',
+    redirect: './company/comapnyRe',
     meta: { title: '品牌概况', icon: 'brand' },
     children: [
       {
@@ -121,6 +137,7 @@ export const constantRouterMap = [
   {
     path: '/proInt',
     component: Layout,
+    redirect: '/proInt/index',
     meta: {
       requireAuth: true,
     },
@@ -154,7 +171,23 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/proManage',
+    component: Layout,
+    meta: {
+      requireAuth: true,
+    },
+    redirect: '/proManage/index',
+    children: [
+      {
+        path: 'index',
+        name: 'proManage',
+        component: () => import('@/views/projectManage/index'),
+        meta: { title: '项目管理', icon: 'table' }
+      }
+    ]
+  },
+  
   { path: '*', redirect: '/404', hidden: true }
 ]
 

@@ -5,7 +5,7 @@
             <img :src="this.tankuang" id="chaHouse" @click='cancelAddRoomType'>
         </div>
         <form action="">
-            <input type="text" name="house" id="addI" ref="addContent" maxlength="8" class="addType">
+            <input type="text" name="house1" id="addI" ref="addContent" maxlength="8" class="addType">
             <input type="button" value="确定" id="add" @click='addRoomType'>
         </form>
     </div>
@@ -75,8 +75,8 @@ export default {
     @include sc(px2rem(30), #304156);
     font-weight: 600;
     position: absolute;
-    top: 28%;
-    left: 61%;
+    top: 28.8%;
+    left: 63%;
     // transform: translate(0, -70%);
     .houseTitle {
         width: 100%;
