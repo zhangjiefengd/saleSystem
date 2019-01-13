@@ -69,35 +69,33 @@ export default {
 .content {
     width: 100%;
     height: 100%;
-    background-color: #1E1E1E;
+    background-color: #D7D7D7;
     .changePosition {
         width: 100%;
         height: vertical(905);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
         .topHouse {
-            width: 100%;
-            height: percentage(140 / 905);
-            z-index: 1;
+            height: vertical(117);
+            position: absolute;
+            display: flex;
+            align-items: flex-end;
+            right: px2rem(95);
             img {
-                width: px2rem(57);
-                height: px2rem(50);
-                margin-top: px2rem(48);
-                margin-left: percentage(1503 / 1620);
+                width: px2rem(63);
+                height: px2rem(57);
                 cursor: pointer;
             }
         }
         .middleHouse {
             width: 100%;
-            height: percentage(765 / 905);
+            height: percentage(725 / 905);
             display: flex;
             align-items: center;
+            margin-top: px2rem(167);
             .bigPic {
-                width: px2rem(1098);
+                width: px2rem(1107);
                 height: 100%;
-                margin-left: transverse(121);
-                border: px2rem(2) solid $colorAll;
+                margin-left: transverse(95);
+                border: px2rem(8) solid white;
                 background-repeat: no-repeat;
                 background-size: percentage(1094 / 1098) percentage(761 / 765);
                 filter: blur(4px);

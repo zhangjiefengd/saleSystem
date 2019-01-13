@@ -1,9 +1,13 @@
 <template>
     <div class="projectPage" v-loading="this.$store.state.loading.loading">
         <div class="page" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
-            
+            <img :src='imgLogo'/>
             <div class="introduce">
-                <div class="title">项目介绍</div>
+                <div class="title">
+                    <span class="proWord">项目介绍</span>
+                    <hr>
+                    <span class="proDetail">Project Introduction</span>
+                </div>
                 <div class="content" :style="{display: appearCome}" @click="change">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{projectWord}}
                 </div>
@@ -42,9 +46,23 @@ export default {
             "appear": "none",
             "appearCome": "block",
             head: ip + ':80/',
+            imgLogo: ''
         }
     },
     created() {
+        console.log(document.location.hostname);
+        this.$axios.get("/basic/guidePage/get")
+        .then(res => {
+        
+            if (res.data.data && res.data.data.projectLogoLocation) {
+                this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
+                // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
+            }
+        
+        })
+        .catch(error => {
+            this.$message.error('获取失败，请上传内容！');
+        });
         //请求公园类型
         this.$axios.get("/project/info/get")
         .then((res) => {
@@ -103,7 +121,7 @@ export default {
             }
             if (this.appear == 'none') {
                 this.$axios.post('/project/info/update',qs.stringify({
-                    introductionContent: $('textarea').val(),
+                    introductionContent: this.projectWord,
                 }) , config).then( (res) => {
                     this.$message({
                         message: '文字上传成功！',
@@ -180,6 +198,12 @@ export default {
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: relative;
+        >img {
+            width: transverse(159);
+            position: absolute;
+            top: px2rem(30);
+            left: px2rem(30);
+        }
         #gai {
             width: px2rem(103);
             height: px2rem(34);
@@ -211,40 +235,58 @@ export default {
             left: 0;
         }
         .introduce {
-            width: px2rem(scale(388));
-            height: px2rem(scale(724));
-            background-color: black;
-            float: left;
-            margin-left: px2rem(scale(90));
-            opacity: 0.8;
+            width: transverse(629);
+            height: vertical(854);
+            background-color: white;
+            // float: left;
+            // margin-left: px2rem(scale(90));
+            position: absolute;
+            top: vertical(151);
+            left: transverse(1085);
+            opacity: 0.9;
             display: flex;
             flex-direction: column;
             align-items: center;
-            z-index: -1;
+            padding: px2rem(60) px2rem(30) px2rem(60) px2rem(30);
+            // z-index: -1;
             .title {
                 width: 100%;
-                height: px2rem(scale(63));
-                background-color: $colorAll;
-                margin-top: px2rem(scale(90));
+                height: px2rem(scale(112));
+                // margin-top: px2rem(scale(90));
                 @include sc(px2rem(scale(36)), black);
-                @include fj(center);
-                align-items: center;
+                .proWord {
+                    @include sc(px2rem(30), #333333);
+                }
+                hr {
+                    width: px2rem(scale(370));
+                    margin-left: 0;
+                    background-color: #bfbfbf;
+                }
+                .proDetail {
+                    @include sc(px2rem(25),#999999);
+                }
             }
             .content {
-                width: px2rem(scale(249));
-                height: px2rem(scale(430));
-                margin: px2rem(scale(71)) auto;
-                @include sc(px2rem(scale(20)), white);
-                line-height: px2rem(scale(32));
-                border: px2rem(1) dashed white;
+                width: 100%;
+                height: 85%;
+                margin: px2rem(60) auto;
+                @include sc(px2rem(25), #333333);
+                border: px2rem(1) dashed black;
+                line-height: 24px;
                 // overflow: hidden;
             }
-            textarea {
-                width: px2rem(scale(249));
-                height: px2rem(scale(371));
-                margin: px2rem(scale(71));
-                @include sc(px2rem(scale(20)), black);
-                line-height: px2rem(scale(32));
+            form {
+                width: 100%;
+                height: 85%;
+                margin: px2rem(60) auto;
+                @include sc(px2rem(25), #333333);
+                line-height: 24px;
+                textarea {
+                    width: 100%;
+                    height: 100%;
+                    @include sc(px2rem(25), #333333);
+                    line-height: 24px;
+                }
             }
         }
         #allSub {

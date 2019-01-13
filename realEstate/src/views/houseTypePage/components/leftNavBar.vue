@@ -1,7 +1,7 @@
 <template>
     <div id="leftNavBar">
         <div class="leftLogo">
-            <img src="../../../assets/img/leftNav/logo.png" alt="">
+            <img :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
             <div name='houseTypeChoose' v-for="(world,index) in worlds" :key="index" @click="changeColor(index)" :class="[{changeColor: index==changeIndex}]" >
@@ -15,6 +15,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import getImage from '../../../ultis/getImage.js'
     export default {
     name: 'leftNavBar',
     data() {
@@ -30,10 +31,20 @@
             leftBottom: 'leftBottom',
             intial: 1,//为点击一次户型使得有边框在0上
             houseNum: 0,
+            imgLogo: "",
             numHanzi: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八"]
         }
     }, 
     created() {
+        this.$axios.get("/basic/guidePage/get")
+        .then((res) => {
+        
+            res.data.data && res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+            // console.log(this.imgLogo);
+        })
+        .catch(error => {
+            console.log(error);
+        });
         this.$axios.get("/house/houseType/get")
         .then(res => {
             this.worlds = res.data.data;
@@ -91,38 +102,37 @@
 #leftNavBar {
     width: 100%;
     height: 100%;
-    background-color: #121212;
-    border-right: px2rem(2) solid #c79f62;
+    background-color: white;
     .leftLogo {
         width: 100%;
-        height: px2rem(274);
+        height: px2rem(223);
         @include fj(center);
         align-items: flex-end;
         img {
-            width: px2rem(167);
-            height: px2rem(180);
+            width: px2rem(179);
         }
     }
     #leftWorld {
         width: 100%;
+        margin-top: px2rem(110);
         height: vertical(500);
         // background-color: #fff;
-        @include fj(space-around);
-        flex-direction: column;
-        align-items: center;
+        // @include fj(space-around);
+        // flex-direction: column;
+        // align-items: center;
         div {
-            width: px2rem(180);
-            height: px2rem(60);
-            border: 0.05rem solid #c79f62;
+            width: 100%;
+            height: px2rem(110);
             text-align: center;
-            @include sc(px2rem(30));
+            @include sc(px2rem(36), #191919);
             @include fj(center);
             align-items: center;
             cursor: pointer;
+            margin-top: 0;
         }
         .changeColor{
-            background-color: #ffdaaa;
-            color: #121212;
+            background-color:  #91a2ce;
+            color: white;
             >img{
                 background-image: url();
             }

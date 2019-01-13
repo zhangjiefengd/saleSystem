@@ -318,21 +318,21 @@ import getImage from '../../utils/getImage.js'
         }
         .tijiao {
             float: left;
-            margin-top: px2rem(4);
-            margin-left: px2rem(4);
+            margin-top: px2rem(-30);
+            margin-left: px2rem(-80);
             cursor: pointer;
         }
         .projectLogo {
-            width: transverse(601);
-            height: vertical(437);
+            width: transverse(357);
+            height: vertical(246);
             margin: 10% auto;
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
         .bottomDiv {
-            width: transverse(1064);
+            width: transverse(1409);
             height: px2rem(scalePx(210));
-            margin: -30px auto;
+            margin: 15% auto;
             @include fj();
             cursor: pointer;
             .word {

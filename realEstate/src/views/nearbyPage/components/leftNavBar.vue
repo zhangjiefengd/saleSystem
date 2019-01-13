@@ -1,7 +1,7 @@
 <template>
     <div id="leftNavBar">
         <div class="leftLogo">
-            <img src="@/assets/img/leftNav/logo.png" alt="">
+            <img :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
             <router-link tag="div" v-for="(word, index) in words" :key="index" :to="word.toUrl" >
@@ -15,6 +15,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import getImage from '../../../ultis/getImage.js'
     export default {
     name: 'leftNavBar',
     data() {
@@ -31,10 +32,20 @@
                     toUrl: '/nearBy/neighberhood'
                 }
             ],
-            changeIndex: 1
+            changeIndex: 1,
+            imgLogo: ""
         }
     }, 
     created() {
+        this.$axios.get("/basic/guidePage/get")
+        .then((res) => {
+        
+            res.data.data && res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+            // console.log(this.imgLogo);
+        })
+        .catch(error => {
+            console.log(error);
+        });
         // this.$axios.get("/landscape/images")
         // .then(res => {
         //     this.words = res.data.data;
@@ -63,43 +74,36 @@
 #leftNavBar {
     width: 100%;
     height: 100%;
-    background-color: #121212;
-    border-right: px2rem(2) solid #c79f62;
+    background-color: white;
     .leftLogo {
         width: 100%;
-        height: px2rem(259);
+        height: px2rem(223);
         @include fj(center);
         align-items: flex-end;
         img {
-            width: px2rem(157);
-            height: px2rem(172);
+            width: px2rem(179);
         }
     }
     #leftWorld {
         width: 100%;
-        height: vertical(380);
-        margin-top: px2rem(106);
-        @include fj(flex-start);
-        flex-direction: column;
-        align-items: center;
-        border-top: px2rem(2) solid #c79f62;
+        margin-top: px2rem(110);
+        height: vertical(500);
         div {
             width: 100%;
-            height: px2rem(82);
-            border-bottom: px2rem(2) solid #c79f62;
+            height: px2rem(110);
             text-align: center;
             @include fj(center);
+            @include sc(px2rem(36), #191919);
             align-items: center;
             cursor: pointer;
-            @include sc(px2rem(30));
         }
         .router-link-active {
-            background-color: #ffdaaa;
-            color: #121212;
+            background-color: #91a2ce;
+            color: white;
         }
         .changeColor{
-            background-color: #ffdaaa;
-            color: #121212;
+            background-color: #91a2ce;
+            color: white;
         }
     }
     .leftEat{

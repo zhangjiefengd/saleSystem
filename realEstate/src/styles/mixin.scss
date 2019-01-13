@@ -1,4 +1,5 @@
-$colorAll: #ffdaaa;
+@import './main.scss';
+$colorAll: #666666;
 // 背景图片地址和大小
 @mixin bis($url) {
   background-image: url($url);
@@ -61,13 +62,13 @@ $colorAll: #ffdaaa;
 @mixin scrollBar {
   &::-webkit-scrollbar-track-piece {
     overflow-x: hidden; 
-    background: #797979;
+    background: #cacaca;
   }
   &::-webkit-scrollbar-button {
     background: #797979;
     width: 18px;
     height: 18px;
-    display: block;
+    display: none;
     // border: 1px solid white;
   } 
   // &::-webkit-scrollbar-button:vertical:single-button:start {
@@ -99,12 +100,12 @@ $colorAll: #ffdaaa;
 
 
   &::-webkit-scrollbar {
-    width: 15px;
+    width: px2rem(16);
     overflow-x: hidden;
     border-radius: 0;
   }
   &::-webkit-scrollbar-corner {
-    background: #1E1E1E;
+    background: #aeaeae;
   }
   &::-webkit-scrollbar-thumb {
     background: #A8A8A8;

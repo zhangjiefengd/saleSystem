@@ -18,6 +18,10 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
+      <div class="click">
+        <img src="../../assets/img/guidePage/click.png"/>
+        <span>·点击探索·</span>
+      </div>
       <div class="word">
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/bussiness.png" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/address.png" alt="">&nbsp;&nbsp;{{word[1]}}</span>
@@ -324,8 +328,8 @@ export default {
       margin-right: px2rem(65);
     }
     .logo {
-      width: transverse(680);
-      height: vertical(405);
+      width: transverse(403);
+      height: vertical(286);
       margin: 10% auto;
       // background-color: #fff;
       background-repeat: no-repeat;
@@ -336,21 +340,37 @@ export default {
         img {
           width: 100%;
           height: 100%;
+          margin-left: px2rem(-80);
+          margin-top: px2rem(-30);
         }
+      }
+    }
+    .click {
+      width: transverse(161);
+      height: vertical(140);
+      @include fj();
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      img {
+        width: px2rem(73);
+      }
+      span {
+        @include sc(px2rem(20), #b1b1b1);
       }
     }
     .word {
       width: 80%;
       height: px2rem(24);
-      margin: 13% auto;
+      margin: 8% auto;
       // background-color: #fff;
       @include fj();
       align-items: center;
       span {
         cursor: pointer;
-        @include sc(px2rem(18));
+        @include sc(px2rem(22));
         img {
-          width: px2rem(18);
+          width: px2rem(22);
         }
         border: px2rem(1) dashed white;
       }

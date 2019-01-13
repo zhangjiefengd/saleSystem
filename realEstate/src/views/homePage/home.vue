@@ -2,6 +2,10 @@
   <div class="indexPage"  v-show="check" :style="{backgroundImage: 'url(' + imgIndexBack + ')'}" >
     <img :src="imgProject" alt="projectImg" class="projectImg">
     <div class="module">
+      <div class="smallNav" v-for="(m, a) in word" @click="skip(url[a])">
+        <img :src="icon[a]" alt="" class="navLogo">
+        <span>{{m}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -18,9 +22,9 @@ export default {
       imgProject: '',
       moduleIndex: [],
       word: ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
-      url: ["projectIntroduce", "/brand", "/houseType", "/nearBy" ],
+      url: ["/projectIntroduce", "/brand", "/houseType", "/nearBy" ],
       check: 0,
-      icon: [require('../../assets/img/index/icon1.png'),require('../../assets/img/index/icon2.png'),require('../../assets/img/index/icon3.png'),require('../../assets/img/index/icon4.png')]
+      icon: []
     }
   },
   created() {
@@ -38,7 +42,12 @@ export default {
       // this.imgBig = res.data.data.backgroundImage.fileName;
       this.imgProject = getImage(res.data.data.projectLogoLocation, 5);
       // this.imgProBig = res.data.data.projectImage.fileName;
+      res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : "";
+      res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
+      res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : "";
+      res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : "";
       this.check = 1;
+      // this.judgeModule();
     })
     .catch(error => {
       console.log(error);
@@ -56,7 +65,7 @@ export default {
     // })
   },
   mounted() {
-    this.judgeModule();
+    // this.judgeModule();
   },
   methods: {
     //进行跳转页面
@@ -143,9 +152,9 @@ export default {
   // filter: blur(4px);
   transition: all 0.7s;
   .projectImg {
-    width: px2rem(601);
+    width: px2rem(357);
     @include cl();
-    top: vertical(204);
+    top: vertical(171);
     // filter: blur(4px);
     transition: all 0.7s;
   }
@@ -153,21 +162,21 @@ export default {
     filter: blur(0);
   }
   .module {
-    width: 62.8%;
-    height: px2rem(181);
+    width: transverse(1409);
+    height: vertical(290);
     @include cl();
-    top: vertical(768);
+    top: vertical(705);
     @include fj(space-around);
     .smallNav {
       cursor: pointer;
-      @include fj(space-between);
+      @include fj(space-around);
       align-items: center;
       flex-direction: column;
       img {
-        width: px2rem(92);
+        width: px2rem(136);
       }
       span {
-        @include sc(px2rem(40));
+        @include sc(px2rem(34));
       }
     }
   }

@@ -40,7 +40,7 @@ export default {
         .then(res => {
             this.title = res.data.data;
             if(this.title[0]) {
-                this.$axios.get("/house/sampleRoomImage/get?houseTypeName=" + this.title[0].houseTypeName)
+                this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[0].id)
                 .then(res => {           
                     this.dataAll = res.data.data;
                     if (this.dataAll && this.dataAll[0]) {
@@ -68,7 +68,7 @@ export default {
             this.$on('changeHouse', (val, val2) => {
                 if (this.houseNum != val && this.title[val]) {
                     this.houseNum = val;
-                    this.$axios.get("/house/sampleRoomImage/get?houseTypeName=" + this.title[val].houseTypeName)
+                    this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[val].id)
                     .then(res => {           
                         this.dataAll = res.data.data;
                         this.imgSrc = [];
@@ -95,7 +95,7 @@ export default {
             this.$on('changeHouse2', (val) => {    
                 if (this.houseNum != val && this.title[val]) {
                     this.houseNum = val;
-                    this.$axios.get("/house/sampleRoomImage/get?houseTypeName=" + this.title[val].houseTypeName)
+                    this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[val].id)
                     .then(res => {           
                         this.dataAll = res.data.data;
                         this.imgSrc = [];
@@ -203,21 +203,21 @@ export default {
         @include sc(px2rem(19), white);
     }
 }
-::-webkit-scrollbar-button:vertical:single-button:start {
-    width: 100%;
-    background: url("../../../../assets/img/top.png") -1.5px -1px no-repeat;
-    cursor: pointer;
-    border-bottom: 1px solid #1E1E1E;
+// ::-webkit-scrollbar-button:vertical:single-button:start {
+//     width: 100%;
+//     background: url("../../../../assets/img/top.png") -1.5px -1px no-repeat;
+//     cursor: pointer;
+//     border-bottom: 1px solid #1E1E1E;
 
-  }
-::-webkit-scrollbar-button:vertical:single-button:end {
-    width: 100%;
-    background: url("../../../../assets/img/bottom.png") -1.5px -1px no-repeat;
+//   }
+// ::-webkit-scrollbar-button:vertical:single-button:end {
+//     width: 100%;
+//     background: url("../../../../assets/img/bottom.png") -1.5px -1px no-repeat;
 
-    cursor: pointer;
-    border-top: 1px solid #1E1E1E;
+//     cursor: pointer;
+//     border-top: 1px solid #1E1E1E;
 
-  }
+//   }
 .rightNavBar{
     width: px2rem(304);
     height: px2rem(608);
@@ -237,7 +237,7 @@ export default {
         cursor: pointer;
         .rightContent {
             width: 100%;
-            height: px2rem(157);
+            height: px2rem(158);
             display: flex;
             align-items: center;
             .arrowRight {
@@ -250,12 +250,12 @@ export default {
                 width: px2rem(36);
                 height: px2rem(36);
                 border: px2rem(18) solid transparent;
-                border-right-color: $colorAll;
+                border-right-color: white;
             }
             .smallRight {
                 height: 100%;
-                width: px2rem(230);
-                border: px2rem(2) solid transparent;
+                width: px2rem(235);
+                border: px2rem(8) solid transparent;
                 
                 .imgRight {
                     width: 100%;
@@ -269,8 +269,8 @@ export default {
             }
             .addSmallRight {
                 height: 100%;
-                width: px2rem(230);
-                border: px2rem(2) solid $colorAll;
+                width: px2rem(235);
+                border: px2rem(8) solid white;
                 .imgRight {
                     width: 100%;
                     height: 100%;
