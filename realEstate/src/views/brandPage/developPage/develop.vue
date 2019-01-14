@@ -14,7 +14,7 @@
         <div class="worldIntro">
           <div>
             <div class="worldIntroTop">
-              <div class="world hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
+              <div class="world hide" v-for="(world, index) in worlds" :class="[{show: index==number}]">
                 <div class="title">
                   {{ world.step }} (第 {{ index+1 }} 阶段)
                 </div>
@@ -27,7 +27,7 @@
               </div>
             </div>
             <ul class="worldIntroBottom">
-              <li v-for="(Image,index) in worlds" :key="index" :class="[{changeStyle: index==number}]" @click="changeAll(index)">
+              <li v-for="(Image,index) in worlds"  :class="[{changeStyle: index==number}]" @click="changeAll(index)">
                 {{ index+1 }}
               </li>
             </ul>
@@ -39,7 +39,7 @@
 </template>
 <script>
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
-
+import ip from '../../../../static/ip'
 export default {
   name: 'develop',
   data() {
@@ -49,7 +49,7 @@ export default {
       number: 0,
       num: 0,
       backBig: '',
-      head: 'http://118.24.113.182:80/'
+      head: ip + ':80/'
     }
   },
   created () {
@@ -90,10 +90,14 @@ export default {
     changeAll(index) {
       this.number = index
     },
-    getImage (data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-    }
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
   },
   watch: {
     backBig () {

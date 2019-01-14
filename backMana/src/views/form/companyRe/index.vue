@@ -61,9 +61,9 @@
                      :class="[{hide: contentAuto}]">{{
                     worlds.enterpriseIntroduction }} </p>
                   <form action="introduction/text">
-									<textarea rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
-                            :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
-									</textarea>
+                    <textarea rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
+                              :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
+                    </textarea>
                     <input type="submit" id="submit2" style="display:none">
                   </form>
                 </div>
@@ -124,7 +124,7 @@
       })
     },
     mounted() {
-      var b = document.getElementsByTagName('input')[0]
+      var b = document.getElementById('upfile')
       b.onchange = () => {
         if (b.files[0].size > 10485760) {
           this.$message({
@@ -222,7 +222,7 @@
       changeContent() {
         this.contentAuto = !this.contentAuto
         var content1 = document.getElementsByClassName('content')
-        this.worlds.enterpriseIntroduction = content1[1].value
+        this.worlds.enterpriseIntroduction = content1[2].value
         if (!this.contentAuto) {
           this.timer = setInterval(() => {
             this.autoPlay()
@@ -420,8 +420,9 @@
 
   .controlEnterprise {
     width: 100%;
-    height: px2rem(scale(1450));
+    height: px2rem(scale(1550));
     background-color: #edf0f5;
+    padding-bottom: 60px;
   }
 
   .enterprise_center {
@@ -448,7 +449,6 @@
 
     #upload {
       height: 100%;
-
       #imgform {
         width: 100%;
         height: 100%;

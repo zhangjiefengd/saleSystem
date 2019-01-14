@@ -9,9 +9,9 @@
         {{ world.name }}
       </router-link>
     </ul>
-    <div class="leftEat">
+    <!-- <div class="leftEat">
        <img src="../../../assets/img/leftNav/eat.png" alt="">
-    </div>
+    </div> -->
   </div>
   <div class="backImage"  @click="clickBack">
     <img src="../../../assets/img/brandBGC/back.png" alt="">
@@ -44,7 +44,7 @@
       </ul>
     </div>
   </transition>
-  <div class="linkUs" @click="showInfo">我有意向</div>
+  <!-- <div class="linkUs" @click="showInfo">我有意向</div> -->
   <transition name="fade" mode="out-in">
     <router-view></router-view>
   </transition>

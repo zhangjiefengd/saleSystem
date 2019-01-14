@@ -17,20 +17,21 @@ import {getUrl} from '../../utils/urlGet.js'
 import {checkChange} from '../../utils/urlGet.js'
 import {modify} from '../../utils/urlGet.js'
 import {modifyCome} from '../../utils/urlGet.js'
+import ip from '../../../static/ip'
 export default {
     data() {
         return {
             imgBack: "",
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
         }
     },
     created() {
         this.$axios.post("/surround/surroundingFacilities/get")
             .then(res => {
-                this.imgBack = this.getImage(res.data.data.imageLocation, 1);
+                res.data.data && res.data.data.imageLocation ? this.imgBack = this.getImage(res.data.data.imageLocation, 1) : "";
             })
             .catch(error => {
-                this.$message.error('获取失败！');
+                this.$message.error('获取失败,请上传内容！');
         });
     },
     mounted() {
@@ -42,8 +43,12 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
-            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         tiJiao() {   
             let formdata = new FormData();
@@ -82,12 +87,14 @@ export default {
     height: px2rem(900);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background-color: #EDF0F5;
     .page {
         width: px2rem(1400);
         height: px2rem(scale(1500));
         background-repeat: no-repeat;
         background-size: 100% 100%;
+        position: relative;
         #gai {
             width: px2rem(103);
             height: px2rem(34);
@@ -126,6 +133,8 @@ export default {
         }
     }
 }
-
+.el-loading-parent--relative {
+    position: initial!important;
+}
 
 </style>

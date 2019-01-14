@@ -16,7 +16,7 @@
       </div>
       <div class="brandHonorIntro">
         <ul class="brandHonorwords">
-          <li v-for="(word, index) in brandHonorWords" :key="index">
+          <li v-for="(word, index) in brandHonorWords" >
             <img src="@/assets/img/brand/honorWordLogo.png" alt="">
             <span>{{ word.enterpriseHonorInfo }}</span>
           </li>
@@ -146,6 +146,7 @@
 }
 </style>
 <script>
+import getImage from '../../utils/getImage.js'
 export default {
   name: 'brandHonor',
   data() {
@@ -169,7 +170,7 @@ export default {
       })
     this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
       .then(res => {
-        this.background = this.getImage(res.data.data.imageLocation, 3)
+        this.background = getImage(res.data.data.imageLocation, 3)
       })
       .catch(error => {
         console.log(error)
@@ -179,7 +180,7 @@ export default {
         this.brandHonorPhoto = res.data.data
         this.brandHonorPhoto.map((item, index) => {
           if (item.imageLocation) {
-            this.brandHonorPhoto[index].image = this.getImage(item.imageLocation, 1)
+            this.brandHonorPhoto[index].image = getImage(item.imageLocation, 1)
           }
         })
       })

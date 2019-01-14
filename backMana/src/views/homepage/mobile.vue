@@ -152,6 +152,7 @@
 
 <script type="text/ecmascript-6">
 import {getUrl} from '../../utils/urlGet.js'
+import ip from '../../../static/ip'
 export default {
   data() {
     return {
@@ -180,7 +181,7 @@ export default {
           icon: require('../../assets/img/icon4.png')
         },
       ],
-      head: 'http://118.24.113.182:80/',
+      head: ip + ':80/',
       bgcLoading: false,
       logoLoading: false
     }
@@ -255,10 +256,14 @@ export default {
           }
         })
     },
-    getImage(data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-    },
+        getImage(data, i) {
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+        },
     allSub: async function () {
       if (this.homeBgc.image) {
         this.bgcLoading = true

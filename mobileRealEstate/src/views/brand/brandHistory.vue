@@ -140,6 +140,7 @@
 }
 </style>
 <script>
+import getImage from '../../utils/getImage.js'
 export default {
   name: 'brandHistory',
   data() {
@@ -160,7 +161,7 @@ export default {
         this.brandHistory = res.data.data
         this.brandHistory.map((item, index) => {
           if (item.enterpriseDevelopImageLocation) {
-            this.brandHistory[index].image = this.getImage(item.enterpriseDevelopImageLocation, 3)
+            this.brandHistory[index].image = getImage(item.enterpriseDevelopImageLocation, 3)
           }
         })
       })
@@ -169,7 +170,7 @@ export default {
       })
     this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
       .then(res => {
-        this.backgroundImage = this.getImage(res.data.data.imageLocation, 3)
+        this.backgroundImage = getImage(res.data.data.imageLocation, 3)
       })
       .catch(error => {
         console.log(error)

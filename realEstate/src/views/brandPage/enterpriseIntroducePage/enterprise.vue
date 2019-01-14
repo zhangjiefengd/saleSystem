@@ -9,7 +9,7 @@
     </div>
 
     <transition-group tag="ul" class="spot">
-      <li v-for="(image, index) in images" :key="index" @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
+      <li v-for="(image, index) in images" :key="index"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
       <img src="../../../assets/img/brandBGC/worldBgc.png" alt="">
@@ -34,6 +34,7 @@
   </div>
 </template>
 <script>
+import ip from '../../../../static/ip'
 export default {
   name: 'enterprise',
   data () {
@@ -50,7 +51,7 @@ export default {
       endX: 0,
       x: 0,
       change: '',
-      head: 'http://118.24.113.182:80/'
+      head: ip + ':80/'
     }
   },
   created () {
@@ -134,10 +135,14 @@ export default {
         }, 4000)
       }
     },
-    getImage (data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-    }
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
   },
   watch: {
     images() {

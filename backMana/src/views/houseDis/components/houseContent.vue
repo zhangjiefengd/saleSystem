@@ -29,6 +29,7 @@
 
 <script>
 import qs from 'qs'
+import ip from '../../../../static/ip'
 export default {
     name: 'houseContent',
     data() {
@@ -37,7 +38,7 @@ export default {
             chaPic: require('../../../assets/img/cha.png'),//叉图片
             sampleRoomImage: [],
             houseTypeImage: {},
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
             chaDisplay: 'none',//户型图的叉叉是否显现
             dialogImageUrl: '',
             dialogVisible: false,
@@ -60,15 +61,14 @@ export default {
                     this.$refs.vr.checked = false;
                 }
                 
-               
                 //请求样板间
-                this.$axios.get('/house/sampleRoomImage/get?houseTypeName=' + this.title[0].houseTypeName).then((res) => {
+                this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + this.title[0].id).then((res) => {
                     this.sampleRoomImage = res.data.data;
                 }).catch((err) => {
                     this.$message.error('获取样板间失败！');
                 });
                 //请求户型图
-                this.$axios.get('/house/houseTypeImage/get?houseTypeName=' + this.title[0].houseTypeName).then((res) => {
+                this.$axios.get('/house/houseTypeImage/get?houseTypeId=' + this.title[0].id).then((res) => {
                     this.houseTypeImage = res.data.data;
                     if (this.houseTypeImage) {
                         this.chaDisplay = 'block';
@@ -84,7 +84,7 @@ export default {
         });   
     },
     mounted() {
-        this.$on('conveyIndex', (name) => { 
+        this.$on('conveyIndex', (name, id) => { 
             //请求有无VR
             this.$axios.get('/house/houseType/get').then((res) => {
                 res.data.data.forEach((data) => {
@@ -98,14 +98,14 @@ export default {
                 this.$message.error('获取失败！');
             });
             //请求样板间
-            this.$axios.get('/house/sampleRoomImage/get?houseTypeName=' + name).then((res) => {
+            this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + id).then((res) => {
                 this.sampleRoomImage = res.data.data;
                 this.$forceUpdate();
             }).catch((err) => {
                 this.$message.error('获取样板间失败！');
             });
             //请求户型图
-            this.$axios.get('/house/houseTypeImage/get?houseTypeName=' + name).then((res) => {
+            this.$axios.get('/house/houseTypeImage/get?houseTypeId=' + id).then((res) => {
                 
                 this.houseTypeImage = res.data.data;
                 if (this.houseTypeImage) {
@@ -135,11 +135,11 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
+            const imgSplit = data.split(/\_|\./g)
             let index = i;
             while (imgSplit.length - 1 <= index) {
                 index--;
-            } 
+            }
             return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         //增加样板间

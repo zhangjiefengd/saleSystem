@@ -79,6 +79,7 @@
 }
 </style>
 <script>
+import getImage from '../../utils/getImage.js'
 export default {
   name: 'brandCulture',
   data() {
@@ -103,8 +104,8 @@ export default {
       })
     this.$axios.get('/brand/enterpriseCulture/image/get')
       .then(res => {
-        this.brandCultureImage = this.getImage(res.data.data.mainImageLocation, 3)
-        this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
+        this.brandCultureImage = getImage(res.data.data.mainImageLocation, 3)
+        this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
       })
       .catch(error => {
         console.log(error)

@@ -13,54 +13,54 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-//mook数据
+// //mook数据
 const express = require('express');
 const app = express();
 
-//获取guide的内容
-let guide = require('../static/guide.json');
-let imgBack = guide.imgBack;
-let imgLogo = guide.imgLogo;
-let word = guide.word;
+// //获取guide的内容
+// let guide = require('../static/guide.json');
+// let imgBack = guide.imgBack;
+// let imgLogo = guide.imgLogo;
+// let word = guide.word;
 
-//获取Index内容
-let index = require('../static/index.json');
-let imgIndexBack = index.imgIndexBack;
-let imgProject = index.imgProject;
+// //获取Index内容
+// let index = require('../static/index.json');
+// let imgIndexBack = index.imgIndexBack;
+// let imgProject = index.imgProject;
 
-//获取激活模块
-let moduleIndex = require('../static/module.json').moduleIndex;
+// //获取激活模块
+// let moduleIndex = require('../static/module.json').moduleIndex;
 
-//获取项目介绍
-let project = require('../static/project.json');
-// let imgProjectBack = project.imgProjectBack;
-// let projectWord = project.word;
-// let project3D = project.project3D;
-// let back = project.back;
+// //获取项目介绍
+// let project = require('../static/project.json');
+// // let imgProjectBack = project.imgProjectBack;
+// // let projectWord = project.word;
+// // let project3D = project.project3D;
+// // let back = project.back;
 
-//leftNav大的公共模块
-let appData = require('../static/data.json')
-let LeftNav = appData.LeftNav
-// let HouseTypeleftNav = appData.HouseTypeleftNav
+// //leftNav大的公共模块
+// let appData = require('../static/data.json')
+// let LeftNav = appData.LeftNav
+// // let HouseTypeleftNav = appData.HouseTypeleftNav
 
-//企业简介数据
-let enterprise = require('../static/enterprise.json')
+// //企业简介数据
+// let enterprise = require('../static/enterprise.json')
 
-//品牌荣誉
-let honor = require('../static/honor.json')
+// //品牌荣誉
+// let honor = require('../static/honor.json')
 
-//发展历程
-let develop = require('../static/develop.json')
+// //发展历程
+// let develop = require('../static/develop.json')
 
-//企业文化
-let culture = require('../static/culture.json')
+// //企业文化
+// let culture = require('../static/culture.json')
 
-//获取户型的地址
-let house = require('../static/house.json');
-let dataAll = house.data;
+// //获取户型的地址
+// let house = require('../static/house.json');
+// let dataAll = house.data;
 
 //获取周边
-let near = require('../static/nearBy.json');
+// let near = require('../static/nearBy.json');
 
 let apiRoutes = express.Router();//定义router
 

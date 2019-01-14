@@ -12,7 +12,7 @@
         <div class="left" @click="leftChange">
           <img src="@/assets/img/brandBGC/left.png" alt="">
         </div>
-        <img class="hide" v-if="photo.image" :src="photo.image" v-for="(photo, index) in honorPhoto" :key="index" alt="" :class="[{show: index==imageNum}]">
+        <img class="hide" v-if="photo.image" :src="photo.image" v-for="(photo, index) in honorPhoto"  alt="" :class="[{show: index==imageNum}]">
         <div class="right" @click="rightRight">
           <img src="@/assets/img/brandBGC/right.png" alt="">
         </div>
@@ -22,7 +22,7 @@
 </template>
 <script>
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
-
+import ip from '../../../../static/ip'
 export default {
   name: 'honor',
   data () {
@@ -36,7 +36,7 @@ export default {
       worlds: '',
       imageNum: 0,
       backBig: '',
-      head: 'http://118.24.113.182:80/'
+      head: ip + ':80/'
     }
 
   },
@@ -95,10 +95,14 @@ export default {
         this.imageNum = 0
       }
     },
-    getImage (data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-    }
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
   },
   watch: {
     backBig () {

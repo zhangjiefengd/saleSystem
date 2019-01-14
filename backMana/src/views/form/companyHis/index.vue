@@ -73,7 +73,7 @@
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
   import qs from 'qs'
-
+  import ip from '../../../../static/ip'
   export default {
     name: 'develop',
     data() {
@@ -92,7 +92,7 @@
         headAuto: false,
         contentAuto: false,
         id: 0,
-        head: 'http://118.24.113.182:80/',
+        head: ip + ':80/',
         bgcLoading: false
       }
     },
@@ -139,7 +139,7 @@
               this.content = res.data.data
               for (let i = 0; i < this.content.length; i++) {
                 if (this.content[i].enterpriseDevelopImageLocation !== null) {
-                  this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 1)
+                  this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 2)
                 } else {
                   this.content[i].image = ''
                 }
@@ -153,7 +153,7 @@
         this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
           .then(res => {
             if (res.data.data) {
-              this.background = this.getImage(res.data.data.imageLocation, 1)
+              this.background = this.getImage(res.data.data.imageLocation, 2)
             }
           })
       },
@@ -168,7 +168,6 @@
         var defaultContent = {
           'developTitle': '默认标题',
           'enterpriseDevelopInfo': '默认内容',
-          'id': 0,
           'step': '时间自定义'
         }
         this.$axios({
@@ -308,8 +307,12 @@
       },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
-        return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-      }
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
     }
   }
 </script>

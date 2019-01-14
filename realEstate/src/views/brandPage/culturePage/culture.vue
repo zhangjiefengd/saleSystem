@@ -10,12 +10,12 @@
           <div>
             <div class="line"></div>
               <ul>
-                <li v-for="(title, index) in titles" :key="index">
+                <li v-for="(title, index) in titles">
                   <span class="spot"></span>
                 </li>
               </ul>
               <div class="Intro">
-                <div class="worldIntro" v-for="(title, index) in titles" :key="index">
+                <div class="worldIntro" v-for="(title, index) in titles">
                   <h3 v-if="title.content !== null">{{ title.title }}</h3>
                   <p v-if="title.content !== null">{{ title.content }}</p>
                 </div>
@@ -28,7 +28,7 @@
 </template>
 <script>
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
-
+import ip from '../../../../static/ip'
 export default {
   name: 'honor',
   data () {
@@ -39,7 +39,7 @@ export default {
       culturePicture: '',
       backBig: '',
       culBig: '',
-      head: 'http://118.24.113.182:80/'
+      head: ip + ':80/'
     }
   },
   created () {
@@ -72,10 +72,14 @@ export default {
       })
   },
   methods: {
-    getImage (data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-    }
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
   },
   watch: {
     backBig () {

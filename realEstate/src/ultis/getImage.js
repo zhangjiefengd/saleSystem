@@ -1,5 +1,6 @@
+import ip from '../../static/ip'
 export default function (data, i) {
-    const head = "http://118.24.113.182:80/";
+    const head = ip + ":80/";
     const imgSplit = data.split(/\_|\./g);
     let index = i;
     while (imgSplit.length - 1 <= index) {

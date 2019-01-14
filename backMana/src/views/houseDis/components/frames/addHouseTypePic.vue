@@ -31,12 +31,23 @@ export default {
             decrease: require('../../../../assets/img/decrease.png'),
             addPic: require('../../../../assets/img/addPic2.png'),
             star: require('../../../../assets/img/star.png'),
+            id: 0,
         }
     },
+    created() {
+        //请求户类型
+        this.$axios.get("/house/houseType/get").then(res => {
+            this.houseName = res.data.data[0].houseTypeName;
+            this.id = res.data.data[0].id;
+        }).catch(error => {
+            console.log(error);
+        });
+    },
     mounted() {
-        this.$on('conveyIndex', (name) => { 
+        this.$on('conveyIndex', (name, id) => { 
             //得到户型名字
             this.houseName = name;
+            this.id = id;
         });
     },
     components: {
@@ -62,7 +73,7 @@ export default {
         submitHouseTypePic() {
             if (this.filePic) {
                 let formdata = new FormData();
-                formdata.append('houseTypeName', this.houseName);
+                formdata.append('houseTypeId', this.id);
                 formdata.append('imageFile', this.filePic);
                 const config = {
                     headers: {

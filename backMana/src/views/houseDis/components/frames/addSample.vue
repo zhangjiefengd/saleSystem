@@ -6,7 +6,7 @@
             <input style="display:none" type="text" name="houseTypeId" v-if="houseName" :value="houseName" disabled="disabled"/>
             <label>房间类型：</label>
             <select class="houseType" name="roomTypeId" ref='select'>
-                <option v-for='room in roomType' :value="room.roomTypeName" >{{ room.roomTypeName }}</option>
+                <option v-for='room in roomType' :value="room.id" >{{ room.roomTypeName }}</option>
             </select>
             <img :src="addHouse" class="addHouse" @click="addRoomType" /><img class="addHouse" :src="decrease" @click="reduceRoomType"/><br>
             <label>文件上传:</label><input type="file" name="pic" @change="showSelect" style="display:none" /><br>
@@ -33,9 +33,20 @@ export default {
             decrease: require('../../../../assets/img/decrease.png'),
             addPic: require('../../../../assets/img/addPic2.png'),
             star: require('../../../../assets/img/star.png'),
+            id: 0,//户型id
         }
     },
     created() {
+        //请求户类型
+        this.$axios.get("/house/houseType/get").then(res => {
+            if (res.data.data[0]) {
+                this.houseName = res.data.data[0].houseTypeName;
+                this.id = res.data.data[0].id;
+            }
+ 
+        }).catch(error => {
+            this.$message.error('获取户型失败！');
+        });
         //请求房间类型
         this.$axios.get('/house/roomType/get').then((res) => {
 
@@ -45,9 +56,10 @@ export default {
         });
     },
     mounted() {
-        this.$on('conveyIndex', (name) => { 
+        this.$on('conveyIndex', (name, id) => { 
             //得到户型名字
             this.houseName = name;
+            this.id = id;
         });
         this.$on('changeRoomType', (name) => { 
             //得到新添加的房间名字
@@ -96,8 +108,8 @@ export default {
             if (this.filePic && this.$refs.select.value) {
                 let formdata = new FormData();
                 let options = this.filePic;
-                formdata.append('houseTypeName', this.houseName);
-                formdata.append('roomTypeName', this.$refs.select.value);
+                formdata.append('houseTypeId', this.id);
+                formdata.append('roomTypeId', this.$refs.select.value);
                 formdata.append('imageFile', this.filePic);
                 const config = {
                     headers: {

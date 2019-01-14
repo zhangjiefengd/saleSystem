@@ -3,7 +3,7 @@
     <div class="brandIntroLunbo">
       <div class="brandIntroPhoto touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
         <transition-group tag="ul" :name="change">
-          <li v-for="(image, index) in brandIntroPhoto" :key="index" v-show="index == imageNum">
+          <li v-for="(image, index) in brandIntroPhoto" :key="index" v-show="index === imageNum">
             <img :src="image.image" alt="">
           </li>
         </transition-group>
@@ -33,6 +33,7 @@
   </div>
 </template>
 <script>
+import getImage from '../../utils/getImage.js'
 export default {
   name: 'brandIntro',
   data() {
@@ -64,7 +65,7 @@ export default {
         this.brandIntroPhoto = res.data.data
         this.brandIntroPhoto.map((item, index) => {
           if (item.imageLocation) {
-            this.brandIntroPhoto[index].image = this.getImage(item.imageLocation, 1)
+            this.brandIntroPhoto[index].image = getImage(item.imageLocation, 1)
           }
         })
       })

@@ -4,7 +4,7 @@
             
             <div class="introduce">
                 <div class="title">项目介绍</div>
-                <div class="content" :style="{display: appearCome}">
+                <div class="content" :style="{display: appearCome}" @click="change">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{projectWord}}
                 </div>
                 <form action=""  :style="{display: appear}" class="text">
@@ -33,7 +33,7 @@ import {checkChange} from '../../utils/urlGet.js'
 import {modify} from '../../utils/urlGet.js'
 import {modifyCome} from '../../utils/urlGet.js'
 import qs from "qs";
-
+import ip from '../../../static/ip'
 export default {
     data() {
         return {
@@ -41,18 +41,18 @@ export default {
             projectWord: "",
             "appear": "none",
             "appearCome": "block",
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
         }
     },
     created() {
         //请求公园类型
         this.$axios.get("/project/info/get")
         .then((res) => {
-            this.imgProjectBack = this.getImage(res.data.data.backgroundImageLocation, 2);
-            this.projectWord = res.data.data.content;
+            res.data.data && res.data.data.backgroundImageLocation ? this.imgProjectBack = this.getImage(res.data.data.backgroundImageLocation, 2) : "";
+            res.data.data && res.data.data.content ? this.projectWord = res.data.data.content : "";
         })
         .catch((error) => {
-            this.$message.error('获取失败！');
+            this.$message.error('获取失败,请上传内容！');
         });
     },
     mounted() {
@@ -65,8 +65,12 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
-            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         tiJiao() {   
             let formdata = new FormData();
@@ -84,8 +88,10 @@ export default {
                         message: '背景上传成功！',
                         type: 'success'
                     });
+                    this.tijiaoTwo();
                 }).catch((error) =>{
                     this.$message.error('背景上传失败！');
+                    this.tijiaoTwo();
                 });                
             }
         },
@@ -115,8 +121,13 @@ export default {
         },
         //全部提交
         allSub() {
-            this.tiJiao();
-            this.tijiaoTwo();            
+            if (document.getElementById('imgGuideBack').files[0]) {
+                this.tiJiao();
+            } else {
+                this.tijiaoTwo();
+            }
+            
+            // this.tijiaoTwo();      //注释是因为防止文字提交后提早把Loading编false      
         },
         //修改引导页文字
         modifyWord() {
@@ -129,6 +140,7 @@ export default {
                     modifyInput.value = this.projectWord;
                 };
                 page.onclick = (ev) => {
+                    
                     if(ev.target != page) return;
                     else {
                         if (this.appear == 'block') {
@@ -139,6 +151,12 @@ export default {
 
                     }
                 }
+        },
+        change() {
+            let modifyInput = document.getElementsByTagName('textarea')[0];
+            this.appearCome = 'none';
+            this.appear = 'block';
+            modifyInput.value = this.projectWord;
         }
     }
 
@@ -154,7 +172,8 @@ export default {
     height: px2rem(930);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background-color: #edf0f5;
     .page {
         width: px2rem(1500);
         height: px2rem(scale(1500));
@@ -240,5 +259,8 @@ export default {
             transform: translate(-100%, -100%);
         }
     }
+}
+.el-loading-parent--relative {
+    position: initial!important;
 }
 </style>

@@ -42,6 +42,7 @@ import {checkChange} from '../../utils/urlGet.js'
 import {modify} from '../../utils/urlGet.js'
 import {modifyCome} from '../../utils/urlGet.js'
 import qs from 'qs'
+import ip from '../../../static/ip'
 export default {
   data() {
     return {
@@ -52,26 +53,34 @@ export default {
       "appear": "none",
       "appearCome": "block",
       "success": [],
-      "head": 'http://118.24.113.182:80/'
+      head: ip + ':80/',
     }
   },
   created() {
     this.$axios.get("/basic/guidePage/get")
     .then(res => {
       // 切块图片
-      const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
-      this.imgBack = this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
-      const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
-      this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
+      if (res.data.data && res.data.data.backgroundImageLocation) {
+        const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
+        this.imgBack = this.getImage(res.data.data.backgroundImageLocation, 3);
+        //  this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
+      }
+      if (res.data.data && res.data.data.projectLogoLocation) {
+        const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
+        this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
+        // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
+      }
       //获取文字
-      this.word[0] = res.data.data.projectHost;
-      this.word[1] = res.data.data.projectLocation;
-      this.word[2] = res.data.data.projectHotline;
+      if (res.data.data && res.data.data.projectHost && res.data.data.projectLocation && res.data.data.projectHotline) {
+        this.word[0] = res.data.data.projectHost;
+        this.word[1] = res.data.data.projectLocation;
+        this.word[2] = res.data.data.projectHotline;
+      }
 
-      this.id = res.data.data.id;
+      res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
     })
     .catch(error => {
-      console.log(error);
+      this.$message.error('获取失败，请上传内容！');
     });
   },
   mounted() {
@@ -87,11 +96,19 @@ export default {
     this.modifyWord();
   },
   methods: {
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
     tiJiao() {   
       let formdata = new FormData();
       if ($('#imgGuideBack') && document.getElementById('imgGuideBack').files[0]) {
         formdata.append('imageFile', document.getElementById('imgGuideBack').files[0]);
-        formdata.append('isLogo', 0);
+        formdata.append('isLogo', 'false');
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'  
@@ -102,17 +119,22 @@ export default {
                     message: '背景上传成功！',
                     type: 'success'
                 });
+                res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
+                this.tijiaoTwo();
+                
         }).catch((error) =>{
-          this.$message.error('提交失败！');
-          return;
+          this.$message.error('图片太大，提交失败！');
+          this.tijiaoTwo();
         });
+      } else {
+        this.tijiaoTwo();
       }
     },
     tijiaoTwo() {
       let formdata = new FormData();
       if ($('#imgGuideLogo') && document.getElementById('imgGuideLogo').files[0]) {
         formdata.append('imageFile', document.getElementById('imgGuideLogo').files[0]);
-        formdata.append('isLogo', 1);
+        formdata.append('isLogo', 'true');
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'  
@@ -123,10 +145,13 @@ export default {
                     message: 'LOGO上传成功！',
                     type: 'success'
                 });
+                this.tijiaoThree();
         }).catch((error) =>{
           this.$message.error('提交失败！');
-          return;
+          this.tijiaoThree();
         });
+      } else {
+        this.tijiaoThree();
       }
     },
     tijiaoThree() {
@@ -135,7 +160,7 @@ export default {
             'Content-Type': 'application/json' 
           }
         }
-        if (this.appear == 'none') {
+        if (this.appear == 'none' && this.id) {
           this.$axios.post('/basic/guidePage/text/update',{
             id: this.id,
             projectHost: this.word[0],
@@ -150,7 +175,21 @@ export default {
             this.$message.error('提交失败！');
             return;
           });
-        }else {
+        } else if (this.appear == 'none' && !this.id) {
+          this.$axios.post('/basic/guidePage/text/update',{
+            projectHost: this.word[0],
+            projectLocation: this.word[1],
+            projectHotline: this.word[2]
+          }, config).then( (res) => {
+                  this.$message({
+                      message: '文字上传成功！',
+                      type: 'success'
+                  });
+          }).catch((error) =>{
+            this.$message.error('提交失败！');
+            return;
+          });
+        } else {
           this.$message({
             message: '请确定修改好的文字（点击旁侧）',
             type: 'warning'
@@ -159,9 +198,10 @@ export default {
 
     },
     allSub() {
-      this.tiJiao();
-      this.tijiaoTwo();
-      this.tijiaoThree();
+        this.tiJiao();
+      // this.tijiaoTwo();
+      // this.tijiaoThree();
+      // 注释是因为拍提早被loading 消失
     },
     //全部提交
     // allSubmit() {
@@ -183,7 +223,12 @@ export default {
           this.appearCome = 'none';
           this.appear = 'block';
           for (let j = 0; j < spanWord.length && modifyInput[j]; j++) {
-            modifyInput[j].value = this.word[j];
+            if (this.word[j]) {
+              modifyInput[j].value = this.word[j];
+            } else {
+              modifyInput[j].value = '';
+            }
+            
           }
         };
         page.onclick = (ev) => {
@@ -225,7 +270,7 @@ export default {
   height: px2rem(930);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: #edf0f5;
   .page {
     // background-color: black;
@@ -330,4 +375,7 @@ export default {
     }
   }
 }
+.el-loading-parent--relative {
+    position: initial!important;
+}  
 </style>

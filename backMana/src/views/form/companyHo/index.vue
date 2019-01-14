@@ -42,7 +42,7 @@
           <div class="content">
             <form action="" method="post">
               <ul class="worlds">
-                <li v-for="(world, index) in worlds" v-if="index<8" :key="index">
+                <li v-for="(world, index) in worlds" v-if="index < 8" :key="index">
                   <img src="../../../assets/img/brandBGC/worldLogo.png" alt="">
                   <span class="world" :class="[{hide: worldAuto}]"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
@@ -79,7 +79,7 @@
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
   import qs from 'qs'
-
+  import ip from '../../../../static/ip'
   export default {
     name: 'honor',
     data() {
@@ -97,7 +97,7 @@
         photoNum: 0,
         imageNum: 0,
         worldAuto: false,
-        head: 'http://118.24.113.182:80/',
+        head: ip + ':80/',
         bgcLoading: false
       }
     },
@@ -105,7 +105,7 @@
       this.getData()
     },
     mounted() {
-      var honorImg = document.getElementsByTagName('input')[0]
+      var honorImg = document.getElementById('upfile')
       honorImg.onchange = () => {
         if (honorImg.files[0].size > 10485760) {
           this.$message({
@@ -118,7 +118,9 @@
             image: this.getUrl(honorImg.files[0]),
             loading: false
           }
+          this.$forceUpdate()
           this.honorPhoto.push(oimage)
+          console.log(this.honorPhoto)
         } else {
           this.$message({
             message: '上传图片达到上限',
@@ -161,7 +163,7 @@
               this.honorPhoto = res.data.data
               this.honorPhoto.map(item => {
                 if (item.imageLocation) {
-                  item.image = this.getImage(item.imageLocation, 1)
+                  item.image = this.getImage(item.imageLocation, 2)
                 }
               })
               this.honorPhotoListen = JSON.parse(JSON.stringify(this.honorPhoto))
@@ -175,7 +177,7 @@
             if (res.data.data) {
               this.background = res.data.data
               if (this.background.imageLocation) {
-                this.background.image = this.getImage(this.background.imageLocation, 1)
+                this.background.image = this.getImage(this.background.imageLocation, 2)
               }
             }
           })
@@ -201,7 +203,6 @@
       addWorld() {
         if (this.worlds.length < 8) {
           var setWorld = {
-            'id': 0,
             'enterpriseHonorInfo': '请编辑文字'
           }
           this.$set(this.worlds, this.worlds.length, setWorld)
@@ -323,12 +324,11 @@
 
         // 上传文字
         this.worlds.map((item, index) => {
-          if (item.id === 0) {
+          if (!item.id) {
             this.$axios({
               method: 'post',
               url: '/brand/enterpriseHonor/update',
               data: {
-                id: item.id,
                 enterpriseHonorInfo: item.enterpriseHonorInfo
               }
             })
@@ -397,8 +397,12 @@
       },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
-        return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
-      }
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
     }
   }
 </script>
@@ -426,8 +430,9 @@
 
   .honorTop {
     width: 100%;
-    height: px2rem(scale(1450));
+    height: px2rem(scale(1550));
     background-color: #edf0f5;
+    padding-bottom: 60px;
   }
 
   #updiv {
@@ -631,7 +636,7 @@
 
       > form {
         .worlds {
-          width: 100%;
+          width: px2rem(500);
           height: vertical(560);
           float: left;
           @include fj(space-between);
@@ -640,6 +645,7 @@
           margin: 0;
 
           li {
+            width: px2rem(500);
             font-size: px2rem(22);
             line-height: 33px;
             @include fj(flex-start);
@@ -678,6 +684,7 @@
 
       .picture {
         width: transverse(460);
+        height: px2rem(400);
         float: left;
         position: relative;
         @include fj(center);

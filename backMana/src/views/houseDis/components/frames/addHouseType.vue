@@ -13,6 +13,7 @@
 
 <script type="text/ecmascript-6">
 import qs from 'qs'
+
 export default {
     data() {
         return {

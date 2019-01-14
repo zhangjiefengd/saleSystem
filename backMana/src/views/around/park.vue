@@ -35,7 +35,7 @@
                 <form action="">
                     <label>图片内容：</label>
                     <select class="placeType" ref='selectA'>
-                        <option v-for='place in placeType' :value="place.placeTypeName" >{{ place.placeTypeName }}</option>
+                        <option v-for='place in placeType' :value="place.id" >{{ place.placeTypeName }}</option>
                     </select>
                     <img :src="addHouse" class="addPark" @click="addParkType" /><img class="addPark" :src="decrease" @click="reduceParkType"/><br>
                     <label>文件上传:</label><input type="file" ref="picA" @change="showSelectPublic" style="display:none" /><br>
@@ -52,7 +52,7 @@
                 <form action="">
                     <label>图片内容：</label>
                     <select class="placeType" ref='selectB'>
-                        <option v-for='place in placeType' :value="place.placeTypeName" >{{ place.placeTypeName }}</option>
+                        <option v-for='place in placeType' :value="place.id" >{{ place.placeTypeName }}</option>
                     </select>
                     <img :src="addHouse" class="addPark" @click="addParkType" /><img class="addPark" :src="decrease" @click="reduceParkType"/><br>
                     <label>文件上传:</label><input type="file" ref="picB" @change="showSelectPark" style="display:none" /><br>
@@ -93,6 +93,7 @@
 <script type="text/ecmascript-6">
 import {getUrl} from '../../utils/urlGet.js'//获取预览图片地址
 import qs from 'qs';
+import ip from '../../../static/ip'
 export default {
     data() {
         return {
@@ -111,7 +112,7 @@ export default {
             placeReduceTypeVisibility: 'none',
             public: [],//公共设施
             parkView: [],//园林景观
-            head: 'http://118.24.113.182:80/',
+            head: ip + ':80/',
             dialogImageUrl: '',
             dialogVisible: false,
             filePicPublic: {},
@@ -145,8 +146,12 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g);
-            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g)
+            let index = i;
+            while (imgSplit.length - 1 <= index) {
+                index--;
+            }
+            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
         },
         //增加公共设施
         addPublic() {
@@ -224,7 +229,7 @@ export default {
         submitPublic() {
             if (this.filePicPublic && this.$refs.selectA.value) {
                 let formdata = new FormData();
-                formdata.append('placeType', this.$refs.selectA.value);
+                formdata.append('placeTypeId', this.$refs.selectA.value);
                 formdata.append('imageType', 1);
                 formdata.append('imageFile', this.filePicPublic);
                 const config = {
@@ -269,7 +274,7 @@ export default {
         submitPark() {
             if (this.filePicPark && this.$refs.selectB.value) {
                 let formdata = new FormData();
-                formdata.append('placeType', this.$refs.selectB.value);
+                formdata.append('placeTypeId', this.$refs.selectB.value);
                 formdata.append('imageType', 0);
                 formdata.append('imageFile', this.filePicPark);
                 const config = {
@@ -377,7 +382,7 @@ export default {
     align-items: center;
     background-color: #EDF0F5;
     .page {
-        margin-top: -20px;
+        margin-top: -80px;
         width: px2rem(1455);
         height: px2rem(750);
         .pageOne {
@@ -589,8 +594,8 @@ export default {
             @include sc(px2rem(30), #304156);
             font-weight: 600;
             position: absolute;
-            top: 28%;
-            left: 61%;
+            top: 28.8%;
+            left: 63%;
             // transform: translate(0, -70%);
             .placeTitle {
                 width: 100%;
@@ -643,5 +648,8 @@ export default {
             }
         }
     }
+}
+.el-loading-parent--relative {
+    position: initial!important;
 }
 </style>
