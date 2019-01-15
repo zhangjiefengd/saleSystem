@@ -98,11 +98,11 @@ import getImage from '../../../ultis/getImage.js'
             cursor: pointer;
         }
         .router-link-active {
-            background-color: #91a2ce;
+            background-color: #c7ad8c;
             color: white;
         }
         .changeColor{
-            background-color: #91a2ce;
+            background-color: #c7ad8c;
             color: white;
         }
     }

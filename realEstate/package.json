@@ -21,6 +21,7 @@
     "dot": "^1.1.2",
     "express": "^4.16.3",
     "filereader": "^0.10.3",
+    "http2": "^3.3.7",
     "jquery": "^3.3.1",
     "lt-photo-sphere-viewer": "^1.0.0",
     "photo-sphere-viewer": "^3.3.2",

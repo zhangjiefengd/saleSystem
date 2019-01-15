@@ -112,7 +112,7 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: ip + ':80/',
+        head: ip + ':8080/static/image/',
       }
     },
     created() {

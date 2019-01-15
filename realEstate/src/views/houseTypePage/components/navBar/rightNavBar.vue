@@ -255,7 +255,7 @@ export default {
             .smallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(8) solid transparent;
+                border: px2rem(6) solid transparent;
                 
                 .imgRight {
                     width: 100%;
@@ -270,7 +270,7 @@ export default {
             .addSmallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(8) solid white;
+                border: px2rem(6) solid white;
                 .imgRight {
                     width: 100%;
                     height: 100%;

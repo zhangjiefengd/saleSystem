@@ -31,10 +31,15 @@
     <div class="touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
     </div>
     <router-view></router-view>
+    <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
   </div>
 </template>
 <script>
+import getImage from '../../../ultis/getImage.js';
 import ip from '../../../../static/ip'
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   name: 'enterprise',
   data () {
@@ -51,7 +56,8 @@ export default {
       endX: 0,
       x: 0,
       change: '',
-      head: ip + ':80/'
+      head: ip + ':80/',
+      conDisplay: 'none'
     }
   },
   created () {
@@ -70,7 +76,7 @@ export default {
           this.images = res.data.data
           this.images.map((item, index) => {
             if (item.imageLocation) {
-              this.images[index].image = this.getImage(item.imageLocation, 1)
+              this.images[index].image = getImage(item.imageLocation, 1)
             }
           })
         }
@@ -143,6 +149,18 @@ export default {
         }
           return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
       },
+      haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
+  },
+  components: {
+    contact,
+        contactContent
   },
   watch: {
     images() {

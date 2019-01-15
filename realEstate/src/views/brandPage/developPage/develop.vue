@@ -35,11 +35,16 @@
         </div>
       </div>
     </div>
+    <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
   </div>
 </template>
 <script>
+import getImage from '../../../ultis/getImage.js';
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 import ip from '../../../../static/ip'
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   name: 'develop',
   data() {
@@ -49,7 +54,8 @@ export default {
       number: 0,
       num: 0,
       backBig: '',
-      head: ip + ':80/'
+      head: ip + ':80/',
+      conDisplay: 'none'
     }
   },
   created () {
@@ -60,7 +66,7 @@ export default {
           this.worlds = res.data.data
           this.worlds.map((item, index) => {
             if (item.enterpriseDevelopImageLocation) {
-              this.worlds[index].image = this.getImage(item.enterpriseDevelopImageLocation, 1)
+              this.worlds[index].image = getImage(item.enterpriseDevelopImageLocation, 1)
             }
           })
         }
@@ -71,11 +77,11 @@ export default {
     this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
       .then(res => {
         if (res.data.data) {
-          this.background = this.getImage(res.data.data.imageLocation, 1)
+          this.background = getImage(res.data.data.imageLocation, 1)
           if (screen.width > 1024) {
-            this.backBig = this.getImage(res.data.data.imageLocation, 1)
+            this.backBig = getImage(res.data.data.imageLocation, 1)
           } else {
-            this.backBig = this.getImage(res.data.data.imageLocation, 2)
+            this.backBig = getImage(res.data.data.imageLocation, 2)
           }
         }
       })
@@ -83,7 +89,19 @@ export default {
         console.log(error)
       })
   },
+  components: {
+    contact,
+        contactContent
+  },
   methods: {
+    haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
     clickBack: function() {
       this.$router.push({path: '/index'})
     },

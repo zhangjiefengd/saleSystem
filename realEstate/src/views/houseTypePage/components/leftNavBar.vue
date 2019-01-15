@@ -131,7 +131,7 @@ import getImage from '../../../ultis/getImage.js'
             margin-top: 0;
         }
         .changeColor{
-            background-color:  #91a2ce;
+            background-color:  #c7ad8c;
             color: white;
             >img{
                 background-image: url();

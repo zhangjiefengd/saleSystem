@@ -154,7 +154,7 @@ export default {
   .projectImg {
     width: px2rem(357);
     @include cl();
-    top: vertical(171);
+    top: vertical(254);
     // filter: blur(4px);
     transition: all 0.7s;
   }
@@ -166,18 +166,24 @@ export default {
     height: vertical(290);
     @include cl();
     top: vertical(705);
-    @include fj(space-around);
+    @include fj();
     .smallNav {
       cursor: pointer;
       @include fj(space-around);
       align-items: center;
       flex-direction: column;
+      width: px2rem(286);
+      height: px2rem(290);
+      padding: px2rem(41) px2rem(75) px2rem(41) px2rem(75);
       img {
         width: px2rem(136);
       }
       span {
         @include sc(px2rem(34));
       }
+    }
+    .smallNav:hover {
+      background-color: rgba(205,182,151,0.25);
     }
   }
 }

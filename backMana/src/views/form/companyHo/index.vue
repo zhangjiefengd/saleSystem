@@ -98,7 +98,7 @@
         photoNum: 0,
         imageNum: 0,
         worldAuto: false,
-        head: ip + ':80/',
+        head: ip + ':8080/static/image/',
         bgcLoading: false
       }
     },

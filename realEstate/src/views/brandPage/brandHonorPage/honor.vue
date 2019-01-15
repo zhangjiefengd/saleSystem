@@ -18,11 +18,16 @@
         </div>
       </div>
     </div>
+    <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
   </div>
 </template>
 <script>
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 import ip from '../../../../static/ip'
+import getImage from '../../../ultis/getImage.js';
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   name: 'honor',
   data () {
@@ -36,7 +41,8 @@ export default {
       worlds: '',
       imageNum: 0,
       backBig: '',
-      head: ip + ':80/'
+      head: ip + ':80/',
+      conDisplay: 'none'
     }
 
   },
@@ -53,11 +59,11 @@ export default {
     this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
       .then(res => {
         if (res.data.data) {
-          this.background = this.getImage(res.data.data.imageLocation, 1)
+          this.background = getImage(res.data.data.imageLocation, 1)
           if (screen.width > 1024) {
-            this.backBig = this.getImage(res.data.data.imageLocation, 1)
+            this.backBig = getImage(res.data.data.imageLocation, 1)
           } else {
-            this.backBig = this.getImage(res.data.data.imageLocation, 2)
+            this.backBig = getImage(res.data.data.imageLocation, 2)
           }
         }
       })
@@ -70,7 +76,7 @@ export default {
           this.honorPhoto = res.data.data
           this.honorPhoto.map((item, index) => {
             if (item.imageLocation) {
-              this.honorPhoto[index].image = this.getImage(item.imageLocation, 1)
+              this.honorPhoto[index].image = getImage(item.imageLocation, 1)
             }
           })
         }
@@ -80,6 +86,14 @@ export default {
       })
   },
   methods: {
+    haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
     clickBack: function() {
       this.$router.push({path: '/index'})
     },
@@ -103,6 +117,10 @@ export default {
         }
           return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
       },
+  },
+  components: {
+    contact,
+        contactContent
   },
   watch: {
     backBig () {

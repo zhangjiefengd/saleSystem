@@ -13,13 +13,16 @@
         </div>
         <!-- 传给子组件值 -->
         <bottom :typeClassChange='typeClassChange' :typeClassChangeTwo='typeClassChangeTwo'></bottom>
+        <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
 import bottom from '../components/bottomNavBar';
 import right from "../components/rightNavBar";
-
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
     data() {
         return {
@@ -28,7 +31,8 @@ export default {
             picUrl: "",
             houseNum: 0,//户型号
             housePlans: [],
-            intial: 1
+            intial: 1,
+            conDisplay: 'none'
         }
     },
     mounted(){
@@ -59,11 +63,21 @@ export default {
             window.onload = () => {
                 this.$router.replace("/index"); 
             }
-        }  
+        }  ,
+        haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
     },
     components: {
         bottom,
-        right
+        right,
+        contact,
+        contactContent
     }
 }
 </script>
@@ -76,6 +90,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #D7D7D7;
+    background-image: url('../../../assets/img/goHouseHistory/houseBack.jpg');
     .changePosition {
         width: 100%;
         height: vertical(905);
@@ -105,7 +120,7 @@ export default {
                 width: px2rem(1107);
                 height: 100%;
                 margin-left: transverse(95);
-                border: px2rem(8) solid white;
+                border: px2rem(6) solid white;
                 background-repeat: no-repeat;
                 background-size: percentage(1094 / 1098) percentage(761 / 765);
                 filter: blur(10px);

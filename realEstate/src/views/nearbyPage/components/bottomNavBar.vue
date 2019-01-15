@@ -86,17 +86,17 @@ export default {
                 }
             }
             .active {
-                background-color: #91a2ce;
+                background-color: #c7ad8c;
                 // border: px2rem(1) solid #121212;
-                border: px2rem(1) solid #91a2ce;
+                border: px2rem(1) solid #c7ad8c;
                 a {
                     @include sc(px2rem(30), white);
                     text-decoration: none;
                 }    
             }
             .activeTwo {
-                background-color: #91a2ce;
-                border: px2rem(1) solid #91a2ce;
+                background-color: #c7ad8c;
+                border: px2rem(1) solid #c7ad8c;
                 // border: px2rem(1) solid #757575;
                 a {
                     @include sc(px2rem(30), white);

@@ -12,7 +12,7 @@
             <form action="" name="formLogo" >
                 <input type="file" name="file" id="imgprojectLogo" style="display: none;">
                 <!-- <input type="button" value="修改项目logo" onclick="document.formLogo.file.click()">  -->
-                <div id="gaiTwo" onclick="document.formLogo.file.click()" class="tijiao"><img src="../../assets/img/subLogo.png"></div>
+                <div id="gaiTwo" onclick="document.formLogo.file.click()" class="tijiao2"><img src="../../assets/img/subLogo.png"></div>
                 <!-- <input type="button" value="提交"  @click="tijiaoTwo" class="submit"> -->
                 <div class="tijiao" id="gou2" @click='tijiaoTwo' style="display:none"></div>
 
@@ -295,6 +295,7 @@ import getImage from '../../utils/getImage.js'
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: relative;
+        top: px2rem(20);
         #gai,#gaiTwo {
             width: px2rem(103);
             height: px2rem(34);
@@ -317,6 +318,12 @@ import getImage from '../../utils/getImage.js'
             background-image: url('../../assets/img/clickHou.png');
         }
         .tijiao {
+            float: left;
+            margin-top: 0;
+            margin-left: 0;
+            cursor: pointer;
+        }
+        .tijiao2 {
             float: left;
             margin-top: px2rem(-30);
             margin-left: px2rem(-80);

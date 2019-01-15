@@ -93,7 +93,7 @@
         headAuto: false,
         contentAuto: false,
         id: 0,
-        head: ip + ':80/',
+        head: ip + ':8080/static/image/',
         bgcLoading: false
       }
     },
