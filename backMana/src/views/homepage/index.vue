@@ -296,6 +296,8 @@ import getImage from '../../utils/getImage.js'
         background-size: 100% 100%;
         position: relative;
         top: px2rem(20);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         #gai,#gaiTwo {
             width: px2rem(103);
             height: px2rem(34);

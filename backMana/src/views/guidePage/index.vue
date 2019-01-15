@@ -282,6 +282,8 @@ export default {
     height: px2rem(818);
     position: relative;
     top: px2rem(20);
+    background-repeat: no-repeat;
+  background-size: 100% 100%;
     #gai {
       width: px2rem(103);
       height: px2rem(34);
