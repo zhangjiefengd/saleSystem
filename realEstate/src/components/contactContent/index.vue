@@ -405,7 +405,7 @@ export default {
                                 width: px2rem(391);
                                 height: px2rem(382);
                                 position: absolute;
-                                top: px2rem(251);
+                                top: px2rem(177);
                                 right: px2rem(67);
                                 background-color: #ffffff;
                                 box-shadow: 0px px2rem(5) px2rem(18) 0px 
