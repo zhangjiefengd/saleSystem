@@ -15,6 +15,8 @@
         </div>
         <!-- 传给子组件值 -->
         <bottom ref="bottom" :typeClassChange='typeClassChangeTwo' :typeClassChangeThree='typeClassChange' :typeClassChangeTwo='typeClassChangeTwo' ></bottom>
+        <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
     </div>
 </template>
 
@@ -23,7 +25,8 @@ import bottom from '../components/navBar/bottomNavBar'
 import right from "../components/navBar/rightNavBar"
 import * as three from 'three';
 import * as PhotoSphereViewer from 'photo-sphere-viewer-sa'
-
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 
 export default {
     data() {
@@ -34,7 +37,8 @@ export default {
             // src: "http://47.106.120.37:8080/saleSystem/dist1/dist/static/vtour/tour.html",
             src: "",
             houseNum: 0,//户型号
-            house: {}
+            house: {},
+            conDisplay: 'none'
             // src: "http://vr.justeasy.cn/view/1079664.html"
         }
     },
@@ -122,20 +126,30 @@ export default {
         },
         //3D
         upload() {
-            var pano = document.getElementById('pano');
-            var config = {target: "pano", swf: "./static/vtour/tour.swf", xml: "./static/vtour/tour.xml", html5: "auto"}
-            embedpano(config);
+            // var pano = document.getElementById('pano');
+            // var config = {target: "pano", swf: "./static/vtour/tour.swf", xml: "./static/vtour/tour.xml", html5: "auto"}
+            // embedpano(config);
         },
         //强制刷新
         shuaXin() {
             window.onload = () => {
                this.$router.replace("/index"); 
             }
-        }  
+        }  ,
+        haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
     },
     components: {
         bottom,
-        right
+        right,
+        contact,
+        contactContent
     }
 }
 </script>
@@ -147,6 +161,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #D7D7D7;
+    background-image: url('../../../assets/img/goHouseHistory/houseBack.jpg');
     .changePosition {
         width: 100%;
         height: vertical(905);

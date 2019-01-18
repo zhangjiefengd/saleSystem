@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content" >
         <div class="changePosition">
             <div class="topHouse">
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
@@ -13,6 +13,8 @@
         </div>
         <!-- 传给子组件值 -->
         <bottom ref="bottom" @changeCate='changeCate' :typeClassChange='typeClassChange' :typeClassChangeThree='typeClassChangeTwo' :typeClassChangeTwo='typeClassChangeTwo' ></bottom>
+        <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
     </div>
 </template>
 
@@ -20,7 +22,8 @@
 import bottom from '../components/navBar/bottomNavBar'
 import right from "../components/navBar/rightNavBar";
 import getImage from '../../../ultis/getImage.js'
-
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
     data() {
         return {
@@ -33,7 +36,8 @@ export default {
             val: 0,
             check: 0,
             picUrlMin: '',
-            picUrlBig: ''
+            picUrlBig: '',
+            conDisplay: 'none'
         }
     },
     mounted(){
@@ -90,11 +94,21 @@ export default {
             window.onload = () => {
                 this.$router.replace("/index"); 
             }
-        }  
+        }  ,
+        haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
     },
     components: {
         bottom,
-        right
+        right,
+        contact,
+        contactContent
     },
     watch: {
         picUrl() {
@@ -124,6 +138,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #D7D7D7;
+    background-image: url('../../../assets/img/goHouseHistory/houseBack.jpg');
     .changePosition {
         width: 100%;
         height: vertical(905);
@@ -153,7 +168,7 @@ export default {
                 width: px2rem(1107);
                 height: 100%;
                 margin-left: transverse(95);
-                border: px2rem(8) solid white;
+                border: px2rem(6) solid white;
                 background-repeat: no-repeat;
                 background-size: percentage(1094 / 1098) percentage(761 / 765);
                 filter: blur(10px);

@@ -18,10 +18,10 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
-      <div class="click">
+      <!-- <div class="click">
         <img src="../../assets/img/guidePage/click.png"/>
         <span>·点击探索·</span>
-      </div>
+      </div> -->
       <div class="word">
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/bussiness.png" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/address.png" alt="">&nbsp;&nbsp;{{word[1]}}</span>
@@ -57,7 +57,7 @@ export default {
       "appear": "none",
       "appearCome": "block",
       "success": [],
-      head: ip + ':80/',
+      head: ip + ':8080/static/image/',
     }
   },
   created() {
@@ -281,6 +281,9 @@ export default {
     width: px2rem(1455);
     height: px2rem(818);
     position: relative;
+    top: px2rem(20);
+    background-repeat: no-repeat;
+  background-size: 100% 100%;
     #gai {
       width: px2rem(103);
       height: px2rem(34);
@@ -330,7 +333,7 @@ export default {
     .logo {
       width: transverse(403);
       height: vertical(286);
-      margin: 10% auto;
+      margin: 13% auto;
       // background-color: #fff;
       background-repeat: no-repeat;
       background-size: 100% 100%;
@@ -362,7 +365,7 @@ export default {
     .word {
       width: 80%;
       height: px2rem(24);
-      margin: 8% auto;
+      margin: 23% auto;
       // background-color: #fff;
       @include fj();
       align-items: center;

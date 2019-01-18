@@ -202,7 +202,7 @@ export default {
             .smallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(8) solid transparent;
+                border: px2rem(6) solid transparent;
                 box-sizing: border-box;
                 overflow: visible;
                 .imgRight {
@@ -218,7 +218,7 @@ export default {
             .addSmallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(8) solid white;
+                border: px2rem(6) solid white;
                 box-sizing: border-box;
                 overflow: visible;
                 .imgRight {

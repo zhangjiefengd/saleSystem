@@ -11,6 +11,8 @@
     <!-- <img src="../../../assets/img/goHouseHistory/goHistory2.png" @click="goHistory()"> -->
         <!-- 传给子组件值 -->
     <bottom ref="bottom" @changeCate='changeCate' :typeClassChange='typeClassChangeTwo' :typeClassChangeThree='typeClassChangeTwo' :typeClassChangeTwo='typeClassChange' @eventB='getHouseTwo'></bottom>
+    <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
   </div>
 </template>
 
@@ -19,7 +21,8 @@ import bottom from '../components/navBar/bottomNavBar'
 import error from '../../../assets/img/index/loading.jpg'
 import no from '../../../assets/img/no.jpg'
 import getImage from '../../../ultis/getImage.js'
-
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   data() {
     return {
@@ -30,7 +33,8 @@ export default {
         houseNum: -1,
         check: 0 ,
         imgBig: "",
-        title: ""
+        title: "",
+        conDisplay: 'none'
     }
   },
   created() {
@@ -149,10 +153,20 @@ export default {
       },
       changeCate() {
             
-      }
+      },
+      haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
   },
   components: {
-      bottom
+      bottom,
+      contact,
+        contactContent
   },
   watch: {
       imgPlanBack() {

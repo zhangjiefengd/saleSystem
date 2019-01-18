@@ -3,10 +3,10 @@
   <div class="guidePage"  v-show="check" :style="{backgroundImage: 'url(' + imgBack + ')'}" @click="goIndex()">
     <div class="content">
       <img :src=imgLogo alt="logo" class="guideLogo">
-      <div class="click">
+      <!-- <div class="click">
         <img src="../../assets/img/guidePage/click.png"/>
         <span>·点击探索·</span>
-      </div>
+      </div> -->
       <div class="guideInfor">
         <span class="bottomInfor"><img src="../../assets/img/guidePage/bussiness.png" alt="bussiness"></span>
         <span class="bottomInfor"><img src="../../assets/img/guidePage/address.png" alt="bussiness"></span>
@@ -130,7 +130,7 @@ export default {
   transition: all 0.7s;
   .content {
     width: px2rem(1562);
-    height: vertical(758);
+    height: vertical(730);
     margin: px2rem(254) auto;
     margin-bottom: px2rem(68);
     @include fj();

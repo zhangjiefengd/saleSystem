@@ -23,11 +23,16 @@
         </div>
       </div>
     </div>
+    <contact @haveCon='haveCon'></contact>
+        <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
   </div>
 </template>
 <script>
+import getImage from '../../../ultis/getImage.js';
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 import ip from '../../../../static/ip'
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   name: 'honor',
   data () {
@@ -39,7 +44,8 @@ export default {
       backBig: '',
       culBig: '',
       head: ip + ':8080/static/image/',
-      logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')]
+      logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
+      conDisplay: 'none'
     }
   },
   created () {
@@ -64,14 +70,14 @@ export default {
     this.$axios.get('/brand/enterpriseCulture/image/get')
       .then(res => {
         if (res.data.data) {
-          this.culturePicture = this.getImage(res.data.data.mainImageLocation, 1)
-          this.background = this.getImage(res.data.data.backgroundImageLocation, 1)
+          this.culturePicture = getImage(res.data.data.mainImageLocation, 1)
+          this.background = getImage(res.data.data.backgroundImageLocation, 1)
           if (screen.width > 1024) {
-            this.backBig = this.getImage(res.data.data.backgroundImageLocation, 1)
-            this.culBig = this.getImage(res.data.data.mainImageLocation, 1)
+            this.backBig = getImage(res.data.data.backgroundImageLocation, 1)
+            this.culBig = getImage(res.data.data.mainImageLocation, 1)
           } else {
-            this.backBig = this.getImage(res.data.data.backgroundImageLocation, 2)
-            this.culBig = this.getImage(res.data.data.mainImageLocation, 2)
+            this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
+            this.culBig = getImage(res.data.data.mainImageLocation, 2)
           }
         }
       })
@@ -80,14 +86,26 @@ export default {
       })
   },
   methods: {
-    getImage(data, i) {
-      const imgSplit = data.split(/\_|\./g)
-      let index = i;
-      while (imgSplit.length - 1 <= index) {
-          index--;
-      }
-        return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
-    },
+      getImage(data, i) {
+        const imgSplit = data.split(/\_|\./g)
+        let index = i;
+        while (imgSplit.length - 1 <= index) {
+            index--;
+        }
+          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      },
+      haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
+  },
+  components: {
+    contact,
+        contactContent
   },
   watch: {
     backBig () {

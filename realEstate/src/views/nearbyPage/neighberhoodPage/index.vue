@@ -1,7 +1,9 @@
 <template>
   <div class="content" style="position:relative;overflow: hidden;">
     <img draggable="true" id="targetObj" class="target" :src="map">
-    <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt @click="goHistory()">
+    <img id="come" src="../../../assets/img/goHouseHistory/goHistory.png" alt @click="goHistory()">
+    <contact @haveCon='haveCon'></contact>
+    <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
     <!-- <input type="button" value="重置" @click="reset()" > -->
   </div>
 </template>
@@ -10,11 +12,14 @@
 
 <script type="text/ecmascript-6">
 import getImage from "../../../ultis/getImage.js";
+import contact from '../../../components/haveContact'
+import contactContent from '../../../components/contactContent'
 export default {
   data() {
     return {
       map: "../../../assets/img/default/2.jpg",
-      mapBig: ""
+      mapBig: "",
+      conDisplay: 'none'
     };
   },
   created() {
@@ -113,9 +118,20 @@ export default {
     },
     goHistory() {
       this.$router.push("/index");
-		}
+    },
+    haveCon() {
+            this.conDisplay = 'flex';
+            this.$forceUpdate();
+        },
+        closeInfo() {
+            this.conDisplay = 'none';
+            this.$forceUpdate();
+        },
   },
-  components: {},
+  components: {
+    contact,
+        contactContent
+  },
   watch: {
     mapBig() {
       var ele = document.querySelector("#targetObj");

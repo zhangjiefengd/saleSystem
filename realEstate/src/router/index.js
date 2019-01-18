@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import contact from '../components/haveContact'
 // import guidePage from "../views/guidePage/guide"
 // import homePage from "../views/homePage/home"
 

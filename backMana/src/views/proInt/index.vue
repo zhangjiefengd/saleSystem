@@ -1,13 +1,9 @@
 <template>
     <div class="projectPage" v-loading="this.$store.state.loading.loading">
         <div class="page" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
-            <img :src='imgLogo'/>
+            
             <div class="introduce">
-                <div class="title">
-                    <span class="proWord">项目介绍</span>
-                    <hr>
-                    <span class="proDetail">Project Introduction</span>
-                </div>
+                <div class="title">项目介绍</div>
                 <div class="content" :style="{display: appearCome}" @click="change">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{projectWord}}
                 </div>
@@ -45,24 +41,10 @@ export default {
             projectWord: "",
             "appear": "none",
             "appearCome": "block",
-            head: ip + ':80/',
-            imgLogo: ''
+            head: ip + ':8080/static/image/',
         }
     },
     created() {
-        console.log(document.location.hostname);
-        this.$axios.get("/basic/guidePage/get")
-        .then(res => {
-        
-            if (res.data.data && res.data.data.projectLogoLocation) {
-                this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
-                // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
-            }
-        
-        })
-        .catch(error => {
-            this.$message.error('获取失败，请上传内容！');
-        });
         //请求公园类型
         this.$axios.get("/project/info/get")
         .then((res) => {
@@ -83,12 +65,8 @@ export default {
     methods: {
         //切图片地址
         getImage(data, i) {
-            const imgSplit = data.split(/\_|\./g)
-            let index = i;
-            while (imgSplit.length - 1 <= index) {
-                index--;
-            }
-            return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+            const imgSplit = data.split(/\_|\./g);
+            return this.head + imgSplit[0] + "_" + imgSplit[i] + "." + imgSplit[imgSplit.length - 1];
         },
         tiJiao() {   
             let formdata = new FormData();
@@ -121,7 +99,7 @@ export default {
             }
             if (this.appear == 'none') {
                 this.$axios.post('/project/info/update',qs.stringify({
-                    introductionContent: this.projectWord,
+                    introductionContent: $('textarea').val(),
                 }) , config).then( (res) => {
                     this.$message({
                         message: '文字上传成功！',
@@ -198,12 +176,8 @@ export default {
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: relative;
-        >img {
-            width: transverse(159);
-            position: absolute;
-            top: px2rem(30);
-            left: px2rem(30);
-        }
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         #gai {
             width: px2rem(103);
             height: px2rem(34);
@@ -235,58 +209,42 @@ export default {
             left: 0;
         }
         .introduce {
-            width: transverse(629);
-            height: vertical(854);
-            background-color: white;
-            // float: left;
-            // margin-left: px2rem(scale(90));
-            position: absolute;
-            top: vertical(151);
-            left: transverse(1085);
-            opacity: 0.9;
+            width: transverse(509);
+            height: vertical(924);
+            background-color: black;
+            float: left;
+            margin-left: px2rem(scale(90));
+            opacity: 0.8;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: px2rem(60) px2rem(30) px2rem(60) px2rem(30);
-            // z-index: -1;
+            z-index: -1;
             .title {
                 width: 100%;
-                height: px2rem(scale(112));
-                // margin-top: px2rem(scale(90));
-                @include sc(px2rem(scale(36)), black);
-                .proWord {
-                    @include sc(px2rem(30), #333333);
-                }
-                hr {
-                    width: px2rem(scale(370));
-                    margin-left: 0;
-                    background-color: #bfbfbf;
-                }
-                .proDetail {
-                    @include sc(px2rem(25),#999999);
-                }
+                height: px2rem(90*930/1080);
+                background-color: #c7ad8c;
+                margin-top: px2rem(scale(134));
+                @include sc(px2rem(40*930/1080), black);
+                @include fj(center);
+                align-items: center;
             }
             .content {
-                width: 100%;
-                height: 85%;
-                margin: px2rem(60) auto;
-                @include sc(px2rem(25), #333333);
-                border: px2rem(1) dashed black;
-                line-height: 24px;
+                width: px2rem(392*930/1080);
+                height: px2rem(500*930/1080);
+                margin: px2rem(57*930/1080) auto;
+                @include sc(24*930/1080, white);
+                line-height: px2rem(48*930/1080);
+                letter-spacing: -1;
+                border: px2rem(1) dashed white;
                 // overflow: hidden;
             }
-            form {
-                width: 100%;
-                height: 85%;
-                margin: px2rem(60) auto;
-                @include sc(px2rem(25), #333333);
-                line-height: 24px;
-                textarea {
-                    width: 100%;
-                    height: 100%;
-                    @include sc(px2rem(25), #333333);
-                    line-height: 24px;
-                }
+            textarea {
+                width: px2rem(392*930/1080);
+                height: px2rem(500*930/1080);
+                margin: px2rem(57*930/1080) auto;
+                @include sc(24*930/1080, black);
+                line-height: px2rem(48*930/1080);
+                letter-spacing: -1;
             }
         }
         #allSub {

@@ -112,7 +112,7 @@ export default {
             placeReduceTypeVisibility: 'none',
             public: [],//公共设施
             parkView: [],//园林景观
-            head: ip + ':80/',
+            head: ip + ':8080/static/image/',
             dialogImageUrl: '',
             dialogVisible: false,
             filePicPublic: {},

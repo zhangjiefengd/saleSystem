@@ -44,7 +44,6 @@
       </ul>
     </div>
   </transition>
-  <!-- <div class="linkUs" @click="showInfo">我有意向</div> -->
   <transition name="fade" mode="out-in">
     <router-view></router-view>
   </transition>
@@ -52,7 +51,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import { resetTime, Timeout } from "../../../ultis/timeOut.js";
 import getImage from '@/ultis/getImage.js'
 
 export default {
@@ -84,14 +82,6 @@ export default {
     }
   },
   created () {
-    // this.$axios.get("/basic/mainPage/get")
-    //   .then(res => {
-    //     if (screen.width > 1024){
-    //       this.companyLogo = getImage(res.data.data.projectLogoLocation, 1);
-    //     } else {
-    //       this.companyLogo = getImage(res.data.data.projectLogoLocation, 2);
-    //     }
-    //   })
     this.$axios.get("/basic/guidePage/get")
       .then((res) => {
         res.data.data && res.data.data.projectLogoLocation ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
