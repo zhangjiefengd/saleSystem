@@ -48,7 +48,7 @@ export default {
                 $('#typeClassThree').css('display', 'flex');
                 $('#typeClassTwo').css('display', 'flex');
                 $('#typeClass').css('display', 'flex');
-                document.getElementsByClassName('chooseSmall')[0].style.width = '32.06%';
+                // document.getElementsByClassName('chooseSmall')[0].style.width = '32.06%';
             }else if (this.house[val] && !this.house[val].houseTypeVrUrl) {
                 if (cate == 2) {
 
@@ -66,7 +66,7 @@ export default {
                 $('#typeClassTwo').css('display', 'flex');
                 $('#typeClass').css('display', 'flex');
                 $('#typeClassThree').css('display', 'none');
-                document.getElementsByClassName('chooseSmall')[0].style.width = '20%';
+                // document.getElementsByClassName('chooseSmall')[0].style.width = '20%';
             }
         });
 
@@ -94,26 +94,32 @@ export default {
 .bottomNav {
     width: 100%;
     height: vertical(175);
-    @include fj(center);
+    // @include fj(center);
+    margin-left: transverse(95);
     // background-color: #fff;
     .chooseType {
         width: px2rem(1098);
-        height: px2rem(86);
+        height: px2rem(84);
+        margin-top: px2rem(56);
         // margin-left: transverse(121);
-        @include fj(center);
+        // @include fj(center);
         // background-color: black;
         .chooseSmall {
-            width: 32.06%;
+            // width: 32.06%;
             height: 100%;
-            @include fj();
-            align-items: flex-end;
+            // @include fj();
+            // align-items: flex-end;
             // background-color: white;
             div {
-                width: px2rem(90);
-                height: px2rem(40);
+                float: left;
+                width: px2rem(180);
+                height: px2rem(63);
                 @include fj(center);
                 align-items: center;
                 cursor: pointer;
+                // background-color: #c1c1c1;
+	            border: solid px2rem(2) #666666;
+                margin-left: px2rem(123);
                 a {
                     width: 100%;
                     height: 100%;
@@ -121,31 +127,41 @@ export default {
                     align-items: center;
                 }
             }
+            div:first-of-type {
+                margin-left: 0;
+            }
             .noActive {
-                border: px2rem(1) solid #fdbAAA;
-                background-color: #121212;
+                border: solid px2rem(2) #666666;
+                // background-color: #c1c1c1;
                 a {
-                    @include sc(px2rem(20));
+                    @include sc(px2rem(30), #666666);
+                    text-decoration: none;
                 }
             }
             .noActiveTwo {
-                border: px2rem(1) solid #757575;
+                border: solid px2rem(2) #666666;
+                // background-color: #c1c1c1;
                 a {
-                    @include sc(px2rem(20), #757575);
+                    @include sc(px2rem(30), #666666);
+                    text-decoration: none;
                 }
             }
             .active {
-                background-color: #FFDAAA;
-                border: px2rem(1) solid #121212;
+                background-color: #91a2ce;
+                // border: px2rem(1) solid #121212;
+                border: px2rem(1) solid #91a2ce;
                 a {
-                    @include sc(px2rem(20), #121212);
+                    @include sc(px2rem(30), white);
+                    text-decoration: none;
                 }    
             }
             .activeTwo {
-                background-color: #757575;
-                border: px2rem(1) solid #757575;
+                background-color: #91a2ce;
+                border: px2rem(1) solid #91a2ce;
+                // border: px2rem(1) solid #757575;
                 a {
-                    @include sc(px2rem(20), white);
+                    @include sc(px2rem(30), white);
+                    text-decoration: none;
                 } 
             }
         }

@@ -8,18 +8,17 @@
         </div>
         <div class="contentBottom">
           <div>
-            <div class="line"></div>
-              <ul>
-                <li v-for="(title, index) in titles">
-                  <span class="spot"></span>
-                </li>
-              </ul>
-              <div class="Intro">
-                <div class="worldIntro" v-for="(title, index) in titles">
-                  <h3 v-if="title.content !== null">{{ title.title }}</h3>
+            <div class="Intro">
+              <div class="worldIntro" v-for="(title, index) in titles" :key="index">
+                <div class="word-logo">
+                  <img :src="title.logo" alt="">
+                </div>
+                <div class="word-content">
+                  <h2 v-if="title.content !== null">{{ title.title }}</h2>
                   <p v-if="title.content !== null">{{ title.content }}</p>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +38,8 @@ export default {
       culturePicture: '',
       backBig: '',
       culBig: '',
-      head: ip + ':80/'
+      head: ip + ':8080/static/image/',
+      logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')]
     }
   },
   created () {
@@ -48,6 +48,14 @@ export default {
         if (res.data.data) {
           this.titles = res.data.data
           this.contents = res.data.data.content
+          this.titles.map((item, index) => {
+            if (index > 3) {
+              item.logo = this.logo[index-3]
+            } else {
+              item.logo = this.logo[index]
+            }
+          })
+          console.log(this.titles)
         }
       })
       .catch(error => {
@@ -72,14 +80,14 @@ export default {
       })
   },
   methods: {
-      getImage(data, i) {
-        const imgSplit = data.split(/\_|\./g)
-        let index = i;
-        while (imgSplit.length - 1 <= index) {
-            index--;
-        }
-          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
-      },
+    getImage(data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      let index = i;
+      while (imgSplit.length - 1 <= index) {
+          index--;
+      }
+        return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+    },
   },
   watch: {
     backBig () {
@@ -132,19 +140,19 @@ export default {
     position: absolute;
     top: vertical(125);
     width: 100%;
-    height: vertical(955);
+    height: vertical(900);
     @include fj(center);
     div {
-      width: 81%;
+      width: 85%;
       height: 100%;
       .contentTop {
         width: 100%;
-        height: 58%;
+        height: 40%;
         @include fj();
-        align-items: flex-end;
+        flex-direction: column-reverse;
         >img {
           width: 100%;
-          height: 78%;
+          height: 90%;
         }
         .culture {
           // filter: blur(4px);
@@ -156,48 +164,48 @@ export default {
       }
       .contentBottom {
         width: 100%;
-        height: 32%;
-        position: relative;
+        height: 60%;
         @include fj(center);
         align-items: flex-end;
         >div {
           width: 100%;
-          height: 50%;
-          .line {
-            width: 100%;
-            height: 0;
-            position: absolute;
-            top: px2rem(88);
-            border: 1px solid #ffdaaa;
-          }
-          ul {
-            width:100%;
-            position: absolute;
-            top: px2rem(77);
-            @include fj(space-around);
-            li {
-              width: px2rem(22);
-              height: px2rem(22);
-              border-radius: 50%;
-              background-color: #ffdaaa;
-              float: left;
-            }
-          }
+          height: 100%;
+          margin: 0 px2rem(100);
           .Intro {
             width: 100%;
             height: 80%;
-            @include fj(space-between);
+            margin-top: px2rem(80);
+            @include fj();
+            flex-wrap: wrap;
             align-items: flex-end;
             .worldIntro {
-              h3 {
-                @include fj(center);
-                color: #ffdaaa;
+              width: 40%;
+              height: px2rem(200);
+              div {
+                float: left;
               }
-              p {
-                margin-top: 2%;
-                text-align: center;
-                @include fj(center);
-                color: #ffffff;
+              .word-logo {
+                width: px2rem(64);
+                height: px2rem(64);
+                img {
+                  width: 100%;
+                  height: 100%;
+                  float: right;
+                }
+              }
+              .word-content {
+                width: calc(100% - 6rem);
+                color: #666666;
+                margin-left: px2rem(32);
+                letter-spacing: .3em;
+                >p {
+                  height: calc(100% - 2rem);
+                  font-size: px2rem(25);
+                  letter-spacing: .2em;
+                  word-wrap: break-word;
+                  word-break: break-all;
+                  overflow: hidden;
+                }
               }
             }
           }

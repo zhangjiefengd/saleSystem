@@ -9,28 +9,25 @@
           <div class="hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
             <!-- <img v-lazy="worlds[index].image.fileName" alt=""> -->
             <img v-if="world.image !== null" :src="world.image" alt="">
-          </div>
-        </div>
-        <div class="worldIntro">
-          <div>
-            <div class="worldIntroTop">
-              <div class="world hide" v-for="(world, index) in worlds" :class="[{show: index==number}]">
-                <div class="title">
-                  {{ world.step }} (第 {{ index+1 }} 阶段)
+            <div class="worldIntro">
+              <div class="worldIntroTop">
+                <div class="world hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
+                  <div class="word-time-title">
+                    <div><div>
+                      <span class="word-time">{{ world.step }}</span>
+                      <span class="word-title">{{ world.developTitle }}</span>
+                    </div></div>
+                  </div>
+                  <div class="word-content">
+                    {{ world.enterpriseDevelopInfo }}
+                  </div>
                 </div>
-                <h3>
-                  {{ world.developTitle }}
-                </h3>
-                <p>
-                  {{ world.enterpriseDevelopInfo }}
-                </p>
               </div>
+              <ul class="worldIntroBottom">
+                <li v-for="(Image,index) in worlds" :key="index" :class="[{changeStyle: index==number}]" @click="changeAll(index)">
+                </li>
+              </ul>
             </div>
-            <ul class="worldIntroBottom">
-              <li v-for="(Image,index) in worlds"  :class="[{changeStyle: index==number}]" @click="changeAll(index)">
-                {{ index+1 }}
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -49,7 +46,7 @@ export default {
       number: 0,
       num: 0,
       backBig: '',
-      head: ip + ':80/'
+      head: ip + ':8080/static/image/'
     }
   },
   created () {
@@ -140,14 +137,11 @@ export default {
     @include fj(center);
     align-items: center;
     .content1 {
-      width: transverse(1400);
+      width: transverse(1650);
       height: vertical(800);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
       .pictureIntro {
-        width: 55.5%;
+        position: relative;
+        width: 100%;
         height: 100%;
         float: left;
         overflow: hidden;
@@ -161,74 +155,85 @@ export default {
         }
       }
       .worldIntro {
-        width: 44.5%;
-        float: left;
-        height: 100%;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
         @include fj(center);
         align-items: center;
-        background-color: rgba(38, 38, 42, 0.78);
-        div {
-          width: 70%;
-          height: 74%;
-          .worldIntroTop {
+        flex-direction: column;
+        background-color: rgba(90 , 90, 90, .85);
+        .worldIntroTop {
+          width: 100%;
+          height: 65%;
+          overflow: auto;
+          .world {
             width: 100%;
-            height: 65%;
+            height: 100%;
+            @include fj(center);
+            font-family: FZHTJW;
             overflow: hidden;
-            .world {
-              width: 100%;
+            .word-time-title {
+              width: 30%;
               height: 100%;
               float: left;
-              .title {
-                width: 100%;
-                height: 15%;
-                @include fj(center);
+              margin-left: px2rem(40);
+              &:before {
+                content: '';
+                float: right;
+                height: 100%;
+                border-right: 3px solid #9c9c9c;
+              }
+              >div {
+                height: 100%;
+                @include fj();
                 align-items: center;
-                background-color: #ffdba1;
-                color: #121212;
-                font-size: px2rem(25);
               }
-              h3 {
-                width: 100%;
-                height: 25%;
-                font-size: px2rem(40);
-                @include fj(space-between);
-                align-items: flex-end;
-                color: #c79f62;
+              span {
+                display: block;
+                font-size: px2rem(36);
+                color: #e2e2e2;
               }
-              p {
-                width: 100%;
-                height: 60%;
-                margin-top: 1px;
-                line-height: px2rem(35);
-                font-size: px2rem(25);
-                @include fj(center);
-                align-items: flex-start;
-                color: #fffffe;
+              .word-time {
+                color: #ffffff;
               }
+            }
+            
+            .word-content {
+              width: 60%;
+              height: 100%;
+              float: left;
+              margin: 0 px2rem(40);
+              font-size: px2rem(30);
+              letter-spacing: .1em;
+              color: #e2e2e2;
             }
           }
-          .worldIntroBottom {
-            width: 100%;
-            height: 35%;
-            @include fj(space-between);
-            align-items: flex-end;
-            li {
-              width: px2rem(48);
-              height: px2rem(48);
-              color: #ffdaaa;
-              float: left;
-              @include fj(center);
-              align-items: center;
-              border: solid 1px #c79f62;
-            }
+        }
+        .worldIntroBottom {
+          width: 100%;
+          height: 26%;
+          @include fj(center);
+          align-items: center;
+          li {
+            width: px2rem(15);
+            height: px2rem(15);
+            background-color: #d0d0d0;
+            float: left;
+            @include fj(center);
+            align-items: center;
+            border: solid 1px #d0d0d0;
+            border-radius: 50%;
+            margin-left: px2rem(10);
+          }
+          .changeStyle{
+            width: px2rem(30);
+            border-radius: 5px;
+            background-color: #d0d0d0;
           }
         }
       }
     }
-  }
-  .changeStyle{
-    background-color: #ffdaaa;
-    color: #121212 !important;
   }
 }
 .honor {

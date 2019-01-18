@@ -1,9 +1,13 @@
 <template>
 <!-- v-lazy:background-image='imgProjectBack' -->
   <div class="projectIntroduce" v-show="check" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
+      <img :src='imgLogo'/>
       <div class="projectWord">
+          
           <div class="wordTitle">
-              <span>项目介绍</span>
+              <span class="proWord">项目介绍</span>
+              <hr>
+              <span class="proDetail">Project Introduction</span>
           </div>
           <div class="wordContent">
 
@@ -27,10 +31,20 @@ export default {
       projectWord: "",
       D3D: require('../../assets/img/index/3D.png'),
       check: 0,
-      imgBig: ""
+      imgBig: "",
+      imgLogo: ""
     }
   },
   created() {
+    this.$axios.get("/basic/guidePage/get")
+    .then((res) => {
+      
+      res.data.data && res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+      
+    })
+    .catch(error => {
+      console.log(error);
+    });
     //请求首页项目图片和背景图片
     this.$axios.get("/project/info/get")
     .then(res => {
@@ -56,7 +70,7 @@ export default {
     //添加介绍的文字
     addWords() {
       // console.log(document.getElementsByClassName('wordContent')[0]);
-      let wordIntrol = "<span>&nbsp;&nbsp;&nbsp;&nbsp;" + this.projectWord + "</span>";//为内容区域所添加的字符串
+      let wordIntrol = "<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.projectWord + "</span>";//为内容区域所添加的字符串
       if (document.getElementsByClassName('wordContent')) {
 
         document.getElementsByClassName('wordContent')[0].innerHTML = wordIntrol;
@@ -104,46 +118,67 @@ export default {
   height: 100%;
   // filter: blur(4px);
   transition: all 0.7s;
+  position: relative;
+  > img {
+    width: px2rem(159);
+    height: px2rem(109);
+    position: absolute;
+    top: px2rem(34);
+    left: px2rem(40);
+  }
   .projectWord {
-      width: px2rem(388);
-      height: px2rem(724);
+      width: px2rem(629);
+      height: vertical(854);
       position: absolute;
-      left: transverse(90);
-      top: vertical(0);
-      background-color: black;
-      opacity: 0.8;
+      left: transverse(1085);
+      top: vertical(151);
+      background-color: white;
+      opacity: 0.9;
+      padding: px2rem(77) px2rem(59) px2rem(77) px2rem(59);
       .wordTitle {
           width: 100%;
-          height: px2rem(63);
-          margin-top: px2rem(90);
-          background-color: $colorAll;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          span {
-              @include sc(px2rem(36), #111015);
+          height: px2rem(120);
+          // display: flex;
+          // justify-content: space-between;
+          // flex-direction: column;
+          // align-items: flex-start;
+          .proWord {
+              @include sc(px2rem(46), #333333);
+          }
+          hr {
+            width: px2rem(308);
+            height: px2rem(2);
+            margin-left: 0;
+            margin-top: px2rem(5);
+            margin-bottom: 0;
+            background-color: #bfbfbf;
+          }
+          .proDetail {
+            @include sc(px2rem(36), #999999);
+            display: block;
+            margin-top: px2rem(5);
           }
       }
       .wordContent {
-          width: px2rem(249);
-          height: px2rem(371);
-          margin: px2rem(71) auto;
+          width: 100%;
+          height: px2rem(413);
+          margin: px2rem(60) auto;
           span {
-              @include sc(px2rem(20), #ffffff);
+              @include sc(px2rem(30), #333333);
           }
       }
   }
   .backImage {
-    height: vertical(125);
+    height: vertical(117);
     position: absolute;
     display: flex;
     align-items: flex-end;
-    right: px2rem(60);
+    right: px2rem(95);
     z-index: 99;
     cursor: pointer;
     >img {
-      width: px2rem(57);
-      height: px2rem(50);
+      width: px2rem(63);
+      height: px2rem(57);
     }
   }
   .button {

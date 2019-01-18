@@ -2,7 +2,9 @@
     <div class="content">
         <div class="changePosition">
             <!-- <div class="topHouse"> -->
+            <div class="topHouse">
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
+            </div>
             <!-- </div> -->
             <!-- <div class="middleHouse"> -->
                     <!-- <div id="pano"> -->
@@ -144,27 +146,33 @@ export default {
 .content {
     width: 100%;
     height: 100%;
-    background-color: #1E1E1E;
+    background-color: #D7D7D7;
     .changePosition {
         width: 100%;
         height: vertical(905);
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        .topHouse {
+            height: vertical(117);
+            position: absolute;
+            display: flex;
+            align-items: flex-end;
+            top: 0;
+            right: px2rem(95);
             img {
-                width: px2rem(57);
-                height: px2rem(50);
-                position: absolute;
-                top: px2rem(16);
-                left: percentage(1503 / 1620);
+                width: px2rem(63);
+                height: px2rem(57);
                 cursor: pointer;
             }
+        }
+        
             #pano {
-                width: 90%;
-                height: 90%;
-                margin-top: transverse(121);
-                margin-left: transverse(80);
-                border: px2rem(2) solid $colorAll;
+                width: px2rem(1471);
+                height: px2rem(720);
+                margin-top: transverse(169);
+                margin-left: transverse(95);
+                // border: px2rem(2) solid $colorAll;
                 background-repeat: no-repeat;
                 background-size: percentage(1094 / 1098) percentage(761 / 765);
             }

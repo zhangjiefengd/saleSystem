@@ -2,7 +2,7 @@
 <div id="leftNav">
   <div id="leftNavBar">
     <div class="leftLogo" >
-      <img src="../../../assets/img/leftNav/logo.png" alt="">
+      <img :src="companyLogo" alt="">
     </div>
     <ul id="LeftWorld">
       <router-link @click.native="closeLinkInfo" tag="li" v-for="(world, index) in worlds" :key="index" :to="world.address" :class="index==Num?leftBottom:''">
@@ -53,6 +53,7 @@
 
 <script type="text/ecmascript-6">
 // import { resetTime, Timeout } from "../../../ultis/timeOut.js";
+import getImage from '@/ultis/getImage.js'
 
 export default {
   name: 'layout',
@@ -78,10 +79,26 @@ export default {
       ],
       Num: 0,
       leftBottom: 'leftBottom',
-      isShowInfo: false
+      isShowInfo: false,
+      companyLogo: ''
     }
   },
   created () {
+    // this.$axios.get("/basic/mainPage/get")
+    //   .then(res => {
+    //     if (screen.width > 1024){
+    //       this.companyLogo = getImage(res.data.data.projectLogoLocation, 1);
+    //     } else {
+    //       this.companyLogo = getImage(res.data.data.projectLogoLocation, 2);
+    //     }
+    //   })
+    this.$axios.get("/basic/guidePage/get")
+      .then((res) => {
+        res.data.data && res.data.data.projectLogoLocation ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     clickBack: function () {
@@ -125,9 +142,8 @@ export default {
   #leftNavBar {
     width: transverse(300);
     height: 100%;
-    background-color: #121212;
+    background-color: #ffffff;
     float: left;
-    border-right: 0.05rem solid #c79f62;
     position: relative;
     .leftLogo {
       width: px2rem(167);
@@ -140,29 +156,25 @@ export default {
     }
     #LeftWorld {
       width: 100%;
-      height: vertical(500);
+      height: vertical(600);
       display: -webkit-flex;
       @include fj(center);
       flex-direction: column;
       flex-wrap: wrap;
-      >:last-child {
-        border-bottom: 0.05rem solid #c79f62;
-      }
       li {
-        height: vertical(180);
-        border-top: 0.05rem solid #c79f62;
+        width: 100%;
+        height: px2rem(100);
         text-align: center;
         @include sc(px2rem(30));
+        letter-spacing: .2em;
         @include fj(center);
         align-items: center;
         cursor: pointer;
+        color: #727272;
       }
       .router-link-active {
-        background-color: #ffdaaa;
-        color: #121212;
-      }
-      .leftBottom {
-        border-bottom: 0.05rem solid #c79f62;
+        background-color: #c7ad8c;
+        color: #fefdfd;
       }
     }
     .leftEat {

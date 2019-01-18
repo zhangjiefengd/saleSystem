@@ -1,19 +1,19 @@
 <template>
 <!-- :style="{backgroundImage: 'url(' + imgBack + ')'}"  -->
   <div class="guidePage"  v-show="check" :style="{backgroundImage: 'url(' + imgBack + ')'}" @click="goIndex()">
-     <!-- <vue-lazy-component
-        v-if="root"
-        :viewport="root"
-      style="width:100%;height:100%;"> -->
+    <div class="content">
       <img :src=imgLogo alt="logo" class="guideLogo">
-      <!-- <img src="" alt="logo" class="visible-lg guideLogo"> -->
-      <!-- <img slot="skeleton" src="../../assets/img/leftNav/LOGO2.png" class="guideLogo"> -->
-     <!-- </vue-lazy-component> -->
-    <div class="guideInfor">
-      <span class="bottomInfor"><img src="../../assets/img/guidePage/bussiness.png" alt="bussiness"></span>
-      <span class="bottomInfor"><img src="../../assets/img/guidePage/address.png" alt="bussiness"></span>
-      <span class="bottomInfor"><img src="../../assets/img/guidePage/tel.png" alt="bussiness"></span>
+      <div class="click">
+        <img src="../../assets/img/guidePage/click.png"/>
+        <span>·点击探索·</span>
+      </div>
+      <div class="guideInfor">
+        <span class="bottomInfor"><img src="../../assets/img/guidePage/bussiness.png" alt="bussiness"></span>
+        <span class="bottomInfor"><img src="../../assets/img/guidePage/address.png" alt="bussiness"></span>
+        <span class="bottomInfor"><img src="../../assets/img/guidePage/tel.png" alt="bussiness"></span>
+      </div>
     </div>
+
   </div>
 
 </template>
@@ -128,30 +128,49 @@ export default {
   cursor: pointer;
   // filter: blur(4px);
   transition: all 0.7s;
-  .guideLogo {
-    width: px2rem(680);
-    @include cl();
-    top: vertical(245);
-    // filter: blur(4px);
-    transition: all 0.7s;
-  }
-  .complete {
-    filter: blur(0);
-  }
-  .guideInfor {
-    width: 80%;
-    height: px2rem(35);
-    @include cl();
-    top: vertical(892);
-    @include fj(space-around);
+  .content {
+    width: px2rem(1562);
+    height: vertical(758);
+    margin: px2rem(254) auto;
+    margin-bottom: px2rem(68);
+    @include fj();
+    flex-direction: column;
     align-items: center;
-    .bottomInfor {
-      @include sc(px2rem(23));
+    .guideLogo {
+      width: px2rem(403);
+      // filter: blur(4px);
+      transition: all 0.7s;
+    }
+    .complete {
+      filter: blur(0);
+    }
+    .click {
+      width: px2rem(161);
+      height: px2rem(140);
+      @include fj();
+      flex-direction: column;
+      align-items: center;
       img {
-        width: px2rem(23);
+        width: px2rem(73);
+      }
+      span {
+        @include sc(px2rem(30), #b1b1b1);
+      }
+    }
+    .guideInfor {
+      width: 100%;
+      height: px2rem(40);
+      @include fj();
+      align-items: center;
+      .bottomInfor {
+        @include sc(px2rem(30));
+        img {
+          width: px2rem(25);
+        }
       }
     }
   }
+
 }
 .complete {
   filter: blur(0);

@@ -93,7 +93,7 @@
         cultureImage: '',
         cultureText: [],
         listen: [],
-        head: ip + ':80/',
+        head: ip + ':8080/static/image/',
         bgcLoading: false,
         cultureLoading: false
       }

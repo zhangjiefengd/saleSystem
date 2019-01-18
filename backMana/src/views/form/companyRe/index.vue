@@ -111,7 +111,7 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: 'http://118.24.113.182:80/',
+        head: 'http://118.24.113.182:8080/static/image/',
         imgColor: '#eee'
       }
     },

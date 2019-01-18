@@ -3,7 +3,7 @@
   <div class="content" style="background-color:#F2EBE1" :style="{backgroundImage: 'url(' + imgPlanBack + ')'}">
     <div id="changePosition">
       <div class="topHouse">
-        <img src="../../../assets/img/goHouseHistory/goHistory2.png" @click="goHistory()">
+        <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
       </div>
       <div class="middleHouse">
       </div>
@@ -42,7 +42,7 @@ export default {
       .then(res => {
         this.title = res.data.data;
           if(this.title[this.houseNum]) {
-            this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[this.houseNum].houseTypeName)
+            this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
             .then(res => {           
               this.dataAll = res.data.data;
               this.check = 1;
@@ -83,7 +83,7 @@ export default {
         if(this.houseNum != val && this.title[val]) {
           this.$refs.bottom.$emit('checkVR', val, 2);
           this.houseNum = val;
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[val].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[val].id)
           .then(res => {           
             this.dataAll = res.data.data;
             if(this.dataAll.houseTypeImageLocation) {
@@ -107,7 +107,7 @@ export default {
     this.$on('bridgeTwo', (val) => {
         if(this.houseNum != val && this.title[val]) {
           this.houseNum = val;
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[val].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[val].id)
           .then(res => {           
             this.dataAll = res.data.data;
             if(this.dataAll.houseTypeImageLocation) {
@@ -184,16 +184,17 @@ export default {
     background-size: 100% 100%;
     filter: blur(4px);
     transition: all 0.7s;
-    img {
-      width: px2rem(57);
-      height: px2rem(50);
-      position: absolute;
-      top: px2rem(48);
-      left: percentage(1503 / 1620);
-                // margin-top: px2rem(48);
-                // margin-left: percentage(1503 / 1620);
-      cursor: pointer;
-    }
+    position: relative;
+    // img {
+    //   width: px2rem(57);
+    //   height: px2rem(50);
+    //   position: absolute;
+    //   top: px2rem(48);
+    //   left: percentage(1503 / 1620);
+    //             // margin-top: px2rem(48);
+    //             // margin-left: percentage(1503 / 1620);
+    //   cursor: pointer;
+    // }
     #changePosition {
         width: 100%;
         height: vertical(905);
@@ -201,14 +202,16 @@ export default {
         flex-direction: column;
         justify-content: flex-end;
         .topHouse {
-            width: 100%;
-            height: percentage(140 / 905);
-            z-index: 1;
+            height: vertical(117);
+            position: absolute;
+            display: flex;
+            align-items: flex-end;
+            top: 0;
+            right: px2rem(95);
             img {
-                width: px2rem(57);
-                height: px2rem(50);
+                width: px2rem(63);
+                height: px2rem(57);
                 cursor: pointer;
-                z-index: 1000;
             }
         }
         .middleHouse {

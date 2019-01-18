@@ -12,20 +12,11 @@
       <li v-for="(image, index) in images" :key="index"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
-      <img src="../../../assets/img/brandBGC/worldBgc.png" alt="">
       <div class="worldIntro">
-        <div><p v-if="worlds.enterpriseName">{{ worlds.enterpriseName }}</p> <div></div></div>
         <p v-if="worlds.enterpriseIntroduction">{{ worlds.enterpriseIntroduction }} </p>
-      </div>
-      <div class="videoIntro">
-        <!-- 	<video id="videoPlay" width="100%" height="65" :src="videoMp4" type="video/mp4">
-        </video> -->
         <div @click="bigVideo">
-          <!-- <div class="controlVideo"> -->
-          <img src="../../../assets/img/leftNav/video.png" alt="">
-          <!-- </div> -->
+          <img src="../../../assets/img/leftNav/video.jpg" alt="">
         </div>
-        <!-- <p @click="bigVideo">点击播放视频</p> -->
       </div>
     </div>
     <div class="touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
@@ -51,7 +42,7 @@ export default {
       endX: 0,
       x: 0,
       change: '',
-      head: ip + ':80/'
+      head: ip + ':8080/static/image/'
     }
   },
   created () {
@@ -266,19 +257,21 @@ export default {
     width: 100%;
     height: px2rem(70);
     z-index: 99;
+    padding-top: px2rem(3);
     @include fj(center);
     li {
       width: px2rem(14);
       height: px2rem(14);
       border-radius: 50%;
       margin-left: px2rem(5);
-      background-color: #bfbfbf;
+      background-color: #ffffff;
     }
     .changeStyle {
-      width: px2rem(30);
-      height: px2rem(14);
-      border-radius: 5px;
-      background-color: #ffdaaa;
+      width: px2rem(20);
+      height: px2rem(20);
+      margin-top: px2rem(-3);
+      border-radius: 50%;
+      background-color: #ffffff;
     }
   }
   .introduce {
@@ -296,76 +289,35 @@ export default {
     }
     .worldIntro {
       position: absolute;
-      right: vertical(90);
-      top: vertical(260);
-      width: transverse(1200);
+      right: px2rem(150);
+      top: vertical(200);
+      width: 77%;
+      height: 68%;
+      background-color: #ffffff;
+      background-color: rgba(250, 250, 250, 0.85);
       >div {
         float: right;
-        width: px2rem(270);
-        height: px2rem(57);
+        width: px2rem(80);
+        height: px2rem(60);
+        margin-right: px2rem(50);
         @include fj(space-between);
         align-items: center;
-        >p {
-          width: 90%;
-          height: 100%;
-          font-size: px2rem(60);
-          text-align: right;
-          line-height: px2rem(57);
-          color: #ffdba1;
-          float: left;
-        }
-        >div {
-          width: transverse(80);
-          height: vertical(880);
-          float: right;
-          background-color: #ffdba1;
-        }
-      }
-      >p {
-        width: 100%;
-        height: px2rem(308);
-        line-height: px2rem(26);
-        float: right;
-        text-indent: 2em;
-        margin-top: vertical(72);
-        color: #fffffe;
-      }
-    }
-    >.videoIntro {
-      position: absolute;
-      width: 22%;
-      height: 15%;
-      right: 1.8rem;
-      bottom: 10.5%;
-      opacity: 0.7;
-      z-index: 99;
-      #videoPlay {
-        width: 100%;
-        height: 75%;
-      }
-      >div {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        @include fj(center);
-        align-items: center;
-        cursor: pointer;
         >img {
           width: 100%;
           height: 100%;
+          margin-right: px2rem(30);
         }
       }
       >p {
-        width: 100%;
-        height: 20%;
-        border-radius: 17px;
-        opacity: 1;
-        color: #ffdaaa;
-        @include fj(center);
-        align-items: center;
-        border: solid 1px #ffdaaa;
-        cursor: pointer;
+        // width: calc(100% - 30/16rem);
+        height: 80%;
+        line-height: px2rem(45);
+        float: right;
+        text-indent: 2em;
+        letter-spacing: .1em;
+        font-size: px2rem(28);
+        margin: vertical(72) px2rem(40) 0 px2rem(30);
+        color: #333333;
       }
     }
   }
