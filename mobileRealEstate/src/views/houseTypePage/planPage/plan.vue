@@ -31,7 +31,7 @@ export default {
     .then(res => {
       this.title = res.data.data;
         if(this.title[this.houseNum]) {
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[this.houseNum].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             this.dataAll = res.data.data;
             this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 3);
@@ -51,7 +51,7 @@ export default {
       if (this.houseNum != val && this.title[val]) {
         this.houseNum = val;
         if(this.title[this.houseNum]) {
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[this.houseNum].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             this.dataAll = res.data.data;
             this.imgPlanBack = this.dataAll && this.dataAll.houseTypeImageLocation && getImage(this.dataAll.houseTypeImageLocation, 3);

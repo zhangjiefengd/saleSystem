@@ -42,7 +42,7 @@ export default {
         .then(res => {
             this.title = res.data.data;
             if(this.title[0]) {
-                this.$axios.get("/house/sampleRoomImage/get?houseTypeName=" + this.title[0].houseTypeName)
+                this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[0].id)
                 .then(res => {  
                     this.house = res.data.data;
                     if (this.house[this.houseNum] && this.house[this.houseNum].sampleRoomImageLocation) {
@@ -86,7 +86,7 @@ export default {
             this.$emit('checkVR', val, 1);
             if (this.houseNum != val && this.title[val]) {
                 this.houseNum = val;
-                this.$axios.get("/house/sampleRoomImage/get?houseTypeName=" + this.title[val].houseTypeName)
+                this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[val].id)
                 .then(res => {  
                     this.$forceUpdate();
                     this.house = res.data.data;

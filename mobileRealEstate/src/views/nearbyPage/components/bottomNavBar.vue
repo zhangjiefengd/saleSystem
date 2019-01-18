@@ -56,8 +56,8 @@ export default {
     @include fj(center);
     align-items: center;
     .choose {
-        width: px2rem(350);
-        height: px2rem(40);
+        width: 36.7%;
+        height: 59.2%;
         // background-color: red;
         @include fj();
         div {
@@ -68,19 +68,19 @@ export default {
             align-items: center;
             cursor: pointer;
             a {
-                @include fontSize(28);
-                color: white;
+                @include fontSize(30);
+                color: #666666;
             }
 
         }
         .active {
             a {
-                color: #ffdaaa;
+                color: #c7ad8b;
             }
         }
         .noActive {
             a {
-                color: white;
+                color: #666666;
             }
         }
         #around {

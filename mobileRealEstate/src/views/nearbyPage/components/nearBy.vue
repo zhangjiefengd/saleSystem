@@ -45,7 +45,7 @@ export default {
 #nearType{
   width: 100%;
   height: 100%;
-  background-color: #202020;
+  // background-color: #202020;
   @include fj(space-between);
   flex-direction: column;
   align-items: center;
@@ -67,9 +67,13 @@ export default {
   //   background-color: #fff;
   // }
   .bottom {
+ 
     width: 100%;
-    height: percentage(121/1206);
-    border-top: px2rem(2) solid #ffdaaa;
+    height: px2rem(98);
+    background-color: #ffffff;
+    box-shadow: 0px 11px 36px 3px 
+      rgba(29, 35, 40, 0.2);
+
   }
 }
 </style>
