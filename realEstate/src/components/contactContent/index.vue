@@ -16,16 +16,18 @@
                     <span>客服电话：{{qrTel}}</span>
                 </div>
                 <div class="customerInfo">
+                    <img src='../../assets/img/default/must.png'/>
                     <table border="0">
                         <tr>
                             <td><span>电话：</span></td>
-                            <td><input class="tel con" v-model="tel" placeholder="必填"/></td>
+                            <td><input class="tel con" v-model="tel" placeholder="请输入您的手机号"/></td>
                         </tr>
                         <tr>
                             <td><span>价格：</span></td>
                             <td>
                                 <div class="price con"  @click='priceDis'>
                                     {{selectPrice}}
+                                    <span :style='{display: placeholder}'>请选择理想价位</span>
                                     <img src='../../assets/img/default/down.png'/>
                                 </div>
                                 <div class="priceSelect" :style='{display: priceDisplay}'>
@@ -77,7 +79,7 @@ import fail from '../../assets/img/default/fail.png'
 export default {
   data() {
     return {
-        selectPrice: '1万元以下/平',
+        selectPrice: '',
         priceDisplay: 'none',
         checkPrice: 0,
         qrWord: '',
@@ -89,7 +91,8 @@ export default {
         infoDisplay: 'block',
         infoSub: '',
         successDisplay: 'none',
-        imgSub: success
+        imgSub: success,
+        placeholder: 'block'
     }
   },
   components: {
@@ -215,6 +218,15 @@ export default {
         }
         
       }
+  },
+  watch: {
+      selectPrice(value) {
+          if(value) {
+              this.placeholder = 'none';
+          } else {
+              this.placeholder = 'block';
+          }
+      }
   }
 }
 </script>
@@ -311,6 +323,7 @@ export default {
                 width: px2rem(665);
                 padding-left: px2rem(100);
                 padding-right: px2rem(67);
+                position: relative;
                 .submit {
                     width: px2rem(179);
                     height: px2rem(69);
@@ -323,6 +336,13 @@ export default {
                     margin-top: px2rem(10);
                     margin-left: px2rem(318);
                     cursor: pointer;
+                }
+                >img {
+                    width: px2rem(12);
+                    height: px2rem(13);
+                    position: absolute;
+                    top: px2rem(25);
+                    left: px2rem(73);
                 }
                 table {
                     width: 100%;
@@ -354,6 +374,18 @@ export default {
                                 position: relative;
                                 top: px2rem(-20);
                             }
+                            .con::-webkit-input-placeholder{
+                                @include sc(px2rem(29));
+                                color: #c1c1c1;
+                            }
+                            .con::-moz-placeholder{  //不知道为何火狐的placeholder的颜色是粉红色，怎么改都不行，希望有大牛路过帮忙指点
+                                @include sc(px2rem(29));
+                                color: #c1c1c1;        
+                            }
+                            .con:-ms-input-placeholder{  //由于我的IE刚好是IE9，支持不了placeholder，所以也测试不了(⊙﹏⊙)，有IE10以上的娃可以帮我试试
+                                @include sc(px2rem(29));
+                                color: #c1c1c1;        
+                            }
                             .price {
                                 @include fj();
                                 align-items: center;
@@ -364,6 +396,10 @@ export default {
                                     height: px2rem(19);
                                 }
                                 cursor: pointer;
+                                span {
+                                    @include sc(px2rem(29), #c1c1c1);
+                                    letter-spacing: px2rem(1);
+                                }
                             }
                             .priceSelect {
                                 width: px2rem(391);
