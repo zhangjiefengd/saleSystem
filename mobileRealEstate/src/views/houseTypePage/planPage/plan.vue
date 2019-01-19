@@ -179,7 +179,7 @@ export default {
   position: relative;
   .picA {
     width: 100%;
-    height: px2rem(562);
+    height: px2rem(540);
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -191,14 +191,16 @@ export default {
   }
   .pageNum {
     width: 100%;
-    height: px2rem(30);
+    height: px2rem(35);
+            // background-color: #fff;
     position: relative;
-    span {
-      position: absolute;
-      right: px2rem(61);
-      @include fontSize(23);
-      color: #c9c9c9;;
-    }
+            span {
+                position: absolute;
+                right: px2rem(30);
+                @include fontSize(30);
+                letter-spacing: px2rem(2);
+                color: #717171;
+            }
   }
 }
 

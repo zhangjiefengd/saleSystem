@@ -3,10 +3,9 @@
     <div class="developAll">
       <div id="develop" v-loading="bgcLoading" element-loading-text="背景图片上传中">
         <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
-          <!--<svg class="icon" aria-hidden="true">-->
-            <!--<use xlink:href="#icon-zhengque"></use>-->
-          <!--</svg>-->
-          全部提交
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-zhengque"></use>
+          </svg>
         </button>
         <label class="change changebgc" for="bFile">
           <img class="imgstyle" src="../../../assets/img/brandBGC/changeBGC.png" alt="">
@@ -169,7 +168,6 @@
         var defaultContent = {
           'developTitle': '默认标题',
           'enterpriseDevelopInfo': '默认内容',
-          'id': 0,
           'step': '时间自定义'
         }
         this.$axios({
@@ -364,11 +362,8 @@
     z-index: 99;
     right: 0;
     bottom: 0;
-
-    &:hover {
-      color: #54b3ff;
-      background-color: #d3ecfd;
-    }
+    color: #54b3ff;
+    background-color: #d3ecfd;
   }
 
   .change {

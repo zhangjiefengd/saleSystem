@@ -3,7 +3,7 @@
     <div class="brandIntroLunbo">
       <div class="brandIntroPhoto touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
         <transition-group tag="ul" :name="change">
-          <li v-for="(image, index) in brandIntroPhoto"  v-show="index == imageNum">
+          <li v-for="(image, index) in brandIntroPhoto" :key='image.image'  v-show="index === imageNum">
             <img :src="image.image" alt="">
           </li>
         </transition-group>

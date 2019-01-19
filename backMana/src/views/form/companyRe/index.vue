@@ -38,7 +38,7 @@
             <li v-for="(image, index) in images" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
           </ul>
           <div class="introduce">
-            <img src="../../../assets/img/brandBGC/worldBgc.png" alt="">
+            <img :style="{backgroundCOlor: imgColor}" src="../../../assets/img/brandBGC/worldBgc.png" alt="">
             <div class="worldFather">
               <div class="worldIntro">
                 <div class="worldTitle">
@@ -61,9 +61,9 @@
                      :class="[{hide: contentAuto}]">{{
                     worlds.enterpriseIntroduction }} </p>
                   <form action="introduction/text">
-									<textarea rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
-                            :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
-									</textarea>
+                    <textarea rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
+                              :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
+                    </textarea>
                     <input type="submit" id="submit2" style="display:none">
                   </form>
                 </div>
@@ -79,10 +79,9 @@
             </div>
 
             <button class="allSubmit" type="button" @click="submitForm" value="保存">
-              <!--<svg class="icon" aria-hidden="true">-->
-                <!--<use xlink:href="#icon-zhengque"></use>-->
-              <!--</svg>-->
-              全部提交
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-zhengque"></use>
+              </svg>
             </button>
           </div>
           <router-view></router-view>
@@ -94,7 +93,7 @@
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
   import qs from 'qs'
-  import ip from '../../../../static/ip'
+
   export default {
     name: 'enterprise',
     data() {
@@ -112,7 +111,8 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: ip + ':8080/static/image/',
+        head: 'http://118.24.113.182:8080/static/image/',
+        imgColor: '#eee'
       }
     },
     created() {
@@ -124,7 +124,7 @@
       })
     },
     mounted() {
-      var b = document.getElementsByTagName('input')[0]
+      var b = document.getElementById('upfile')
       b.onchange = () => {
         if (b.files[0].size > 10485760) {
           this.$message({
@@ -175,7 +175,7 @@
             this.changeImageNum = res.data.data
             this.images = res.data.data
             this.images.map((item, index) => {
-              this.images[index].image = this.getImage(item.imageLocation, 2)
+              this.images[index].image = this.getImage(item.imageLocation, 1)
             })
           })
           .catch(error => {
@@ -222,7 +222,7 @@
       changeContent() {
         this.contentAuto = !this.contentAuto
         var content1 = document.getElementsByClassName('content')
-        this.worlds.enterpriseIntroduction = content1[1].value
+        this.worlds.enterpriseIntroduction = content1[2].value
         if (!this.contentAuto) {
           this.timer = setInterval(() => {
             this.autoPlay()
@@ -332,12 +332,8 @@
       },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
-        let index = i;
-        while (imgSplit.length - 1 <= index) {
-            index--;
-        }
-          return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
-      },
+        return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+      }
     }
   }
 
@@ -362,11 +358,8 @@
     position: absolute;
     right: 0;
     bottom: 0;
-
-    &:hover {
-      color: #54b3ff;
-      background-color: #d3ecfd;
-    }
+    color: #54b3ff;
+    background-color: #d3ecfd;
   }
 
   #updiv {
@@ -427,8 +420,9 @@
 
   .controlEnterprise {
     width: 100%;
-    height: px2rem(scale(1450));
+    height: px2rem(scale(1550));
     background-color: #edf0f5;
+    padding-bottom: 60px;
   }
 
   .enterprise_center {
@@ -455,7 +449,6 @@
 
     #upload {
       height: 100%;
-
       #imgform {
         width: 100%;
         height: 100%;

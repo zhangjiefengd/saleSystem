@@ -305,6 +305,9 @@ export default {
 .content {
     width: 100%;
     height: 100%;
+    background-image: url('../../../assets/img/index/background.jpg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
     // background-color: #1E1E1E;
     // background-color: #202020;
     // @include fj(center);
@@ -326,7 +329,7 @@ export default {
     }
     .middle {
         width: 100%;
-        height: px2rem(646);
+        height: px2rem(592);
         // margin-top: px2rem(163);
         position: absolute;
         top: 18.8%;

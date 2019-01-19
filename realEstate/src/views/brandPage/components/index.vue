@@ -2,16 +2,16 @@
 <div id="leftNav">
   <div id="leftNavBar">
     <div class="leftLogo" >
-      <img src="../../../assets/img/leftNav/logo.png" alt="">
+      <img :src="companyLogo" alt="">
     </div>
     <ul id="LeftWorld">
       <router-link @click.native="closeLinkInfo" tag="li" v-for="(world, index) in worlds" :key="index" :to="world.address" :class="index==Num?leftBottom:''">
         {{ world.name }}
       </router-link>
     </ul>
-    <div class="leftEat">
+    <!-- <div class="leftEat">
        <img src="../../../assets/img/leftNav/eat.png" alt="">
-    </div>
+    </div> -->
   </div>
   <div class="backImage"  @click="clickBack">
     <img src="../../../assets/img/brandBGC/back.png" alt="">
@@ -44,7 +44,6 @@
       </ul>
     </div>
   </transition>
-  <div class="linkUs" @click="showInfo">我有意向</div>
   <transition name="fade" mode="out-in">
     <router-view></router-view>
   </transition>
@@ -52,7 +51,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import { resetTime, Timeout } from "../../../ultis/timeOut.js";
+import getImage from '@/ultis/getImage.js'
 
 export default {
   name: 'layout',
@@ -78,10 +77,18 @@ export default {
       ],
       Num: 0,
       leftBottom: 'leftBottom',
-      isShowInfo: false
+      isShowInfo: false,
+      companyLogo: ''
     }
   },
   created () {
+    this.$axios.get("/basic/guidePage/get")
+      .then((res) => {
+        res.data.data && res.data.data.projectLogoLocation ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     clickBack: function () {
@@ -123,14 +130,13 @@ export default {
     }
   }
   #leftNavBar {
-    width: transverse(300);
+    width: transverse(260);
     height: 100%;
-    background-color: #121212;
+    background-color: #ffffff;
     float: left;
-    border-right: 0.05rem solid #c79f62;
     position: relative;
     .leftLogo {
-      width: px2rem(167);
+      width: px2rem(179);
       margin: px2rem(90) auto;
       margin-bottom: 0;
       >img {
@@ -140,29 +146,26 @@ export default {
     }
     #LeftWorld {
       width: 100%;
-      height: vertical(500);
-      display: -webkit-flex;
-      @include fj(center);
-      flex-direction: column;
-      flex-wrap: wrap;
-      >:last-child {
-        border-bottom: 0.05rem solid #c79f62;
-      }
+      height: vertical(600);
+      // display: -webkit-flex;
+      margin-top: px2rem(97);
+      // @include fj(center);
+      // flex-direction: column;
+      // flex-wrap: wrap;
       li {
-        height: vertical(180);
-        border-top: 0.05rem solid #c79f62;
+        width: 100%;
+        height: px2rem(100);
         text-align: center;
-        @include sc(px2rem(30));
+        @include sc(px2rem(36));
+        letter-spacing: .2em;
         @include fj(center);
         align-items: center;
         cursor: pointer;
+        color: #666666;
       }
       .router-link-active {
-        background-color: #ffdaaa;
-        color: #121212;
-      }
-      .leftBottom {
-        border-bottom: 0.05rem solid #c79f62;
+        background-color: #c7ad8c;
+        color: #fefdfd;
       }
     }
     .leftEat {

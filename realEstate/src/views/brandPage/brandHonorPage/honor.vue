@@ -2,18 +2,22 @@
 	<div id="honor" class="honor">
     <img :src="background" alt="" class="back">
     <div class="content">
-      <ul class="worlds">
-        <li v-for="(world, index) in worlds" >
-          <img src="@/assets/img/brandBGC/worldLogo.png" alt="">
-          <span>{{ world.enterpriseHonorInfo }}</span>
-        </li>
-      </ul>
+      <div class="worlds">
+        <div class="word-line">
+        </div>
+        <ul class="words">
+          <li v-for="(world, index) in worlds" :key="index">
+            <span class="honor-spot"></span>
+            <span>{{ world.enterpriseHonorInfo }}</span>
+          </li>
+        </ul>
+      </div>
       <div class="picture">
-        <div class="left" @click="leftChange">
+        <div class="left" @click="leftChange" v-show="honorPhoto.length > 1">
           <img src="@/assets/img/brandBGC/left.png" alt="">
         </div>
-        <img class="hide" v-if="photo.image" :src="photo.image" v-for="(photo, index) in honorPhoto"  alt="" :class="[{show: index==imageNum}]">
-        <div class="right" @click="rightRight">
+        <img class="hide" v-if="photo.image" :src="photo.image" v-for="(photo, index) in honorPhoto" :key="index" alt="" :class="[{show: index==imageNum}]">
+        <div class="right" @click="rightRight" v-show="honorPhoto.length > 1">
           <img src="@/assets/img/brandBGC/right.png" alt="">
         </div>
       </div>
@@ -41,7 +45,7 @@ export default {
       worlds: '',
       imageNum: 0,
       backBig: '',
-      head: ip + ':80/',
+      head: ip + ':8080/static/image/',
       conDisplay: 'none'
     }
 
@@ -132,7 +136,7 @@ export default {
       imgObject.onload = function () {
         var time = setInterval(() => {
           this.background = imgUrl
-          document.getElementsByClassName('back')[0].src = this.background
+          document.getElementsByClassName('back')[0].src = this.background;
           ele.setAttribute('class', 'honor complete')
         }, 100)
       }
@@ -145,7 +149,7 @@ export default {
 @import '../../../styles/main.scss';
 @import '../../../styles/mixin.scss';
 #honor {
-  width: transverse(1620);
+  width: transverse(1660);
   height: 100%;
   float: left;
   position: relative;
@@ -161,55 +165,75 @@ export default {
     top: vertical(125);
     @include fj(center);
     align-items: center;
+    flex-direction: row-reverse;
     .worlds {
-      width: transverse(900);
-      height: vertical(560);
-      float: left;
-      @include fj(space-between);
-      flex-direction: column;
-      li {
-        font-size: px2rem(25);
-        line-height: 33px;
+      width: transverse(800);
+      height: vertical(900);
+      margin-left: vertical(40);
+      position: relative;
+      .word-line {
+        position: absolute;
+        left: px2rem(7);
+        bottom: 0;
+        width: px2rem(1);
+        height: calc(100% - 17px);
+        background-color: #999999;
+      }
+      .words {
         @include fj(flex-start);
-        align-items: center;
-        >span {
-          text-indent: 1em;
-          color: #ffffff;
-        }
-        >img {
-          width: px2rem(32);
-          height: px2rem(22);
+        flex-direction: column;
+        margin-top: px2rem(-55);
+        li {
+          font-size: px2rem(30);
+          line-height: 34px;
+          @include fj(flex-start);
+          align-items: center;
+          margin-top: px2rem(50);
+          .honor-spot {
+            width: px2rem(15);
+            height: px2rem(15);
+            background-color: #c7ad8c;
+            border-radius: 50%;
+          }
+          >span {
+            text-indent: 1.2em;
+            color: #333333;
+          }
+          >img {
+            width: px2rem(32);
+            height: px2rem(22);
+          }
         }
       }
     }
     .picture {
-      width: transverse(460);
-      height: vertical(560);
-      float: left;
+      width: transverse(850);
+      height: vertical(900);
       position: relative;
-      margin-left: vertical(120);
       @include fj(center);
       align-items: center;
       overflow: hidden;
       .left,.right {
-        width: transverse(120);
-        height: vertical(200);
         position: absolute;
         top: 50%;
+        cursor: pointer;
         transform: translateY(-50%);
-        background-color: rgba(101, 101, 101, 0.26);
-        @include fj(center);
-        align-items: center;
         >img {
-          width: px2rem(12);
-          height: px2rem(32);
+          width: px2rem(33);
+          height: px2rem(73);
+          &:hover {
+            color: #c7ad8c;
+            // background-color: transparent;
+            // background-color: #c7ad8c;
+            opacity: .5;
+          }
         }
       }
       .left {
-        left: 0;
+        left: px2rem(30);
       }
       .right{
-        right: 0;
+        right: px2rem(30);
       }
       >img {
         width: 100%;
@@ -225,4 +249,5 @@ export default {
 .complete {
     // filter: blur(0);
 }
+
 </style>

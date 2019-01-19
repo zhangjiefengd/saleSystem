@@ -175,7 +175,8 @@ export default {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: auto 100%;
+  background-image: url('../../../assets/img/index/background.jpg');
   @include fj(center);
   align-items: center;
   .header {

@@ -51,7 +51,8 @@ export default {
   align-items: center;
   .header {
     width: 100%;
-    height: percentage(1085/1206);
+    // flex: 1;
+    height: 92.2%;
     position: relative;
     // img {
     //   width: px2rem(64);
@@ -69,11 +70,10 @@ export default {
   .bottom {
  
     width: 100%;
-    height: px2rem(98);
+    height: 7.8%;
     background-color: #ffffff;
-    box-shadow: 0px 11px 36px 3px 
-      rgba(29, 35, 40, 0.2);
-
+    box-shadow: 0px px2rem(11) px2rem(36) px2rem(3) rgba(29, 35, 40, 0.2);
+    z-index: 1;
   }
 }
 </style>

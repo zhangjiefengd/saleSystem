@@ -33,11 +33,14 @@ export default {
         }
     },
     created() {
+        if (this.$route.query.houseNum) {
+            this.houseNum = this.$route.query.houseNum;
+        }
         this.$axios.get("/house/houseType/get")
             .then(res => {
                 this.house = res.data.data;
-                if (this.house && this.house[0] && this.house[0].houseTypeVrUrl) {
-                    this.src=this.house[0].houseTypeVrUrl;
+                if (this.house && this.house[this.houseNum] && this.house[this.houseNum].houseTypeVrUrl) {
+                    this.src=this.house[this.houseNum].houseTypeVrUrl;
                     // this.numRight = res.data.data[this.houseNum].houseSampleRooms.length;
                     // this.imgSrc = res.data.data[this.houseNum].houseSampleRooms;
                     // this.clickUrl = this.imgSrc[this.houseNum].houseTypeImage.image.fileName;
@@ -124,7 +127,7 @@ export default {
     height: 100%;
     .pic {
         width: 100%;
-        height: px2rem(562);
+        height: px2rem(540);
     }
 }
 </style>

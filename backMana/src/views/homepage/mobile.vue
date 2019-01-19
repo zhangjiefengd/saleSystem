@@ -9,20 +9,20 @@
         <input type='file' id="bFile" style="position: absolute;clip:rect(0 0 0 0);" name='photos' class="upfile">
       <div class="homeHead">
         <div class="homeLogo" v-loading="logoLoading" element-loading-text="logo上传中">
-          <label class="change changebgc" for="upfile">
+          <!-- <label class="change changebgc" for="upfile">
             <img class="imgstyle" src="../../assets/img/subLogo.png" alt="">
           </label>
-          <input type='file' name='photos' id="upfile" style="position: absolute;clip:rect(0 0 0 0);">
+          <input type='file' name='photos' id="upfile" style="position: absolute;clip:rect(0 0 0 0);"> -->
           <img :src="homeLogo.url" alt="">
         </div>
       </div>
       <div class="projectList">
         <ul class="homeModule">
           <li  v-loading="module.loading" element-loading-text="logo上传中" v-for="(module, index) in moduleIndex" :key="index">
-            <label class="change changeLogo" :for="'logo' + index">
+            <!-- <label class="change changeLogo" :for="'logo' + index">
               <img class="imgstyle" src="../../assets/img/subLogo.png" alt="">
             </label>
-            <input type='file' name='photos' :id="'logo' + index" style="position: absolute;clip:rect(0 0 0 0);">
+            <input type='file' name='photos' :id="'logo' + index" style="position: absolute;clip:rect(0 0 0 0);"> -->
             <img :src="module.icon" alt="">
             <span>
               {{ module.description }}
@@ -49,7 +49,7 @@
   background-color: #edf0f5;
 }
 .homePage {
-  width: 40%;
+  width: 30%;
   height: 100%;
   background-size: cover;
   position: relative;
@@ -59,10 +59,10 @@
     @include fj(flex-end);
     flex-direction: column;
     align-items: center;
-    margin-top: px2rem(100);
+    margin-top: px2rem(220);
     .homeLogo {
-      width: px2rem(400);
-      height: px2rem(250);
+      max-width: px2rem(500);
+      height: px2rem(300);
       position: relative;
       img {
         width: 100%;
@@ -78,18 +78,20 @@
     margin: px2rem(60) 0;
     .homeModule {
       width: px2rem(600);
-      height: px2rem(300);
-      @include fj();
+      height: px2rem(180);
+      @include fj(center);
       align-items: space-between;
       flex-wrap: wrap;
       margin-top: 4%;
+      padding: 0;
       li {
-        width: px2rem(250);
+        width: 50%;
         height: px2rem(80);
         background-color: rgba(98, 98, 100, 0.53);
         @include fj(space-around);
         align-items: center;
         position: relative;
+        opacity: 0.53;
         >img {
           width: px2rem(30);
           height: px2rem(30);
@@ -108,7 +110,7 @@
     align-items: flex-start;
     margin-bottom: px2rem(30);
     img {
-      width: px2rem(134);
+      width: px2rem(130);
       height: px2rem(24);
     }
   }
@@ -190,22 +192,22 @@ export default {
   mounted() {
     var bgcFile = document.getElementById('bFile')
     var headLogo = document.getElementById('upfile')
-    var logo = new Map()
-    this.moduleIndex.map((item, index) => {
-      item.domNode = eval('document.getElementById("logo' + index + '")')
-      item.domNode.onchange = () => {
-        if (item.domNode.files[0].size > 10485760) {
-          this.$message({
-            message: '图片不能大于10M',
-            type: 'warning'
-          })
-        } else {
-          this.moduleIndex[index].icon = getUrl(item.domNode.files[0])
-          this.moduleIndex[index].image = item.domNode.files[0]
-          this.moduleIndex[index].loading = false
-        }
-      }
-    })
+    // var logo = new Map()
+    // this.moduleIndex.map((item, index) => {
+    //   item.domNode = eval('document.getElementById("logo' + index + '")')
+    //   item.domNode.onchange = () => {
+    //     if (item.domNode.files[0].size > 10485760) {
+    //       this.$message({
+    //         message: '图片不能大于10M',
+    //         type: 'warning'
+    //       })
+    //     } else {
+    //       this.moduleIndex[index].icon = getUrl(item.domNode.files[0])
+    //       this.moduleIndex[index].image = item.domNode.files[0]
+    //       this.moduleIndex[index].loading = false
+    //     }
+    //   }
+    // })
     bgcFile.onchange = () => {
       if (bgcFile.files[0].size > 10485760) {
           this.$message({
@@ -218,27 +220,35 @@ export default {
           this.homeBgc.image = bgcFile.files[0];
         }
     };
-    headLogo.onchange = () => {
-      if (headLogo.files[0].size > 10485760) {
-          this.$message({
-            message: '图片不能大于10M',
-            type: 'warning'
-          })
-      } else {
-        this.$forceUpdate()
-        this.homeLogo.url = getUrl(headLogo.files[0]);
-        this.homeLogo.image = headLogo.files[0];
-      }
-    };
+    // headLogo.onchange = () => {
+    //   if (headLogo.files[0].size > 10485760) {
+    //       this.$message({
+    //         message: '图片不能大于10M',
+    //         type: 'warning'
+    //       })
+    //   } else {
+    //     this.$forceUpdate()
+    //     this.homeLogo.url = getUrl(headLogo.files[0]);
+    //     this.homeLogo.image = headLogo.files[0];
+    //   }
+    // };
   },
   methods: {
     getdate: function () {
+      this.$axios.get('/basic/guidePage/get')
+        .then(res => {
+          if (res.data.data !== null) {
+            this.$forceUpdate()
+            this.homeLogo.url = this.getImage(res.data.data.projectLogoLocation, 2)
+          }
+        })
       this.$axios.get('/basic/mainPage/get')
         .then(res => {
           if (res.data.data !== null) {
             this.homeBgc = res.data.data
-            this.homeBgc.url = this.getImage(this.homeBgc.backgroundImageLocation, 3)
-            this.homeLogo.url = this.getImage(this.homeBgc.projectLogoLocation, 3)
+            console.log(res.data.data)
+            this.homeBgc.url = this.getImage(this.homeBgc.backgroundImageLocation, 2)
+            // this.homeLogo.url = this.getImage(this.homeBgc.projectLogoLocation, 3)
             this.moduleIndex[0].icon = this.getImage(this.homeBgc.projectIntroductionBar, 1)
             this.moduleIndex[1].icon = this.getImage(this.homeBgc.brandOverviewBar, 1)
             this.moduleIndex[2].icon = this.getImage(this.homeBgc.unitDisplayBar, 1)

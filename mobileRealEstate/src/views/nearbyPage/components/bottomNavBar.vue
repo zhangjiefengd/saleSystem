@@ -55,6 +55,7 @@ export default {
     height: 100%;
     @include fj(center);
     align-items: center;
+    // box-shadow: 0px px2rem(11) px2rem(36) px2rem(3) rgba(29, 35, 40, 0.2);
     .choose {
         width: 36.7%;
         height: 59.2%;

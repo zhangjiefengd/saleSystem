@@ -29,10 +29,9 @@
       <div class="box">
         <div id="honor" v-loading="bgcLoading" element-loading-text="背景图片上传中">
           <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
-            <!--<svg class="icon" aria-hidden="true">-->
-              <!--<use xlink:href="#icon-zhengque"></use>-->
-            <!--</svg>-->
-            全部提交
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zhengque"></use>
+            </svg>
           </button>
           <label class="changebgc" for="bFile" style="border-radius: 10px;">
             <img style="width: 100%;height:100%;" src="../../../assets/img/brandBGC/changeBGC.png">
@@ -43,7 +42,7 @@
           <div class="content">
             <form action="" method="post">
               <ul class="worlds">
-                <li v-for="(world, index) in worlds" v-if="index<8" :key="index">
+                <li v-for="(world, index) in worlds" v-if="index < 8" :key="index">
                   <img src="../../../assets/img/brandBGC/worldLogo.png" alt="">
                   <span class="world" :class="[{hide: worldAuto}]"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
@@ -106,7 +105,7 @@
       this.getData()
     },
     mounted() {
-      var honorImg = document.getElementsByTagName('input')[0]
+      var honorImg = document.getElementById('upfile')
       honorImg.onchange = () => {
         if (honorImg.files[0].size > 10485760) {
           this.$message({
@@ -119,7 +118,9 @@
             image: this.getUrl(honorImg.files[0]),
             loading: false
           }
+          this.$forceUpdate()
           this.honorPhoto.push(oimage)
+          console.log(this.honorPhoto)
         } else {
           this.$message({
             message: '上传图片达到上限',
@@ -202,7 +203,6 @@
       addWorld() {
         if (this.worlds.length < 8) {
           var setWorld = {
-            'id': 0,
             'enterpriseHonorInfo': '请编辑文字'
           }
           this.$set(this.worlds, this.worlds.length, setWorld)
@@ -324,12 +324,11 @@
 
         // 上传文字
         this.worlds.map((item, index) => {
-          if (item.id === 0) {
+          if (!item.id) {
             this.$axios({
               method: 'post',
               url: '/brand/enterpriseHonor/update',
               data: {
-                id: item.id,
                 enterpriseHonorInfo: item.enterpriseHonorInfo
               }
             })
@@ -425,17 +424,15 @@
     z-index: 99;
     right: 0;
     bottom: 0;
-
-    &:hover {
-      color: #54b3ff;
-      background-color: #d3ecfd;
-    }
+    color: #54b3ff;
+    background-color: #d3ecfd;
   }
 
   .honorTop {
     width: 100%;
-    height: px2rem(scale(1450));
+    height: px2rem(scale(1550));
     background-color: #edf0f5;
+    padding-bottom: 60px;
   }
 
   #updiv {
@@ -639,7 +636,7 @@
 
       > form {
         .worlds {
-          width: 100%;
+          width: px2rem(500);
           height: vertical(560);
           float: left;
           @include fj(space-between);
@@ -648,6 +645,7 @@
           margin: 0;
 
           li {
+            width: px2rem(500);
             font-size: px2rem(22);
             line-height: 33px;
             @include fj(flex-start);
@@ -686,6 +684,7 @@
 
       .picture {
         width: transverse(460);
+        height: px2rem(400);
         float: left;
         position: relative;
         @include fj(center);
