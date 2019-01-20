@@ -161,6 +161,13 @@ export default {
         @include fj(center);
         align-items: center;
         cursor: pointer;
+        color: #727272;
+        &:hover {
+          background-color: #dfc29d;
+        }
+        &:active {
+          background-color: #c1a077;
+        }
         color: #666666;
       }
       .router-link-active {

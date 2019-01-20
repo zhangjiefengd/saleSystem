@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="brandIntroVideo"  @click="brandVideo">
-        <img src="../../assets/img/brand/video.png" alt="">
+        <img src="../../assets/img/brand/video.jpg" alt="">
       </div>
     </div>
     <div class="brandIntroWord">
@@ -83,7 +83,7 @@ export default {
     var parentBox = document.getElementsByClassName('brandIntroWordContent')[0]
     var contentBox = document.getElementsByClassName('brandIntroContent')[0]
     setTimeout(()=>{
-      if (brandWorldScroll.offsetHeight == brandWorldScroll.scrollHeight) {
+      if (contentBox.offsetHeight == parentBox.scrollHeight) {
         this.wordRemind = false;
       }else {
         this.wordRemind = true;
@@ -91,7 +91,6 @@ export default {
     },100);
     var brandWorldScroll = document.getElementsByClassName('brandIntroWordContent')[0];
     brandWorldScroll.addEventListener('scroll', ()=>{
-      console.log(parentBox.scrollHeight, contentBox.scrollHeight)
       var allheight = parseInt(brandWorldScroll.scrollHeight);
       var judeHeight = Math.ceil(brandWorldScroll.scrollTop) + Math.ceil(brandWorldScroll.offsetHeight);
       if (allheight == judeHeight || allheight+1 == judeHeight || allheight == judeHeight+1) {
@@ -175,6 +174,7 @@ export default {
           position: absolute;
           width: 100%;
           height: 100%;
+          background-color: #c7ad8c;
           img {
             width: 100%;
             height: 100%;
@@ -229,11 +229,12 @@ export default {
     @include fj(flex-start);
     flex-direction: column;
     align-items: center;
+    font-family: FZHTJW;
     .brandIntroWordTitle {
       width: 85%;
       height: px2rem(80);
       @include fontSize(40);
-      margin-top: 5rem;
+      margin-top: 1rem;
       color: #ffdaaa;
       @include fj();
       align-items: center;
@@ -241,13 +242,13 @@ export default {
     .brandIntroWordContent {
       width: 85%;
       height: 78%;
-      @include fontSize(24);
-      @include lineHeight(40);
+      @include fontSize(30);
+      @include lineHeight(45);
       text-indent: 2em;
-      margin-top: 1rem;
+      letter-spacing: .15em;
       color: #fffffe;
       overflow-y: auto;
-      span {
+      .brandIntroContent {
         display: block;
       }
     }
@@ -258,8 +259,8 @@ export default {
     @include fj(center);
     align-items: center;
     img {
-      width: px2rem(37);
-      height: px2rem(27);
+      width: px2rem(30);
+      height: px2rem(20);
     }
   }
 }

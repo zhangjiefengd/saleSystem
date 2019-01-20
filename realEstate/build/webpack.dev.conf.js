@@ -13,11 +13,19 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+<<<<<<< Updated upstream
 // //mook数据
 // const express = require('express');
 // const app = express();
 
 // //获取guide的内容
+=======
+//mook数据
+// const express = require('express');
+// const app = express();
+
+//获取guide的内容
+>>>>>>> Stashed changes
 // let guide = require('../static/guide.json');
 // let imgBack = guide.imgBack;
 // let imgLogo = guide.imgLogo;
@@ -98,6 +106,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app) {
+<<<<<<< Updated upstream
     //   app.all('*', (req, res, next) => {
     //     var origin = req.headers.origin;
     //     res.header('Access-Control-Allow-Origin', origin);
@@ -172,6 +181,82 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     //       near: near
     //     })
     //   });
+=======
+      // app.all('*', (req, res, next) => {
+      //   var origin = req.headers.origin;
+      //   res.header('Access-Control-Allow-Origin', origin);
+      //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token');
+      //   res.header('Access-Control-Allow-Credentials', true);
+      //   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
+      //   next()
+      // });
+      // app.get('/api/guide', function (req, res) {
+      //   res.json({
+      //     imgBack: imgBack,
+      //     imgLogo: imgLogo,
+      //     word: word
+      //   });
+      // });
+      // app.get('/api/index', function (req, res) {
+      //   res.json({
+      //     imgIndexBack: imgIndexBack,
+      //     imgProject: imgProject
+      //   });
+      // });
+      // app.get('/api/module', function (req, res) {
+      //   res.json({
+      //     moduleIndex: moduleIndex
+      //   });
+      // });
+      // app.get('/api/project', function (req, res) {
+      //   res.json({
+      //     // imgProjectBack: imgProjectBack,
+      //     // projectWord: projectWord,
+      //     project: project,
+      //     // project3D: project3D,
+      //     // back: back
+      //   });
+      // });
+      // app.get('/api/leftNav', function (req, res) {
+      //   res.json({
+      //     LeftNav: LeftNav,
+      //     enterprise: enterprise
+      //     // HouseTypeleftNav: HouseTypeleftNav,
+      //     // ,
+      //     // nearBy: nearBy
+      //   })
+      // });
+      // app.get('/api/enterprise', function (req, res) {
+      //   res.json({
+      //     enterprise: enterprise,
+      //   })
+      // });
+      // app.get('/api/honor', function (req, res) {
+      //   res.json({
+      //     honor: honor,
+      //   })
+      // });
+      // app.get('/api/develop', function (req, res) {
+      //   res.json({
+      //     develop: develop,
+      //   })
+      // });
+      // app.get('/api/culture', function (req, res) {
+      //   res.json({
+      //     culture: culture,
+      //   })
+      // });
+      // app.get('/api/house', function (req, res) {
+      //   res.json({
+      //     dataAll: dataAll
+      //   })
+      // });
+      // app.get('/api/near', function (req, res) {
+      //   res.json({
+      //     near: near
+      //   })
+      // });
+>>>>>>> Stashed changes
     }
   },
   plugins: [

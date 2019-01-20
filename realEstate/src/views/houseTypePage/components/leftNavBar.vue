@@ -47,7 +47,7 @@ import getImage from '../../../ultis/getImage.js'
         });
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.worlds = res.data.data;
+            this.worlds = res.data.data.reverse();
         })
         .catch(error => {
             console.log(error);
@@ -120,6 +120,9 @@ import getImage from '../../../ultis/getImage.js'
         // @include fj(space-around);
         // flex-direction: column;
         // align-items: center;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        @include scrollBarTwo();
         div {
             width: 100%;
             height: px2rem(110);

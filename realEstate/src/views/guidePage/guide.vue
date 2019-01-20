@@ -23,7 +23,8 @@ import intial from '../../assets/img/index/loading.jpg';
 import getImage from '../../ultis/getImage.js';
 export default {
   data() {
-    return {                                                                                                      imgBack: '',
+    return {
+      imgBack: '',
       imgLogo: '',
       word: [],
       root: null,
@@ -34,7 +35,7 @@ export default {
   },
   created() {
     //获取引导页数据
-    this.$axios.get("/basic/guidePage/get")
+    this.$axios.get("/basic/guidePage/get?a=" + Math.random())
     .then((res) => {
       if (screen.width > 1024){
         this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
@@ -94,7 +95,7 @@ export default {
         ele.src = this.imgLogo;
           // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
         ele.setAttribute('class', 'guideLogo complete');
-        
+
       }
     },
     imgBig() {

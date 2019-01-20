@@ -1,12 +1,14 @@
 <template>
     <div class="houseChoose">
+        <ul>
         <li v-for="(house, index) in houseType"  :key='index'>
             <div class="clickType" @click="clickHouseType(index)" @dblclick="update(index)"  :style="{backgroundColor: clickColor[index]}">
                 {{ house.houseTypeName }}
             </div>
             <img :src="chachaPic" class="chaHouse" :style="{display: visibility[index]}" @click='deleteHouseType(index)'>     
         </li>
-        <img class="clickType" id="addHouseType" :src="addHouseTypes" @click='addHouseType'>   
+        </ul>
+        <img class="clickType addPicAll" id="addHouseType" :src="addHouseTypes" @click='addHouseType'>   
     </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
     created() {
         //请求房间类型
         this.$axios.get("/house/houseType/get").then(res => {
-            this.houseType = res.data.data;
+            this.houseType = res.data.data.reverse();
             this.houseType.forEach((house) => {
                 this.visibility.push('none');
                 this.clickColor.push('#9ea6b1');
@@ -175,7 +177,7 @@ export default {
 .houseChoose {
     width: 70%;
     height: px2rem(80);
-    @include fj(center);
+    @include fj();
     align-items: center;
     cursor: pointer;
     position: absolute;
@@ -186,6 +188,14 @@ export default {
     #addHouseType {
         width: px2rem(34);
         height: px2rem(34);
+    }
+    ul {
+        width: 90%;
+        height: 100%;
+        overflow-x: auto;
+        @include scrollBarTwo();
+        @include fj(center);
+        align-items: center;
     }
     li {
         position: relative;
@@ -211,6 +221,11 @@ export default {
         border-radius: px2rem(4);
         margin-left: px2rem(16);
 
+    }
+    .addPicAll {
+        // position: relative;
+        // left: px2rem(500);
+        // z-index: 1000;
     }
     div:hover {
         background-color: #304156;

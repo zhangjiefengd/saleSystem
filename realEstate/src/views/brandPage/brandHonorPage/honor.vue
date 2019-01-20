@@ -173,7 +173,7 @@ export default {
       position: relative;
       .word-line {
         position: absolute;
-        left: px2rem(7);
+        left: px2rem(7.5);
         bottom: 0;
         width: px2rem(1);
         height: calc(100% - 17px);

@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d584bdd5-4a0c-44c7-9c63-287ac7c7b2fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobileRealEstate/src/components/top/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backMana/src/views/around/map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/views/around/map.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backMana/src/views/houseDis/components/houseBottom.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/views/houseDis/components/houseBottom.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/assets/img/rightHouseNav/goLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/assets/img/rightHouseNav/goLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/assets/img/rightHouseNav/goRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/assets/img/rightHouseNav/goRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/3dPage/three.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/3dPage/three.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/planPage/plan.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/planPage/plan.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/prototypeRoomPage/proto.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/prototypeRoomPage/proto.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/bottomNavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/bottomNavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/nearBy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/nearBy.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/components/contactContent/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/components/contactContent/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/homePage/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/homePage/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/houseTypePage/components/leftNavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/houseTypePage/components/leftNavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/nearbyPage/components/leftNavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/nearbyPage/components/leftNavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/culture/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/culture/culture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/develop/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/develop/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/develop/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/develop/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/begin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/bgc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/bgc1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/bgc2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/bgc3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/bigstop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/sound.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/vStop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/vleft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/vright.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/enterprise/worldBgc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/guidePage/guideBackground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/guidePage/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/honor1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/honor2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/honor3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/honor/worldLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/houseType.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/plan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/plan1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/proto.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/proto1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/proto2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/house/sun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/icon44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/imgBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/index/imgProject.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/leftNav/LOGO2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/leftNav/点餐.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/2-8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/3DAround.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/3DMAP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/around.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/nearBy/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/project/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/img/project/project.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/map.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/mappoint.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/radar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/radar.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/map/xiaomap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/137201765785D6.flv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/1372018984C670.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/1372018994ED23.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/13755220865FF9.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/gugongdejiyi.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/music.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/soundinterface.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/soundinterface.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/soundonoff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/videoplayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/music/videoplayer.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/b/l1/1/l1_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/b/l1/1/l1_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/b/l1/2/l1_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/b/l1/2/l1_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/d/l1/1/l1_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/d/l1/1/l1_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/d/l1/2/l1_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/d/l1/2/l1_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/f/l1/1/l1_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/f/l1/1/l1_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/f/l1/2/l1_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/f/l1/2/l1_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/l/l1/1/l1_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/l/l1/1/l1_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/l/l1/2/l1_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/l/l1/2/l1_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/mobile_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/r/l1/1/l1_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/r/l1/1/l1_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/r/l1/2/l1_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/r/l1/2/l1_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/u/l1/1/l1_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/u/l1/1/l1_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/u/l1/2/l1_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/u/l1/2/l1_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun.tiles/vr/pano_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/b/l1/1/l1_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/b/l1/1/l1_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/b/l1/2/l1_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/b/l1/2/l1_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/d/l1/1/l1_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/d/l1/1/l1_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/d/l1/2/l1_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/d/l1/2/l1_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/f/l1/1/l1_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/f/l1/1/l1_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/f/l1/2/l1_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/f/l1/2/l1_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/l/l1/1/l1_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/l/l1/1/l1_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/l/l1/2/l1_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/l/l1/2/l1_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/mobile_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/r/l1/1/l1_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/r/l1/1/l1_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/r/l1/2/l1_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/r/l1/2/l1_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/u/l1/1/l1_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/u/l1/1/l1_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/u/l1/2/l1_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/u/l1/2/l1_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/sun2.tiles/vr/pano_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l1/1/l1_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l1/1/l1_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l1/2/l1_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l1/2/l1_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l2/1/l2_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l2/1/l2_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l2/2/l2_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/b/l2/2/l2_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l1/1/l1_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l1/1/l1_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l1/2/l1_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l1/2/l1_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l2/1/l2_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l2/1/l2_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l2/2/l2_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/d/l2/2/l2_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l1/1/l1_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l1/1/l1_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l1/2/l1_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l1/2/l1_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l2/1/l2_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l2/1/l2_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l2/2/l2_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/f/l2/2/l2_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l1/1/l1_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l1/1/l1_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l1/2/l1_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l1/2/l1_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l2/1/l2_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l2/1/l2_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l2/2/l2_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/l/l2/2/l2_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/mobile_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l1/1/l1_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l1/1/l1_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l1/2/l1_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l1/2/l1_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l2/1/l2_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l2/1/l2_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l2/2/l2_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/r/l2/2/l2_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l1/1/l1_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l1/1/l1_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l1/2/l1_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l1/2/l1_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l2/1/l2_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l2/1/l2_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l2/2/l2_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/u/l2/2/l2_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg.tiles/vr/pano_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l1/1/l1_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l1/1/l1_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l1/2/l1_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l1/2/l1_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/1/l2_b_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/1/l2_b_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/1/l2_b_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/1/l2_b_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/2/l2_b_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/2/l2_b_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/2/l2_b_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/2/l2_b_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/3/l2_b_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/3/l2_b_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/3/l2_b_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/3/l2_b_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/4/l2_b_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/4/l2_b_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/4/l2_b_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/b/l2/4/l2_b_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l1/1/l1_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l1/1/l1_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l1/2/l1_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l1/2/l1_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/1/l2_d_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/1/l2_d_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/1/l2_d_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/1/l2_d_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/2/l2_d_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/2/l2_d_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/2/l2_d_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/2/l2_d_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/3/l2_d_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/3/l2_d_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/3/l2_d_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/3/l2_d_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/4/l2_d_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/4/l2_d_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/4/l2_d_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/d/l2/4/l2_d_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l1/1/l1_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l1/1/l1_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l1/2/l1_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l1/2/l1_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/1/l2_f_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/1/l2_f_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/1/l2_f_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/1/l2_f_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/2/l2_f_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/2/l2_f_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/2/l2_f_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/2/l2_f_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/3/l2_f_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/3/l2_f_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/3/l2_f_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/3/l2_f_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/4/l2_f_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/4/l2_f_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/4/l2_f_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/f/l2/4/l2_f_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l1/1/l1_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l1/1/l1_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l1/2/l1_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l1/2/l1_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/1/l2_l_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/1/l2_l_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/1/l2_l_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/1/l2_l_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/2/l2_l_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/2/l2_l_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/2/l2_l_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/2/l2_l_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/3/l2_l_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/3/l2_l_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/3/l2_l_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/3/l2_l_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/4/l2_l_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/4/l2_l_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/4/l2_l_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/l/l2/4/l2_l_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/mobile_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l1/1/l1_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l1/1/l1_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l1/2/l1_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l1/2/l1_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/1/l2_r_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/1/l2_r_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/1/l2_r_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/1/l2_r_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/2/l2_r_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/2/l2_r_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/2/l2_r_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/2/l2_r_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/3/l2_r_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/3/l2_r_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/3/l2_r_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/3/l2_r_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/4/l2_r_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/4/l2_r_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/4/l2_r_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/r/l2/4/l2_r_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/thumb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l1/1/l1_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l1/1/l1_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l1/2/l1_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l1/2/l1_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/1/l2_u_1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/1/l2_u_1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/1/l2_u_1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/1/l2_u_1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/2/l2_u_2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/2/l2_u_2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/2/l2_u_2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/2/l2_u_2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/3/l2_u_3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/3/l2_u_3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/3/l2_u_3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/3/l2_u_3_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/4/l2_u_4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/4/l2_u_4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/4/l2_u_4_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/u/l2/4/l2_u_4_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/panos/timg_(1).tiles/vr/pano_u.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/bingmaps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/bingmaps.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/combobox.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/googlemaps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/gyro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/gyro2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/scrollarea.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/scrollarea.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/soundinterface.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/soundinterface.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/textfield.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/videoplayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/videoplayer.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/vtoureditor.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/webvr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/webvr.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/plugins/webvr_cursor_80x80_17f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/rotate_device.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_117.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_117round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_black.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_flat_light.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_glass.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_design_ultra_light.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_hotspot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_mapspot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_mapspotactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/skin/vtourskin_thumbborder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/soundhelper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour_editor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour_testingserver.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/static/vtour/tour_testingserver_macos" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="452">
+              <caret line="357" column="28" selection-start-line="357" selection-start-column="28" selection-end-line="357" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#script#0;n#!!top" />
+                <element signature="e#8614#8963#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>allSubmit</find>
+      <find>imgColor</find>
+      <find>deleteT</find>
+      <find>worldIntro</find>
+      <find>brandHonorScroll</find>
+      <find>price</find>
+      <find>priceDis</find>
+      <find>houseContent</find>
+      <find>houseType</find>
+      <find>scrollBarTwo</find>
+      <find>font-</find>
+      <find>house</find>
+      <find>placeholder</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" />
+        <option value="$PROJECT_DIR$/backMana/src/views/form/companyHo/index.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" />
+        <option value="$PROJECT_DIR$/backMana/src/views/form/companyHis/index.vue" />
+        <option value="$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/projectIntroduce/projectIntro.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/components/contactContent/index.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/App.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="900" />
+    <option name="y" value="8" />
+    <option name="width" value="1362" />
+    <option name="height" value="1009" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="backMana" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="backMana" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="brand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="nearbyPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="nearbyPage" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="nearbyPage" type="462c0819:PsiDirectoryNode" />
+              <item name="parkPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="developPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="houseTypePage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="nearbyPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="projectIntroducePage" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="E:\school\work\realEstate\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d584bdd5-4a0c-44c7-9c63-287ac7c7b2fc" name="Default Changelist" comment="" />
+      <created>1547797942118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547797942118</updated>
+      <workItem from="1547797943600" duration="32359000" />
+      <workItem from="1547884375945" duration="26794000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="59153000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="900" y="8" width="1362" height="1009" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15785499" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="619" column="20" selection-start-line="619" selection-start-column="20" selection-end-line="619" selection-end-column="20" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#5389#6058#0" />
+            <element signature="e#6176#7185#0" />
+            <element signature="e#7204#7329#0" />
+            <element signature="e#7348#7401#0" />
+            <element signature="e#7416#7507#0" />
+            <element signature="e#7528#7939#0" />
+            <element signature="e#8728#9414#0" />
+            <element signature="e#9436#10000#0" />
+            <element signature="e#10028#10067#0" />
+            <element signature="e#10088#11831#0" />
+            <element signature="e#11857#12009#0" />
+            <element signature="e#13642#15225#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/projectSelect/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2346" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/projectManage/modifyProFrame.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3468" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/projectManage/addProjectFrame.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyHo/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2057">
+          <caret line="641" column="25" selection-start-line="641" selection-start-column="25" selection-end-line="641" selection-end-column="25" />
+          <folding>
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/projectManage/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="353" column="32" selection-start-line="353" selection-start-column="21" selection-end-line="353" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/build/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-947" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/build/webpack.dev.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3089" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="117" column="7" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#transition-group#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#transition-group#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="138" column="52" selection-start-line="138" selection-start-column="52" selection-end-line="138" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="79" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyHis/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+          <folding>
+            <element signature="e#2261#2886#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/projectIntroduce/projectIntro.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="68" column="26" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/common.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="132" column="17" lean-forward="true" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" column="7" lean-forward="true" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          <folding>
+            <element signature="e#1174#1224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/styles/common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-628" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/styles/mixin.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1852" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/components/haveContact/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/styles/common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/ultis/global.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/styles/mixin.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/ultis/fontSize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/projectIntroducePage/projectIntro.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2431">
+          <caret line="146" column="25" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="25" />
+          <folding>
+            <element signature="e#6#12#0" expanded="true" />
+            <element signature="e#12#18#0" expanded="true" />
+            <element signature="e#18#24#0" expanded="true" />
+            <element signature="e#24#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="84" column="46" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/components/contactContent/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="111" column="53" selection-start-line="111" selection-start-column="53" selection-end-line="111" selection-end-column="53" />
+          <folding>
+            <element signature="e#3954#4000#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/homePage/home.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1691">
+          <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/prototypeRoomPage/proto.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/bottomNavBar.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/nearBy.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding>
+            <element signature="e#642#692#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/components/top/index.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="170" column="23" lean-forward="true" selection-start-line="170" selection-start-column="23" selection-end-line="170" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="357" column="28" selection-start-line="357" selection-start-column="28" selection-end-line="357" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#!!top" />
+            <element signature="e#8614#8963#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

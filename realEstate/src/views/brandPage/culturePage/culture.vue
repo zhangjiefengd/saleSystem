@@ -61,7 +61,6 @@ export default {
               item.logo = this.logo[index]
             }
           })
-          console.log(this.titles)
         }
       })
       .catch(error => {

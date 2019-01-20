@@ -18,7 +18,7 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
-      <!-- <colorPicker v-model="color" v-on:change="headleChangeColor"></colorPicker> -->
+      <colorPicker v-model="color" v-on:change="headleChangeColor"></colorPicker>
       <!-- <div class="click">
         <img src="../../assets/img/guidePage/click.png"/>
         <span>·点击探索·</span>

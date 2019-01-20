@@ -82,14 +82,14 @@ export default {
             targetObj.style.top = border.y + 'px'
           } else {
             targetObj.style.top = initSize.height - event.target.scrollHeight + 'px'
-          } 
+          }
         }
       }
     })
     targetObj.addEventListener('touchmove', event => {
       doubleClickNum = 0
       if (event.touches.length > 1) {
-      
+
       let clientArray = {
           x: [],
           y: []
@@ -127,9 +127,9 @@ export default {
         }
         targetObj.style.width = endSize * 100 + '%'
         targetObj.style.height = endSize * 100 + '%'
-      
+
       } else if (event.touches.length === 1 && endSize !== 1) {
-        
+
         let targetObjScrollWidth = event.target.scrollWidth
         let targetObjScrollHeight = event.target.scrollHeight
         let eventMoveX = (event.touches[0].clientX - startSize.x)/10

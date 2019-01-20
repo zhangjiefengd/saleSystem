@@ -55,24 +55,25 @@ export default {
   position: relative;
   .wordIntro {
     width: 100%;
-    height: px2rem(266);
-    color: #fff;
-    background-color: rgba(18, 18, 18, 0.7);
+    height: px2rem(340);
+    color: #000000;
+    background-color: #d1d1d1;
+    opacity: .7;
     bottom: 0;
     position: absolute;
     z-index: 99;
-    opacity: 0.8;
     .wordIntroContent {
       width: 100%;
       height: 19rem;
       @include fj(center);
       align-items: center;
       p {
-        width: 90%;
-        height: 13rem;
-        color: #fff;
-        @include fontSize(20);
-        @include lineHeight(32);
+        width: 85%;
+        height: 15rem;
+        color: #000000;
+        @include fontSize(28);
+        @include lineHeight(48);
+        letter-spacing: .1em;
         text-indent: 2em;
       }
     }

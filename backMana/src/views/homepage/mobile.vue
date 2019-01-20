@@ -1,7 +1,7 @@
 <template>
   <div class="homeMobile">
     <div class="homePage" v-loading="bgcLoading"
-        element-loading-text="背景图片上传中" 
+        element-loading-text="背景图片上传上传中" 
         :style="{backgroundImage: 'url(' + homeBgc.url + ')'}">
       <label class="change changebgc" for="bFile">
           <img class="imgstyle" src="../../assets/img/brandBGC/changeBGC.png" alt="">
@@ -215,7 +215,7 @@ export default {
             type: 'warning'
           })
         } else {
-          this.$forceUpdate()
+          this.$forceUpdate();
           this.homeBgc.url = getUrl(bgcFile.files[0]);
           this.homeBgc.image = bgcFile.files[0];
         }
@@ -274,8 +274,8 @@ export default {
                   message: '背景图片上传成功',
                   type: 'success'
                 })
-                this.homeBgc.image = null
-                this.bgcLoading = false
+                this.homeBgc.image = null;
+                this.bgcLoading = false;
               }
             })
       }

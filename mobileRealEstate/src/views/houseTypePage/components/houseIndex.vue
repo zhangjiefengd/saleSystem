@@ -11,7 +11,7 @@
         <div class="category">
           <div :class="typeClassOne" @click="cateClassA" id="one"><router-link to='/houseType/prototype'>样板间</router-link></div>
           <div :class="typeClassTwo" @click="cateClassB" id="two"><router-link to='/houseType/plan'>平面图</router-link></div>
-          <div :class="typeClassThree" @click="cateClassC" id="three"><router-link to='/houseType/three'>全景展示</router-link></div>         
+          <div :class="typeClassThree" @click="cateClassC" id="three"><router-link to='/houseType/three'>全景展示</router-link></div>
         </div>
         <div class="houseType">
           <img :src = 'leftArrow' id="leftArrow" :style='{display: leftDisplay}'>
@@ -26,7 +26,7 @@
           </div>
           <img :src = 'rightArrow' id="rightArrow" :style='{display: rightDisplay}'>
         </div>
-          
+
       </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
   created() {
     this.$axios.get("/house/houseType/get")
     .then(res => {
-      this.house = res.data.data;
+      this.house = res.data.data.reverse();
       this.houseNum = this.house.length;
       if (!this.house[0].houseTypeVrUrl) {
         $('#three').css('display', 'none');
@@ -91,16 +91,16 @@ export default {
         $('#three').css('display', 'none');
         if (cate == 2) {
           // $('#two').click();
-          // this.$router.push({path:'/houseType/plan', 
+          // this.$router.push({path:'/houseType/plan',
           // query: {houseNum: val}});
         }else if (cate == 1) {
           // $('#one').click();
-          // this.$router.push({path:'/houseType/protoType', 
+          // this.$router.push({path:'/houseType/protoType',
           // query: {houseNum: val}});
         }else {
           $('#two').click();
-          this.$router.push({path:'/houseType/plan', 
-          query: {houseNum: val}});          
+          this.$router.push({path:'/houseType/plan',
+          query: {houseNum: val}});
         }
         // $('.houseEvery').eq(val).click();
         // this.$router.push('/houseType/plan');
@@ -141,8 +141,8 @@ export default {
       this.typeClassOne = "noActive";
       this.typeClassTwo = "noActive";
       this.typeClassThree = "active";
-      this.$router.push({path:'/houseType/three', 
-      query: {houseNum: this.num}}); 
+      this.$router.push({path:'/houseType/three',
+      query: {houseNum: this.num}});
     },
     //加户型
     addhouseNum() {
@@ -214,7 +214,7 @@ export default {
       let timer = setInterval(() => {
         for (let i = 0; i < this.houseNum; i++) {
           if ($('.houseEvery').eq(i).css('color') == '#c7ad8b' && this.$refs.content) {
-            
+
             // this.$refs.content.$emit('giveNum', i);
           }
         }
@@ -222,24 +222,27 @@ export default {
     },
     watchDiv() {
       const timer = setInterval(() => {
-        const width = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).width;
-        const left = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).left;
-        const right = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).right;
-        this.left = parseInt(left);
-        this.right = parseInt(right);
-        if (parseInt(left) < 0) {
-          this.leftDisplay = 'block';
-        } else {
-          this.leftDisplay = 'none';
-        }
-        if (parseInt(right) < 0) {
-          // console.log(right);
-          this.rightDisplay = 'block';
-        } else {
-          this.rightDisplay = 'none';
-        }
+        if (document.getElementsByClassName('allHouse')[0]) {
+          const width = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).width;
+          const left = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).left;
+          const right = window.getComputedStyle(document.getElementsByClassName('allHouse')[0], null).right;
+          this.left = parseInt(left);
+          this.right = parseInt(right);
+          if (parseInt(left) < 0) {
+            this.leftDisplay = 'block';
+          } else {
+            this.leftDisplay = 'none';
+          }
+          if (parseInt(right) < 0) {
+            // console.log(right);
+            this.rightDisplay = 'block';
+          } else {
+            this.rightDisplay = 'none';
+          }
 
-        this.$forceUpdate();
+          this.$forceUpdate();
+        }
+        
       },100);
     },
     touchstart(ev) {
@@ -330,7 +333,7 @@ export default {
       // background-color: #fff;
       position: absolute;
       top: 0;
-     
+
     }
     .middle {
       width: 100%;
@@ -380,7 +383,7 @@ export default {
         width: 100%;
         height: px2rem(98);
         background-color: #ffffff;
-        box-shadow: 0px 11px 36px 3px 
+        box-shadow: 0px 11px 36px 3px
           rgba(29, 35, 40, 0.2);
         @include fj(center);
         align-items: center;
@@ -414,7 +417,7 @@ export default {
           position: relative;
           // overflow: hidden;
         }
-        
+
         .oneHouse {
           min-width: px2rem(162);
           height: 100%;

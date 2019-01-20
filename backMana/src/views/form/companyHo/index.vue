@@ -42,8 +42,10 @@
           <div class="content">
             <form action="" method="post">
               <ul class="worlds">
+                <div class="word-line">
+                </div>
                 <li v-for="(world, index) in worlds" v-if="index < 8" :key="index">
-                  <img src="../../../assets/img/brandBGC/worldLogo.png" alt="">
+                  <span class="honor-spot"></span>
                   <span class="world" :class="[{hide: worldAuto}]"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
                   <input class="world" type="text" autofocus @blur="changeback(index)"
@@ -462,7 +464,7 @@
       flex-direction: column;
 
       .addImg {
-        width: px3rem(25);
+        width: px2rem(25);
         height: px2rem(25);
       }
 
@@ -509,6 +511,7 @@
     background-color: #edf0f5;
     border-radius: px2rem(4);
     margin-top: .5rem;
+    margin-left: 1rem;
     border: 0;
     padding: 0;
   }
@@ -633,23 +636,37 @@
       position: absolute;
       @include fj(space-around);
       align-items: center;
-
+      flex-direction: row-reverse;
       > form {
         .worlds {
-          width: px2rem(500);
+          width: px2rem(600);
           height: vertical(560);
           float: left;
           @include fj(space-between);
           flex-direction: column;
           padding: 0;
           margin: 0;
-
+          position: relative;
+          .word-line {
+            position: absolute;
+            left: px2rem(7);
+            bottom: 0;
+            width: px2rem(1);
+            height: calc(100% - 17px);
+            background-color: #999999;
+          }
           li {
-            width: px2rem(500);
+            width: px2rem(600);
             font-size: px2rem(22);
             line-height: 33px;
             @include fj(flex-start);
             align-items: center;
+            .honor-spot {
+              width: px2rem(15);
+              height: px2rem(15);
+              background-color: #c7ad8c;
+              border-radius: 50%;
+            }
 
             > .world {
               width: px2rem(500);
@@ -683,8 +700,8 @@
       }
 
       .picture {
-        width: transverse(460);
-        height: px2rem(400);
+        width: transverse(600);
+        height: px2rem(450);
         float: left;
         position: relative;
         @include fj(center);
