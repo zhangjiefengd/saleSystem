@@ -1,7 +1,7 @@
 <template>
   <div class="home-option" :style="[{height: optionHeight}, {background: optionBackground}]">
-    <div class="component-box">
-      <ul class="all-head">
+    <div class="component-box" v-show="isShowHead">
+      <ul class="all-head" :style="[{color: headColor}]">
         <li @click="backHome"> <span>首页</span></li>
         <li @click="showCollect" style="text-align: right"><span>我有意向</span>></li>
       </ul>
@@ -110,7 +110,10 @@
         wechatQr: '',
         projectName: '',
         phoneNum: '',
-        houseType: ''
+        houseType: '',
+        isShowHead: true,
+        headColor: '#000000',
+        backHeadColor: ''
       }
     },
     created () {
@@ -144,12 +147,15 @@
       },
       showCollect: function () {
         this.isCollect = !this.isCollect
+
         if (this.optionHeight === 'auto') {
           this.optionHeight = '100%'
-          this.optionBackground = '#000'
+          this.optionBackground = 'url(' + require('../assets/img/index/background.jpg') + ')'
+          this.headColor = '#000000'
         } else {
           this.optionHeight = 'auto'
           this.optionBackground = 'transparent'
+          this.headColor = this.backHeadColor
         }
       },
       priceDis() {
@@ -239,6 +245,22 @@
       closeRemind: function () {
         this.infoRemind = false
       }
+    },
+    watch: {
+      $route(to, from) {
+        if (this.$route.path === '/index') {
+          this.isShowHead = false
+        } else {
+          this.isShowHead = true
+        }
+        if (this.$route.path.match('/brandIntro') !== null) {
+          this.backHeadColor = this.headColor = '#ffffff'
+        } else if (this.$route.path.match('/projectIntroduce') !== null) {
+          this.backHeadColor = this.headColor = '#ffffff'
+        } else {
+          this.backHeadColor = this.headColor = '#000000'
+        }
+      }
     }
   }
 </script>
@@ -280,6 +302,7 @@
     flex-direction: column;
     .company-wechat {
       @include fontSize(28);
+      color: #000000;
     }
     .wechatQr {
       width: px2rem(240);
@@ -292,6 +315,7 @@
     }
     >div {
       @include fontSize(28);
+      color: #666666;
     }
   }
   .user-info {
@@ -315,6 +339,7 @@
           text-align: right;
           @include fontSize(32);
           display: inline-block;
+          color: #000000;
         }
         >div, >ul {
           width: 70%;
@@ -425,6 +450,7 @@
             margin-top: px2rem(5);
             @include fj(flex-start);
             align-items: center;
+            color: #666666;
             >input {
               -webkit-appearance: none;
               -moz-appearance: none;

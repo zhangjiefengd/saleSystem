@@ -26,8 +26,8 @@
           </div>
         </div>
       </div>
-      <div class="box">
-        <div id="honor" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+      <div class="box" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+        <div id="honor">
           <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-zhengque"></use>

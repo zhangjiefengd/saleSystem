@@ -1,8 +1,8 @@
 <template>
-  <div id="develop" class="honor">
+  <div id="develop">
     <!-- <img v-if="background[0]" v-lazy="background[0].backgroundImage.fileName" alt=""> -->
-    <img v-if="background !== null" :src="background" alt="" class="back">
-    <img v-if="background == null" src="" alt="">
+    <img v-if="developBackground !== null" :src="developBackground" alt="">
+    <img v-if="developBackground == null" src="" alt="">
     <div class="content">
       <div class="content1">
         <div class="pictureIntro">
@@ -49,7 +49,7 @@
     name: 'develop',
     data() {
       return {
-        background: '',
+        developBackground: '',
         worlds: '',
         number: 0,
         num: 0,
@@ -77,7 +77,7 @@
       this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
         .then(res => {
           if (res.data.data) {
-            this.background = getImage(res.data.data.imageLocation, 1)
+            this.developBackground = getImage(res.data.data.imageLocation, 1)
             if (screen.width > 1024) {
               this.backBig = getImage(res.data.data.imageLocation, 1)
             } else {
@@ -127,9 +127,9 @@
         // let time = setInterval(() => {
         imgObject.onload = function () {
           let time = setInterval(() => {
-            this.background = imgUrl
+            this.developBackground = imgUrl
             // console.log(this.imgProjectBack);
-            document.getElementsByClassName('back')[0].src = this.background
+            document.getElementsByClassName('back')[0].src = this.developBackground
             // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
             ele.setAttribute('class', 'honor complete')
           }, 100)
@@ -144,7 +144,7 @@
   @import "../../../styles/mixin.scss";
 
   #develop {
-    width: transverse(1620);
+    width: transverse(1660);
     height: 100%;
     float: left;
     position: relative;

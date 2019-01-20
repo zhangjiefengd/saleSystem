@@ -7,9 +7,6 @@
         </p>
       </div>
     </div>
-    <div class="allBack" @click="clickBack">
-      <img src="@/assets/img/goHouseHistory/back.png" alt="">
-    </div>
   </div>
 </template>
 <script>

@@ -14,7 +14,7 @@
     </div> -->
   </div>
   <div class="backImage"  @click="clickBack">
-    <img src="../../../assets/img/brandBGC/back.png" alt="">
+    <img src="../../../assets/img/goHouseHistory/goHistory.png" alt="">
   </div>
   <transition name="fade">
     <div class="linkInfo" v-if="isShowInfo">

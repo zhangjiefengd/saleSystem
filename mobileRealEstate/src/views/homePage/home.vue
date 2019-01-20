@@ -45,7 +45,7 @@
       width: px2rem(505);
       height: px2rem(195);
       @include fj();
-      align-items: space-between;
+      align-items: center;
       flex-wrap: wrap;
       margin-top: 4%;
       li {
@@ -88,7 +88,7 @@ export default {
       imgIndexBack: "",
       imgProject: "",
       homeLogo: '',
-      homeBgc: [require('../../assets/img/index/homeBgc.png')],
+      homeBgc: '',
       moduleIndex: [],
       icon: [require('../../assets/img/index/icon1.png'),require('../../assets/img/index/icon2.png'),require('../../assets/img/index/icon3.png'),require('../../assets/img/index/icon4.png')],
       moduleIndex: [
@@ -116,6 +116,26 @@ export default {
     this.$axios.get('/basic/guidePage/get')
       .then(res=>{
         this.homeLogo = getImage(res.data.data.projectLogoLocation, 3)
+      })
+    this.$axios.get('/basic/mainPage/get')
+      .then(res=>{
+        for (let i in res.data.data) {
+          this.moduleIndex.map((item, index) => {
+            if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
+              item.icon = getImage(res.data.data[i], 3)
+            }
+            if (item.url === '/brand' && i === 'brandOverviewBar') {
+              item.icon = getImage(res.data.data[i], 3)
+            }
+            if (item.url === '/houseType' && i === 'unitDisplayBar') {
+              item.icon = getImage(res.data.data[i], 3)
+            }
+            if (item.url === '/nearBy' && i === 'projectAroundBar') {
+              item.icon = getImage(res.data.data[i], 3)
+            }
+          })
+        }
+        this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 3)
       })
     //请求激活的模块
     // this.$axios.get("/module/main", {params:{'select':'true'}})

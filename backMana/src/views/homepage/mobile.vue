@@ -1,28 +1,22 @@
 <template>
   <div class="homeMobile">
     <div class="homePage" v-loading="bgcLoading"
-        element-loading-text="背景图片上传上传中" 
+        element-loading-text="背景图片上传中"
         :style="{backgroundImage: 'url(' + homeBgc.url + ')'}">
       <label class="change changebgc" for="bFile">
           <img class="imgstyle" src="../../assets/img/brandBGC/changeBGC.png" alt="">
         </label>
         <input type='file' id="bFile" style="position: absolute;clip:rect(0 0 0 0);" name='photos' class="upfile">
-      <div class="homeHead">
+      <!-- <div class="homeHead">
         <div class="homeLogo" v-loading="logoLoading" element-loading-text="logo上传中">
-          <!-- <label class="change changebgc" for="upfile">
-            <img class="imgstyle" src="../../assets/img/subLogo.png" alt="">
-          </label>
-          <input type='file' name='photos' id="upfile" style="position: absolute;clip:rect(0 0 0 0);"> -->
+         
           <img :src="homeLogo.url" alt="">
         </div>
       </div>
       <div class="projectList">
         <ul class="homeModule">
           <li  v-loading="module.loading" element-loading-text="logo上传中" v-for="(module, index) in moduleIndex" :key="index">
-            <!-- <label class="change changeLogo" :for="'logo' + index">
-              <img class="imgstyle" src="../../assets/img/subLogo.png" alt="">
-            </label>
-            <input type='file' name='photos' :id="'logo' + index" style="position: absolute;clip:rect(0 0 0 0);"> -->
+           
             <img :src="module.icon" alt="">
             <span>
               {{ module.description }}
@@ -32,7 +26,7 @@
       </div>
       <div class="companyLogo">
         <img src="../../assets/img/loginIn/logo.png" alt="">
-      </div>
+      </div> -->
       <div class="allSub" id="allSub" @click="allSub"></div>
     </div>
   </div>
@@ -43,7 +37,7 @@
 @import "../../styles/mixin";
 .homeMobile {
   width: 100%;
-  height: 100%;
+  height: px2rem(860);
   @include fj(center);
   align-items: center;
   background-color: #edf0f5;
@@ -59,10 +53,10 @@
     @include fj(flex-end);
     flex-direction: column;
     align-items: center;
-    margin-top: px2rem(220);
+    // margin-top: px2rem(220);
     .homeLogo {
-      max-width: px2rem(500);
-      height: px2rem(300);
+      width: px2rem(260);
+      // height: px2rem(300);
       position: relative;
       img {
         width: 100%;
@@ -77,7 +71,7 @@
     align-items: center;
     margin: px2rem(60) 0;
     .homeModule {
-      width: px2rem(600);
+      width: 60%;
       height: px2rem(180);
       @include fj(center);
       align-items: space-between;
@@ -85,20 +79,21 @@
       margin-top: 4%;
       padding: 0;
       li {
-        width: 50%;
+        width: 40%;
         height: px2rem(80);
         background-color: rgba(98, 98, 100, 0.53);
         @include fj(space-around);
         align-items: center;
         position: relative;
         opacity: 0.53;
+        margin-left: px2rem(10);
         >img {
           width: px2rem(30);
           height: px2rem(30);
         }
         span {
           color: #ffdba1;
-          font-size: px2rem(25);
+          font-size: px2rem(20);
         }
       }
     }
@@ -120,7 +115,7 @@
   height: px2rem(34);
   background-image: url('../../assets/img/clickQian.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%;      
+  background-size: 100% 100%;
   position: absolute;
   top: 100%;
   left: 100%;
@@ -181,7 +176,7 @@ export default {
           icon: require('../../assets/img/icon4.png')
         },
       ],
-      head: ip + ':80/',
+      head: ip + ':8080/static/image/',
       bgcLoading: false,
       logoLoading: false
     }
@@ -247,7 +242,7 @@ export default {
           if (res.data.data !== null) {
             this.homeBgc = res.data.data
             console.log(res.data.data)
-            this.homeBgc.url = this.getImage(this.homeBgc.backgroundImageLocation, 2)
+            this.homeBgc.url = this.getImage(this.homeBgc.mobileBackgroundImageLocation, 2)
             // this.homeLogo.url = this.getImage(this.homeBgc.projectLogoLocation, 3)
             this.moduleIndex[0].icon = this.getImage(this.homeBgc.projectIntroductionBar, 1)
             this.moduleIndex[1].icon = this.getImage(this.homeBgc.brandOverviewBar, 1)
@@ -267,7 +262,7 @@ export default {
     allSub: async function () {
       if (this.homeBgc.image) {
         this.bgcLoading = true
-        await this.update(this.homeBgc.image, 1)
+        await this.update(this.homeBgc.image, 7)
           .then(res => {
               if (res.data.code === 1) {
                 this.$message({

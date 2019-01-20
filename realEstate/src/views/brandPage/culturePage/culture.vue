@@ -1,6 +1,6 @@
 <template>
-	<div id="honor" class="honor">
-    <img :src="background" alt="" class="back">
+	<div id="culture">
+    <img :src="cultureBackground" alt="">
     <div class="content">
       <div>
         <div class="contentTop">
@@ -34,10 +34,10 @@ import ip from '../../../../static/ip'
 import contact from '../../../components/haveContact'
 import contactContent from '../../../components/contactContent'
 export default {
-  name: 'honor',
+  name: 'culture',
   data () {
     return {
-      background: '',
+      cultureBackground: '',
       titles: '',
       contents: '',
       culturePicture: '',
@@ -70,7 +70,7 @@ export default {
       .then(res => {
         if (res.data.data) {
           this.culturePicture = getImage(res.data.data.mainImageLocation, 1)
-          this.background = getImage(res.data.data.backgroundImageLocation, 1)
+          this.cultureBackground = getImage(res.data.data.backgroundImageLocation, 1)
           if (screen.width > 1024) {
             this.backBig = getImage(res.data.data.backgroundImageLocation, 1)
             this.culBig = getImage(res.data.data.mainImageLocation, 1)
@@ -114,9 +114,9 @@ export default {
 
       imgObject.src = imgUrl
       imgObject.onload = function () {
-        this.background = imgUrl
+        this.cultureBackground = imgUrl
         // console.log(this.imgProjectBack);
-        document.getElementsByClassName('back')[0].src = this.background;
+        document.getElementsByClassName('back')[0].src = this.cultureBackground;
         // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
         ele.setAttribute('class', 'honor complete');
 
@@ -143,7 +143,7 @@ export default {
 <style type="text/css" lang="scss" scoped>
 @import '../../../styles/main.scss';
 @import '../../../styles/mixin.scss';
-#honor {
+#culture {
   width: transverse(1660);
   height: 100%;
   float: left;

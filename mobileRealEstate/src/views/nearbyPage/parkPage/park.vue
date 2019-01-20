@@ -2,11 +2,11 @@
     <div class="content">
         <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-            <top/>
+            <!--<top/>-->
         </div>
         <div class="middle" >
             <div class="pic">
-                <img class="conPic" style="width:100%;" v-show="check" @click="scale()" v-for="a in img" :src="a" alt="" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">        
+                <img class="conPic" style="width:100%;" v-show="check" @click="scale()" v-for="a in img" :src="a" alt="" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
             </div>
             <div class="intro">
                 <!-- <img src='../../../assets/img/rightHouseNav/fullScreen.png' style="visibility: hidden;"> -->
@@ -42,11 +42,11 @@ export default {
 			endX: 0,//手结束位置
             x: 0,//滑动位置距离
             control: 0,//控制left不变
-            imgLeft: -400,              
+            imgLeft: -400,
         }
     },
     created() {
-        
+
         this.$axios.get("/surround/publicUtilities/get")
             .then(res => {
                 this.park = res.data.data;
@@ -71,9 +71,9 @@ export default {
                             this.img[i] = getImage(this.garden[i - commonL].imageLocation, 3);
                         }
                     }
-                    this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 3); 
+                    this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 3);
                     // console.log(this.img);
-                    this.check = 1;                 
+                    this.check = 1;
                 }
                 // this.check = 1;
                 //装2个类型的名字
@@ -89,18 +89,18 @@ export default {
                             this.nameAll[i] = this.garden[i - commonL].placeTypName;
                         }
                     }
-                    this.nameAll[0] = this.garden[this.garden.length - 1].placeTypName;              
+                    this.nameAll[0] = this.garden[this.garden.length - 1].placeTypName;
                     this.name = this.nameAll[1];
-                      
+
                 }
-                
+
                 if (this.img.length > 1) {
                     this.imgLeft = window.innerWidth*(-1);
                     $('.conPic').eq(0).css('marginLeft', this.imgLeft + 'px');
                 }else {
                     $('.conPic').eq(0).css('marginLeft', 0 + 'px');
-                } 
-            
+                }
+
             })
             .catch(error => {
                 console.log(error);
@@ -205,15 +205,15 @@ export default {
                         if (agent.match(/MicroMessenger/i) == "micromessenger") {
                             // return true;
                             // setTimeout(() => {
-                                WeixinJSBridge.invoke('imagePreview', {    
+                                WeixinJSBridge.invoke('imagePreview', {
                                     'current': document.getElementsByClassName('conPic')[1].src,
                                     'urls': img2
-                                }); 
+                                });
                             // },1000);
 
                         } else {
                             // return false;
-                        }               
+                        }
                     // }
                 }else if (document.getElementsByClassName('conPic')[0]) {
                     // document.getElementsByClassName('conPic')[0].onclick = () => {
@@ -227,17 +227,17 @@ export default {
                         if (agent.match(/MicroMessenger/i) == "micromessenger") {
                             // return true;
                             // setTimeout(() => {
-                                WeixinJSBridge.invoke('imagePreview', {    
+                                WeixinJSBridge.invoke('imagePreview', {
                                     'current': document.getElementsByClassName('conPic')[0].src,
                                     'urls': img
-                                }); 
+                                });
                             // },1000);
                         } else {
                             // alert(333);
                         }
-                    // }                   
+                    // }
                 }
-        }      
+        }
     },
     components: {
        top
@@ -259,15 +259,15 @@ export default {
                 //         if (agent.match(/MicroMessenger/i) == "micromessenger") {
                 //             // return true;
                 //             setTimeout(() => {
-                //                 WeixinJSBridge.invoke('imagePreview', {    
+                //                 WeixinJSBridge.invoke('imagePreview', {
                 //                     'current': document.getElementsByClassName('conPic')[1].src,
                 //                     'urls': img2
-                //                 }); 
+                //                 });
                 //             },1000);
 
                 //         } else {
                 //             // return false;
-                //         }               
+                //         }
                 //     // }
                 // }else if (document.getElementsByClassName('conPic')[0]) {
                 //     // document.getElementsByClassName('conPic')[0].onclick = () => {
@@ -281,18 +281,18 @@ export default {
                 //         if (agent.match(/MicroMessenger/i) == "micromessenger") {
                 //             // return true;
                 //             setTimeout(() => {
-                //                 WeixinJSBridge.invoke('imagePreview', {    
+                //                 WeixinJSBridge.invoke('imagePreview', {
                 //                     'current': document.getElementsByClassName('conPic')[0].src,
                 //                     'urls': img
-                //                 }); 
+                //                 });
                 //             },1000);
                 //         } else {
                 //             // alert(333);
                 //         }
-                //     // }                   
+                //     // }
                 // }
             // }, 100);
-        }           
+        }
         // }
     }
 }
@@ -360,7 +360,7 @@ export default {
             transform: translateY(-100%);
             @include fj(center);
             align-items: center;
-            
+
             background-color:rgba(62,62,62,0.8);
             @include fontSize(28);
             letter-spacing: px2rem(2);
