@@ -18,6 +18,7 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
+      <!-- <colorPicker v-model="color" v-on:change="headleChangeColor"></colorPicker> -->
       <!-- <div class="click">
         <img src="../../assets/img/guidePage/click.png"/>
         <span>·点击探索·</span>
@@ -58,6 +59,7 @@ export default {
       "appearCome": "block",
       "success": [],
       head: ip + ':8080/static/image/',
+      color: ''
     }
   },
   created() {
@@ -250,6 +252,9 @@ export default {
           }
         }
       }
+    },
+    headleChangeColor(e) {
+      console.log(e);
     }
   },
   computed: {
@@ -401,4 +406,7 @@ export default {
 .el-loading-parent--relative {
     position: initial!important;
 }  
+// .m-colorPicker .box.open[data-v-11842410] {
+//   width: px2rem(1000);
+// }
 </style>

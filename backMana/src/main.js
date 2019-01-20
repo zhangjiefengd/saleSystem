@@ -24,6 +24,8 @@ import getUrl from "./utils/urlGet";
 import $ from 'jquery'
 import global from './Global.vue'
 import './utils/global'
+import vcolorpicker from 'vcolorpicker'
+Vue.use(vcolorpicker)
 
 Vue.prototype.GLOBAL = global
 
