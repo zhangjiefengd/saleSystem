@@ -124,7 +124,7 @@ import getImage from '../../../ultis/getImage.js'
             width: 100%;
             height: px2rem(110);
             text-align: center;
-            @include sc(px2rem(36), #191919);
+            @include sc(px2rem(36), #666666);
             @include fj(center);
             align-items: center;
             cursor: pointer;
@@ -136,6 +136,14 @@ import getImage from '../../../ultis/getImage.js'
             >img{
                 background-image: url();
             }
+        }
+        >div:hover {
+            background-color: #dfc29d;
+            color: white;
+        }
+        >div:active {
+            background-color: #c1a077;
+            color: white;
         }
     }
     .leftEat{

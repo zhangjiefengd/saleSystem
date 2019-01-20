@@ -136,7 +136,7 @@ export default {
       imgObject.onload = function () {
         var time = setInterval(() => {
           this.background = imgUrl
-          document.getElementsByClassName('back')[0].src = this.background
+          document.getElementsByClassName('back')[0].src = this.background;
           ele.setAttribute('class', 'honor complete')
         }, 100)
       }
@@ -149,7 +149,7 @@ export default {
 @import '../../../styles/main.scss';
 @import '../../../styles/mixin.scss';
 #honor {
-  width: transverse(1620);
+  width: transverse(1660);
   height: 100%;
   float: left;
   position: relative;

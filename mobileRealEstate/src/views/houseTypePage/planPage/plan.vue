@@ -31,7 +31,7 @@ export default {
     .then(res => {
       this.title = res.data.data;
         if(this.title[this.houseNum]) {
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[this.houseNum].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             this.dataAll = res.data.data;
             this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 3);
@@ -51,7 +51,7 @@ export default {
       if (this.houseNum != val && this.title[val]) {
         this.houseNum = val;
         if(this.title[this.houseNum]) {
-          this.$axios.get("/house/houseTypeImage/get?houseTypeName=" + this.title[this.houseNum].houseTypeName)
+          this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             this.dataAll = res.data.data;
             this.imgPlanBack = this.dataAll && this.dataAll.houseTypeImageLocation && getImage(this.dataAll.houseTypeImageLocation, 3);
@@ -179,7 +179,7 @@ export default {
   position: relative;
   .picA {
     width: 100%;
-    height: px2rem(562);
+    height: px2rem(540);
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -191,14 +191,16 @@ export default {
   }
   .pageNum {
     width: 100%;
-    height: px2rem(30);
+    height: px2rem(35);
+            // background-color: #fff;
     position: relative;
-    span {
-      position: absolute;
-      right: px2rem(61);
-      @include fontSize(23);
-      color: #c9c9c9;;
-    }
+            span {
+                position: absolute;
+                right: px2rem(30);
+                @include fontSize(30);
+                letter-spacing: px2rem(2);
+                color: #717171;
+            }
   }
 }
 

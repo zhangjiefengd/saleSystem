@@ -1,7 +1,8 @@
 <template>
     <div class="content">
         <div class="header">
-            <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()">
+            <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
+            <top/>
         </div>
         <div class="middle" >
             <div class="pic">
@@ -23,7 +24,7 @@
 import bottom from '../components/bottomNavBar'
 import getImage from '../../../utils/getImage.js'
 // import right from "../components/rightNavBar";
-
+import top from '../../../components/top'
 export default {
     data() {
         return {
@@ -239,7 +240,7 @@ export default {
         }      
     },
     components: {
-       
+       top
     },
     watch: {
         park() {
@@ -304,34 +305,39 @@ export default {
 .content {
     width: 100%;
     height: 100%;
+    background-image: url('../../../assets/img/index/background.jpg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
     // background-color: #1E1E1E;
-    background-color: #202020;
-    @include fj(center);
-    flex-direction: column;
-    align-items: center;
+    // background-color: #202020;
+    // @include fj(center);
+    // flex-direction: column;
+    // align-items: center;
     position: relative;
     .header {
         width: 100%;
-        height: px2rem(93);
+        height: px2rem(61);
         position: absolute;
         top: 0;
-        img {
-          width: px2rem(64);
-          height: px2rem(64);
-          position: absolute;
-          top: px2rem(29);
-          right: px2rem(27);
-        }
+        // img {
+        //   width: px2rem(64);
+        //   height: px2rem(64);
+        //   position: absolute;
+        //   top: px2rem(29);
+        //   right: px2rem(27);
+        // }
     }
     .middle {
         width: 100%;
-        height: px2rem(641);
+        height: px2rem(592);
         // margin-top: px2rem(163);
+        position: absolute;
+        top: 18.8%;
         @include fj();
         flex-direction: column;
         .pic {
             width: 100%;
-            height: px2rem(562);
+            height: px2rem(540);
         //   background-color: #fff;
             overflow: hidden;
             // display: flex;
@@ -341,7 +347,7 @@ export default {
             img {
                 // position: absolute;
                 width: 100%;
-                height: px2rem(562);
+                height: px2rem(540);
                 // float: left;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
@@ -349,14 +355,16 @@ export default {
         }
         .intro {
             width: 100%;
-            height: px2rem(73);
-            margin-top: -7.0rem;
+            height: px2rem(50);
+            margin-top: -1.3rem;
+            transform: translateY(-100%);
             @include fj(center);
             align-items: center;
-            @include fontSize(24);
-            color: white;
-            background-color: black;
-            opacity: 0.7;
+            
+            background-color:rgba(62,62,62,0.8);
+            @include fontSize(28);
+            letter-spacing: px2rem(2);
+            color: #dbdbdb;
             img {
                 width: px2rem(64);
                 height: px2rem(64);
@@ -371,9 +379,10 @@ export default {
             position: relative;
             span {
                 position: absolute;
-                right: px2rem(61);
-                @include fontSize(23);
-                color: #c9c9c9;;
+                right: px2rem(30);
+                @include fontSize(30);
+                letter-spacing: px2rem(2);
+                color: #717171;
             }
         }
     }

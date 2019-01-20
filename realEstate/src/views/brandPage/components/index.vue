@@ -130,13 +130,13 @@ export default {
     }
   }
   #leftNavBar {
-    width: transverse(300);
+    width: transverse(260);
     height: 100%;
     background-color: #ffffff;
     float: left;
     position: relative;
     .leftLogo {
-      width: px2rem(167);
+      width: px2rem(179);
       margin: px2rem(90) auto;
       margin-bottom: 0;
       >img {
@@ -147,15 +147,16 @@ export default {
     #LeftWorld {
       width: 100%;
       height: vertical(600);
-      display: -webkit-flex;
-      @include fj(center);
-      flex-direction: column;
-      flex-wrap: wrap;
+      // display: -webkit-flex;
+      margin-top: px2rem(97);
+      // @include fj(center);
+      // flex-direction: column;
+      // flex-wrap: wrap;
       li {
         width: 100%;
         height: px2rem(100);
         text-align: center;
-        @include sc(px2rem(30));
+        @include sc(px2rem(36));
         letter-spacing: .2em;
         @include fj(center);
         align-items: center;
@@ -167,6 +168,7 @@ export default {
         &:active {
           background-color: #c1a077;
         }
+        color: #666666;
       }
       .router-link-active {
         background-color: #c7ad8c;

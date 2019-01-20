@@ -264,7 +264,7 @@
     height: px2rem(50);
     @include fj();
     align-items: flex-end;
-    @include fontSize(30);
+    @include fontSize(34);
     li {
       height: 100%;
       @include fj();
@@ -279,7 +279,7 @@
     align-items: center;
     flex-direction: column;
     .company-wechat {
-      @include fontSize(20);
+      @include fontSize(28);
     }
     .wechatQr {
       width: px2rem(240);
@@ -289,6 +289,9 @@
         width: 100%;
         height: 100%;
       }
+    }
+    >div {
+      @include fontSize(28);
     }
   }
   .user-info {
@@ -310,7 +313,7 @@
         >span {
           width: 30%;
           text-align: right;
-          @include fontSize(30);
+          @include fontSize(32);
           display: inline-block;
         }
         >div, >ul {
@@ -328,7 +331,7 @@
             outline: none;
             padding: 0 1rem;
             background-color: #f0f0f0;
-            @include fontSize(20);
+            @include fontSize(25);
             letter-spacing: px2rem(1);
           }
         }
@@ -351,15 +354,17 @@
             }
             cursor: pointer;
             span {
-              @include sc(px2rem(18), #c1c1c1);
-              letter-spacing: px2rem(1);
+              @include fontSize(25);
+              color: #666666;
+              letter-spacing: .2em;
             }
           }
           .con {
             background-color: #f0f0f0;
             width: 80%;
             height: 100%;
-            @include sc(px2rem(20), #333333);
+            @include fontSize(25);
+            color: #333333;
             letter-spacing: px2rem(1);
             padding: px2rem(20);
           }
@@ -380,25 +385,6 @@
           color: #c1c1c1;
         }
 
-        .price {
-          @include fj();
-          align-items: center;
-          padding-top: 0;
-          padding-bottom: 0;
-
-          img {
-            width: px2rem(30);
-            height: px2rem(18);
-          }
-
-          cursor: pointer;
-
-          span {
-            @include sc(px2rem(30), #c1c1c1);
-            letter-spacing: px2rem(1);
-          }
-        }
-
         .priceSelect {
           width: 50.4%;
           height: px2rem(228);
@@ -416,7 +402,7 @@
             margin-top: px2rem(6);
             @include fj(center);
             align-items: center;
-            @include sc(px2rem(25), #666666);
+            @include sc(px2rem(28), #666666);
             letter-spacing: px2rem(1);
             cursor: pointer;
           }

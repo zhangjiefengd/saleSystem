@@ -144,7 +144,7 @@ export default {
 @import '../../../styles/main.scss';
 @import '../../../styles/mixin.scss';
 #honor {
-  width: transverse(1620);
+  width: transverse(1660);
   height: 100%;
   float: left;
   position: relative;

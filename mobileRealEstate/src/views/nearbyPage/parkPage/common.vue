@@ -1,7 +1,11 @@
 <template>
   <div class="content" style="position:relative;overflow: hidden;">
+    <div class="header">
+            <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
+      <!--<top/>-->
+    </div>
     <img id="targetObj" style="position:absolute;transform-origin:center" :src="map">
-    <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()">
+    <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->
     <!-- <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt="" @click="goHistory()"> -->
     <!-- <input type="button" value="重置" @click="reset()" > -->
   </div>
@@ -9,7 +13,7 @@
 
 <script type="text/ecmascript-6">
 import getImage from "../../../utils/getImage.js";
-
+import top from '../../../components/top'
 export default {
   data() {
     return {
@@ -27,6 +31,9 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  components: {
+      top
   },
   mounted() {
     // this.shuaXin();
@@ -75,14 +82,14 @@ export default {
             targetObj.style.top = border.y + 'px'
           } else {
             targetObj.style.top = initSize.height - event.target.scrollHeight + 'px'
-          } 
+          }
         }
       }
     })
     targetObj.addEventListener('touchmove', event => {
       doubleClickNum = 0
       if (event.touches.length > 1) {
-      
+
       let clientArray = {
           x: [],
           y: []
@@ -120,9 +127,9 @@ export default {
         }
         targetObj.style.width = endSize * 100 + '%'
         targetObj.style.height = endSize * 100 + '%'
-      
+
       } else if (event.touches.length === 1 && endSize !== 1) {
-        
+
         let targetObjScrollWidth = event.target.scrollWidth
         let targetObjScrollHeight = event.target.scrollHeight
         let eventMoveX = (event.touches[0].clientX - startSize.x)/10
@@ -156,7 +163,6 @@ export default {
       this.$router.push("/index");
     }
   },
-  components: {}
 };
 </script>
 
@@ -169,13 +175,27 @@ export default {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: auto 100%;
+  background-image: url('../../../assets/img/index/background.jpg');
+  @include fj(center);
+  align-items: center;
+  .header {
+    width: 100%;
+    height: px2rem(61);
+    position: absolute;
+    top: 0;
+        // img {
+        //   width: px2rem(64);
+        //   height: px2rem(64);
+        //   position: absolute;
+        //   top: px2rem(29);
+        //   right: px2rem(27);
+        // }
+  }
   #targetObj {
     width: 100%;
-    height: 100%;
+    height: px2rem(541);
     z-index: 1;
-    left: 0;
-    top: 0;
   }
   #come {
     width: px2rem(64);

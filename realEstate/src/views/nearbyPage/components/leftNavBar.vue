@@ -4,7 +4,7 @@
             <img :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
-            <router-link tag="div" v-for="(word, index) in words" :key="index" :to="word.toUrl" >
+            <router-link tag="div" @mouseover.native="hover" v-for="(word, index) in words" :key="index" :to="word.toUrl" >
             {{ word.name }}
             </router-link>
         </div>
@@ -58,7 +58,7 @@ import getImage from '../../../ultis/getImage.js'
         changeColor: function (index) {
             this.changeIndex = index;
             this.$emit('ievent', index, this.intial);
-        }
+        },
     },
     watch: {
 
@@ -93,7 +93,7 @@ import getImage from '../../../ultis/getImage.js'
             height: px2rem(110);
             text-align: center;
             @include fj(center);
-            @include sc(px2rem(36), #191919);
+            @include sc(px2rem(36), #666666);
             align-items: center;
             cursor: pointer;
         }
@@ -103,6 +103,14 @@ import getImage from '../../../ultis/getImage.js'
         }
         .changeColor{
             background-color: #c7ad8c;
+            color: white;
+        }
+        >div:hover {
+            background-color: #dfc29d;
+            color: white;
+        }
+        >div:active {
+            background-color: #c1a077;
             color: white;
         }
     }

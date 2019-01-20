@@ -22,7 +22,7 @@ export default {
     data() {
         return {
             imgBack: "",
-            head: ip + ':80/',
+            head: ip + ':8080/static/image/',
         }
     },
     created() {

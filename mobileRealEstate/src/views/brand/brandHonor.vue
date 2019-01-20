@@ -6,7 +6,7 @@
           <img src="@/assets/img/brand/left.png" alt="">
         </div>
         <transition-group tag="ul" :name="change">
-          <li v-for="(photo, index) in brandHonorPhoto" :key="index" v-show="index == imageNum">
+          <li v-for="(photo, index) in brandHonorPhoto" v-show="index == imageNum">
             <img :src="photo.image" alt="">
           </li>
         </transition-group>

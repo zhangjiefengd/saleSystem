@@ -92,7 +92,8 @@ export default {
         infoSub: '',
         successDisplay: 'none',
         imgSub: success,
-        placeholder: 'block'
+        placeholder: 'block',
+        code: ''
     }
   },
   components: {
@@ -104,6 +105,7 @@ export default {
           this.$axios.get('/manage/project/get').then((respond) => {
               respond.data.data.forEach(data => {
                   if (data.id == res.data.data) {
+                      this.code = data.projectIdentification;
                       this.qrWord = data.qrDescription;
                       this.qrTel = data.customerPhone;
                       this.qrCode = getImage(data.qrCode, 1);
@@ -153,7 +155,7 @@ export default {
         }
         if (this.tel) {
             let formdata = new FormData();
-            formdata.append('item_code', this.id);
+            formdata.append('item_code', this.code);
             formdata.append('item_name', this.proName);
             formdata.append('customer_phone', this.tel);
             formdata.append('customer_price', this.selectPrice);

@@ -2,14 +2,14 @@
   <div id="enterprise" class="honor">
     <div class="enterpriseImage">
       <transition-group tag="ul" :name="change">
-        <li v-for="(image, index) in images" :key="index" v-show="index == imageNum">
+        <li v-for="(image, index) in images" :key="image" v-show="index == imageNum">
           <img :src="image.image" alt="">
         </li>
       </transition-group>
     </div>
 
     <transition-group tag="ul" class="spot">
-      <li v-for="(image, index) in images" :key="index"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
+      <li v-for="(image, index) in images" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
       <div class="worldIntro">
@@ -246,7 +246,7 @@ export default {
   z-index: 90;
 }
 #enterprise {
-  width: transverse(1620);
+  width: transverse(1660);
   height: 100%;
   float: left;
   overflow: hidden;

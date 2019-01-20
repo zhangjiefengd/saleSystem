@@ -41,6 +41,10 @@ export default {
       this.imgIndexBack = getImage(res.data.data.backgroundImageLocation, 5);
       // this.imgBig = res.data.data.backgroundImage.fileName;
       this.imgProject = getImage(res.data.data.projectLogoLocation, 5);
+      this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1);
+      this.icon[1] = getImage(res.data.data.brandOverviewBar, 1);
+      this.icon[2] = getImage(res.data.data.unitDisplayBar, 1);
+      this.icon[3] = getImage(res.data.data.projectAroundBar, 1);
       // this.imgProBig = res.data.data.projectImage.fileName;
       res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : "";
       res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
@@ -101,10 +105,10 @@ export default {
   },
   watch: {
     //检测到数组有变化后就立即执行函数
-    moduleIndex() {
-      this.judgeModule();
-      this.hoverChange();
-    },
+    // moduleIndex() {
+    //   this.judgeModule();
+    //   this.hoverChange();
+    // },
     imgBig() {
       var ele = document.querySelector('.indexPage');
       var imgUrl = this.imgBig;

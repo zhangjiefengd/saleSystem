@@ -110,9 +110,15 @@ export default {
                             this.$emit('deleteAll');
                         }
                     }, 100);              
+                } else if(res.data.code == 0) {
+                    this.$message({
+                        message: '该户型有VR，请联系管理员删除！',
+                        type: 'warning'
+                    });
                 }
             }).catch((err) => {
                 this.$message.error('删除失败！');
+                console.log(err);
             });
         },
         //双击修改户型名
