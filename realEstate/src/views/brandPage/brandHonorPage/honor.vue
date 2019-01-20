@@ -1,6 +1,6 @@
 <template>
 	<div id="honor" class="honor">
-    <img :src="background" alt="" class="back">
+    <img :src="background" alt="">
     <div class="content">
       <div class="worlds">
         <div class="word-line">

@@ -1,7 +1,7 @@
 <template>
   <div class="homeMobile">
     <div class="homePage" v-loading="bgcLoading"
-        element-loading-text="背景图片上传中" 
+        element-loading-text="背景图片上传中"
         :style="{backgroundImage: 'url(' + homeBgc.url + ')'}">
       <label class="change changebgc" for="bFile">
           <img class="imgstyle" src="../../assets/img/brandBGC/changeBGC.png" alt="">
@@ -120,7 +120,7 @@
   height: px2rem(34);
   background-image: url('../../assets/img/clickQian.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%;      
+  background-size: 100% 100%;
   position: absolute;
   top: 100%;
   left: 100%;
@@ -181,7 +181,7 @@ export default {
           icon: require('../../assets/img/icon4.png')
         },
       ],
-      head: ip + ':80/',
+      head: ip + ':8080/static/image/',
       bgcLoading: false,
       logoLoading: false
     }
@@ -247,7 +247,7 @@ export default {
           if (res.data.data !== null) {
             this.homeBgc = res.data.data
             console.log(res.data.data)
-            this.homeBgc.url = this.getImage(this.homeBgc.backgroundImageLocation, 2)
+            this.homeBgc.url = this.getImage(this.homeBgc.mobileBackgroundImageLocation, 2)
             // this.homeLogo.url = this.getImage(this.homeBgc.projectLogoLocation, 3)
             this.moduleIndex[0].icon = this.getImage(this.homeBgc.projectIntroductionBar, 1)
             this.moduleIndex[1].icon = this.getImage(this.homeBgc.brandOverviewBar, 1)
@@ -267,7 +267,7 @@ export default {
     allSub: async function () {
       if (this.homeBgc.image) {
         this.bgcLoading = true
-        await this.update(this.homeBgc.image, 1)
+        await this.update(this.homeBgc.image, 7)
           .then(res => {
               if (res.data.code === 1) {
                 this.$message({

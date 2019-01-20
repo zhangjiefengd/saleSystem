@@ -1,9 +1,9 @@
 <template>
   <div class="brandCommon" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
     <router-view></router-view>
-    <div class="allBack" @click="clickBack">
-      <img src="@/assets/img/goHouseHistory/back.png" alt="">
-    </div>
+    <!--<div class="allBack" @click="clickBack">-->
+      <!--<img src="@/assets/img/goHouseHistory/back.png" alt="">-->
+    <!--</div>-->
     <div class="brandBottom">
       <ul class="brandBottom_father">
         <router-link tag="li" v-for="(word, index) in words" :key="index" :to="word.address" :class="[index==Num?leftBottom:'',index==(words.length-1)?borderRight:'']">
