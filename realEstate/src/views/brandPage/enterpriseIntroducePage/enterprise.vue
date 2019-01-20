@@ -14,6 +14,7 @@
     <div class="introduce">
       <div class="worldIntro">
         <p v-if="worlds.enterpriseIntroduction">{{ worlds.enterpriseIntroduction }} </p>
+        <p v-else></p>
         <div @click="bigVideo">
           <img src="../../../assets/img/leftNav/video.jpg" alt="">
         </div>
@@ -132,20 +133,20 @@ export default {
         }, 4000)
       }
     },
-      getImage(data, i) {
-        const imgSplit = data.split(/\_|\./g)
-        let index = i;
-        while (imgSplit.length - 1 <= index) {
-            index--;
-        }
-          return this.head  + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
-      },
-      haveCon() {
-            this.conDisplay = 'flex';
-            this.$forceUpdate();
-        },
-        closeInfo() {
-            this.conDisplay = 'none';
+    getImage(data, i) {
+      const imgSplit = data.split(/\_|\./g)
+      let index = i;
+      while (imgSplit.length - 1 <= index) {
+        index--;
+      }
+      return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+    },
+    haveCon() {
+      this.conDisplay = 'flex';
+      this.$forceUpdate();
+    },
+    closeInfo() {
+      this.conDisplay = 'none';
             this.$forceUpdate();
         },
   },

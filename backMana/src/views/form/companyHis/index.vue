@@ -1,7 +1,7 @@
 <template>
   <div class="boxAll">
-    <div class="developAll">
-      <div id="develop" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+    <div class="developAll" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+      <div id="develop">
         <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-zhengque"></use>
@@ -29,31 +29,34 @@
                 <div class="worldIntroTop">
                   <div class="world hide" v-for="(item, index) in content" :key="index"
                        :class="[{show: index==number}]">
-                    <div class="title" @click="changeTitle(index)" :class="[{hide1: titleAuto}]">
-                      {{ item.step }} (第{{ index+1 }}阶段)
+                    <div>
+                      <div class="title" @click="changeTitle(index)" :class="[{hide1: titleAuto}]">
+                        {{ item.step }}
+                      </div>
+                      <input class="title" style="float: left" type="text" autofocus @blur="changeTitle(index)"
+                             :value="item.step" :class="[{hide1: !titleAuto}]">
+                      <input class="title" style="width: 50%;float: left;display: none;" type="text" autofocus
+                             @blur="changeTitle(index)"
+                             :value="item.step" :class="[{hide1: !titleAuto}]">
+                      <div class="head" @click="changeHead(index)" :class="[{hide1: headAuto}]">
+                        {{ item.developTitle }}
+                      </div>
+                      <input class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
+                             :class="[{hide1: !headAuto}]">
                     </div>
-                    <input class="title" style="float: left" type="text" autofocus @blur="changeTitle(index)"
-                           :value="item.step" :class="[{hide1: !titleAuto}]">
-                    <input class="title" style="width: 50%;float: left;display: none;" type="text" autofocus
-                           @blur="changeTitle(index)"
-                           :value="item.step" :class="[{hide1: !titleAuto}]">
-                    <p class="head" @click="changeHead(index)" :class="[{hide1: headAuto}]">
-                      {{ item.developTitle }}
-                    </p>
-                    <input class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
-                           :class="[{hide1: !headAuto}]">
-                    <p class="content2" @click="changeContent(index)" :class="[{hide1: contentAuto}]">
-                      {{ item.enterpriseDevelopInfo}}
-                    </p>
-                    <textarea style="color: #000;" type="text" class="content2" autofocus @blur="changeContent(index)"
-                              :value="item.enterpriseDevelopInfo" :class="[{hide1: !contentAuto}]">
-                  </textarea>
+                    <div>
+                      <p class="content2" @click="changeContent(index)" :class="[{hide1: contentAuto}]">
+                        {{ item.enterpriseDevelopInfo}}
+                      </p>
+                      <textarea style="color: #000;" type="text" class="content2" autofocus @blur="changeContent(index)"
+                                :value="item.enterpriseDevelopInfo" :class="[{hide1: !contentAuto}]">
+                      </textarea>
+                    </div>
                   </div>
                 </div>
                 <ul class="worldIntroBottom">
                   <li v-for="(Image,index) in content" :key="index" :class="[{changeStyle: index == number}]"
                       @click="changeAll(index)">
-                    {{ index+1 }}
                   </li>
                 </ul>
               </div>
@@ -415,12 +418,12 @@
       align-items: center;
 
       .content1 {
-        width: transverse(1200);
-        height: vertical(800);
-        position: absolute;
+        width: transverse(1250);
+        height: vertical(850);
+        position: relative;
 
         .pictureIntro {
-          width: 55.5%;
+          width: 100%;
           height: 100%;
           float: left;
           overflow: hidden;
@@ -438,59 +441,66 @@
         }
 
         .worldIntro {
-          width: 44.5%;
-          float: left;
-          height: 100%;
-          @include fj(center);
-          align-items: center;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 40%;
           background-color: rgba(38, 38, 42, 0.78);
 
           div {
-            width: 70%;
-            height: 80%;
-
+            width: 100%;
+            height: 100%;
+            float: left;
             .worldIntroTop {
               width: 100%;
-              height: 80%;
-              // overflow: hidden;
+              height: 70%;
+              @include fj(center);
+              align-items: center;
               .world {
-                width: 100%;
+                width: 90%;
                 height: 100%;
-                float: left;
-
-                .title {
-                  width: 100%;
-                  height: 15%;
+                > div {
+                  width: 50%;
+                  height: 100%;
+                  float: left;
                   @include fj(center);
                   align-items: center;
-                  background-color: #ffdba1;
-                  color: #121212;
-                  font-size: px2rem(25);
-                  border: 1px dotted #fff;
+                  flex-direction: column;
+                  .title {
+                    display: inline-block;
+                    width: 100%;
+                    height: 30%;
+                    color: #ffffff;
+                    background-color: transparent;
+                    font-size: px2rem(25);
+                    border: 1px dotted #fff;
+                  }
+
+                  .head {
+                    display: inline-block;
+                    width: 100%;
+                    height: 30%;
+                    font-size: px2rem(25);
+                    color: #e2e2e2;
+                    background-color: transparent;
+                    margin: 1rem 0;
+                    border: 1px dotted #fff;
+                  }
+                  .content2 {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    margin-top: 1px;
+                    line-height: px2rem(30);
+                    font-size: px2rem(20);
+                    @include fj(center);
+                    align-items: flex-start;
+                    color: #fffffe;
+                    border: 1px dotted #fff;
+                  }
                 }
 
-                .head {
-                  width: 100%;
-                  height: 20%;
-                  font-size: px2rem(25);
-                  @include fj(space-between);
-                  align-items: center;
-                  color: #c79f62;
-                  margin: 1rem 0;
-                  border: 1px dotted #fff;
-                }
-
-                .content2 {
-                  width: 100%;
-                  height: 55%;
-                  margin-top: 1px;
-                  line-height: px2rem(30);
-                  font-size: px2rem(20);
-                  @include fj(center);
-                  align-items: flex-start;
-                  color: #fffffe;
-                  border: 1px dotted #fff;
-                }
 
                 > textarea {
                   color: #000 !important;
@@ -501,28 +511,30 @@
             .worldIntroBottom {
               width: 100%;
               height: 20%;
-              @include fj(space-between);
+              @include fj(center);
               align-items: flex-end;
 
               li {
-                width: px2rem(48);
-                height: px2rem(48);
-                color: #ffdaaa;
+                width: px2rem(15);
+                height: px2rem(15);
                 float: left;
                 @include fj(center);
                 align-items: center;
+                background-color: #e2e2e2;
                 border: solid 1px #c79f62;
                 cursor: pointer;
+                margin-left: px2rem(10);
+              }
+
+              .changeStyle {
+                width: px2rem(30);
+                border-radius: 5px;
+                background-color: #e2e2e2;
               }
             }
           }
         }
       }
-    }
-
-    .changeStyle {
-      background-color: #ffdaaa;
-      color: #121212 !important;
     }
   }
 </style>

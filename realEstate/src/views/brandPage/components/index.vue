@@ -161,6 +161,12 @@ export default {
         align-items: center;
         cursor: pointer;
         color: #727272;
+        &:hover {
+          background-color: #dfc29d;
+        }
+        &:active {
+          background-color: #c1a077;
+        }
       }
       .router-link-active {
         background-color: #c7ad8c;

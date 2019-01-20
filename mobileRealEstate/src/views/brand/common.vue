@@ -91,8 +91,7 @@ export default {
   height: 10%;
   position: fixed;
   bottom: 0;
-  background-color: #1b1b1b;
-  border-top: 1px solid #ffdaaa;
+  background-color: #ffffff;
   .brandBottom_father {
     width: 100%;
     height: 100%;
@@ -101,14 +100,15 @@ export default {
     li {
       width: 9rem;
       height: 2rem;
-      color: #fefefe;
+      color: #666666;
       @include fj(center);
       align-items: center;
       @include fontSize(28);
-      border-right: 1px solid #ffdaaa;
+      font-weight: bold;
+      border-right: 1px solid #e6e6e6;
     }
     .router-link-active {
-      color: #ffdaaa;
+      color: #c7ad8c;
     }
   }
 }

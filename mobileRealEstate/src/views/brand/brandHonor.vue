@@ -1,8 +1,8 @@
 <template>
   <div class="brandHonor" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
-    <div class="brandHonorScroll">
+    <div>
       <div class="brandHonorPhoto">
-        <div class="brandHonorPhotoLeft" @click="brandHonorLeftChange">
+        <div class="brandHonorPhotoLeft" v-if="brandHonorPhoto.length > 1" @click="brandHonorLeftChange">
           <img src="@/assets/img/brand/left.png" alt="">
         </div>
         <transition-group tag="ul" :name="change">
@@ -10,14 +10,14 @@
             <img :src="photo.image" alt="">
           </li>
         </transition-group>
-        <div class="brandHonorPhotoRight" @click="brandHonorRightChange">
+        <div class="brandHonorPhotoRight" v-if="brandHonorPhoto.length > 1" @click="brandHonorRightChange">
           <img src="@/assets/img/brand/right.png" alt="">
         </div>
       </div>
       <div class="brandHonorIntro">
-        <ul class="brandHonorwords">
+        <ul class="brandHonorwords brandHonorScroll">
           <li v-for="(word, index) in brandHonorWords" >
-            <img src="@/assets/img/brand/honorWordLogo.png" alt="">
+            <span class="word-spot"></span>
             <span>{{ word.enterpriseHonorInfo }}</span>
           </li>
         </ul>
@@ -37,18 +37,17 @@
   @include fj(space-around);
   align-items: center;
   flex-direction: column;
+  overflow: auto;
   >div {
-    width:  80%;
+    width:  85%;
     height: px2rem(1100);
-    overflow-y: auto;
     margin-top: 4rem;
   }
   .brandHonorPhoto {
     width: 100%;
-    height: px2rem(500);
+    height: px2rem(496);
     position: relative;
-    overflow: hidden;
-    @include fj();
+    @include fj(center);
     align-items: center;
     >div {
       width: px2rem(36);
@@ -57,7 +56,6 @@
       z-index: 99;
       @include fj(center);
       align-items: center;
-      background-color: rgba(101, 101, 101, 0.26);
       >img {
         width: px2rem(16);
         height: px2rem(36);
@@ -65,14 +63,15 @@
       }
     }
     .brandHonorPhotoLeft {
-      left: 0;
+      left: px2rem(0);
     }
     .brandHonorPhotoRight {
-      right: 0;
+      right: px2rem(0);
     }
     ul {
-      width: 100%;
+      width: 80%;
       height: 100%;
+      position: relative;
       li {
         width: 100%;
         height: 100%;
@@ -85,16 +84,24 @@
     }
   }
   .brandHonorIntro {
+    height: calc(100% - 30rem);
+    overflow-y: auto;
+    position: relative;
     .brandHonorwords {
-      width: 100%;
+      width: 80%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       li {
-        margin-top: px2rem(30);
+        margin-top: px2rem(25);
         @include fj(flex-start);
         align-items: center;
-        img {
-          width: px2rem(36);
-          height: px2rem(28);
-          margin-right: px2rem(10);
+        .word-spot {
+          width: px2rem(16);
+          height: px2rem(16);
+          border-radius: 50%;
+          background-color: #c7ad8b;
+          margin: 0 px2rem(5);
         }
         span {
           @include fontSize(30);
@@ -111,8 +118,8 @@
     align-items: center;
     margin-top: px2rem(20);
     img {
-      width: px2rem(37);
-      height: px2rem(27);
+      width: px2rem(30);
+      height: px2rem(20);
     }
   }
 }
@@ -164,6 +171,9 @@ export default {
     this.$axios.get('/brand/enterpriseHonor/get')
       .then(res => {
         this.brandHonorWords = res.data.data
+        if (this.brandHonorWords.length > 4) {
+          this.wordRemind = true
+        }
       })
       .catch(error => {
         console.log(error)
@@ -202,7 +212,7 @@ export default {
         this.wordRemind = true;
       }
     },100);
-    var brandWorldScroll = document.getElementsByClassName('brandHonorScroll')[0];
+    var brandWorldScroll = document.getElementsByClassName('brandHonorIntro')[0];
     brandWorldScroll.addEventListener('scroll', ()=>{
       var allheight = parseInt(brandWorldScroll.scrollHeight);
       var judeHeight = Math.ceil(brandWorldScroll.scrollTop) + Math.ceil(brandWorldScroll.offsetHeight);

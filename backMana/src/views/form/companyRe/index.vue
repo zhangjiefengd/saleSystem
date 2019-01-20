@@ -38,7 +38,6 @@
             <li v-for="(image, index) in images" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
           </ul>
           <div class="introduce">
-            <img :style="{backgroundCOlor: imgColor}" src="../../../assets/img/brandBGC/worldBgc.png" alt="">
             <div class="worldFather">
               <div class="worldIntro">
                 <div class="worldTitle">
@@ -77,13 +76,13 @@
                 </div>
               </div>
             </div>
-
-            <button class="allSubmit" type="button" @click="submitForm" value="保存">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-zhengque"></use>
-              </svg>
-            </button>
           </div>
+
+          <button class="allSubmit" type="button" @click="submitForm" value="保存">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zhengque"></use>
+            </svg>
+          </button>
           <router-view></router-view>
         </div>
       </div>
@@ -112,7 +111,7 @@
         contentAuto: false,
         changeImageNum: 0,
         head: 'http://118.24.113.182:8080/static/image/',
-        imgColor: '#eee'
+        timer: ''
       }
     },
     created() {
@@ -120,7 +119,7 @@
       this.$nextTick(() => {
         this.timer = setInterval(() => {
           this.autoPlay()
-        }, 3000)
+        }, 5000)
       })
     },
     mounted() {
@@ -214,7 +213,7 @@
         if (!this.titleAuto) {
           this.timer = setInterval(() => {
             this.autoPlay()
-          }, 2000)
+          }, 5000)
         } else {
           clearInterval(this.timer)
         }
@@ -280,9 +279,6 @@
         this.imageNum = index
       },
       submitForm() {
-        // var iconStyle = document.getElementsByClassName('allSubmit')[0]
-        // iconStyle.firstChild.style.color = '#3aa7ff'
-        // iconStyle.firstChild.style.backgroundColor = '#edf0f5'
         var submit2 = document.getElementById('submit2')
         var config = {
           headers: {
@@ -356,6 +352,7 @@
 
   .allSubmit {
     position: absolute;
+    z-index: 99;
     right: 0;
     bottom: 0;
     color: #54b3ff;
@@ -403,18 +400,6 @@
           color: #9da4ae;
         }
       }
-    }
-
-    .filestyle {
-      // width: 20%;
-      // height: 100%;
-      // @include fj(center);
-      // align-items: center;
-      // background-color: #0f6191;
-      // color: #ffffff;
-      // &:hover {
-      // 	color: #f00a0a;
-      // }
     }
   }
 
@@ -573,12 +558,15 @@
     }
 
     .introduce {
-      width: transverse(1000);
-      height: 100%;
       float: right;
       position: absolute;
-      right: 0;
+      right: px2rem(120);
+      top: vertical(50);
       z-index: 88;
+      width: 50%;
+      height: 80%;
+      background-color: #ffffff;
+      background-color: rgba(250, 250, 250, 0.85);
 
       > img {
         width: 100%;
@@ -589,19 +577,14 @@
 
       > .worldFather {
         width: 100%;
-        float: right;
         height: 100%;
-        position: absolute;
-        @include fj(flex-end);
-        align-items: baseline;
+        @include fj(center);
+        align-items: center;
         height: 80%;
       }
 
       .worldIntro {
-        position: absolute;
-        right: vertical(90);
-        top: vertical(110);
-        width: transverse(1200);
+        width: 90%;
 
         > .worldTitle {
           float: right;
@@ -616,7 +599,7 @@
             text-align: center;
             font-size: px2rem(30);
             line-height: px2rem(26);
-            color: #ffdba1;
+            color: #c7ad8b;
             border: 1px dotted #fff;
             float: left;
             margin: 0;
@@ -633,18 +616,20 @@
         }
 
         > .contentWorld {
-          width: 80%;
-          height: 60%;
+          width: 100%;
+          height: 63%;
           line-height: px2rem(26);
           float: right;
-          margin-top: vertical(72);
-          color: #fffffe;
+          margin-top: vertical(20);
+          color: #333333;
 
           .content {
             width: 100%;
             text-indent: 2em;
             border: 1px dotted #fff;
             height: px2rem(300);
+            font-size: px2rem(25);
+            line-height: px2rem(40);
             overflow-y: scroll;
           }
 
@@ -670,7 +655,6 @@
           input {
             width: 85%;
             height: 100%;
-            // outline: none;
             border: 2px solid gray;
             border-right-width: 0;
           }

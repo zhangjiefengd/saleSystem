@@ -5,7 +5,7 @@
     </div>
     <div class="brandCultureWords">
       <ul class="brandCultureScroll">
-        <li v-for="(title, index) in brandCultureTitle" :key="index" :class="[index==0?'styleNull':'']">
+        <li v-for="(title, index) in brandCultureTitle" :key="index">
           <p class="brandCultureTitle"> {{ title.title }} </p>
           <p class="brandCultureContent">  {{ title.content }} </p>
         </li>
@@ -27,7 +27,8 @@
   height: 100%;
   .brandCulturePhoto {
     width: 100%;
-    height: 20%;
+    height: 30%;
+    margin-top: 30%;
     img {
       width: 100%;
       height: 100%;
@@ -35,31 +36,33 @@
   }
   .brandCultureWords {
     width: 100%;
-    height: 70%;
+    height: 40%;
     position: relative;
     ul {
       width: 90%;
       height: 80%;
-      margin-top: px2rem(85);
+      margin-top: px2rem(10);
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       overflow-y: scroll;
       li {
-        width: 100%;
+        width: 70%;
         height: px2rem(100);
-        margin-top: px2rem(85);
+        margin: 0 15%;
         @include fj(space-between);
         align-items: center;
         flex-direction: column;
         .brandCultureTitle {
-          color: #ffdaaa;
-          @include fontSize(34);
+          color: #666666;
+          @include fontSize(30);
           @include lineHeight(63);
         }
         .brandCultureContent {
-          color: #fff;
-          @include fontSize(23);
+          height: calc(100% - 2rem);
+          color: #999999;
+          @include fontSize(24);
+          text-align: center;
         }
       }
     }
@@ -71,8 +74,8 @@
       @include fj(center);
       align-items: center;
       img {
-        width: px2rem(37);
-        height: px2rem(27);
+        width: px2rem(30);
+        height: px2rem(20);
       }
     }
   }
@@ -98,6 +101,9 @@ export default {
       .then(res => {
         this.brandCultureTitle = res.data.data
         this.brandCultureNum = res.data.data.length
+        if (this.brandCultureNum > 3) {
+          this.wordRemind = true
+        }
       })
       .catch(error => {
         console.log(error)

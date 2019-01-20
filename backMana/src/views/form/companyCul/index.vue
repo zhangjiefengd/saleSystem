@@ -1,17 +1,7 @@
 <template>
   <div class="honorAll">
-    <div class="honorbox">
-      <!-- <div class="control">
-        <div id="upload">
-          <form action="" enctype="multipart/form-data" method="post" id="imgform">
-            <div id="updiv">
-
-              <input type="submit" name="" id="submit" style="display: none">
-            </div>
-          </form>
-        </div>
-      </div> -->
-      <div id="honor" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+    <div class="honorbox" v-loading="bgcLoading" element-loading-text="背景图片上传中">
+      <div id="honor">
         <button class="allSubmit" type="button" @click="submitForm" value="全部提交">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-zhengque"></use>
@@ -37,38 +27,40 @@
                 <img class="imgstyle" src="../../../assets/img/brandBGC/addculture.png" alt="">
               </button>
               <div>
-                <div class="line"></div>
-                <ul class="dotted">
-                  <li v-for="(world, index) in cultureText" v-if="index<6" :key="index">
-                    <span class="spot"></span>
-                  </li>
-                </ul>
                 <form class="Intro">
-                  <div class="worldIntro" v-for="(item, index) in cultureText" v-if="index<6 || cultureText" :key="index">
-                    <div class="titleFather" style="height: 50%">
-                      <p v-if="item.title !== null" class="title" @click="changeTitle(index)"
-                         :class="[{hide: titleAuto}]">{{ item.title }}</p>
-
-                      <input v-if="item.title !== null" class="title" type="text" autofocus @blur="changeBack(index)"
-                             :value="item.title" :class="[{hide: !titleAuto}]">
+                  <div class="worldIntro" v-for="(item, index) in cultureText" v-if="index<4 || cultureText" :key="index">
+                    <div class="word-logo">
+                      <img :src="item.image" alt="">
                     </div>
-                    <div class="content1Father" style="height: 50%">
-                      <p class="content1" v-if="item.content !== null" @click="changeContent(index)"
-                         :class="[{hide: contentAuto}]">{{ item.content }}</p>
+                    <div class="word-all">
+                      <div class="titleFather">
+                        <p v-if="item.title !== null" class="title" @click="changeTitle(index)"
+                           :class="[{hide: item.titleB}]">{{ item.title }}</p>
 
-                      <input class="content1" v-if="item.content !== null" type="text" autofocus
-                             @blur="changeContentBack(index)" :value="item.content"
-                             :class="[{hide: !contentAuto}]">
+                        <textarea v-if="item.title !== null" class="title" type="text" autofocus @blur="changeBack(index)"
+                               :value="item.title" :class="[{hide: !item.titleB}]">
+                        </textarea>
+                      </div>
+                      <div class="content1Father">
+                        <p class="content1" v-if="item.content !== null" @click="changeContent(index)"
+                           :class="[{hide: item.contentB}]">{{ item.content }}</p>
 
+                        <textarea class="content1" v-if="item.content !== null" type="text" autofocus
+                               @blur="changeContentBack(index)" :value="item.content"
+                               :class="[{hide: !item.contentB}]">
+                        </textarea>
+
+                      </div>
                     </div>
+
+                    <ul class="deleteT">
+                      <li v-if="index<4" >
+                        <span class="delete" @click="deleteWorld(index)">X</span>
+                      </li>
+                    </ul>
                   </div>
                   <input type="submit" id="submit2" style="display: none">
                 </form>
-                <ul class="deleteT">
-                  <li v-for="(world, index) in cultureText" v-if="index<6" :key="index">
-                    <span class="delete" @click="deleteWorld(index)">X</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -95,7 +87,8 @@
         listen: [],
         head: ip + ':8080/static/image/',
         bgcLoading: false,
-        cultureLoading: false
+        cultureLoading: false,
+        logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
       }
     },
     created() {
@@ -142,6 +135,11 @@
               this.cultureText = res.data.data
               this.listen = JSON.parse(JSON.stringify(res.data.data))
               this.worldNum = res.data.data.length
+              this.cultureText.map((item, index) => {
+                item.image = this.logo[index]
+                item.contentB = false
+                item.titleB = false
+              })
             }
           })
           .catch(error => {
@@ -167,6 +165,7 @@
             title1[2 * index + 1].style.display = 'flex'
           }
         }
+        this.cultureText[index].titleB = !this.cultureText[index].titleB
       },
       changeBack(index) {
         let title1 = document.getElementsByClassName('title')
@@ -177,6 +176,7 @@
           }
         }
         this.cultureText[index].title = title1[2 * index + 1].value
+        this.cultureText[index].titleB = !this.cultureText[index].titleB
       },
       changeContent(index) {
         let content1 = document.getElementsByClassName('content1')
@@ -186,6 +186,7 @@
             content1[2 * index + 1].style.display = 'flex'
           }
         }
+        this.cultureText[index].contentB = !this.cultureText[index].contentB
       },
       changeContentBack(index) {
         let content1 = document.getElementsByClassName('content1')
@@ -196,13 +197,19 @@
           }
         }
         this.cultureText[index].content = content1[2 * index + 1].value
+        this.cultureText[index].contentB = !this.cultureText[index].contentB
       },
       addWorld() {
-        if (this.cultureText.length < 6) {
+        if (this.cultureText.length < 4) {
           this.cultureText.push({
             'id': 0,
             'title': '请编辑文字',
             'content': '请编辑文字'
+          })
+        } else {
+          this.$message({
+            'message': '达到上限',
+            'type': 'warning'
           })
         }
         // this.$set(this.title, this.title.length, setWorld)
@@ -286,7 +293,6 @@
                     message: '修改成功',
                     type: 'success'
                   })
-                  console.log(res.data.data)
                 }
               })
           }
@@ -391,11 +397,10 @@
 
   .changephoto {
     width: px2rem(150);
-    top: 5rem;
   }
 
   .changeword {
-    top: 1rem;
+    bottom: 0;
     right: 0;
     border: 0;
     padding: 0;
@@ -468,26 +473,26 @@
 
         .contentTop {
           width: 100%;
-          height: 58%;
+          height: 50%;
           @include fj();
-          align-items: flex-end;
 
           > img {
             width: 100%;
-            height: 78%;
+            height: 100%;
           }
         }
 
         .contentBottom {
           width: 100%;
-          height: 30%;
+          height: 40%;
           position: relative;
           @include fj(center);
           align-items: flex-end;
 
           > div {
             width: 100%;
-            height: 50%;
+            height: 100%;
+            @include fj(center);
 
             .line {
               width: 100%;
@@ -498,10 +503,8 @@
             }
 
             .deleteT {
-              width: 100%;
               position: absolute;
-              top: px2rem(200);
-              @include fj(space-around);
+              right: px2rem(-22);
             }
 
             .dotted {
@@ -520,33 +523,62 @@
             }
 
             .Intro {
-              width: 100%;
-              height: 80%;
+              width: 80%;
+              height: 100%;
               margin-top: 1rem;
-              @include fj(space-between);
-              align-items: flex-end;
+              margin-left: -5%;
 
               .worldIntro {
-                // @include fj(center);
-                // flex-direction: column;
-                // align-items: center;
-                .titleFather {
-                  > p.title {
-                    @include fj(center);
-                    align-items: center;
-                    color: #ffdaaa;
-                    border: 1px dotted #fff;
+                width: 45%;
+                height: 50%;
+                float: left;
+                @include fj(space-between);
+                position: relative;
+                margin-left: 5%;
+                >div {
+                  width: 50%;
+                }
+                .word-logo {
+                  width: px2rem(64);
+                  height: px2rem(64);
+                  float: left;
+                  img {
+                    width: 100%;
+                    height: 100%;
+                    float: right;
                   }
                 }
+                .word-all {
+                  float: left;
+                  width: calc(100% - 3rem);
+                  margin-left: 1rem;
+                  height: 100%;
+                  overflow: hidden;
+                  .titleFather {
+                    width: 100%;
+                    height: auto;
+                    > p.title {
+                      width: 100%;
+                      font-size: px2rem(28);
+                      word-wrap: break-word;
+                      color: #ffdaaa;
+                      margin: 0;
+                      border: 1px dotted #fff;
+                      letter-spacing: .2em;
+                    }
+                  }
 
-                .content1Father {
-                  > p.content1 {
-                    margin-top: 2%;
-                    text-align: center;
-                    @include fj(center);
-                    align-items: center;
-                    border: 1px dotted #fff;
-                    color: #ffffff;
+                  .content1Father {
+                    width: 100%;
+                    height: auto;
+                    > p.content1 {
+                      margin: 0;
+                      font-size: px2rem(22);
+                      word-wrap: break-word;
+                      border: 1px dotted #fff;
+                      color: #ffffff;
+                      letter-spacing: .1em;
+                    }
                   }
                 }
 
