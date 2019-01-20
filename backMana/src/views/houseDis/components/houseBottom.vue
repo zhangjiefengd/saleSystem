@@ -32,7 +32,7 @@ export default {
     created() {
         //请求房间类型
         this.$axios.get("/house/houseType/get").then(res => {
-            this.houseType = res.data.data.reverse();
+            this.houseType = res.data.data;
             this.houseType.forEach((house) => {
                 this.visibility.push('none');
                 this.clickColor.push('#9ea6b1');

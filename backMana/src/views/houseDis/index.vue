@@ -1,5 +1,6 @@
 <template>
     <div class="housePage" v-loading="this.$store.state.loading.loading">
+        <div class="user" @click='userColor'>常用按钮装置设置</div>
         <div class="page">
             <house-content ref='content' 
                 @addSample='addSample' 
@@ -40,6 +41,7 @@
                 @cancelAddHouseType='cancelAddHouseType' 
                 @displayHouseType='displayHouseType'>
             </add-house-types>
+            <color-manage></color-manage>
         </div>
     </div>
 </template>
@@ -52,6 +54,7 @@ import addSample from './components/frames/addSample.vue'
 import addHouseTypePic from './components/frames/addHouseTypePic.vue'
 import addRoomType from './components/frames/addRoomType.vue'
 import reduceRoomType from './components/frames/reduceRoomType.vue'
+import colorManage from './components/frames/colorManage.vue'
 import ip from '../../../static/ip'
 
     export default {
@@ -63,7 +66,8 @@ import ip from '../../../static/ip'
             addSample,
             addRoomType,
             reduceRoomType,
-            addHouseTypePic
+            addHouseTypePic,
+            colorManage
         },
         data() {
             return {
@@ -84,6 +88,11 @@ import ip from '../../../static/ip'
                 this.$forceUpdate();
                 this.markVisibility = 'block';//让遮罩层显现
                 this.houseTypeFrame = 'block';//让增加户型弹框出现
+            },
+            //管理颜色
+            userColor() {
+                this.$forceUpdate();
+                this.markVisibility = 'block';//让遮罩层显现
             },
             //取消增加户型操作
             cancelAddHouseType() {
@@ -199,6 +208,26 @@ import ip from '../../../static/ip'
     justify-content: center;
     align-items: center;
     background-color: #EDF0F5;
+    .user {
+        position: absolute;
+        top: 70%;
+        right: 0; 
+        width: px2rem(80);
+        height: px2rem(160);
+        background-color: #9ea6b1;
+        padding-left: px2rem(10);
+        padding-right: px2rem(10);
+        @include sc(px2rem(26));
+        @include fj(center);
+        align-items: center;
+        color: white;
+        z-index: 1000;
+        opacity: 1;
+        cursor: pointer;
+    }
+    .user:hover {
+        opacity: 0.9;
+    }
     .page {
         margin-top: -80px;
         width: px2rem(1455);
@@ -233,6 +262,7 @@ import ip from '../../../static/ip'
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 10000;
     }
 }
 .el-loading-parent--relative {

@@ -11,7 +11,7 @@
                 <div class="add" @click='addSample'><img :src="addBig"></div>
             </div>
         </div>
-        <div class="content" name="plan">
+        <div class="content houseT" name="plan">
             <div class="Title"><span>户型图</span></div>
             <div class="pic">
                 <div class="addThree">
@@ -19,7 +19,16 @@
                     <img :src="chaPic" id="cha" class="chaOne" :style="{display: chaDisplay}" @click='deleteHouseTypePic'>
                 </div>
             </div>
-            <div class="VR">是否需要全景图展示<input type="checkbox" ref='vr' @change='changeVr' class="checkBox"></div>
+            <div class="vrLink">
+                <el-input
+                    placeholder="输入全景图链接"
+                    v-model="vrLink"
+                    size="small"
+                    clearable>
+                </el-input>
+                <img src="../../../assets/img/input.png" alt="" @click='subVr'>
+            </div>
+            <!-- <div class="VR">是否需要全景图展示<input type="checkbox" ref='vr' @change='changeVr' class="checkBox"></div> -->
         </div>
         <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -43,7 +52,9 @@ export default {
             dialogImageUrl: '',
             dialogVisible: false,
             houseTypeVrUrl: '',
-            title: ''
+            title: '',
+            vrLink: '',
+            projectId: 0
         }
     },
     components: {
@@ -56,11 +67,13 @@ export default {
             this.title = res.data.data;
             if(this.title[0]) {
                 if (this.title[0].houseTypeVrUrl) {
-                    this.$refs.vr.checked = true;
+                    this.vrLink = this.title[0].houseTypeVrUrl;
+                    // this.$forceUpdate();
                 } else {
-                    this.$refs.vr.checked = false;
+                    this.vrLink = '';
+                    // this.$refs.vr.checked = false;
                 }
-                
+                this.projectId = this.title[0].id;
                 //请求样板间
                 this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + this.title[0].id).then((res) => {
                     this.sampleRoomImage = res.data.data;
@@ -85,13 +98,16 @@ export default {
     },
     mounted() {
         this.$on('conveyIndex', (name, id) => { 
+            this.projectId = id;
             //请求有无VR
             this.$axios.get('/house/houseType/get').then((res) => {
                 res.data.data.forEach((data) => {
                     if (data.houseTypeName == name && data.houseTypeVrUrl) {
-                        this.$refs.vr.checked = true;
+                        // this.$refs.vr.checked = true;
+                        this.vrLink = data.houseTypeVrUrl;
                     } else if ((data.houseTypeName == name && !data.houseTypeVrUrl)) {
-                        this.$refs.vr.checked = false;
+                        // this.$refs.vr.checked = false;
+                        this.vrLink = '';
                     }
                 });
             }).catch((err) => {
@@ -133,6 +149,27 @@ export default {
         });
     },
     methods: {
+        //提交VR链接
+        subVr() {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json' 
+                }
+            }
+            // if (this.vrLink) {
+                this.$axios.post('/house/houseType/update',{
+                    houseTypeVrUrl: this.vrLink,
+                    id: this.projectId
+                }, config).then((res) => {
+                    this.$message({
+                        message: '上传链接成功！',
+                        type: 'success'
+                    });
+                }).catch((err) => {
+                    this.$message.error('上传链接失败！');
+                });
+            // }
+        },
         //切图片地址
         getImage(data, i) {
             const imgSplit = data.split(/\_|\./g)
@@ -234,6 +271,7 @@ export default {
             // background-color:black;
     flex-direction: column;
     justify-content: space-between;
+
     .content {
         width: 100%;
         height: px2rem(360);
@@ -349,6 +387,20 @@ export default {
                     margin-left: -20px;
                     visibility: hidden;
                 }
+            }
+        }
+    }
+    .houseT {
+        position: relative;
+        .vrLink {
+            @include fj();
+            align-items: center;
+            position: absolute;
+            left: 76%;
+            top: 80%;
+            img {
+                width: px2rem(80);
+                cursor: pointer;
             }
         }
     }

@@ -18,11 +18,7 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
-      <colorPicker v-model="color" v-on:change="headleChangeColor"></colorPicker>
-      <!-- <div class="click">
-        <img src="../../assets/img/guidePage/click.png"/>
-        <span>·点击探索·</span>
-      </div> -->
+
       <div class="word">
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/bussiness.png" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/address.png" alt="">&nbsp;&nbsp;{{word[1]}}</span>
