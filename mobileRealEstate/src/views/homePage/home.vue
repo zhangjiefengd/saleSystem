@@ -135,7 +135,7 @@ export default {
             }
           })
         }
-        this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 3)
+        this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 1)
       })
     //请求激活的模块
     // this.$axios.get("/module/main", {params:{'select':'true'}})

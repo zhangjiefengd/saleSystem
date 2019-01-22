@@ -114,7 +114,7 @@ export default {
       let formdata = new FormData();
       if ($('#imgGuideBack') && document.getElementById('imgGuideBack').files[0]) {
         formdata.append('imageFile', document.getElementById('imgGuideBack').files[0]);
-        formdata.append('isLogo', 'false');
+        formdata.append('imageType', 1);
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'  
@@ -140,7 +140,7 @@ export default {
       let formdata = new FormData();
       if ($('#imgGuideLogo') && document.getElementById('imgGuideLogo').files[0]) {
         formdata.append('imageFile', document.getElementById('imgGuideLogo').files[0]);
-        formdata.append('isLogo', 'true');
+        formdata.append('imageType', 2);
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'  

@@ -210,7 +210,7 @@ import ip from '../../../static/ip'
 
 .housePage {
     width: 100%;
-    height: px2rem(1200);
+    height: px2rem(870);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -2,8 +2,8 @@
     <div class="content">
         <div class="pic" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
             <transition-group tag="ul" :name="change">
-                <li v-for="(image, index) in img" :key='image'  v-show="index === imageNum">
-                    <img :src="image" alt="">
+                <li v-for="(image, index) in img" @click='scale(index)'  :key='image'  v-show="index === imageNum">
+                    <img :src="image" class="con" alt="">
                 </li>
             </transition-group>
             <!-- <img class="conPic" v-show="check" v-for="a in img" @click="scale()" :src="a" alt="" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">         -->
@@ -161,17 +161,23 @@ export default {
         },
 		touchend(ev) {
             this.x = this.endX - this.startX;
-			if (this.x>0) {
-				this.left()
+			if (this.x>0 && this.x != -this.startX) {
+                this.left()
+                this.endX = 0;
+                
 				// this.timer = setInterval(() => {
 				// 	this.autoPlay()
 				// }, 4000);
-			}else if(this.x<0) {
-				this.autoPlay()
+			}else if(this.x<0 && this.x != -this.startX) {
+                this.autoPlay();
+                this.endX = 0;
+
 				// this.timer = setInterval(() => {
 				// 	this.autoPlay()
 				// }, 4000)
-			}
+			} else if (this.x == 0 || this.x == -this.startX) {
+                this.scale(this.nowPage - 1);
+            }
 		},
         //判断是否全屏
         isFullscreen(){
@@ -205,22 +211,22 @@ export default {
 
             }
         },        
-        scale() {
-                if (document.getElementsByClassName('conPic')[1]) {
+        scale(index) {
+                if (document.getElementsByClassName('con')[1]) {
                     // document.getElementsByClassName('conPic')[1].onclick = () => {
-                        let img = [];
-                        for (let i = 0; i < this.img.length - 1; i++) {
-                            img[i] = this.img[i + 1];
-                        }
-                        img[this.img.length - 1] = this.img[0];
+                        // let img = [];
+                        // for (let i = 0; i < this.img.length - 1; i++) {
+                        //     img[i] = this.img[i + 1];
+                        // }
+                        // img[this.img.length - 1] = this.img[0];
                         // alert(778);
                         var agent = navigator.userAgent.toLowerCase();
                         if (agent.match(/MicroMessenger/i) == "micromessenger") {
                             // return true;
                             // setTimeout(() => {
                                 WeixinJSBridge.invoke('imagePreview', {    
-                                    'current': document.getElementsByClassName('conPic')[1].src,
-                                    'urls': img
+                                    'current': document.getElementsByClassName('con')[index].src,
+                                    'urls': this.img
                                 }); 
                             // },1000);
                         } else {
@@ -232,7 +238,7 @@ export default {
                     // document.getElementsByClassName('conPic')[0].onclick = () => {
                         let img = [];
                         // for (let i = 0; i < this.img.length - 1; i++) {
-                            img[0] = this.img[0];
+                        img[0] = this.img[0];
                         // }
                         // img[this.img.length - 1] = this.img[0];
                         // alert(778);
@@ -241,7 +247,7 @@ export default {
                             // return true;
                             // setTimeout(() => {
                                 WeixinJSBridge.invoke('imagePreview', {    
-                                    'current': document.getElementsByClassName('conPic')[0].src,
+                                    'current': document.getElementsByClassName('con')[0].src,
                                     'urls': img
                                 }); 
                             // },1000);

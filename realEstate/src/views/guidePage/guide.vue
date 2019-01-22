@@ -8,9 +8,9 @@
         <span>·点击探索·</span>
       </div> -->
       <div class="guideInfor">
-        <span class="bottomInfor"><img src="../../assets/img/guidePage/bussiness.png" alt="bussiness"></span>
-        <span class="bottomInfor"><img src="../../assets/img/guidePage/address.png" alt="bussiness"></span>
-        <span class="bottomInfor"><img src="../../assets/img/guidePage/tel.png" alt="bussiness"></span>
+        <span class="bottomInfor" :style='{color: colorBussiness}'><img :src="bussiness" alt="bussiness"></span>
+        <span class="bottomInfor" :style='{color: colorAddress}'><img :src="address" alt="bussiness"></span>
+        <span class="bottomInfor" :style='{color: colorTel}'><img :src="tel" alt="bussiness"></span>
       </div>
     </div>
 
@@ -30,28 +30,43 @@ export default {
       root: null,
       check: 0,
       imgBig: "",
-      imgLogoBig: ""
+      imgLogoBig: "",
+      colorBussiness: '#666666',
+      colorAddress: '#666666',
+      colorTel: '#666666',
+      bussiness: require('../../assets/img/guidePage/bussiness.png'),
+      address: require('../../assets/img/guidePage/address.png'),
+      tel: require('../../assets/img/guidePage/tel.png')
     }
   },
   created() {
     //获取引导页数据
-    this.$axios.get("/basic/guidePage/get?a=" + Math.random())
+    this.$axios.get("/basic/guidePage/get")
     .then((res) => {
-      if (screen.width > 1024){
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
-        this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1);
-      }else {
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
-        this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 2);
+      if (res.data.code == 1) {
+        if (screen.width > 1024){
+          this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
+          this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1);
+        }else {
+          this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
+          this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 2);
+        }
+        this.imgBack = getImage(res.data.data.backgroundImageLocation, 5);
+        // this.imgBig = res.data.data.backgroundImage.fileName;
+        // this.imgBack = intial;
+        this.imgLogo = getImage(res.data.data.projectLogoLocation, 5);
+        // this.imgLogoBig = res.data.data.logo.fileName;
+        this.word[0] = res.data.data.projectHost;
+        this.word[1] = res.data.data.projectLocation;
+        this.word[2] = res.data.data.projectHotline;
+        res.data.data.projectLocationFontStyle ? this.colorBussiness = res.data.data.projectLocationFontStyle : '';
+        res.data.data.projectHostFontStyle ? this.colorAddress = res.data.data.projectHostFontStyle : '';
+        res.data.data.projectHotlineFontStyle ? this.colorTel = res.data.data.projectHotlineFontStyle : '';
+        res.data.data.projectLocationIconLocation ? this.bussiness = getImage(res.data.data.projectLocationIconLocation, 2) : '';
+        res.data.data.projectHostIconLocation ? this.address = getImage(res.data.data.projectHostIconLocation, 2) : '';
+        res.data.data.projectHotlineIconLocation ? this.tel = getImage(res.data.data.projectHotlineIconLocation, 2) : '';
+       
       }
-      this.imgBack = getImage(res.data.data.backgroundImageLocation, 5);
-      // this.imgBig = res.data.data.backgroundImage.fileName;
-      // this.imgBack = intial;
-      this.imgLogo = getImage(res.data.data.projectLogoLocation, 5);
-      // this.imgLogoBig = res.data.data.logo.fileName;
-      this.word[0] = res.data.data.projectHost;
-      this.word[1] = res.data.data.projectLocation;
-      this.word[2] = res.data.data.projectHotline;
       this.check = 1;
     })
     .catch(error => {

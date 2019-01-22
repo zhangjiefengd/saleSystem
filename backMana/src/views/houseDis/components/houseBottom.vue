@@ -181,7 +181,7 @@ export default {
     align-items: center;
     cursor: pointer;
     position: absolute;
-    top: 70%;
+    top: 92%;
     left: 50%;
     transform: translateX(-50%);
         // left: 300px;

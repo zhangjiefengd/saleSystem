@@ -170,7 +170,7 @@ export default {
                     'Content-Type': 'application/json' 
                 }
             }
-            // if (this.vrLink) {
+            if (this.title.length > 0) {
                 this.$axios.post('/house/houseType/update',{
                     houseTypeVrUrl: this.vrLink,
                     id: this.projectId
@@ -182,7 +182,12 @@ export default {
                 }).catch((err) => {
                     this.$message.error('上传链接失败！');
                 });
-            // }
+            } else {
+                this.$message({
+                    message: '请添加户型！',
+                    type: 'warning'
+                });
+            }
         },
         //切图片地址
         getImage(data, i) {

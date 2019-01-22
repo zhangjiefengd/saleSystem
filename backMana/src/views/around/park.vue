@@ -259,9 +259,26 @@ export default {
                         type: 'success'
                     });
                     //改变预览
-                    this.$forceUpdate();
-                    this.public.push(res.data.data);
-                    this.cancelAddPublic();    
+                    this.$axios.get("/surround/publicUtilities/get")
+                    .then(res => {
+                        this.$forceUpdate();
+                        this.public = [];
+                        this.parkView = [];
+                        res.data.data.forEach((content, i) => {
+                            if (content.imageType == 1) {
+                                this.public.push(content);
+                            } else {
+                                this.parkView.push(content);
+                            }
+                        });
+                        this.cancelAddPublic(); 
+                    })
+                    .catch(error => {
+                        this.$message.error('获取失败！');
+                    });  
+                    
+                    // this.public.push(res.data.data);
+                   
                 }).catch((error) =>{
                     this.$message.error('上传失败！');
                 });
@@ -304,9 +321,23 @@ export default {
                         type: 'success'
                     });
                     //改变预览
-                    this.$forceUpdate();
-                    this.parkView.push(res.data.data);
-                    this.cancelAddPark();    
+                    this.$axios.get("/surround/publicUtilities/get")
+                    .then(res => {
+                        this.$forceUpdate();
+                        this.public = [];
+                        this.parkView = [];
+                        res.data.data.forEach((content, i) => {
+                            if (content.imageType == 1) {
+                                this.public.push(content);
+                            } else {
+                                this.parkView.push(content);
+                            }
+                        });
+                        this.cancelAddPark();  
+                    })
+                    .catch(error => {
+                        this.$message.error('获取失败！');
+                    });  
                 }).catch((error) =>{
                     this.$message.error('上传失败！');
                 });

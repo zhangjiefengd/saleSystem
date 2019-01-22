@@ -165,7 +165,7 @@
               this.honorPhoto = res.data.data
               this.honorPhoto.map(item => {
                 if (item.imageLocation) {
-                  item.image = this.getImage(item.imageLocation, 2)
+                  item.image = this.getImage(item.imageLocation, 3)
                 }
               })
               this.honorPhotoListen = JSON.parse(JSON.stringify(this.honorPhoto))
@@ -179,7 +179,7 @@
             if (res.data.data) {
               this.background = res.data.data
               if (this.background.imageLocation) {
-                this.background.image = this.getImage(this.background.imageLocation, 2)
+                this.background.image = this.getImage(this.background.imageLocation, 3)
               }
             }
           })

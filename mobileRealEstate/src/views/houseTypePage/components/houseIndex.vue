@@ -2,7 +2,7 @@
   <div class="houseIndex">
       <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-        <top/>
+        <!-- <top/> -->
       </div>
       <div class="middle">
         <router-view ref="content" @checkVR='checkVR'/>
@@ -62,6 +62,23 @@ export default {
     .then(res => {
       this.house = res.data.data;
       this.houseNum = this.house.length;
+      if (this.houseNum > 4) {
+        document.getElementsByClassName('allHouse')[0].style.position = 'absolute';
+        document.getElementsByClassName('allHouse')[0].style.left = 0;
+        const divide = document.getElementsByClassName('divide');
+        setTimeout(() => {
+          divide[0].style.display = 'none';
+          divide[divide.length - 1].style.display = 'none';
+        }, 100);
+      } else if (this.houseNum <= 4 && this.houseNum > 0) {
+        const allHouse = document.getElementsByClassName('allHouse')[0];
+        const divide = allHouse.getElementsByClassName('divide');
+        setTimeout(() => {
+          divide[0].style.display = 'none';
+          divide[divide.length - 1].style.display = 'none';
+        }, 100);
+
+      }
       if (!this.house[0].houseTypeVrUrl) {
         $('#three').css('display', 'none');
         // document.getElementsByClassName('chooseSmall')[0].style.width = '28%';
@@ -324,12 +341,12 @@ export default {
     background-size: auto 93%;
     background-image: url('../../../assets/img/index/background.jpg');
     // background-color: #202020;
-    // @include fj();
-    // flex-direction: column;
+    @include fj();
+    flex-direction: column;
     position: relative;
     .header {
       width: 100%;
-      height: px2rem(61);
+      height: 6.2%;
       // background-color: #fff;
       position: absolute;
       top: 0;
@@ -337,20 +354,20 @@ export default {
     }
     .middle {
       width: 100%;
-      height: px2rem(592);
+      height: 70.6%;
       position: absolute;
       top: 18.8%;
       // background-color: #fff;
     }
     .bottom {
       width: 100%;
-      height: px2rem(227);
+      height: 23.2%;
       position: absolute;
       bottom: 0;
       // background-color: #fff;
       .category {
         width: 100%;
-        height: px2rem(129);
+        height: 56.8%;
         @include fj(space-around);
         align-items: flex-start;
         div {
@@ -381,7 +398,7 @@ export default {
       }
       .houseType {
         width: 100%;
-        height: px2rem(98);
+        height: 43.2%;
         background-color: #ffffff;
         box-shadow: 0px 11px 36px 3px
           rgba(29, 35, 40, 0.2);
@@ -406,8 +423,8 @@ export default {
           }
         .allHouse {
           height: 100%;
-          position: absolute;
-          left: px2rem(0);
+          // position: absolute;
+          // left: px2rem(0);
           @include fj();
           align-items: center;
         }
@@ -415,6 +432,7 @@ export default {
           width: px2rem(656);
           height: 100%;
           position: relative;
+          @include fj(center);
           // overflow: hidden;
         }
 

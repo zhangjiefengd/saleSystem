@@ -75,7 +75,7 @@ export default {
     @include sc(px2rem(30), #304156);
     font-weight: 600;
     position: absolute;
-    top: 28.8%;
+    top: 27.8%;
     left: 63%;
     // transform: translate(0, -70%);
     .houseTitle {

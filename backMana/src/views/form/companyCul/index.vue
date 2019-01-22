@@ -125,8 +125,8 @@
         this.$axios.get('/brand/enterpriseCulture/image/get')
           .then(res => {
             if (res.data.data) {
-              this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 2)
-              this.cultureImage = this.getImage(res.data.data.mainImageLocation, 2)
+              this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
+              this.cultureImage = this.getImage(res.data.data.mainImageLocation, 3)
             }
           })
         this.$axios.get('/brand/enterpriseCulture/get')

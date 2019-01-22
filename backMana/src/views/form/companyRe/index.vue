@@ -174,7 +174,7 @@
             this.changeImageNum = res.data.data
             this.images = res.data.data
             this.images.map((item, index) => {
-              this.images[index].image = this.getImage(item.imageLocation, 1)
+              this.images[index].image = this.getImage(item.imageLocation, 3)
             })
           })
           .catch(error => {

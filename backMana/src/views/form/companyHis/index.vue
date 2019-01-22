@@ -142,7 +142,7 @@
               this.content = res.data.data
               for (let i = 0; i < this.content.length; i++) {
                 if (this.content[i].enterpriseDevelopImageLocation !== null) {
-                  this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 2)
+                  this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 3)
                 } else {
                   this.content[i].image = ''
                 }
@@ -156,7 +156,7 @@
         this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
           .then(res => {
             if (res.data.data) {
-              this.background = this.getImage(res.data.data.imageLocation, 2)
+              this.background = this.getImage(res.data.data.imageLocation, 3)
             }
           })
       },
