@@ -2,7 +2,7 @@
   <div class="content" style="position:relative;overflow: hidden;">
     <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-      <top/>
+      <!--<top/>-->
     </div>
     <img id="targetObj" style="position:absolute;transform-origin:center" :src="map">
     <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->

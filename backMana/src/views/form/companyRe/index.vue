@@ -84,6 +84,8 @@
             </svg>
           </button>
           <router-view></router-view>
+          <!--<color-manage></color-manage>-->
+          <colorPicker v-model="color" style="z-index: 1000;" />
         </div>
       </div>
     </div>
@@ -91,6 +93,7 @@
 </template>
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
+  // import colorManage from '../../../components/colorManage'
   import qs from 'qs'
 
   export default {
@@ -111,7 +114,8 @@
         contentAuto: false,
         changeImageNum: 0,
         head: 'http://118.24.113.182:8080/static/image/',
-        timer: ''
+        timer: '',
+        color: '#111'
       }
     },
     created() {

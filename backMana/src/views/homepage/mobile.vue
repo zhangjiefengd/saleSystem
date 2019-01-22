@@ -9,14 +9,14 @@
         <input type='file' id="bFile" style="position: absolute;clip:rect(0 0 0 0);" name='photos' class="upfile">
       <!-- <div class="homeHead">
         <div class="homeLogo" v-loading="logoLoading" element-loading-text="logo上传中">
-         
+
           <img :src="homeLogo.url" alt="">
         </div>
       </div>
       <div class="projectList">
         <ul class="homeModule">
           <li  v-loading="module.loading" element-loading-text="logo上传中" v-for="(module, index) in moduleIndex" :key="index">
-           
+
             <img :src="module.icon" alt="">
             <span>
               {{ module.description }}
@@ -241,7 +241,6 @@ export default {
         .then(res => {
           if (res.data.data !== null) {
             this.homeBgc = res.data.data
-            console.log(res.data.data)
             this.homeBgc.url = this.getImage(this.homeBgc.mobileBackgroundImageLocation, 2)
             // this.homeLogo.url = this.getImage(this.homeBgc.projectLogoLocation, 3)
             this.moduleIndex[0].icon = this.getImage(this.homeBgc.projectIntroductionBar, 1)

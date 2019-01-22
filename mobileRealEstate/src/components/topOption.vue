@@ -3,7 +3,7 @@
     <div class="component-box" v-show="isShowHead">
       <ul class="all-head" :style="[{color: headColor}]">
         <li @click="backHome"> <span>首页</span></li>
-        <li @click="showCollect" style="text-align: right"><span>我有意向</span>></li>
+        <li @click="showCollect" v-show="!isCollect" style="text-align: right"><span>我有意向</span>></li>
       </ul>
       <div v-show="isCollect">
 
@@ -75,7 +75,7 @@
           </ul>
         </div>
 
-        <div class="user-info-submit"><input @click="submitCustomInfo" type="submit"></div>
+        <div class="user-info-submit"><input @click="submitCustomInfo" type="submit" value="提交"></div>
       </div>
     </div>
     <div class="infoRemind" v-show="infoRemind">

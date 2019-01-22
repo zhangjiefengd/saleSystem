@@ -2,7 +2,7 @@
   <div class="houseIndex">
       <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-        <top/>
+        <!--<top/>-->
       </div>
       <div class="middle">
         <router-view ref="content" @checkVR='checkVR'/>
@@ -242,7 +242,7 @@ export default {
 
           this.$forceUpdate();
         }
-        
+
       },100);
     },
     touchstart(ev) {
