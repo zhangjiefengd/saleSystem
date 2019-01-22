@@ -92,8 +92,8 @@
             </table>
         </div>
         <div class="foot">
-            <el-button @click="cancelAdd">取消</el-button>
             <el-button type='primary' @click='addNewProject'>确定</el-button>
+            <el-button @click="cancelAdd">取消</el-button>
         </div>
     </div>
 </template>

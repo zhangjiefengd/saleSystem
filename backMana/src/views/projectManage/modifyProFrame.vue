@@ -92,8 +92,8 @@
             </table>
         </div>
         <div class="foot">
-            <el-button @click="cancelModify">取消</el-button>
             <el-button type='primary' @click='addNewProject'>确定</el-button>
+            <el-button @click="cancelModify">取消</el-button>
         </div>
     </div>
 </template>
@@ -310,7 +310,7 @@ export default {
                     }
                 }
                 >td:first-of-type {
-                    width: 10%;
+                    width: 12%;
                 }
                 >td:last-of-type {
                     width: 5%;

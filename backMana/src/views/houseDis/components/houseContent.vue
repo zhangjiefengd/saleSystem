@@ -19,7 +19,7 @@
                     <img :src="chaPic" id="cha" class="chaOne" :style="{display: chaDisplay}" @click='deleteHouseTypePic'>
                 </div>
             </div>
-            <div class="vrLink">
+            <!-- <div class="vrLink">
                 <el-input
                     placeholder="输入全景图链接"
                     v-model="vrLink"
@@ -27,8 +27,22 @@
                     clearable>
                 </el-input>
                 <img src="../../../assets/img/input.png" alt="" @click='subVr'>
-            </div>
+            </div> -->
             <!-- <div class="VR">是否需要全景图展示<input type="checkbox" ref='vr' @change='changeVr' class="checkBox"></div> -->
+        </div>
+        <div class="content allView">
+            <div class="Title"><span>全景图</span></div>
+            <div class="pic">
+                <div class="vrLink">
+                    <el-input
+                        placeholder="输入全景图链接"
+                        v-model="vrLink"
+                        size="small"
+                        clearable>
+                    </el-input>
+                <img src="../../../assets/img/input.png" alt="" @click='subVr'>
+            </div>
+            </div>
         </div>
         <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -270,11 +284,11 @@ export default {
     display: flex;
             // background-color:black;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .content {
         width: 100%;
-        height: px2rem(360);
+        height: px2rem(300);
         background-color: #fff;
         display: flex;
         flex-wrap: wrap;
@@ -390,19 +404,29 @@ export default {
             }
         }
     }
-    .houseT {
-        position: relative;
-        .vrLink {
-            @include fj();
+    .allView {
+        height: px2rem(160);
+        .pic {
+            width: 100%;
+            height: px2rem(90);
+            display: flex;
             align-items: center;
-            position: absolute;
-            left: 76%;
-            top: 80%;
-            img {
-                width: px2rem(80);
-                cursor: pointer;
+            .vrLink {
+                width: px2rem(600);
+                @include fj();
+                float: left;
+                margin-left: px2rem(20);
+                align-items: center;
+                img {
+                    width: px2rem(80);
+                    cursor: pointer;
+                }
             }
         }
+    }
+    .houseT {
+        position: relative;
+        
     }
 }
 </style>

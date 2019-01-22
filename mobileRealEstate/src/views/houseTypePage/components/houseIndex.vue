@@ -60,7 +60,7 @@ export default {
   created() {
     this.$axios.get("/house/houseType/get")
     .then(res => {
-      this.house = res.data.data.reverse();
+      this.house = res.data.data;
       this.houseNum = this.house.length;
       if (!this.house[0].houseTypeVrUrl) {
         $('#three').css('display', 'none');

@@ -18,7 +18,11 @@
           <!-- <img src="../../assets/img/clickQian.png" alt="" id="gou2" class="tijiao" @click="tijiaoTwo"> -->
         </form>
       </div>
-
+      
+      <!-- <div class="click">
+        <img src="../../assets/img/guidePage/click.png"/>
+        <span>·点击探索·</span>
+      </div> -->
       <div class="word">
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/bussiness.png" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
         <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/address.png" alt="">&nbsp;&nbsp;{{word[1]}}</span>
@@ -284,7 +288,7 @@ export default {
     position: relative;
     top: px2rem(20);
     background-repeat: no-repeat;
-  background-size: 100% 100%;
+    background-size: 100% 100%;
     #gai {
       width: px2rem(103);
       height: px2rem(34);

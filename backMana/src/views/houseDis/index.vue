@@ -1,6 +1,6 @@
 <template>
     <div class="housePage" v-loading="this.$store.state.loading.loading">
-        <div class="user" @click='userColor'>常用按钮装置设置</div>
+        <!-- <div class="user" @click='userColor'>按钮设置</div> -->
         <div class="page">
             <house-content ref='content' 
                 @addSample='addSample' 
@@ -41,7 +41,7 @@
                 @cancelAddHouseType='cancelAddHouseType' 
                 @displayHouseType='displayHouseType'>
             </add-house-types>
-            <color-manage></color-manage>
+            <color-manage ref='color' @colorCancel='colorCancel'></color-manage>
         </div>
     </div>
 </template>
@@ -78,7 +78,8 @@ import ip from '../../../static/ip'
                 roomTypeFrame: 'none',//增加房间类型显现
                 reduceTypeFrame: 'none',//减少房间类型显现
                 houseTypePicFrame: 'none',//户型图显现
-                loading: this.$store.state.loading.loading
+                loading: this.$store.state.loading.loading,
+                colorFrame: 'block'
             }
         },
 
@@ -93,6 +94,13 @@ import ip from '../../../static/ip'
             userColor() {
                 this.$forceUpdate();
                 this.markVisibility = 'block';//让遮罩层显现
+                this.$refs.color.$emit('userColor');
+                // this.colorFrame = 'block';
+            },
+            colorCancel() {
+                this.$forceUpdate();
+                this.markVisibility = 'none';//让遮罩层显现
+                // this.colorFrame = 'none';
             },
             //取消增加户型操作
             cancelAddHouseType() {
@@ -202,10 +210,10 @@ import ip from '../../../static/ip'
 
 .housePage {
     width: 100%;
-    height: px2rem(930);
+    height: px2rem(1200);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background-color: #EDF0F5;
     .user {
@@ -214,12 +222,10 @@ import ip from '../../../static/ip'
         right: 0; 
         width: px2rem(80);
         height: px2rem(160);
-        background-color: #9ea6b1;
-        padding-left: px2rem(10);
-        padding-right: px2rem(10);
+        background-color: #1B233A;
+        padding: px2rem(18) px2rem(15) px2rem(15) px2rem(15);
         @include sc(px2rem(26));
-        @include fj(center);
-        align-items: center;
+        text-align: center;
         color: white;
         z-index: 1000;
         opacity: 1;
@@ -229,9 +235,9 @@ import ip from '../../../static/ip'
         opacity: 0.9;
     }
     .page {
-        margin-top: -80px;
+        margin-top: 0px;
         width: px2rem(1455);
-        height: px2rem(750);
+        height: px2rem(800);
         // border: px2rem(2) solid #304156;
 
         .Title {

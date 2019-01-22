@@ -1,5 +1,6 @@
 <template>
     <div class="parkPage" v-loading="this.$store.state.loading.loading">
+        <!-- <div class="user" @click='userColor'>按钮设置</div> -->
         <div class="page">
             <div class="pageOne">
                 <div class="content" name="proto">
@@ -85,7 +86,8 @@
                     </select>
                     <input type="button" value="确定" id="delete" @click="reducePlaceType">
                 </form>
-            </div>             
+            </div>  
+            <color-manage ref='color' @colorCancel='colorCancel'></color-manage>
         </div>
     </div>
 </template>
@@ -94,6 +96,7 @@
 import {getUrl} from '../../utils/urlGet.js'//获取预览图片地址
 import qs from 'qs';
 import ip from '../../../static/ip'
+import colorManage from './colorManage.vue'
 export default {
     data() {
         return {
@@ -116,7 +119,8 @@ export default {
             dialogImageUrl: '',
             dialogVisible: false,
             filePicPublic: {},
-            filePicPark: {}
+            filePicPark: {},
+            colorFrame: 'block'
         }
     },
     created() {
@@ -141,9 +145,21 @@ export default {
         })
     },
     components: {
-
+        colorManage
     },
     methods: {
+        //管理颜色
+        userColor() {
+            this.$forceUpdate();
+            this.markVisibility = 'block';//让遮罩层显现
+            this.$refs.color.$emit('userColor');
+                // this.colorFrame = 'block';
+        },
+        colorCancel() {
+            this.$forceUpdate();
+            this.markVisibility = 'none';//让遮罩层显现
+            // this.colorFrame = 'none';
+        },
         //切图片地址
         getImage(data, i) {
             const imgSplit = data.split(/\_|\./g)
@@ -381,6 +397,24 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: #EDF0F5;
+    .user {
+        position: absolute;
+        top: 70%;
+        right: 0; 
+        width: px2rem(80);
+        height: px2rem(160);
+        background-color: #1B233A;
+        padding: px2rem(18) px2rem(15) px2rem(15) px2rem(15);
+        @include sc(px2rem(26));
+        text-align: center;
+        color: white;
+        z-index: 1000;
+        opacity: 1;
+        cursor: pointer;
+    }
+    .user:hover {
+        opacity: 0.9;
+    }
     .page {
         margin-top: -80px;
         width: px2rem(1455);

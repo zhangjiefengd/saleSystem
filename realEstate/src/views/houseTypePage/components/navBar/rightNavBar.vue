@@ -223,7 +223,7 @@ export default {
     height: px2rem(608);
     float: left;
     margin-left: px2rem(2);
-    overflow: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     @include scrollBar;
     z-index: 1000;

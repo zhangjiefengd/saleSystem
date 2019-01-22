@@ -47,7 +47,7 @@ import getImage from '../../../ultis/getImage.js'
         });
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.worlds = res.data.data.reverse();
+            this.worlds = res.data.data;
         })
         .catch(error => {
             console.log(error);
