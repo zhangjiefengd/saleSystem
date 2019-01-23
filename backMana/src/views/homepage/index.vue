@@ -43,12 +43,12 @@ import getImage from '../../utils/getImage.js'
         name: 'homepage',
         data() {
             return {
-                "imgBack": "",
+                "imgBack": require('../../assets/img/index/back.jpg'),
                 "projectLogo": "",
                 "word": ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
                 "modifyIcon": require('../../assets/img/modifyIcon.jpg'),
                 // "icon": [require('../../assets/img/icon1.png'),require('../../assets/img/icon2.png'),require('../../assets/img/icon3.png'),require('../../assets/img/icon4.png')],
-                "icon": [],
+                icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')],
                 "head": 'http://192.168.43.127:80/'
             }
         },
@@ -332,16 +332,16 @@ import getImage from '../../utils/getImage.js'
             cursor: pointer;
         }
         .projectLogo {
-            width: transverse(357);
-            height: vertical(246);
+            width: transverse(569);
+            height: vertical(339);
             margin: 10% auto;
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
         .bottomDiv {
-            width: transverse(1409);
+            width: transverse(1236);
             height: px2rem(scalePx(210));
-            margin: 15% auto;
+            margin: 10% auto;
             @include fj();
             cursor: pointer;
             .word {
@@ -359,9 +359,9 @@ import getImage from '../../utils/getImage.js'
                     height: px2rem(scalePx(94));
                 }
                 .wordTitle {
-                    width: px2rem(scalePx(158));
-                    height: px2rem(scalePx(39));
-                    @include sc(px2rem(scalePx(39)));
+                    // width: px2rem(scalePx(158));
+                    // height: px2rem(scalePx(39));
+                    @include sc(px2rem(scalePx(30)));
                 }
             }
         }

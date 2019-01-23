@@ -1,5 +1,5 @@
 <template>
-  <div class="houseIndex">
+  <div class="houseIndex" :style="{backgroundImage: 'url(' +back+ ')'}">
       <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
         <!--<top/>-->
@@ -53,11 +53,35 @@ export default {
       end: 0,
       x: 0,
       control1: 0,
-      control2: 0
-
+      control2: 0,
+      navSelect: '#c7ad8c',
+      "botSelect": '#c7ad8c',
+      back: require('../../../assets/img/index/noIndexBack.png')
     }
   },
   created() {
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeSwitchClickedStatusStyle ? this.botSelect = res.data.data.houseTypeSwitchClickedStatusStyle   : "";
+                res.data.data.houseTypeNavigationClickedStatusStyle  ? this.navSelect = res.data.data.houseTypeNavigationClickedStatusStyle  : "";
+                document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.backgroundColor = this.botSelect : "";
+                document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.borderColor = this.botSelect : '';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        this.$axios.get("/common/mobileCommonBackgroundImage/get")
+        .then((res) => {
+            if (res.data.data) {
+                this.back = res.data.data;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        
     this.$axios.get("/house/houseType/get")
     .then(res => {
       this.house = res.data.data;
@@ -142,17 +166,44 @@ export default {
         this.typeClassTwo = "noActive";
         this.typeClassThree = "active";
       }
+      setTimeout(() => {
+        const noActive = document.getElementsByClassName('noActive');
+        for (let i = 0; i < noActive.length; i++) {
+          noActive[i].style.backgroundColor = 'transparent';
+          noActive[i].style.borderColor = '#666666';
+        }
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.backgroundColor = this.botSelect : "";
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.borderColor = this.botSelect : '';
+      }, 100);
     },
     //点击类型改变样式
     cateClassA() {
       this.typeClassOne = "active";
       this.typeClassTwo = "noActive";
       this.typeClassThree = "noActive";
+      setTimeout(() => {
+        const noActive = document.getElementsByClassName('noActive');
+        for (let i = 0; i < noActive.length; i++) {
+          noActive[i].style.backgroundColor = 'transparent';
+          noActive[i].style.borderColor = '#666666';
+        }
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.backgroundColor = this.botSelect : "";
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.borderColor = this.botSelect : '';
+      }, 100);
     },
     cateClassB() {
       this.typeClassOne = "noActive";
       this.typeClassTwo = "active";
       this.typeClassThree = "noActive";
+      setTimeout(() => {
+        const noActive = document.getElementsByClassName('noActive');
+        for (let i = 0; i < noActive.length; i++) {
+          noActive[i].style.backgroundColor = 'transparent';
+          noActive[i].style.borderColor = '#666666';
+        }
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.backgroundColor = this.botSelect : "";
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.borderColor = this.botSelect : '';
+      }, 100);
     },
     cateClassC() {
       this.typeClassOne = "noActive";
@@ -160,6 +211,15 @@ export default {
       this.typeClassThree = "active";
       this.$router.push({path:'/houseType/three',
       query: {houseNum: this.num}});
+      setTimeout(() => {
+        const noActive = document.getElementsByClassName('noActive');
+        for (let i = 0; i < noActive.length; i++) {
+          noActive[i].style.backgroundColor = 'transparent';
+          noActive[i].style.borderColor = '#666666';
+        }
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.backgroundColor = this.botSelect : "";
+        document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].style.borderColor = this.botSelect : '';
+      }, 100);
     },
     //加户型
     addhouseNum() {
@@ -222,7 +282,7 @@ export default {
       for (let i = 0; i < this.houseNum; i++) {
         $('.houseEvery').eq(i).css("color", "#666666");
       }
-      $('.houseEvery').eq(index).css('color', '#c7ad8b');
+      $('.houseEvery').eq(index).css('color', this.navSelect);
       this.num = index;
       this.$refs.content.$emit('giveNum', index);
     },
@@ -339,7 +399,7 @@ export default {
     height: 100%;
     background-repeat: no-repeat;
     background-size: auto 93%;
-    background-image: url('../../../assets/img/index/background.jpg');
+    // background-image: url('../../../assets/img/index/background.jpg');
     // background-color: #202020;
     @include fj();
     flex-direction: column;
@@ -348,22 +408,22 @@ export default {
       width: 100%;
       height: 6.2%;
       // background-color: #fff;
-      position: absolute;
-      top: 0;
+      // position: absolute;
+      // top: 0;
 
     }
     .middle {
       width: 100%;
-      height: 70.6%;
-      position: absolute;
-      top: 18.8%;
+      height: 44.4%;
+      // position: absolute;
+      // top: 18.8%;
       // background-color: #fff;
     }
     .bottom {
       width: 100%;
       height: 23.2%;
-      position: absolute;
-      bottom: 0;
+      // position: absolute;
+      // bottom: 0;
       // background-color: #fff;
       .category {
         width: 100%;
@@ -382,8 +442,10 @@ export default {
           width: px2rem(142);
         }
         .active {
-          background-color: #c7ad8b;
-          border: px2rem(2) solid #c7ad8b;
+          // background-color: #c7ad8b;
+          // border: px2rem(2) solid #c7ad8b;
+          border-width: px2rem(2);
+          border-style: solid;
           a {
             color: #ffffff;
           }

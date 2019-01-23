@@ -20,7 +20,10 @@ export default {
         "typeClassThree": this.typeClassChangeThree,
         "bottomNavColor": this.bottomNavColorChange,
         "house": {},
-        "vrDisplay": "none"
+        "vrDisplay": "none",
+        "botSelect": '#c7ad8c',
+        noneFont: '#666666',
+        clickFont: 'white'
       }
   },
   created() {
@@ -31,6 +34,26 @@ export default {
         //         document.getElementById('typeClassThree').style.display = 'none';
         //         document.getElementsByClassName('chooseSmall')[0].style.width = '20%';
         //     }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeSwitchClickedStatusStyle ? this.botSelect = res.data.data.houseTypeSwitchClickedStatusStyle   : "";
+                res.data.data.houseTypeSwitchFontNoneStatusStyle  ? this.noneFont = res.data.data.houseTypeSwitchFontNoneStatusStyle    : "";
+                res.data.data.houseTypeSwitchFontClickedStatusStyle  ? this.clickFont = res.data.data.houseTypeSwitchFontClickedStatusStyle    : "";
+                const active = document.getElementsByClassName('active')[0];
+                const activeTwo = document.getElementsByClassName('activeTwo')[0];
+
+                active ? active.style.backgroundColor = this.botSelect : "";
+                active ? active.getElementsByTagName('a')[0].style.color = this.clickFont : '';
+                activeTwo ? activeTwo.style.backgroundColor = this.botSelect : '';
+                activeTwo ? activeTwo.getElementsByTagName('a')[0].style.color = this.clickFont : '';
+                active ? active.style.borderColor = this.botSelect : '';
+                activeTwo ? activeTwo.style.borderColor = this.botSelect : '';
+            }
         })
         .catch(error => {
             console.log(error);
@@ -147,18 +170,21 @@ export default {
                 }
             }
             .active {
-                background-color: #c7ad8c;
+                // background-color: #c7ad8c;
                 // border: px2rem(1) solid #121212;
-                border: px2rem(1) solid #c7ad8c;
+                border-width: px2rem(1);
+                border-style: solid;
                 a {
                     @include sc(px2rem(30), white);
                     text-decoration: none;
                 }    
             }
             .activeTwo {
-                background-color: #c7ad8c;
-                border: px2rem(1) solid #c7ad8c;
+                // background-color: #c7ad8c;
+                // border: px2rem(1) solid #c7ad8c;
                 // border: px2rem(1) solid #757575;
+                border-width: px2rem(1);
+                border-style: solid;
                 a {
                     @include sc(px2rem(30), white);
                     text-decoration: none;

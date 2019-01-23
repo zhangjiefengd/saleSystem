@@ -15,8 +15,35 @@ export default {
   data() {
       return {
         "typeClassOne": this.typeClassChange,
-        "typeClassTwo": this.typeClassChangeTwo
+        "typeClassTwo": this.typeClassChangeTwo,
+        "botSelect": '#c7ad8c',
+        noneFont: '#666666',
+        clickFont: 'white'
       }
+  },
+  created() {
+      this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                const active = document.getElementsByClassName('active')[0];
+                const activeTwo = document.getElementsByClassName('activeTwo')[0];
+                res.data.data.surroundingSwitchClickedStatusStyle  ? this.botSelect = res.data.data.surroundingSwitchClickedStatusStyle    : "";
+                res.data.data.surroundingSwitchFontNoneStatusStyle   ? this.noneFont = res.data.data.surroundingSwitchFontNoneStatusStyle     : "";
+                res.data.data.surroundingSwitchFontClickedStatusStyle   ? this.clickFont = res.data.data.surroundingSwitchFontClickedStatusStyle     : "";
+                
+                
+                active ? active.style.backgroundColor = this.botSelect : "";
+                active ? active.getElementsByTagName('a')[0].style.color = this.clickFont : '';
+                activeTwo ? activeTwo.style.backgroundColor = this.botSelect : '';
+                activeTwo ? activeTwo.getElementsByTagName('a')[0].style.color = this.clickFont : '';
+                active ? active.style.borderColor = this.botSelect : '';
+                activeTwo ? activeTwo.style.borderColor = this.botSelect : '';
+            
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
   },
   mounted() {
 
@@ -86,18 +113,22 @@ export default {
                 }
             }
             .active {
-                background-color: #c7ad8c;
+                // background-color: #c7ad8c;
                 // border: px2rem(1) solid #121212;
-                border: px2rem(1) solid #c7ad8c;
+                // border: px2rem(1) solid #c7ad8c;
+                border-width: px2rem(1);
+                border-style: solid;
                 a {
                     @include sc(px2rem(30), white);
                     text-decoration: none;
                 }    
             }
             .activeTwo {
-                background-color: #c7ad8c;
-                border: px2rem(1) solid #c7ad8c;
+                // background-color: #c7ad8c;
+                // border: px2rem(1) solid #c7ad8c;
                 // border: px2rem(1) solid #757575;
+                border-width: px2rem(1);
+                border-style: solid;
                 a {
                     @include sc(px2rem(30), white);
                     text-decoration: none;

@@ -1,9 +1,9 @@
 <template>
 <!-- v-lazy:background-image='imgProjectBack' -->
   <div class="projectIntroduce" v-show="check" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
-      <div class="projectWord">
-          <div class="wordTitle">
-              <span>项目介绍</span>
+      <div class="projectWord" :style='{backgroundColor: fontBackgroundStyle}'>
+          <div class="wordTitle" :style='{backgroundColor: titleBackgroundStyle}'>
+              <span :style='{color: titleColor}'>项目介绍</span>
           </div>
           <div class="wordContent">
             <span :style='{color: colorContent}'>&nbsp;&nbsp;&nbsp;&nbsp;{{ projectWord }}</span>
@@ -32,7 +32,10 @@ export default {
       check: 0,
       imgBig: "",
       conDisplay: 'none',
-      colorContent: '#ffffff'
+      colorContent: '#ffffff',
+      titleColor: '#ffffff',
+      fontBackgroundStyle : 'black',
+      titleBackgroundStyle: '#c7ad8c'
     }
   },
   created() {
@@ -50,6 +53,9 @@ export default {
         // this.imgBig = res.data.data.image.fileName;
         this.projectWord = res.data.data.content;
         res.data.data.fontStyle ? this.colorContent = res.data.data.fontStyle : '';
+        res.data.data.titleStyle  ? this.titleColor = res.data.data.titleStyle  : '';
+        res.data.data.fontBackgroundStyle  ? this.fontBackgroundStyle = res.data.data.fontBackgroundStyle  : '';
+        res.data.data.titleBackgroundStyle  ? this.titleBackgroundStyle = res.data.data.titleBackgroundStyle  : '';
         this.check = 1;
       }
     })

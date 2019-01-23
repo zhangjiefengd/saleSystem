@@ -1,11 +1,11 @@
 <template>
-    <div class="content" >
+    <div class="content" :style="{backgroundImage: 'url(' + back +')'}">
         <div class="changePosition">
             <div class="topHouse">
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
             </div>
             <div class="middleHouse">
-                <div class="bigPic" :style="{backgroundImage: 'url(' + picUrlMin + ')'}">
+                <div class="bigPic" :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrlMin + ')'}">
 
                 </div>
                 <right @event='getPicUrl' @eventB='checkEffect' @checkVR='checkVR' @haha='haha' :intial=1 ref="rightA"></right>
@@ -37,8 +37,22 @@ export default {
             check: 0,
             picUrlMin: '',
             picUrlBig: '',
-            conDisplay: 'none'
+            conDisplay: 'none',
+            borderColor: '#ffffff',
+            back: '../../../assets/img/goHouseHistory/houseBack.jpg'
         }
+    },
+    created() {
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
+                
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
     mounted(){
         // console.log(this.$route.query.houseNum);

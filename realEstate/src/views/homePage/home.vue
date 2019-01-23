@@ -24,6 +24,7 @@ export default {
       word: ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
       url: ["/projectIntroduce", "/brand", "/houseType", "/nearBy" ],
       check: 0,
+      hoverColor: 'rgba(205,182,151,0.25)',
       icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')]
     }
   },
@@ -51,6 +52,18 @@ export default {
         res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
         res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : "";
         res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : "";
+        
+        res.data.data.brandOverviewSuspensionStatusStyle ? this.hoverColor = res.data.data.brandOverviewSuspensionStatusStyle : '';
+        const that = this;
+        for (let i = 0; i < document.getElementsByClassName('smallNav').length; i++) {
+          $('.smallNav').eq(i).hover(() => {
+            $('.smallNav').eq(i).css('backgroundColor', that.hoverColor);
+          }, () => {
+            $('.smallNav').eq(i).css('backgroundColor', 'transparent');
+          });
+        }
+
+        
         this.check = 1;
       }
       // this.judgeModule();
@@ -158,9 +171,9 @@ export default {
   // filter: blur(4px);
   transition: all 0.7s;
   .projectImg {
-    width: px2rem(357);
+    width: px2rem(569);
     @include cl();
-    top: vertical(254);
+    top: vertical(175);
     // filter: blur(4px);
     transition: all 0.7s;
   }
@@ -168,28 +181,28 @@ export default {
     filter: blur(0);
   }
   .module {
-    width: transverse(1409);
-    height: vertical(290);
+    width: transverse(1236);
+    height: vertical(261);
     @include cl();
-    top: vertical(705);
+    top: vertical(729);
     @include fj();
     .smallNav {
       cursor: pointer;
-      @include fj(space-around);
+      @include fj();
       align-items: center;
       flex-direction: column;
-      width: px2rem(286);
-      height: px2rem(290);
-      padding: px2rem(41) px2rem(75) px2rem(41) px2rem(75);
+      width: px2rem(258);
+      height: px2rem(261);
+      padding: px2rem(41) px2rem(65) px2rem(41) px2rem(65);
       img {
-        width: px2rem(136);
+        width: px2rem(114);
       }
       span {
-        @include sc(px2rem(34));
+        @include sc(px2rem(30));
       }
     }
     .smallNav:hover {
-      background-color: rgba(205,182,151,0.25);
+      // background-color: rgba(205,182,151,0.25);
     }
   }
 }

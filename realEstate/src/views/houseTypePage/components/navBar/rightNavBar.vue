@@ -32,7 +32,8 @@ export default {
             houseNum: 0,
             that: {},
             title: [],
-            mini: []
+            mini: [],
+            borderColor: '#ffffff'
         }
     },
     created() {
@@ -56,6 +57,17 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
+                document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
+                document.getElementsByClassName('addSmallRight')[0] ? document.getElementsByClassName('addSmallRight')[0].style.borderColor = this.borderColor : '';
             }
         })
         .catch(error => {
@@ -126,6 +138,16 @@ export default {
             this.click = m;
             this.clickUrl = this.imgSrc[m - 1].sampleRoomImageLocation;
             this.$emit('event', this.clickUrl);
+            setTimeout(() => {
+                document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
+                document.getElementsByClassName('addSmallRight')[0] ? document.getElementsByClassName('addSmallRight')[0].style.borderColor = this.borderColor : '';
+                const SmallRight = document.getElementsByClassName('smallRight');
+                const ArrowRight = document.getElementsByClassName('arrowRight');
+                for (let i = 0; i < SmallRight.length; i++) {
+                    ArrowRight[i].style.borderRightColor = 'transparent';
+                    SmallRight[i].style.borderColor = 'transparent';
+                }
+            }, 100);
         }
         //让大图变清晰
         // checkEffect() {
@@ -250,7 +272,7 @@ export default {
                 width: px2rem(36);
                 height: px2rem(36);
                 border: px2rem(18) solid transparent;
-                border-right-color: white;
+                // border-right-color: white;
             }
             .smallRight {
                 height: 100%;
@@ -270,7 +292,9 @@ export default {
             .addSmallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(6) solid white;
+                border-width: px2rem(6);
+                border-style: solid;
+                // border-color: white;
                 .imgRight {
                     width: 100%;
                     height: 100%;

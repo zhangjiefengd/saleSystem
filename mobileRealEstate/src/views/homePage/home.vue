@@ -32,8 +32,7 @@
     flex-direction: column;
     align-items: center;
     img {
-      width: px2rem(300);
-      height: px2rem(200);
+      height: px2rem(245);
     }
   }
   .projectList {
@@ -90,7 +89,7 @@ import getImage from '../../utils/getImage.js'
 export default {
   data() {
     return {
-      imgIndexBack: "",
+      imgIndexBack: require('../../assets/img/index/首页1.jpg'),
       imgProject: "",
       homeLogo: '',
       homeBgc: require('@/assets/img/homeBackground.png'),
@@ -133,22 +132,22 @@ export default {
 
           for (let i in res.data.data) {
             this.moduleIndex.map((item, index) => {
-              if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
+              if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
               }
-              if (item.url === '/brand' && i === 'brandOverviewBar') {
+              if (item.url === '/brand' && i === 'brandOverviewBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
               }
-              if (item.url === '/houseType' && i === 'unitDisplayBar') {
+              if (item.url === '/houseType' && i === 'unitDisplayBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
               }
-              if (item.url === '/nearBy' && i === 'projectAroundBar') {
+              if (item.url === '/nearBy' && i === 'projectAroundBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
               }
             })
           }
 
-          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('@/assets/img/homeBackground.png')
+          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('../../assets/img/homeBackground.png')
         }
       })
     //请求激活的模块

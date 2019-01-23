@@ -29,7 +29,8 @@ export default {
             clickUrl: "",//获取被点击的url
             dataAll: [],
             viewNum: 0,
-            mini: []
+            mini: [],
+            borderColor: '#ffffff'
         }
     },
     created() {
@@ -76,6 +77,17 @@ export default {
                 console.log(error);
             });
         }
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
+                document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
+                document.getElementsByClassName('addSmallRight')[0] ? document.getElementsByClassName('addSmallRight')[0].style.borderColor = this.borderColor : '';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
     mounted() {
         
@@ -86,6 +98,16 @@ export default {
             this.click = m;
             this.clickUrl = getImage(this.imgSrc[m - 1].imageLocation, 1);
             this.$emit('event', this.clickUrl);
+            setTimeout(() => {
+                document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
+                document.getElementsByClassName('addSmallRight')[0] ? document.getElementsByClassName('addSmallRight')[0].style.borderColor = this.borderColor : '';
+                const SmallRight = document.getElementsByClassName('smallRight');
+                const ArrowRight = document.getElementsByClassName('arrowRight');
+                for (let i = 0; i < SmallRight.length; i++) {
+                    ArrowRight[i].style.borderRightColor = 'transparent';
+                    SmallRight[i].style.borderColor = 'transparent';
+                }
+            }, 100);
         }
     },
     props: ['intial'],
@@ -171,7 +193,7 @@ export default {
     height: px2rem(608);
     float: left;
     margin-left: px2rem(2);
-    overflow: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     @include scrollBar;
     z-index: 1000;

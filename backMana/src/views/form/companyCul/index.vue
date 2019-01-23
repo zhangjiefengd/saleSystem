@@ -126,8 +126,6 @@
           .then(res => {
 
             if (res.data.data) {
-
-              console.log(res.data.data)
               this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
               this.cultureImage = this.getImage(res.data.data.mainImageLocation, 3)
             } else if (res.data.code == 0) {

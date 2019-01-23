@@ -173,8 +173,7 @@ export default {
 
         if (res.data.data) {
 
-          this.brandHonorWords = res.data.data
-          console.log(res.data.data)
+          this.brandHonorWords = res.data.data;
           this.brandHonorWords.map(item => {
             item.textColor = item.enterpriseHonorFontStyle ? item.enterpriseHonorFontStyle : '#333333'
             item.pointColor = item.enterpriseHonorPointStyle ? item.enterpriseHonorPointStyle : '#c7ad8b'

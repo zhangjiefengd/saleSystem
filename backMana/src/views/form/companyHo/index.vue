@@ -122,7 +122,6 @@
           }
           this.$forceUpdate()
           this.honorPhoto.push(oimage)
-          console.log(this.honorPhoto)
         } else {
           this.$message({
             message: '上传图片达到上限',

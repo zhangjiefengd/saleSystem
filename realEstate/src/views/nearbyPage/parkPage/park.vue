@@ -5,7 +5,7 @@
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
             </div>
             <div class="middleHouse">
-                <div class="bigPic" :style="{backgroundImage: 'url(' + picUrl + ')'}">
+                <div class="bigPic" :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrl + ')'}">
 
                 </div>
                 <right @event='getPicUrl' @eventB='checkEffect' :intial=2 ref="rightA"></right>
@@ -32,8 +32,21 @@ export default {
             houseNum: 0,//户型号
             housePlans: [],
             intial: 2,
-            conDisplay: 'none'
+            conDisplay: 'none',
+            borderColor: '#ffffff'
         }
+    },
+    created() {
+        this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
+                
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
     mounted(){
         
@@ -110,7 +123,8 @@ export default {
                 width: px2rem(1107);
                 height: 100%;
                 margin-left: transverse(95);
-                border: px2rem(6) solid white;
+                border-width: px2rem(6);
+                border-style: solid;
                 background-repeat: no-repeat;
                 background-size: percentage(1094 / 1098) percentage(761 / 765);
                 filter: blur(4px);

@@ -24,9 +24,9 @@
         <span>·点击探索·</span>
       </div> -->
       <div class="word">
-        <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/bussiness.png" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
-        <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/address.png" alt="">&nbsp;&nbsp;{{word[1]}}</span>
-        <span :style="{display: appearCome}"><img src="../../assets/img/guidePage/tel.png" alt="">&nbsp;&nbsp;{{word[2]}}</span>
+        <span :style="{display: appearCome,color: colorBussiness}"><img :src="bussiness" alt="" >&nbsp;&nbsp;{{word[0]}}</span>
+        <span :style="{display: appearCome,color: colorAddress}"><img :src="address" alt="">&nbsp;&nbsp;{{word[1]}}</span>
+        <span :style="{display: appearCome,color: colorTel}"><img :src="tel" alt="">&nbsp;&nbsp;{{word[2]}}</span>
         <form action="" name="word" :style="{display: appear}">
           <input  type="text" style="width:30%" maxlength="50" class="modifyInput" >
           <input  type="text" style="width:30%" maxlength="50" class="modifyInput" >
@@ -51,7 +51,7 @@ import ip from '../../../static/ip'
 export default {
   data() {
     return {
-      "imgBack": "",
+      "imgBack": require('../../assets/img/guidePage/back.jpg'),
       "imgLogo": "",
       "id": 0,
       "word": [],
@@ -59,31 +59,45 @@ export default {
       "appearCome": "block",
       "success": [],
       head: ip + ':8080/static/image/',
-      color: ''
+      color: '',
+      colorBussiness: '#666666',
+      colorAddress: '#666666',
+      colorTel: '#666666',
+      bussiness: require('../../assets/img/guidePage/bussiness.png'),
+      address: require('../../assets/img/guidePage/address.png'),
+      tel: require('../../assets/img/guidePage/tel.png')
     }
   },
   created() {
     this.$axios.get("/basic/guidePage/get")
     .then(res => {
-      // 切块图片
-      if (res.data.data && res.data.data.backgroundImageLocation) {
-        const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
-        this.imgBack = this.getImage(res.data.data.backgroundImageLocation, 3);
-        //  this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
-      }
-      if (res.data.data && res.data.data.projectLogoLocation) {
-        const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
-        this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
-        // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
-      }
-      //获取文字
-      if (res.data.data && res.data.data.projectHost && res.data.data.projectLocation && res.data.data.projectHotline) {
-        this.word[0] = res.data.data.projectHost;
-        this.word[1] = res.data.data.projectLocation;
-        this.word[2] = res.data.data.projectHotline;
+      if (res.data.code == 1) {
+        // 切块图片
+        if (res.data.data && res.data.data.backgroundImageLocation) {
+          const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
+          this.imgBack = this.getImage(res.data.data.backgroundImageLocation, 3);
+          //  this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[backImgSplit.length - 1];
+        }
+        if (res.data.data && res.data.data.projectLogoLocation) {
+          const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
+          this.imgLogo = this.getImage(res.data.data.projectLogoLocation, 3);
+          // this.imgLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[logoImgSplit.length - 1];
+        }
+        //获取文字
+        if (res.data.data && res.data.data.projectHost && res.data.data.projectLocation && res.data.data.projectHotline) {
+          this.word[0] = res.data.data.projectHost;
+          this.word[1] = res.data.data.projectLocation;
+          this.word[2] = res.data.data.projectHotline;
+        }
+        res.data.data &&res.data.data.projectLocationFontStyle ? this.colorBussiness = res.data.data.projectLocationFontStyle : '';
+        res.data.data &&res.data.data.projectHostFontStyle ? this.colorAddress = res.data.data.projectHostFontStyle : '';
+        res.data.data &&res.data.data.projectHotlineFontStyle ? this.colorTel = res.data.data.projectHotlineFontStyle : '';
+        res.data.data &&res.data.data.projectLocationIconLocation ? this.bussiness = getImage(res.data.data.projectLocationIconLocation, 2) : '';
+        res.data.data &&res.data.data.projectHostIconLocation ? this.address = getImage(res.data.data.projectHostIconLocation, 2) : '';
+        res.data.data &&res.data.data.projectHotlineIconLocation ? this.tel = getImage(res.data.data.projectHotlineIconLocation, 2) : '';
+        res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
       }
 
-      res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
     })
     .catch(error => {
       this.$message.error('获取失败，请上传内容！');

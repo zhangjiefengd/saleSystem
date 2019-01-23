@@ -54,7 +54,6 @@ export default {
     this.$axios.get('/brand/enterpriseCulture/get')
       .then(res => {
         if (res.data.data) {
-          console.log(res.data.data)
           this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
           this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#666666'
           this.titles = res.data.data

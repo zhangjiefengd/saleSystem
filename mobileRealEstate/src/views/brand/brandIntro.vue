@@ -10,7 +10,7 @@
       </div>
       <div class="brandIntroNum">
         <ul class="spot">
-          <li v-for="(image, index) in brandIntroPhoto" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :class="[{changeStyle: index==imageNum}]"></li>
+          <li v-for="(image, index) in brandIntroPhoto" :key="index" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :class="[{changeStyle: index==imageNum}]"></li>
         </ul>
       </div>
       <div class="brandIntroVideo"  @click="brandVideo">

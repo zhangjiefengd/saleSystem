@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <div class="changePosition">
+        <div class="changePosition" :style="{backgroundImage: 'url(' + back +')'}">
             <!-- <div class="topHouse"> -->
             <div class="topHouse">
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
@@ -38,7 +38,8 @@ export default {
             src: "",
             houseNum: 0,//户型号
             house: {},
-            conDisplay: 'none'
+            conDisplay: 'none',
+            back: '../../../assets/img/goHouseHistory/houseBack.jpg'
             // src: "http://vr.justeasy.cn/view/1079664.html"
         }
     },
@@ -167,7 +168,7 @@ export default {
         height: vertical(905);
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         .topHouse {
             height: vertical(117);
             position: absolute;

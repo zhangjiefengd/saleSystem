@@ -60,7 +60,7 @@ export default {
                         }
                         // this.img[0] = getImage(this.imgSrc[this.houseSampleRoomsNum - 1].sampleRoomImageLocation, 3);
                         // this.check = 1;
-                        // this.name = this.imgSrc[0].roomTypeName;
+                        this.name = this.imgSrc[0].roomTypeName;
                         // if (this.imgSrc.length > 1) {
                         //     this.imgLeft = window.innerWidth*(-1);
                         //     $('.conPic').eq(0).css('marginLeft', this.imgLeft + 'px');

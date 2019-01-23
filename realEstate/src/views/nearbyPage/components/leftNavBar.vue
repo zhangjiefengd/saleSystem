@@ -4,7 +4,7 @@
             <img :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
-            <router-link tag="div" @mouseover.native="hover" v-for="(word, index) in words" :key="index" :to="word.toUrl" >
+            <router-link class="nav" tag="div" v-for="(word, index) in words" :key="index"  @mouseover.native="hover(index)" @mouseout.native="hoverOut(index)" @mousedown.native="mouseDown(index)" @mouseup.native="leave(index)" @click.native="changeColor(index)"  :to="word.toUrl" >
             {{ word.name }}
             </router-link>
         </div>
@@ -32,8 +32,14 @@ import getImage from '../../../ultis/getImage.js'
                     toUrl: '/nearBy/neighberhood'
                 }
             ],
-            changeIndex: 1,
-            imgLogo: ""
+            changeIndex: 0,
+            imgLogo: "",
+            backColor: '#ffffff',
+            navHover: '#dfc29d',
+            navClick: '#c1a077',
+            navSelect: '#c7ad8c',
+            noneFont: '#666666',
+            clickFont: 'white'
         }
     }, 
     created() {
@@ -46,18 +52,56 @@ import getImage from '../../../ultis/getImage.js'
         .catch(error => {
             console.log(error);
         });
-        // this.$axios.get("/landscape/images")
-        // .then(res => {
-        //     this.words = res.data.data;
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
+        this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeNavigationNoneStatusStyle  ? this.backColor = res.data.data.houseTypeNavigationNoneStatusStyle  : "";
+                res.data.data.houseTypeNavigationSuspensionStatusStyle ? this.navHover = res.data.data.houseTypeNavigationSuspensionStatusStyle : "";
+                res.data.data.houseTypeNavigationClickStatusStyle ? this.navClick = res.data.data.houseTypeNavigationClickStatusStyle : "";
+                res.data.data.houseTypeNavigationClickedStatusStyle  ? this.navSelect = res.data.data.houseTypeNavigationClickedStatusStyle  : "";
+                
+                res.data.data.surroundingNavigationFontNoneStatusStyle ? this.noneFont = res.data.data.surroundingNavigationFontNoneStatusStyle : "";
+                res.data.data.surroundingNavigationFontClickedStatusStyle   ? this.clickFont = res.data.data.surroundingNavigationFontClickedStatusStyle   : "";
+                if (this.$route.path == '/nearBy/neighberhood') {
+                    document.getElementsByClassName('nav')[1].style.backgroundColor = this.navSelect; 
+                    document.getElementsByClassName('nav')[1].style.color = this.clickFont;
+                    document.getElementsByClassName('nav')[0].style.color = this.noneFont;
+                } else {
+                    document.getElementsByClassName('nav')[0].style.backgroundColor = this.navSelect; 
+                    document.getElementsByClassName('nav')[0].style.color = this.clickFont;
+                    document.getElementsByClassName('nav')[1].style.color = this.noneFont;
+                }
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
     methods: {
+        hover(i) {document.getElementsByClassName('nav')[i].style.backgroundColor = this.navHover; document.getElementsByClassName('nav')[i].style.color = this.clickFont},
+        hoverOut(i) {
+            if (this.changeIndex == i) {
+                document.getElementsByClassName('nav')[i].style.backgroundColor = this.navSelect; 
+                document.getElementsByClassName('nav')[i].style.color = this.clickFont;
+            } else {
+                document.getElementsByClassName('nav')[i].style.backgroundColor = this.backColor; 
+                document.getElementsByClassName('nav')[i].style.color = this.noneFont
+            }
+        },
+        mouseDown(i) {document.getElementsByClassName('nav')[i].style.backgroundColor = this.navClick; document.getElementsByClassName('nav')[i].style.color = this.clickFont},
+        leave(i) {
+            
+        },
         changeColor: function (index) {
+            const nav = document.getElementsByClassName('nav');
+            for (let i = 0; i < nav.length; i++) {
+                nav[i].style.backgroundColor = this.backColor; 
+                nav[i].style.color = this.noneFont;
+            }
+            nav[index].style.backgroundColor = this.navSelect; 
+            nav[index].style.color = this.clickFont;
             this.changeIndex = index;
-            this.$emit('ievent', index, this.intial);
+            // this.$emit('ievent', index, this.intial);
         },
     },
     watch: {
@@ -98,7 +142,7 @@ import getImage from '../../../ultis/getImage.js'
             cursor: pointer;
         }
         .router-link-active {
-            background-color: #c7ad8c;
+            // background-color: #c7ad8c;
             color: white;
         }
         .changeColor{
@@ -106,11 +150,11 @@ import getImage from '../../../ultis/getImage.js'
             color: white;
         }
         >div:hover {
-            background-color: #dfc29d;
+            // background-color: #dfc29d;
             color: white;
         }
         >div:active {
-            background-color: #c1a077;
+            // background-color: #c1a077;
             color: white;
         }
     }

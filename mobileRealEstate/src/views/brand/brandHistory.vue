@@ -174,7 +174,6 @@ export default {
         if (res.data.data) {
 
           this.brandHistory = res.data.data
-          console.log(res.data.data)
           this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
           this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
           this.brandHistory.map((item, index) => {
