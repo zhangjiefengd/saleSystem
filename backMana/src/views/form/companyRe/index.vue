@@ -169,9 +169,6 @@
       getData() {
         this.$axios.get('/brand/enterpriseIntroduction/get')
           .then(res => {
-            if (res.data.code === 0) {
-
-            }
             if (res.data.data) {
 
               this.worlds = res.data.data
@@ -192,6 +189,11 @@
                 enterpriseIntroduction: '输入企业介绍'
               }
 
+            } else {
+              this.worlds = {
+                enterpriseName: '请输入企业名称',
+                enterpriseIntroduction: '输入企业介绍'
+              }
             }
           })
           .catch(error => {
