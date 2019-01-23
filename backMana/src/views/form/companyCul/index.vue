@@ -124,14 +124,19 @@
       getData() {
         this.$axios.get('/brand/enterpriseCulture/image/get')
           .then(res => {
+
             if (res.data.data) {
+
+              console.log(res.data.data)
               this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 2)
               this.cultureImage = this.getImage(res.data.data.mainImageLocation, 2)
             }
           })
         this.$axios.get('/brand/enterpriseCulture/get')
           .then(res => {
+
             if (res.data.data) {
+
               this.cultureText = res.data.data
               this.listen = JSON.parse(JSON.stringify(res.data.data))
               this.worldNum = res.data.data.length
@@ -561,7 +566,7 @@
                       width: 100%;
                       font-size: px2rem(28);
                       word-wrap: break-word;
-                      color: #ffdaaa;
+                      color: #666666;
                       margin: 0;
                       border: 1px dotted #fff;
                       letter-spacing: .2em;
@@ -576,7 +581,7 @@
                       font-size: px2rem(22);
                       word-wrap: break-word;
                       border: 1px dotted #fff;
-                      color: #ffffff;
+                      color: #666666;
                       letter-spacing: .1em;
                     }
                   }

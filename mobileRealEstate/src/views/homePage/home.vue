@@ -11,9 +11,9 @@
         </router-link>
       </ul>
     </div>
-    <div class="companyLogo">
-      <img src="@/assets/img/index/companyLogo.png" alt="">
-    </div>
+    <!--<div class="companyLogo">-->
+      <!--<img src="@/assets/img/index/companyLogo.png" alt="">-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -27,42 +27,47 @@
   background-size: cover;
   .homeHead {
     width: 100%;
-    height: 55%;
-    @include fj(flex-end);
+    height: 58%;
+    @include fj(center);
     flex-direction: column;
     align-items: center;
     img {
-      width: px2rem(500);
-      height: px2rem(300);
+      width: px2rem(300);
+      height: px2rem(200);
     }
   }
   .projectList {
     width: 100%;
-    height: 37%;
+    height: 34%;
     @include fj(center);
     align-items: center;
     .homeModule {
       width: px2rem(505);
-      height: px2rem(195);
-      @include fj();
+      height: px2rem(224);
+      @include fj(center);
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 4%;
+      margin-left: px2rem(-16);
       li {
-        width: px2rem(250);
-        height: px2rem(90);
-        background-color: rgba(98, 98, 100, 0.53);
-	      opacity: 0.53;
-        @include fj(space-around);
+        width: px2rem(176);
+        height: px2rem(86);
+        background-color: #ffffff;
+        box-shadow: 0px 8px 10px 0px
+        rgba(29, 35, 40, 0.05);
+        @include fj(center);
         align-items: center;
+        margin-top: px2rem(16);
+        margin-left: px2rem(16);
         img {
-          width: px2rem(30);
-          height: px2rem(30);
+          width: px2rem(40);
+          height: px2rem(40);
+          margin-right: px2rem(10);
         }
         span {
-          color: #ffdba1;
+          color: #000000;
           @include fontSize(30);
           @include lineHeight(30);
+          letter-spacing: .1em;
         }
       }
     }
@@ -113,29 +118,39 @@ export default {
     }
   },
   created() {
-    this.$axios.get('/basic/guidePage/get')
+    this.$axios.get('/basic/mainPage/get')
       .then(res=>{
-        this.homeLogo = getImage(res.data.data.projectLogoLocation, 3)
+
+        if (res.data.data) {
+
+          this.homeLogo = getImage(res.data.data.projectLogoLocation, 3)
+        }
       })
     this.$axios.get('/basic/mainPage/get')
       .then(res=>{
-        for (let i in res.data.data) {
-          this.moduleIndex.map((item, index) => {
-            if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/brand' && i === 'brandOverviewBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/houseType' && i === 'unitDisplayBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/nearBy' && i === 'projectAroundBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-          })
+
+        if (res.data.data) {
+
+          for (let i in res.data.data) {
+            this.moduleIndex.map((item, index) => {
+              if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
+                item.icon = getImage(res.data.data[i], 3)
+              }
+              if (item.url === '/brand' && i === 'brandOverviewBar') {
+                item.icon = getImage(res.data.data[i], 3)
+              }
+              if (item.url === '/houseType' && i === 'unitDisplayBar') {
+                item.icon = getImage(res.data.data[i], 3)
+              }
+              if (item.url === '/nearBy' && i === 'projectAroundBar') {
+                item.icon = getImage(res.data.data[i], 3)
+              }
+            })
+          }
+
+          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('@/assets/img/homeBackground.png')
         }
-        this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 3)
+
       })
     //请求激活的模块
     // this.$axios.get("/module/main", {params:{'select':'true'}})

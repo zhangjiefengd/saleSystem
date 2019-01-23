@@ -14,15 +14,15 @@
         </ul>
       </div>
       <div class="brandIntroVideo"  @click="brandVideo">
-        <img src="../../assets/img/brand/video.jpg" alt="">
+        <img :src="videoIcon" alt="">
       </div>
     </div>
     <div class="brandIntroWord">
-      <p class="brandIntroWordTitle">
+      <p class="brandIntroWordTitle" :style="[{color: titleColor}]">
         {{ brandIntroTitle }}
       </p>
       <p class="brandIntroWordContent">
-        <span class="brandIntroContent">
+        <span class="brandIntroContent" :style="[{color: contentColor}]">
           {{ brandIntroContent }}
         </span>
       </p>
@@ -48,26 +48,36 @@ export default {
       x: 0,
       change: '',
       wordRemind: true,
-      head: 'http://118.24.113.182:80/'
+      head: 'http://118.24.113.182:80/',
+      titleColor: '',
+      contentColor: '',
+      videoIcon: ''
     }
   },
   created() {
     this.$axios.get('/brand/enterpriseIntroduction/get')
       .then(res => {
-        this.brandIntroTitle = res.data.data.enterpriseName
-        this.brandIntroContent = res.data.data.enterpriseIntroduction
+        if (res.data.data) {
+          this.brandIntroTitle = res.data.data.enterpriseName
+          this.brandIntroContent = res.data.data.enterpriseIntroduction
+          this.videoIcon = res.data.data.playIcoLocation ? getImage(res.data.data.playIcoLocation, 1) : require('@/assets/img/brand/video.jpg')
+          this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#ffdaaa'
+          this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#474747'
+        }
       })
       .catch(error => {
         console.log(error)
       })
     this.$axios.post('/brand/enterpriseIntroduction/image/get')
       .then(res => {
-        this.brandIntroPhoto = res.data.data
-        this.brandIntroPhoto.map((item, index) => {
-          if (item.imageLocation) {
-            this.brandIntroPhoto[index].image = getImage(item.imageLocation, 1)
-          }
-        })
+        if (res.data.data) {
+          this.brandIntroPhoto = res.data.data
+          this.brandIntroPhoto.map((item, index) => {
+            if (item.imageLocation) {
+              this.brandIntroPhoto[index].image = getImage(item.imageLocation, 1)
+            }
+          })
+        }
       })
       .catch(error => {
         console.log(error)

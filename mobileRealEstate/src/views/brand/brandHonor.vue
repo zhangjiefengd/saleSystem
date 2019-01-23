@@ -6,7 +6,7 @@
           <img src="@/assets/img/brand/left.png" alt="">
         </div>
         <transition-group tag="ul" :name="change">
-          <li v-for="(photo, index) in brandHonorPhoto" :key='photo' v-show="index == imageNum">
+          <li v-for="(photo, index) in brandHonorPhoto" :key='index*5' v-show="index == imageNum">
             <img :src="photo.image" alt="">
           </li>
         </transition-group>
@@ -16,9 +16,9 @@
       </div>
       <div class="brandHonorIntro">
         <ul class="brandHonorwords brandHonorScroll">
-          <li v-for="(word, index) in brandHonorWords" >
-            <span class="word-spot"></span>
-            <span>{{ word.enterpriseHonorInfo }}</span>
+          <li v-for="(word, index) in brandHonorWords" :key='index'>
+            <span class="word-spot" :style="[{backgroundColor: word.pointColor}]"></span>
+            <span :style="[{color: word.textColor}]">{{ word.enterpriseHonorInfo }}</span>
           </li>
         </ul>
       </div>
@@ -170,9 +170,20 @@ export default {
   created() {
     this.$axios.get('/brand/enterpriseHonor/get')
       .then(res => {
-        this.brandHonorWords = res.data.data
-        if (this.brandHonorWords.length > 4) {
-          this.wordRemind = true
+
+        if (res.data.data) {
+
+          this.brandHonorWords = res.data.data
+          console.log(res.data.data)
+          this.brandHonorWords.map(item => {
+            item.textColor = item.enterpriseHonorFontStyle ? item.enterpriseHonorFontStyle : '#333333'
+            item.pointColor = item.enterpriseHonorPointStyle ? item.enterpriseHonorPointStyle : '#c7ad8b'
+          })
+
+          if (this.brandHonorWords.length > 4) {
+
+            this.wordRemind = true
+          }
         }
       })
       .catch(error => {
@@ -180,19 +191,27 @@ export default {
       })
     this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
       .then(res => {
-        this.background = getImage(res.data.data.imageLocation, 3)
+
+        if (res.data.data){
+
+          this.background = getImage(res.data.data.imageLocation, 3)
+        }
       })
       .catch(error => {
         console.log(error)
       })
     this.$axios.get('/brand/enterpriseHonor/honorImage/get')
       .then(res => {
-        this.brandHonorPhoto = res.data.data
-        this.brandHonorPhoto.map((item, index) => {
-          if (item.imageLocation) {
-            this.brandHonorPhoto[index].image = getImage(item.imageLocation, 1)
-          }
-        })
+
+        if (res.data.data) {
+
+          this.brandHonorPhoto = res.data.data
+          this.brandHonorPhoto.map((item, index) => {
+            if (item.imageLocation) {
+              this.brandHonorPhoto[index].image = getImage(item.imageLocation, 1)
+            }
+          })
+        }
       })
       .catch(error => {
         console.log(error)

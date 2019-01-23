@@ -16,37 +16,8 @@
   <div class="backImage"  @click="clickBack">
     <img src="../../../assets/img/goHouseHistory/goHistory.png" alt="">
   </div>
-  <transition name="fade">
-    <div class="linkInfo" v-if="isShowInfo">
-      <div class="companyInfo">
-        <p>中海地产</p>
-        <p>售楼电话：</p>
-        <p>000-1234 5678</p>
-      </div>
-      <ul class="userInfo">
-        <li>
-          电话
-          <input type="text" id="userPhone">
-        </li>
-        <li>
-          区域
-          <select name="area" id="area">
-            <option value="audi">Audi</option>
-          </select>
-        </li>
-        <li>
-          <span>价格</span>
-          <select name="price" id="price">
-            <option value="audi">Audi</option>
-          </select>
-        </li>
-        <input type="submit" value="提交" class="upUserInfo">
-      </ul>
-    </div>
-  </transition>
-  <transition name="fade" mode="out-in">
     <router-view></router-view>
-  </transition>
+  <!--</transition>-->
 </div>
 </template>
 
@@ -82,13 +53,13 @@ export default {
     }
   },
   created () {
-    this.$axios.get("/basic/guidePage/get")
+    this.$axios.get('/basic/guidePage/get')
       .then((res) => {
-        res.data.data && res.data.data.projectLogoLocation ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
+        (res.data.data && res.data.data.projectLogoLocation) ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : this.companyLogo = require('@/assets/img/leftNav/logo.png')
       })
       .catch(error => {
-        console.log(error);
-      });
+        console.log(error)
+      })
   },
   methods: {
     clickBack: function () {

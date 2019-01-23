@@ -7,14 +7,14 @@
         </div>
         <div class="brandHistorywords" v-for="(image, index) in brandHistory" :key="image.id" v-show="index==brandHistoryNum">
           <div class="brandHistoryBody">
-            <div class="brandHistoryHead">
+            <div class="brandHistoryHead" :style="[{color: image.stepColor}]">
               {{ image.step }}
             </div>
             <div>
-              <p class="brandHistoryTitle">
+              <p class="brandHistoryTitle" :style="[{color: image.titleColor}]">
                 {{ image.developTitle }}
               </p>
-              <p class="brandHistoryContent">
+              <p class="brandHistoryContent" :style="[{color: image.contentColor}]">
                 {{ image.enterpriseDevelopInfo }}
               </p>
             </div>
@@ -55,7 +55,8 @@
       height: px2rem(250);
       position: absolute;
       bottom: 0;
-      background-color: rgba(18, 18, 18, 0.7);
+      background-color: #3e3e3e;
+      opacity: 0.8;
       @include fj(center);
       .brandHistoryBody {
         width: 90%;
@@ -68,8 +69,8 @@
           height: px2rem(50);
           color: #ffffff;
           padding: 0 .5rem;
-          background-color: #ffdba1;
-          @include fontSize(30);
+          background-color: #c7ad8b;
+          @include fontSize(28);
           @include fj(center);
           align-items: center;
           text-align: center;
@@ -78,7 +79,7 @@
           width: 100%;
           .brandHistoryTitle {
             color: #c79f62;
-            @include fontSize(34);
+            @include fontSize(26);
             margin-top: .5rem;
           }
           .brandHistoryContent {
@@ -167,19 +168,31 @@ export default {
   created() {
     this.$axios.get('/brand/enterpriseDevelop/get')
       .then(res => {
-        this.brandHistory = res.data.data
-        this.brandHistory.map((item, index) => {
-          if (item.enterpriseDevelopImageLocation) {
-            this.brandHistory[index].image = getImage(item.enterpriseDevelopImageLocation, 3)
-          }
-        })
+
+        if (res.data.data) {
+
+          this.brandHistory = res.data.data
+          console.log(res.data.data)
+          this.brandHistory.map((item, index) => {
+            if (item.enterpriseDevelopImageLocation) {
+              this.brandHistory[index].image = getImage(item.enterpriseDevelopImageLocation, 3)
+            }
+            item.stepColor = item.enterpriseDevelopStepStyle ? item.enterpriseDevelopStepStyle : '#ffffff'
+            item.titleColor = item.enterpriseDevelopTitleStyle ? item.enterpriseDevelopTitleStyle : '#c7ad8b'
+            item.contentColor = item.enterpriseDevelopFontStyle ? item.enterpriseDevelopFontStyle : '#e1e1e1'
+          })
+        }
       })
       .catch(error => {
         console.log(error)
       })
     this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
       .then(res => {
-        this.backgroundImage = getImage(res.data.data.imageLocation, 3)
+
+        if (res.data.data) {
+
+          this.backgroundImage = getImage(res.data.data.imageLocation, 3)
+        }
       })
       .catch(error => {
         console.log(error)

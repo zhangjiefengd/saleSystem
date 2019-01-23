@@ -105,6 +105,7 @@ export default {
             .catch(error => {
                 console.log(error);
             });
+      console.log(document.getElementsByClassName('pic'))
         },
     mounted(){
         document.title = "园林美景";

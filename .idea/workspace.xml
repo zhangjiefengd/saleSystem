@@ -2,14 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d584bdd5-4a0c-44c7-9c63-287ac7c7b2fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backMana/src/components/colorManage/colorManage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backMana/src/Global.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/Global.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backMana/src/views/homepage/mobile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backMana/src/views/homepage/mobile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/http/Global.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/http/Global.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/Global.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/Global.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon2.png" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon3.png" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon4.png" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/assets/img/index/icon4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +39,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="87" column="59" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
+            <state relative-caret-position="305">
+              <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="38" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#6021#6171#0" />
+                <element signature="e#6187#6856#0" />
+                <element signature="n#style#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,6 +82,7 @@
       <find>honorBackground</find>
       <find>honor</find>
       <find>optionBackground</find>
+      <find>showChangeContentColor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,38 +91,41 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue" />
-        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" />
         <option value="$PROJECT_DIR$/backMana/src/views/form/companyHis/index.vue" />
-        <option value="$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue" />
         <option value="$PROJECT_DIR$/realEstate/src/components/contactContent/index.vue" />
         <option value="$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue" />
-        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" />
-        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" />
-        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" />
         <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/common.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" />
         <option value="$PROJECT_DIR$/mobileRealEstate/src/views/projectIntroduce/projectIntro.vue" />
         <option value="$PROJECT_DIR$/backMana/src/views/form/companyHo/index.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" />
-        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue" />
         <option value="$PROJECT_DIR$/mobileRealEstate/src/App.vue" />
-        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" />
         <option value="$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue" />
         <option value="$PROJECT_DIR$/backMana/src/views/homepage/mobile.vue" />
         <option value="$PROJECT_DIR$/backMana/src/components/colorManage/colorManage.vue" />
         <option value="$PROJECT_DIR$/mobileRealEstate/src/components/topOption.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue" />
+        <option value="$PROJECT_DIR$/backMana/src/Global.vue" />
         <option value="$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/Global.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue" />
+        <option value="$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/http/Global.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue" />
+        <option value="$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue" />
+        <option value="$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="713" />
-    <option name="y" value="42" />
-    <option name="width" value="1362" />
+    <option name="x" value="495" />
+    <option name="y" value="69" />
+    <option name="width" value="1537" />
     <option name="height" value="1009" />
   </component>
   <component name="ProjectView">
@@ -153,58 +180,151 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="form" type="462c0819:PsiDirectoryNode" />
+              <item name="companyCul" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="backMana" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
               <item name="companyRe" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="backMana" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="houseDis" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="backMana" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="houseDis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="homePage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="brandHonorPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="backMana" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="houseDis" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="frames" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="culturePage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="developPage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandPage" type="462c0819:PsiDirectoryNode" />
+              <item name="enterpriseIntroducePage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="work" type="b2602c69:ProjectViewProjectNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="mobileRealEstate" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="realEstate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="homePage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -253,18 +373,19 @@
       <workItem from="1547797943600" duration="32359000" />
       <workItem from="1547884375945" duration="38125000" />
       <workItem from="1548065297954" duration="50000" />
-      <workItem from="1548065372034" duration="2873000" />
+      <workItem from="1548065372034" duration="9687000" />
+      <workItem from="1548172968431" duration="11455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73407000" />
+    <option name="totallyTimeSpent" value="91676000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="713" y="42" width="1362" height="1009" extended-state="0" />
+    <frame x="495" y="69" width="1537" height="1009" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18277946" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1814543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -287,137 +408,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/homePage/home.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/guidePage/guide.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/prototypeRoomPage/proto.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/bottomNavBar.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/nearBy.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/components/top/index.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="248" column="24" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
-          <folding>
-            <element signature="n#script#0;n#!!top" />
-            <element signature="e#1174#1224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyHis/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#script#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding>
-            <element signature="n#script#0;n#!!top" />
-            <element signature="e#1402#4189#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/common.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="117" column="7" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#1;n#transition-group#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/projectIntroduce/projectIntro.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="67" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyHo/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="76" />
-          <folding>
-            <element signature="n#script#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/homeBgc.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/background.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/companyLogo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/backMana/src/views/homepage/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -446,33 +436,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/realEstate/src/views/nearbyPage/components/index.vue">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="132" column="65" selection-start-line="132" selection-start-column="65" selection-end-line="132" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <element signature="e#642#692#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/houseTypePage/components/houseIndex.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -507,13 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backMana/src/Global.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="58" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -604,10 +560,188 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/nearBy.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/park.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#1706#4111#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/parkPage/common.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="957">
+          <caret line="192" column="23" selection-start-line="192" selection-start-column="23" selection-end-line="192" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#856#1122#0" />
+            <element signature="e#1138#1153#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/nearbyPage/components/bottomNavBar.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/Global.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/Global.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/assets/img/leftNav/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/enterpriseIntroducePage/enterprise.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+          <folding>
+            <element signature="e#1174#1224#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/developPage/develop.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-342">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+          <folding>
+            <element signature="e#1837#1875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/brandHonorPage/honor.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="84" column="43" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/http/Global.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandIntro.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHonor.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandHistory.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/brand/brandCulture.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/homePage/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/icon4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/icon3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/icon2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/assets/img/index/icon1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/components/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/realEstate/src/views/brandPage/culturePage/culture.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyCul/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+          <folding>
+            <element signature="e#4033#4808#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobileRealEstate/src/views/homePage/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backMana/src/views/form/companyRe/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="87" column="59" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
+        <state relative-caret-position="305">
+          <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="38" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#6021#6171#0" />
+            <element signature="e#6187#6856#0" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

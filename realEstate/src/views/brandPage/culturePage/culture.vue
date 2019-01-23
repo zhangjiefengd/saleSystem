@@ -14,8 +14,8 @@
                   <img :src="title.logo" alt="">
                 </div>
                 <div class="word-content">
-                  <h2 v-if="title.content !== null">{{ title.title }}</h2>
-                  <p v-if="title.content !== null">{{ title.content }}</p>
+                  <h2 v-if="title.content !== null" :style="[{color: titleColor}]">{{ title.title }}</h2>
+                  <p v-if="title.content !== null" :style="[{color: contentColor}]">{{ title.content }}</p>
                 </div>
               </div>
             </div>
@@ -45,13 +45,18 @@ export default {
       culBig: '',
       head: ip + ':8080/static/image/',
       logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
-      conDisplay: 'none'
+      conDisplay: 'none',
+      titleColor: '',
+      contentColor: ''
     }
   },
   created () {
     this.$axios.get('/brand/enterpriseCulture/get')
       .then(res => {
         if (res.data.data) {
+          console.log(res.data.data)
+          this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
+          this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#666666'
           this.titles = res.data.data
           this.contents = res.data.data.content
           this.titles.map((item, index) => {
