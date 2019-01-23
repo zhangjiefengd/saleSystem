@@ -24,7 +24,7 @@ import getImage from '../../ultis/getImage.js';
 export default {
   data() {
     return {
-      imgBack: '',
+      imgBack: require('../../assets/img/guidePage/back.jpg'),
       imgLogo: '',
       word: [],
       root: null,
@@ -45,13 +45,13 @@ export default {
     .then((res) => {
       if (res.data.code == 1) {
         if (screen.width > 1024){
-          this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
           this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1);
         }else {
-          this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 2) : '';
           this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 2);
         }
-        this.imgBack = getImage(res.data.data.backgroundImageLocation, 5);
+        res.data.data.backgroundImageLocation ? this.imgBack = getImage(res.data.data.backgroundImageLocation, 5) : '';
         // this.imgBig = res.data.data.backgroundImage.fileName;
         // this.imgBack = intial;
         this.imgLogo = getImage(res.data.data.projectLogoLocation, 5);

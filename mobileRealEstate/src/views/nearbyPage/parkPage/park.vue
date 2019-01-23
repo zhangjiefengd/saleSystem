@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content" :style="{backgroundImage: 'url('+ back +')'}">
         <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
             <!--<top/>-->
@@ -43,6 +43,7 @@ export default {
             x: 0,//滑动位置距离
             control: 0,//控制left不变
             imgLeft: -400,
+            back: require('../../../assets/img/index/noIndexBack.png')
         }
     },
     created() {
@@ -101,6 +102,15 @@ export default {
                     $('.conPic').eq(0).css('marginLeft', 0 + 'px');
                 }
 
+            })
+            .catch(error => {
+                console.log(error);
+            });
+            this.$axios.get("/common/mobileCommonBackgroundImage/get")
+            .then((res) => {
+                if (res.data.data) {
+                    this.back = res.data.data;
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -305,7 +315,7 @@ export default {
 .content {
     width: 100%;
     height: 100%;
-    background-image: url('../../../assets/img/index/background.jpg');
+    // background-image: url('../../../assets/img/index/background.jpg');
     background-repeat: no-repeat;
     background-size: auto 100%;
     // background-color: #1E1E1E;
@@ -356,7 +366,7 @@ export default {
         .intro {
             width: 100%;
             height: px2rem(50);
-            margin-top: -1.3rem;
+            // margin-top: -1rem;
             transform: translateY(-100%);
             @include fj(center);
             align-items: center;

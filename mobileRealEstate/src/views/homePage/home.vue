@@ -121,21 +121,23 @@ export default {
       .then(res=>{
         for (let i in res.data.data) {
           this.moduleIndex.map((item, index) => {
-            if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/brand' && i === 'brandOverviewBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/houseType' && i === 'unitDisplayBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
-            if (item.url === '/nearBy' && i === 'projectAroundBar') {
-              item.icon = getImage(res.data.data[i], 3)
-            }
+            // if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar') {
+            //   item.icon = getImage(res.data.data[i], 3)
+              
+            // }
+            // if (item.url === '/brand' && i === 'brandOverviewBar') {
+            //   item.icon = getImage(res.data.data[i], 3)
+            // }
+            // if (item.url === '/houseType' && i === 'unitDisplayBar') {
+            //   item.icon = getImage(res.data.data[i], 3)
+            // }
+            // if (item.url === '/nearBy' && i === 'projectAroundBar') {
+            //   item.icon = getImage(res.data.data[i], 3)
+            // }
           })
         }
-        this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 1)
+        // console.log(res.data.data.mobileBackgroundImageLocation);
+        res.data.data.mobileBackgroundImageLocation ? this.homeBgc = getImage(res.data.data.mobileBackgroundImageLocation, 1) : '';
       })
     //请求激活的模块
     // this.$axios.get("/module/main", {params:{'select':'true'}})

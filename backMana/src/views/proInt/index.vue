@@ -2,13 +2,13 @@
     <div class="projectPage" v-loading="this.$store.state.loading.loading">
         <div class="page" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
             
-            <div class="introduce">
-                <div class="title">项目介绍</div>
+            <div class="introduce" :style='{backgroundColor: fontBackgroundStyle}'>
+                <div class="title" :style='{backgroundColor: titleBackgroundStyle, color: titleColor}'>项目介绍</div>
                 <div class="content" :style="{display: appearCome}" @click="change">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{projectWord}}
                 </div>
                 <form action=""  :style="{display: appear}" class="text">
-                    <textarea></textarea>
+                    <textarea :style='{color: colorContent}'></textarea>
                     <!-- <input type="button" value="提交" class="submit" @click="tijiaoTwo"> -->
                     <div class="submit" id="gou2" @click='tijiaoTwo' style='display:none'></div>
                 </form>
@@ -42,7 +42,11 @@ export default {
             "appear": "none",
             "appearCome": "block",
             head: ip + ':8080/static/image/',
-            id: 0
+            id: 0,
+            colorContent: '#ffffff',
+            titleColor: '#ffffff',
+            fontBackgroundStyle : 'black',
+            titleBackgroundStyle: '#c7ad8c'
         }
     },
     created() {
@@ -51,7 +55,11 @@ export default {
         .then((res) => {
             res.data.data && res.data.data.backgroundImageLocation ? this.imgProjectBack = this.getImage(res.data.data.backgroundImageLocation, 2) : "";
             res.data.data && res.data.data.content ? this.projectWord = res.data.data.content : "";
-            res.data.data && res.data.data.id ? this.id = res.data.data.id : '';
+            res.data.data && res.data.data.id ? this.id = res.data.data.id : '';            
+            res.data.data && res.data.data.fontStyle ? this.colorContent = res.data.data.fontStyle : '';
+            res.data.data.titleStyle  ? this.titleColor = res.data.data.titleStyle  : '';
+            res.data.data.fontBackgroundStyle  ? this.fontBackgroundStyle = res.data.data.fontBackgroundStyle  : '';
+            res.data.data.titleBackgroundStyle  ? this.titleBackgroundStyle = res.data.data.titleBackgroundStyle  : '';
         })
         .catch((error) => {
             this.$message.error('获取失败,请上传内容！');

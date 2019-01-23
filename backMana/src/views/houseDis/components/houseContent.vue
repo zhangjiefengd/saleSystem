@@ -165,29 +165,36 @@ export default {
     methods: {
         //提交VR链接
         subVr() {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json' 
+            this.$axios.get("/house/houseType/get")
+            .then(res => {
+                this.title = res.data.data;
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json' 
+                    }
                 }
-            }
-            if (this.title.length > 0) {
-                this.$axios.post('/house/houseType/update',{
-                    houseTypeVrUrl: this.vrLink,
-                    id: this.projectId
-                }, config).then((res) => {
-                    this.$message({
-                        message: '上传链接成功！',
-                        type: 'success'
+                if (this.title.length > 0) {
+                    this.$axios.post('/house/houseType/update',{
+                        houseTypeVrUrl: this.vrLink,
+                        id: this.projectId
+                    }, config).then((res) => {
+                        this.$message({
+                            message: '上传链接成功！',
+                            type: 'success'
+                        });
+                    }).catch((err) => {
+                        this.$message.error('上传链接失败！');
                     });
-                }).catch((err) => {
-                    this.$message.error('上传链接失败！');
-                });
-            } else {
-                this.$message({
-                    message: '请添加户型！',
-                    type: 'warning'
-                });
-            }
+                } else {
+                    this.$message({
+                        message: '请添加户型！',
+                        type: 'warning'
+                    });
+                }
+                   
+            }).catch((err) => {
+                this.$message.error('获取户型名失败！');
+            });   
         },
         //切图片地址
         getImage(data, i) {

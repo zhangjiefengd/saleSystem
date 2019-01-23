@@ -4,7 +4,7 @@
             <img :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
-            <div name='houseTypeChoose' v-for="(world,index) in worlds" :key="index" @click="changeColor(index)" :class="[{changeColor: index==changeIndex}]" >
+            <div name='houseTypeChoose' v-for="(world,index) in worlds" :key="index" @mouseover="hover(index)" @mouseout="hoverOut(index)" @mousedown="mouseDown(index)" @mouseup="leave(index)" @click="changeColor(index)" :class="[{changeColor: index==changeIndex}]" >
                 {{world.houseTypeName}}
             </div>
         </div>
@@ -32,31 +32,45 @@ import getImage from '../../../ultis/getImage.js'
             intial: 1,//为点击一次户型使得有边框在0上
             houseNum: 0,
             imgLogo: "",
+            clickNum: 0,
             backColor: '#ffffff',
             navHover: '#dfc29d',
-            navclick: '#c1a077',
-            navSelect: '#c7ad8c'
+            navClick: '#c1a077',
+            navSelect: '#c7ad8c',
+            noneFont: '#666666',
+            clickFont: 'white'
             // numHanzi: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八"]
         }
     }, 
     created() {
         this.$axios.get("/basic/guidePage/get")
         .then((res) => {
-            if (res.data.code == 1) {
-                res.data.data.houseTypeNavigationNoneStatusStyle  ? this.backColor = res.data.data.houseTypeNavigationNoneStatusStyle  : "";
-                res.data.data.houseTypeNavigationSuspensionStatusStyle ? this.navHover = res.data.data.houseTypeNavigationSuspensionStatusStyle : "";
-                res.data.data.houseTypeNavigationClickStatusStyle ? this.navclick = res.data.data.houseTypeNavigationClickStatusStyle : "";
-                res.data.data.houseTypeNavigationClickedStatusStyle  ? this.navSelect = res.data.data.houseTypeNavigationClickedStatusStyle  : "";
-            }
             res.data.data && res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
-            // console.log(this.imgLogo);
         })
         .catch(error => {
             console.log(error);
         });
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.worlds = res.data.data;
+            if (res.data.code == 1) {
+                this.worlds = res.data.data;
+            }
+            
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeNavigationNoneStatusStyle  ? this.backColor = res.data.data.houseTypeNavigationNoneStatusStyle  : "";
+                res.data.data.houseTypeNavigationSuspensionStatusStyle ? this.navHover = res.data.data.houseTypeNavigationSuspensionStatusStyle : "";
+                res.data.data.houseTypeNavigationClickStatusStyle ? this.navClick = res.data.data.houseTypeNavigationClickStatusStyle : "";
+                res.data.data.houseTypeNavigationClickedStatusStyle  ? this.navSelect = res.data.data.houseTypeNavigationClickedStatusStyle  : "";
+            
+                res.data.data.houseTypeNavigationFontNoneStatusStyle ? this.noneFont =res.data.data.houseTypeNavigationFontNoneStatusStyle : '' ;
+                res.data.data.houseTypeNavigationFontClickedStatusStyle  ? this.clickFont =res.data.data.houseTypeNavigationFontClickedStatusStyle  : '' ;
+            }
         })
         .catch(error => {
             console.log(error);
@@ -74,11 +88,29 @@ import getImage from '../../../ultis/getImage.js'
         });
     },
     methods: {
+        hover(i) {document.getElementsByName('houseTypeChoose')[i].style.backgroundColor = this.navHover; document.getElementsByName('houseTypeChoose')[i].style.color = this.clickFont},
+        hoverOut(i) {
+            if (this.changeIndex == i) {
+                document.getElementsByName('houseTypeChoose')[i].style.backgroundColor = this.navSelect; 
+                document.getElementsByName('houseTypeChoose')[i].style.color = this.clickFont;
+            } else {
+                document.getElementsByName('houseTypeChoose')[i].style.backgroundColor = this.backColor; 
+                document.getElementsByName('houseTypeChoose')[i].style.color = this.noneFont;
+            }
+        },
+        mouseDown(i) {document.getElementsByName('houseTypeChoose')[i].style.backgroundColor = this.navClick; document.getElementsByName('houseTypeChoose')[i].style.color = this.clickFont},
+        leave(i) {
+            
+        },
         changeColor: function (index) {
+            const houseTypeChoose = document.getElementsByName('houseTypeChoose');
+            for (let i = 0; i < houseTypeChoose.length; i++) {
+                houseTypeChoose[i].style.backgroundColor = this.backColor; 
+                houseTypeChoose[i].style.color = this.noneFont;
+            }
+            houseTypeChoose[index].style.backgroundColor = this.navSelect; 
+            houseTypeChoose[index].style.color = this.clickFont;
             this.changeIndex = index;
-            this.irrow = this.irrow1;
-            this.irrow1 = this.irrow2;
-            this.irrow2 = this.irrow;
             this.$emit('ievent', index, this.intial);
         },
         //随时监控左边栏的位置
@@ -149,14 +181,14 @@ import getImage from '../../../ultis/getImage.js'
                 background-image: url();
             }
         }
-        >div:hover {
-            background-color: #dfc29d;
-            color: white;
-        }
-        >div:active {
-            background-color: #c1a077;
-            color: white;
-        }
+        // >div:hover {
+        //     background-color: #dfc29d;
+        //     color: white;
+        // }
+        // >div:active {
+        //     background-color: #c1a077;
+        //     color: white;
+        // }
     }
     .leftEat{
         width: 100%;

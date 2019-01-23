@@ -23,26 +23,64 @@ export default {
   data() {
       return {
         "typeClassOne": "active",
-        "typeClassTwo": "noActive"
+        "typeClassTwo": "noActive",
+        "botSelect": '#c7ad8c'
       }
+  },
+  created() {
+      this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeSwitchClickedStatusStyle ? this.botSelect = res.data.data.houseTypeSwitchClickedStatusStyle   : "";
+                document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].getElementsByTagName('a')[0].style.color = this.botSelect : '';
+                
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
   },
   mounted() {
       if (this.$route.path == '/nearBy/park/around') {
+          this.$forceUpdate();
           this.typeClassOne = 'active';
           this.typeClassTwo = 'noActive';
+          setTimeout(() => {
+              document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].getElementsByTagName('a')[0].style.color = this.botSelect : '';
+              document.getElementsByClassName('noActive')[0] ? document.getElementsByClassName('noActive')[0].getElementsByTagName('a')[0].style.color = '#666666' : '';
+              
+          }, 100);
       }else if (this.$route.path == '/nearBy/park/parkView') {
-          this.typeClassOne = 'npActive';
+          this.$forceUpdate();
+          this.typeClassOne = 'noActive';
           this.typeClassTwo = 'active';
+          setTimeout(() => {
+              document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].getElementsByTagName('a')[0].style.color = this.botSelect : '';
+              document.getElementsByClassName('noActive')[0] ? document.getElementsByClassName('noActive')[0].getElementsByTagName('a')[0].style.color = '#666666' : '';
+              
+          }, 100);
       }
   },
   methods: {
       changeOne() {
+          this.$forceUpdate();
           this.typeClassOne = "active";
           this.typeClassTwo = "noActive";
+          setTimeout(() => {
+              document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].getElementsByTagName('a')[0].style.color = this.botSelect : '';
+              document.getElementsByClassName('noActive')[0] ? document.getElementsByClassName('noActive')[0].getElementsByTagName('a')[0].style.color = '#666666' : '';
+              
+          }, 100);
       },
       changeTwo() {
+          this.$forceUpdate();
           this.typeClassTwo = "active";
           this.typeClassOne = "noActive";
+          setTimeout(() => {
+              document.getElementsByClassName('active')[0] ? document.getElementsByClassName('active')[0].getElementsByTagName('a')[0].style.color = this.botSelect : '';
+              document.getElementsByClassName('noActive')[0] ? document.getElementsByClassName('noActive')[0].getElementsByTagName('a')[0].style.color = '#666666' : '';
+              
+          }, 100);
       }
   }
 }
@@ -76,7 +114,7 @@ export default {
         }
         .active {
             a {
-                color: #c7ad8b;
+                // color: #c7ad8b;
             }
         }
         .noActive {

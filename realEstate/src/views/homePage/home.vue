@@ -24,6 +24,7 @@ export default {
       word: ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
       url: ["/projectIntroduce", "/brand", "/houseType", "/nearBy" ],
       check: 0,
+      hoverColor: 'rgba(205,182,151,0.25)',
       icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')]
     }
   },
@@ -51,6 +52,18 @@ export default {
         res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
         res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : "";
         res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : "";
+        
+        res.data.data.brandOverviewSuspensionStatusStyle ? this.hoverColor = res.data.data.brandOverviewSuspensionStatusStyle : '';
+        const that = this;
+        for (let i = 0; i < document.getElementsByClassName('smallNav').length; i++) {
+          $('.smallNav').eq(i).hover(() => {
+            $('.smallNav').eq(i).css('backgroundColor', that.hoverColor);
+          }, () => {
+            $('.smallNav').eq(i).css('backgroundColor', 'transparent');
+          });
+        }
+
+        
         this.check = 1;
       }
       // this.judgeModule();
@@ -189,7 +202,7 @@ export default {
       }
     }
     .smallNav:hover {
-      background-color: rgba(205,182,151,0.25);
+      // background-color: rgba(205,182,151,0.25);
     }
   }
 }
