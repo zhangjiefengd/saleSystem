@@ -153,7 +153,10 @@
               this.worldNum = res.data.data
               this.worlds = res.data.data
               this.worldlisten = JSON.parse(JSON.stringify(res.data.data))
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
+
           })
           .catch(error => {
             console.log(error)
@@ -169,6 +172,8 @@
                 }
               })
               this.honorPhotoListen = JSON.parse(JSON.stringify(this.honorPhoto))
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {
@@ -181,6 +186,8 @@
               if (this.background.imageLocation) {
                 this.background.image = this.getImage(this.background.imageLocation, 3)
               }
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {

@@ -1,5 +1,5 @@
 <template>
-  <div class="brandIntro">
+  <div class="brandIntro" :style="[{backgroundImage: 'url(' + backgroundImg + ')'}]">
     <div class="brandIntroLunbo">
       <div class="brandIntroPhoto touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
         <transition-group tag="ul" :name="change">
@@ -10,7 +10,7 @@
       </div>
       <div class="brandIntroNum">
         <ul class="spot">
-          <li v-for="(image, index) in brandIntroPhoto"  :class="[{changeStyle: index==imageNum}]"></li>
+          <li v-for="(image, index) in brandIntroPhoto" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :class="[{changeStyle: index==imageNum}]"></li>
         </ul>
       </div>
       <div class="brandIntroVideo"  @click="brandVideo">
@@ -51,7 +51,10 @@ export default {
       head: 'http://118.24.113.182:80/',
       titleColor: '',
       contentColor: '',
-      videoIcon: ''
+      videoIcon: '',
+      backgroundImg: require('@/assets/img/background.png'),
+      pointSelectedStyle: '#ffffff',
+      pointUnselectedStyle: '#ffffff'
     }
   },
   created() {
@@ -60,9 +63,11 @@ export default {
         if (res.data.data) {
           this.brandIntroTitle = res.data.data.enterpriseName
           this.brandIntroContent = res.data.data.enterpriseIntroduction
-          this.videoIcon = res.data.data.playIcoLocation ? getImage(res.data.data.playIcoLocation, 1) : require('@/assets/img/brand/video.jpg')
-          this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#ffdaaa'
-          this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#474747'
+          res.data.data.playIcoLocation ? this.videoIcon = getImage(res.data.data.playIcoLocation, 1) : ''
+          res.data.data.enterpriseFontBackgroundStyle ? this.titleColor = res.data.data.enterpriseFontBackgroundStyle : ''
+          res.data.data.enterpriseFontStyle ? this.contentColor = res.data.data.enterpriseFontStyle : ''
+          res.data.data.pointSelectedStyle ? this.pointSelectedStyle = res.data.data.pointSelectedStyle : ''
+          res.data.data.pointUnselectedStyle ? this.pointUnselectedStyle = res.data.data.pointUnselectedStyle : ''
         }
       })
       .catch(error => {
@@ -77,6 +82,15 @@ export default {
               this.brandIntroPhoto[index].image = getImage(item.imageLocation, 1)
             }
           })
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
+      .then(res => {
+        if (res.data.data) {
+          res.data.data ? this.backgroundImg = getImage(res.data.data, 1) : ''
         }
       })
       .catch(error => {

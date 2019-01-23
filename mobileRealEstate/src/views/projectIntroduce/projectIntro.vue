@@ -15,7 +15,7 @@ export default {
   name: 'projectIntro',
   data() {
     return {
-      backgroundImage: '',
+      backgroundImage: require('@/assets/img/background.png'),
       words: '',
       backgroundSize: ''
     }
@@ -23,9 +23,20 @@ export default {
   created() {
     this.$axios.get('/project/info/get')
       .then(res=>{
-        this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 2)
-        this.words = res.data.data.content;
+
+        if (res.data.data) {
+          this.words = res.data.data.content;
+        }
     })
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
+      .then(res => {
+        if (res.data.data) {
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
     this.$nextTick(()=>{
       document.title = '项目介绍'
     })

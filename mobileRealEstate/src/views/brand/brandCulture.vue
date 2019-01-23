@@ -93,7 +93,7 @@ export default {
       brandCultureNum: Number,
       wordRemind: true,
       head: 'http://118.24.113.182:80/',
-      backgroundImage: '',
+      backgroundImage: require('@/assets/img/background.png'),
       titleColor: '',
       contentColor: ''
     }
@@ -123,7 +123,15 @@ export default {
         if (res.data.data) {
 
           this.brandCultureImage = getImage(res.data.data.mainImageLocation, 3)
-          this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
+      .then(res => {
+        if (res.data.data) {
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
         }
       })
       .catch(error => {

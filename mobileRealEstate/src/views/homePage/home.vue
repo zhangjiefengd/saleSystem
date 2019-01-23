@@ -93,7 +93,7 @@ export default {
       imgIndexBack: "",
       imgProject: "",
       homeLogo: '',
-      homeBgc: '',
+      homeBgc: require('@/assets/img/homeBackground.png'),
       moduleIndex: [],
       icon: [require('../../assets/img/index/icon1.png'),require('../../assets/img/index/icon2.png'),require('../../assets/img/index/icon3.png'),require('../../assets/img/index/icon4.png')],
       moduleIndex: [

@@ -164,7 +164,7 @@ export default {
       change: '',
       wordRemind: true,
       head: 'http://118.24.113.182:80/',
-      backgroundImage: ''
+      backgroundImage: require('@/assets/img/background.png')
     }
   },
   created() {
@@ -189,12 +189,10 @@ export default {
       .catch(error => {
         console.log(error)
       })
-    this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
       .then(res => {
-
-        if (res.data.data){
-
-          this.background = getImage(res.data.data.imageLocation, 3)
+        if (res.data.data) {
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
         }
       })
       .catch(error => {

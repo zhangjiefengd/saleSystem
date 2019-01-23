@@ -25,7 +25,7 @@
                 </div>
               </div>
               <ul class="worldIntroBottom">
-                <li v-for="(Image,index) in worlds" :key="index" :class="[{changeStyle: index==number}]"
+                <li v-for="(Image,index) in worlds" :style="[{backgroundColor: (index==number) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index" :class="[{changeStyle: index==number}]"
                     @click="changeAll(index)">
                 </li>
               </ul>
@@ -49,16 +49,18 @@
     name: 'develop',
     data() {
       return {
-        developBackground: '',
+        developBackground: require('@/assets/img/background.jpg'),
         worlds: '',
         number: 0,
         num: 0,
-        developStepStyle: '',
-        developTitleStyle: '',
-        developcontentStyle: '',
+        developStepStyle: '#ffffff',
+        developTitleStyle: '#e2e2e2',
+        developcontentStyle: '#e2e2e2',
         backBig: '',
         head: ip + ':8080/static/image/',
-        conDisplay: 'none'
+        conDisplay: 'none',
+        pointSelectedStyle: '#d0d0d0',
+        pointUnselectedStyle: '#d0d0d0'
       }
     },
     created() {
@@ -68,6 +70,8 @@
             this.developStepStyle = res.data.data.enterpriseDevelopStepStyle ? res.data.data.enterpriseDevelopStepStyle : '#ffffff'
             this.developTitleStyle = res.data.data.enterpriseDevelopTitleStyle ? res.data.data.enterpriseDevelopTitleStyle : '#e2e2e2'
             this.developcontentStyle = res.data.data.enterpriseDevelopFontStyle ? res.data.data.enterpriseDevelopFontStyle : '#e2e2e2'
+            this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
+            this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
             this.num = res.data.data.length
             this.worlds = res.data.data
             this.worlds.map((item, index) => {
@@ -83,7 +87,7 @@
       this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
         .then(res => {
           if (res.data.data) {
-            this.developBackground = getImage(res.data.data.imageLocation, 1)
+            this.developBackground = res.data.data.imageLocation ? getImage(res.data.data.imageLocation, 1) : require('@/assets/img/background.jpg')
             if (screen.width > 1024) {
               this.backBig = getImage(res.data.data.imageLocation, 1)
             } else {

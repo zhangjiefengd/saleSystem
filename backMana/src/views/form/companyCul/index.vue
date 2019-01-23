@@ -130,6 +130,8 @@
               console.log(res.data.data)
               this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
               this.cultureImage = this.getImage(res.data.data.mainImageLocation, 3)
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
         this.$axios.get('/brand/enterpriseCulture/get')
@@ -145,6 +147,8 @@
                 item.contentB = false
                 item.titleB = false
               })
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {

@@ -2,11 +2,7 @@
   <div class="houseIndex">
       <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-<<<<<<< HEAD
         <!--<top/>-->
-=======
-        <!-- <top/> -->
->>>>>>> 80dffc3f9b4343bb4fa3a9d3473cbd19a1128f32
       </div>
       <div class="middle">
         <router-view ref="content" @checkVR='checkVR'/>

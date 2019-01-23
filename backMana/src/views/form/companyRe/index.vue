@@ -35,7 +35,7 @@
                  :class="[{show: index==imageNum}]">
           </div>
           <ul class="spot">
-            <li v-for="(image, index) in images" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
+            <li v-for="(image, index) in images" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
           </ul>
           <div class="introduce">
             <div class="worldFather">
@@ -119,8 +119,10 @@
         changeImageNum: 0,
         head: 'http://118.24.113.182:8080/static/image/',
         timer: '',
-        titleColor: '',
-        contentColor: '',
+        titleColor: '#c7ad8b',
+        contentColor: '#333333',
+        pointSelectedStyle: '#ffffff',
+        pointUnselectedStyle: '#ffffff'
         // showChangeTitleColor: false,
         // showChangeContentColor: false,
         // changeColorButton: false,
@@ -167,17 +169,29 @@
       getData() {
         this.$axios.get('/brand/enterpriseIntroduction/get')
           .then(res => {
+            if (res.data.code === 0) {
+
+            }
             if (res.data.data) {
+
               this.worlds = res.data.data
-              console.log(this.worlds)
               this.title = res.data.data.enterpriseName
               this.content = res.data.data.enterpriseIntroduction
               this.videoMp4 = res.data.data.videoUrl
-            } else {
+
+              this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#c7ad8b'
+              this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#333333'
+              this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#ffffff'
+              this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#ffffff'
+
+            } else if (res.data.code == 0) {
+
+              this.$message.error('请在项目管理添加项目！');
               this.worlds = {
                 enterpriseName: '请输入企业名称',
                 enterpriseIntroduction: '输入企业介绍'
               }
+
             }
           })
           .catch(error => {
@@ -185,11 +199,17 @@
           })
         this.$axios.post('/brand/enterpriseIntroduction/image/get')
           .then(res => {
-            this.changeImageNum = res.data.data
-            this.images = res.data.data
-            this.images.map((item, index) => {
-              this.images[index].image = this.getImage(item.imageLocation, 3)
-            })
+            if (res.data.data) {
+
+              this.changeImageNum = res.data.data
+              this.images = res.data.data
+              this.images.map((item, index) => {
+                this.images[index].image = this.getImage(item.imageLocation, 3)
+              })
+            }
+            if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
+            }
           })
           .catch(error => {
             console.log(error)

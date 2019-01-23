@@ -55,7 +55,7 @@
                   </div>
                 </div>
                 <ul class="worldIntroBottom">
-                  <li v-for="(Image,index) in content" :key="index" :class="[{changeStyle: index == number}]"
+                  <li v-for="(Image,index) in content" :style="[{backgroundColor: (index==number) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index" :class="[{changeStyle: index == number}]"
                       @click="changeAll(index)">
                   </li>
                 </ul>
@@ -96,7 +96,9 @@
         contentAuto: false,
         id: 0,
         head: ip + ':8080/static/image/',
-        bgcLoading: false
+        bgcLoading: false,
+        pointSelectedStyle: '#d0d0d0',
+        pointUnselectedStyle: '#d0d0d0'
       }
     },
     created() {
@@ -130,6 +132,7 @@
           })
         } else {
           var img = this.getUrl(backgroundImg.files[0])
+          this.$forceUpdate()
           this.background = img
         }
       }
@@ -140,6 +143,9 @@
           .then(res => {
             if (res.data.data) {
               this.content = res.data.data
+
+              this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
+              this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
               for (let i = 0; i < this.content.length; i++) {
                 if (this.content[i].enterpriseDevelopImageLocation !== null) {
                   this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 3)
@@ -148,6 +154,8 @@
                 }
               }
               this.listen = JSON.parse(JSON.stringify(this.content))
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {
@@ -157,6 +165,8 @@
           .then(res => {
             if (res.data.data) {
               this.background = this.getImage(res.data.data.imageLocation, 3)
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
       },
@@ -521,7 +531,7 @@
                 @include fj(center);
                 align-items: center;
                 background-color: #e2e2e2;
-                border: solid 1px #c79f62;
+                border-radius: 50%;
                 cursor: pointer;
                 margin-left: px2rem(10);
               }
