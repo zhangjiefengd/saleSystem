@@ -191,6 +191,7 @@ import ip from '../../../static/ip'
 
             //添加户型图成功
             updataSuccessHouseTypePic(newPic) {
+
                 this.$forceUpdate();
                 this.markVisibility = 'none';
                 this.houseTypePicFrame = 'none';

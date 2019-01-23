@@ -3,7 +3,7 @@
       <div class="leftContent">
         <left-nav></left-nav>
       </div>
-      <div class="rightContent">
+      <div class="rightContent" :style="{backgroundImage: 'url(' + back +')'}">
         <router-view  ref="park"/>
       </div>
   </div>
@@ -15,7 +15,8 @@ export default {
   name: 'houseType',
   data() {
     return {
-      nearNum: 0
+      nearNum: 0,
+      back: require('../../../assets/img/goHouseHistory/houseBack.jpg')
     }
   },
   methods: {

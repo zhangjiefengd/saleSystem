@@ -37,19 +37,22 @@ export default {
         if(this.intial == 1) {
             this.$axios.get("/surround/publicUtilities/get")
             .then(res => {
-                this.dataAll = res.data.data;
-                this.numRight = 0;
-                this.imgSrc = [];
-                this.mini = [];
-                this.dataAll.forEach((data, i) => {
-                    if(data.imageType == 1) {
-                        this.numRight++;
-                        this.imgSrc.push(data);
-                        this.mini.push(getImage(data.imageLocation, 5));
-                    } 
-                });
-                this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
-                this.$emit('event', this.clickUrl);
+                if (res.data.data) {
+                    this.dataAll = res.data.data;
+                    this.numRight = 0;
+                    this.imgSrc = [];
+                    this.mini = [];
+                    this.dataAll.forEach((data, i) => {
+                        if(data.imageType == 1) {
+                            this.numRight++;
+                            this.imgSrc.push(data);
+                            this.mini.push(getImage(data.imageLocation, 5));
+                        } 
+                    });
+                    this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
+                    this.$emit('event', this.clickUrl);
+                }
+                
             })
             .catch(error => {
                 console.log(error);
@@ -57,21 +60,24 @@ export default {
         }else {
             this.$axios.get("/surround/publicUtilities/get")
             .then(res => {
-                this.dataAll = res.data.data;
-                this.numRight = 0;
-                this.imgSrc = [];
-                this.mini = [];
+                if (res.data.data) {
+                    this.dataAll = res.data.data;
+                    this.numRight = 0;
+                    this.imgSrc = [];
+                    this.mini = [];
 
-                this.dataAll.forEach((data, i) => {
-                    if(data.imageType == 0) {
-                        this.numRight++;
-                        this.imgSrc.push(data);
-                        this.mini.push(getImage(data.imageLocation, 5));
-                    } 
-                });
+                    this.dataAll.forEach((data, i) => {
+                        if(data.imageType == 0) {
+                            this.numRight++;
+                            this.imgSrc.push(data);
+                            this.mini.push(getImage(data.imageLocation, 5));
+                        } 
+                    });
 
-                this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
-                this.$emit('event', this.clickUrl);
+                    this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
+                    this.$emit('event', this.clickUrl);
+                }
+                
             })
             .catch(error => {
                 console.log(error);

@@ -28,7 +28,7 @@ export default {
       .post("/surround/surroundingFacilities/get")
       .then(res => {
         if (res.data.data) {
-          this.map = getImage(res.data.data.imageLocation, 3);
+          res.data.data.imageLocation ? this.map = getImage(res.data.data.imageLocation, 3) :'';
         }
       })
       .catch(error => {

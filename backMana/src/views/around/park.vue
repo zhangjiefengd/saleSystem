@@ -126,20 +126,31 @@ export default {
     created() {
         this.$axios.get("/surround/publicUtilities/get")
         .then(res => {
-            res.data.data.forEach((content, i) => {
-                if (content.imageType == 1) {
-                    this.public.push(content);
-                } else {
-                    this.parkView.push(content);
-                }
-            });
+            if (res.data.code == 1) {
+                res.data.data.forEach((content, i) => {
+                    if (content.imageType == 1) {
+                        this.public.push(content);
+                    } else {
+                        this.parkView.push(content);
+                    }
+                });
+            } else if (res.data.code == 0) {
+                this.$message.error('请在项目管理中添加项目！');
+            }
+
+            
         })
         .catch(error => {
             this.$message.error('获取失败！');
         });   
         
         this.$axios.get('/surround/placeType/get').then((res) => {
-            this.placeType = res.data.data;
+            if (res.data.code == 1) {
+                this.placeType = res.data.data;
+            }
+            else if (res.data.code == 0) {
+                this.$message.error('请在项目管理中添加项目！');
+            }
         }).catch((err) => {
             this.$message.error('获取失败！');
         })
@@ -238,8 +249,8 @@ export default {
         //取消增加公共设施
         cancelAddPublic() {
             this.$forceUpdate();
-            this.markVisibility = 'none';//遮罩层显现
-            this.uploadPublicVisibility = 'none';      
+            this.uploadPublicVisibility = 'none';  
+            this.markVisibility = 'none';//遮罩层显现    
         },
         //提交公共设施
         submitPublic() {
@@ -254,28 +265,35 @@ export default {
                     }
                 }
                 this.$axios.post('/surround/publicUtilities/add', formdata, config).then((res) => {
-                    this.$message({
-                        message: '上传成功！',
-                        type: 'success'
-                    });
-                    //改变预览
-                    this.$axios.get("/surround/publicUtilities/get")
-                    .then(res => {
-                        this.$forceUpdate();
-                        this.public = [];
-                        this.parkView = [];
-                        res.data.data.forEach((content, i) => {
-                            if (content.imageType == 1) {
-                                this.public.push(content);
-                            } else {
-                                this.parkView.push(content);
-                            }
+                    if (res.data.code == 1) {    
+                        this.$message({
+                            message: '上传成功！',
+                            type: 'success'
                         });
-                        this.cancelAddPublic(); 
-                    })
-                    .catch(error => {
-                        this.$message.error('获取失败！');
-                    });  
+                        //改变预览
+                        this.$axios.get("/surround/publicUtilities/get")
+                        .then(res => {
+                            if (res.data.code == 1) {
+                                this.$forceUpdate();
+                                this.public = [];
+                                this.parkView = [];
+                                res.data.data.forEach((content, i) => {
+                                    if (content.imageType == 1) {
+                                        this.public.push(content);
+                                    } else {
+                                        this.parkView.push(content);
+                                    }
+                                });
+                                this.cancelAddPublic(); 
+                            }
+                        })
+                        .catch(error => {
+                            this.$message.error('获取失败！');
+                        });  
+                    }
+                    else if (res.data.code == 0) {
+                        this.$message.error('请在项目管理中添加项目！');
+                    }
                     
                     // this.public.push(res.data.data);
                    
@@ -301,8 +319,8 @@ export default {
         //取消
         cancelAddPark() {
             this.$forceUpdate();
-            this.markVisibility = 'none';//遮罩层显现
-            this.uploadPublicVisibility = 'none';     
+            this.uploadParkVisibility = 'none'; 
+            this.markVisibility = 'none';//遮罩层显现    
         },
         submitPark() {
             if (this.filePicPark && this.$refs.selectB.value) {
@@ -316,28 +334,35 @@ export default {
                     }
                 }
                 this.$axios.post('/surround/publicUtilities/add', formdata, config).then((res) => {
-                    this.$message({
-                        message: '上传成功！',
-                        type: 'success'
-                    });
-                    //改变预览
-                    this.$axios.get("/surround/publicUtilities/get")
-                    .then(res => {
-                        this.$forceUpdate();
-                        this.public = [];
-                        this.parkView = [];
-                        res.data.data.forEach((content, i) => {
-                            if (content.imageType == 1) {
-                                this.public.push(content);
-                            } else {
-                                this.parkView.push(content);
-                            }
+                    if (res.data.code == 1) {
+                        this.$message({
+                            message: '上传成功！',
+                            type: 'success'
                         });
-                        this.cancelAddPark();  
-                    })
-                    .catch(error => {
-                        this.$message.error('获取失败！');
-                    });  
+                        //改变预览
+                        this.$axios.get("/surround/publicUtilities/get")
+                        .then(res => {
+                            if (res.data.code == 1) {
+                                this.$forceUpdate();
+                                this.public = [];
+                                this.parkView = [];
+                                res.data.data.forEach((content, i) => {
+                                    if (content.imageType == 1) {
+                                        this.public.push(content);
+                                    } else {
+                                        this.parkView.push(content);
+                                    }
+                                });
+                                this.cancelAddPark();  
+                            }
+                        })
+                        .catch(error => {
+                            this.$message.error('获取失败！');
+                        });  
+                    }
+                    else if (res.data.code == 0) {
+                        this.$message.error('请在项目管理中添加项目！');
+                    }
                 }).catch((error) =>{
                     this.$message.error('上传失败！');
                 });

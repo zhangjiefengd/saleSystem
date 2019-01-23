@@ -45,7 +45,7 @@ export default {
             }
  
         }).catch(error => {
-            this.$message.error('获取户型失败！');
+            this.$message.error('请在项目管理添加项目！');
         });
         //请求房间类型
         this.$axios.get('/house/roomType/get').then((res) => {

@@ -56,22 +56,25 @@ import getImage from '../../utils/getImage.js'
             //请求类型
             this.$axios.get("/basic/mainPage/get")
             .then(res => {
-                res.data.data && res.data.data.backgroundImageLocation ? this.imgBack = getImage(res.data.data.backgroundImageLocation, 3) : "";
-                    // const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
-                    // this.projectLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[6];
-                res.data.data && res.data.data.projectLogoLocation ? this.projectLogo = getImage(res.data.data.projectLogoLocation, 3) : "";
-                res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 3) : "";
-                res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 3) : "";
-                res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 3) : "";
-                res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 3) : "";
+                if(res.data.code == 1) {
+                    res.data.data && res.data.data.backgroundImageLocation ? this.imgBack = getImage(res.data.data.backgroundImageLocation, 3) : "";
+                        // const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
+                        // this.projectLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[6];
+                    res.data.data && res.data.data.projectLogoLocation ? this.projectLogo = getImage(res.data.data.projectLogoLocation, 3) : "";
+                    res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 3) : "";
+                    res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 3) : "";
+                    res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 3) : "";
+                    res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 3) : "";
+                }
                 
                 // const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);
                 // this.imgBack = this.head + backImgSplit[0] + "_" + backImgSplit[3] + "." + backImgSplit[6];
-
-                // this.addModule();
+                else if (res.data.code == 0) {
+                    this.$message.error('请在项目管理添加项目！');
+                }
             })
             .catch(error => {
-                this.$message.error('获取失败，请上传内容！');
+                this.$message.error('获取失败！');
             });
             
         
@@ -112,11 +115,17 @@ import getImage from '../../utils/getImage.js'
                             }
                         }
                         this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                            this.$message({
-                                message: '背景上传成功！',
-                                type: 'success'
-                            });
-                            this.tijiaoTwo()
+                            if (res.data.code == 1) {
+                                this.$message({
+                                    message: '背景上传成功！',
+                                    type: 'success'
+                                });
+                                this.tijiaoTwo();
+                            }else if (res.data.code == 0) {
+                                this.$message.error('请在项目管理添加项目！');
+                            }
+                            
+                        
                         }).catch((error) =>{
                             this.$message.error('提交失败！');
                             this.tijiaoTwo();
@@ -136,11 +145,16 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        this.$message({
-                            message: 'LOGO上传成功！',
-                            type: 'success'
-                        });
-                        this.subIcon();
+                        if (res.data.code == 1) {
+                            this.$message({
+                                message: 'LOGO上传成功！',
+                                type: 'success'
+                            });
+                            this.subIcon();
+                        }else if (res.data.code == 0) {
+                            this.$message.error('请在项目管理添加项目！');
+                        }
+                        
                     }).catch((error) =>{
                         this.$message.error('LOGO提交失败！');
                         this.subIcon();
@@ -167,11 +181,16 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        this.$message({
-                            message: this.word[0] + '上传成功！',
-                            type: 'success'
-                        });
-                        this.subIcon1();
+                        if (res.data.code == 1) {
+                            this.$message({
+                                message: this.word[0] + '上传成功！',
+                                type: 'success'
+                            });
+                            this.subIcon1();
+                        }else if (res.data.code == 0) {
+                            this.$message.error('请在项目管理添加项目！');
+                        }
+                        
                     }).catch((error) =>{
                         this.$message.error(this.word[0] + '提交失败！');
                         this.subIcon1();
@@ -192,11 +211,16 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        this.$message({
-                            message: this.word[1] + '上传成功！',
-                            type: 'success'
-                        });
-                        this.subIcon2();
+                        if (res.data.code == 1) {
+                            this.$message({
+                                message: this.word[1] + '上传成功！',
+                                type: 'success'
+                            });
+                            this.subIcon2();
+                        }else if (res.data.code == 0) {
+                            this.$message.error('请在项目管理添加项目！');
+                        }
+                        
                     }).catch((error) =>{
                         this.$message.error(this.word[1] + '提交失败！');
                         this.subIcon2();
@@ -217,11 +241,16 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        this.$message({
-                            message: this.word[2] + '上传成功！',
-                            type: 'success'
-                        });
-                        this.subIcon3();
+                        if (res.data.code == 1) {
+                            this.$message({
+                                message: this.word[2] + '上传成功！',
+                                type: 'success'
+                            });
+                            this.subIcon3();
+                        }else if (res.data.code == 0) {
+                            this.$message.error('请在项目管理添加项目！');
+                        }
+                        
                     }).catch((error) =>{
                         this.$message.error(this.word[2] + '提交失败！');
                         this.subIcon3();
@@ -242,10 +271,15 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        this.$message({
-                            message: this.word[3] + '上传成功！',
-                            type: 'success'
-                        });
+                        if (red.data.code == 1 ) {
+                            this.$message({
+                                message: this.word[3] + '上传成功！',
+                                type: 'success'
+                            });
+                        }else if (res.data.code == 0) {
+                            this.$message.error('请在项目管理添加项目！');
+                        }
+                        
 
                     }).catch((error) =>{
                         this.$message.error(this.word[3] + '提交失败！');

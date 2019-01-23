@@ -35,14 +35,14 @@ export default {
       if (res.data.code == 1) {
         if (screen.width > 1024){
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
-          this.imgProBig = getImage(res.data.data.projectLogoLocation, 1);
+          res.data.data.projectLogoLocation ? this.imgProBig = getImage(res.data.data.projectLogoLocation, 1) : '';
         }else {
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 2) : '';
-          this.imgProBig = getImage(res.data.data.projectLogoLocation, 2);
+          res.data.data.projectLogoLocation ? this.imgProBig = getImage(res.data.data.projectLogoLocation, 2) : '';
         }
         res.data.data.backgroundImageLocation ? this.imgIndexBack = getImage(res.data.data.backgroundImageLocation, 5) : '';
         // this.imgBig = res.data.data.backgroundImage.fileName;
-        this.imgProject = getImage(res.data.data.projectLogoLocation, 5);
+        res.data.data.projectLogoLocation ? this.imgProject = getImage(res.data.data.projectLogoLocation, 5) : '';
         res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : '';
         res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : '';
         res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : '';

@@ -23,8 +23,11 @@ export default {
   created() {
     this.$axios.get('/project/info/get')
       .then(res=>{
-        this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 2)
-        this.words = res.data.data.content;
+        if (res.data.data) {
+          res.data.data.backgroundImageLocation ? this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 2): '';
+          res.data.data.content ? this.words = res.data.data.content : '';
+        }
+        
     })
     this.$nextTick(()=>{
       document.title = '项目介绍'

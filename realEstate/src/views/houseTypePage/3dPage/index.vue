@@ -39,14 +39,15 @@ export default {
             houseNum: 0,//户型号
             house: {},
             conDisplay: 'none',
-            back: '../../../assets/img/goHouseHistory/houseBack.jpg'
+            back: require('../../../assets/img/goHouseHistory/houseBack.jpg')
             // src: "http://vr.justeasy.cn/view/1079664.html"
         }
     },
     created() {
         this.$axios.get("/house/houseType/get")
             .then(res => {
-                this.house = res.data.data;
+
+                res.data.data ? this.house = res.data.data : '';
                 if (this.house && this.house[0] && this.house[0].houseTypeVrUrl) {
                     this.src=this.house[0].houseTypeVrUrl;
                     // this.numRight = res.data.data[this.houseNum].houseSampleRooms.length;
@@ -58,6 +59,15 @@ export default {
                 }
             })
             .catch(error => {
+            console.log(error);
+        });
+        this.$axios.get("/house/houseTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+                res.data.data.houseTypeBackgroundImageLocation ? this.back = res.data.data.houseTypeBackgroundImageLocation : '';
+            }
+        })
+        .catch(error => {
             console.log(error);
         });
     },

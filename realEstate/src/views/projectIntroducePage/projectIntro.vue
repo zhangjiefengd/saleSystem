@@ -44,14 +44,14 @@ export default {
     .then(res => {
       if (res.data.code == 1) {
         if (screen.width > 1024){
-          this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
         }else {
-          this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 2) : '';
         }
         // this.imgProjectBack = res.data.data.image.fileName;
-        this.imgProjectBack = getImage(res.data.data.backgroundImageLocation, 4);
+        res.data.data.backgroundImageLocation ? this.imgProjectBack = getImage(res.data.data.backgroundImageLocation, 4) : '';
         // this.imgBig = res.data.data.image.fileName;
-        this.projectWord = res.data.data.content;
+        res.data.data.content ? this.projectWord = res.data.data.content : '';
         res.data.data.fontStyle ? this.colorContent = res.data.data.fontStyle : '';
         res.data.data.titleStyle  ? this.titleColor = res.data.data.titleStyle  : '';
         res.data.data.fontBackgroundStyle  ? this.fontBackgroundStyle = res.data.data.fontBackgroundStyle  : '';

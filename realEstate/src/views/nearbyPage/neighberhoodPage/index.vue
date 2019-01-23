@@ -28,11 +28,11 @@ export default {
       .then(res => {
 				if (res.data.data) {
 					if (screen.width > 1024) {
-						this.mapBig = getImage(res.data.data.imageLocation, 1);
+						res.data.data.imageLocation ? this.mapBig = getImage(res.data.data.imageLocation, 1) : '';
 					} else {
-						this.mapBig = getImage(res.data.data.imageLocation, 2);
+						res.data.data.imageLocation ? this.mapBig = getImage(res.data.data.imageLocation, 2) : '';
 					}
-					this.map = getImage(res.data.data.imageLocation, 5 );
+					res.data.data.imageLocation ? this.map = getImage(res.data.data.imageLocation, 5 ) : '';
 				}
         // this.mapBig = res.data.data.nearDto.url;
       })

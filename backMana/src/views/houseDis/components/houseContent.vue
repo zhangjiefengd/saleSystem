@@ -16,7 +16,7 @@
             <div class="pic">
                 <div class="addThree">
                     <img @click='addHouseTypePic' :src='houseTypeImage && houseTypeImage.houseTypeImageLocation ? getImage(houseTypeImage.houseTypeImageLocation,1) : addBig' id="ha" class="duTe">
-                    <img :src="chaPic" id="cha" class="chaOne" :style="{display: chaDisplay}" @click='deleteHouseTypePic'>
+                    <img :src="chaPic" id="cha" class="chaOne"  :style="{display: chaDisplay}" @click='deleteHouseTypePic'>
                 </div>
             </div>
             <!-- <div class="vrLink">
@@ -78,36 +78,41 @@ export default {
         //首先呈现户型一的相关内容
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.title = res.data.data;
-            if(this.title[0]) {
-                if (this.title[0].houseTypeVrUrl) {
-                    this.vrLink = this.title[0].houseTypeVrUrl;
-                    // this.$forceUpdate();
-                } else {
-                    this.vrLink = '';
-                    // this.$refs.vr.checked = false;
-                }
-                this.projectId = this.title[0].id;
-                //请求样板间
-                this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + this.title[0].id).then((res) => {
-                    this.sampleRoomImage = res.data.data;
-                }).catch((err) => {
-                    this.$message.error('获取样板间失败！');
-                });
-                //请求户型图
-                this.$axios.get('/house/houseTypeImage/get?houseTypeId=' + this.title[0].id).then((res) => {
-                    this.houseTypeImage = res.data.data;
-                    if (this.houseTypeImage) {
-                        this.chaDisplay = 'block';
+            if (res.data.code == 1) {
+                this.title = res.data.data;
+                if(this.title[0]) {
+                    if (this.title[0].houseTypeVrUrl) {
+                        this.vrLink = this.title[0].houseTypeVrUrl;
+                        // this.$forceUpdate();
                     } else {
-                        this.chaDisplay = 'none';
+                        this.vrLink = '';
+                        // this.$refs.vr.checked = false;
                     }
-                }).catch((err) => {
-                    this.$message.error('获取户型图失败！');
-                });        
+                    this.projectId = this.title[0].id;
+                    //请求样板间
+                    this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + this.title[0].id).then((res) => {
+                        this.sampleRoomImage = res.data.data;
+                    }).catch((err) => {
+                        this.$message.error('获取样板间失败！');
+                    });
+                    //请求户型图
+                    this.$axios.get('/house/houseTypeImage/get?houseTypeId=' + this.title[0].id).then((res) => {
+                        this.houseTypeImage = res.data.data;
+                        if (this.houseTypeImage) {
+                            this.chaDisplay = 'block';
+                        } else {
+                            this.chaDisplay = 'none';
+                        }
+                    }).catch((err) => {
+                        this.$message.error('获取户型图失败！');
+                    });        
+                }
+            }else if (res.data.code == 0) {
+                this.$message.error('请在项目管理添加项目！');
             }
+            
         }).catch((err) => {
-            this.$message.error('获取户型名失败！');
+            this.$message.error('请在项目管理添加项目！');
         });   
     },
     mounted() {
@@ -154,6 +159,7 @@ export default {
         });
         this.$on('updataSuccessHouseTypePic', (newPic) => { 
             this.houseTypeImage = newPic;
+            this.chaDisplay = 'block';
             this.$forceUpdate();
         });
         this.$on('deleteAll', () => { 
@@ -259,7 +265,7 @@ export default {
         },
         //删除户型图
         deleteHouseTypePic() {
-            this.$axios.post('/house/houseTypeImage/delete?houseTypeName=' + this.houseTypeImage.houseTypeName).then((res) => {
+            this.$axios.post('/house/houseTypeImage/delete?houseTypeId=' + this.projectId).then((res) => {
                 this.$message({
                     message: '删除成功！',
                     type: 'success'

@@ -155,12 +155,17 @@ export default {
         this.getPageInfo(1);
         //获取总数
         this.$axios.get('/manage/project/get').then((res) => {
-            if (res.data.data && res.data.data.length) {
-                this.totalNum = res.data.data.length;//让页码总数增加
+            if (res.data.code == 1) {
+                if (res.data.data && res.data.data.length) {
+                    this.totalNum = res.data.data.length;//让页码总数增加
+                }
+            }else if (res.data.code == 0) {
+                this.$message.error('请在项目管理添加项目！');
             }
             
+            
         }).catch((err) => {
-            this.$message.error('获取信息失败！');
+            this.$message.error('获取项目失败！请添加项目');
         });
     },
     components: {
@@ -177,51 +182,56 @@ export default {
             this.cityData = [];
             this.projectName = [];
             this.$axios.get('/manage/project/tree/get').then((res) => {
-                //存省
-                if (res.data.data && res.data.data.info) {
-                    for (let i in res.data.data.info) {
-                        this.province.push({
-                            value: i,
-                            label: i
-                        });
-                        //存内容
-                        this.provinceData.push(res.data.data.info[i]);
-                    }
-                    
-                    //存市
-                
-                    this.provinceData.forEach((province) => {
-                        for (let i in province) {
-                            this.city.push({
+                if (res.data.code == 1) {
+                    //存省
+                    if (res.data.data && res.data.data.info) {
+                        for (let i in res.data.data.info) {
+                            this.province.push({
                                 value: i,
                                 label: i
                             });
                             //存内容
-                            this.cityData.push(province[i])
-                        }                             
-                    });     
-
+                            this.provinceData.push(res.data.data.info[i]);
+                        }
+                        
+                        //存市
                     
-                    //存项目,具有查重的需求
-                
-                    this.cityData.forEach((city) => {
-                        for (let i in city) {
-                            let sameNum = 0;//记录是否项目名称重复
-                            this.projectName.forEach((project) => {
-                                if (project.value && project.value == i) {
-                                    sameNum++;
-                                }
-                            });
-                            if (!sameNum) {
-                                this.projectName.push({
+                        this.provinceData.forEach((province) => {
+                            for (let i in province) {
+                                this.city.push({
                                     value: i,
                                     label: i
                                 });
+                                //存内容
+                                this.cityData.push(province[i])
+                            }                             
+                        });     
+
+                        
+                        //存项目,具有查重的需求
+                    
+                        this.cityData.forEach((city) => {
+                            for (let i in city) {
+                                let sameNum = 0;//记录是否项目名称重复
+                                this.projectName.forEach((project) => {
+                                    if (project.value && project.value == i) {
+                                        sameNum++;
+                                    }
+                                });
+                                if (!sameNum) {
+                                    this.projectName.push({
+                                        value: i,
+                                        label: i
+                                    });
+                                }
                             }
-                        }
-                    });  
-                }
+                        });  
+                    }
          
+                }else if (res.data.code == 0) {
+                    this.$message.error('请在项目管理添加项目！');
+                }
+                
             }).catch((err) => {
                 this.$message.error('获取省市失败！');
             });
@@ -238,24 +248,31 @@ export default {
                 concurrentPage: page, 
                 pageSize: 7
             }, config).then((res) => {
-                this.tableContent = [];//清空
-                this.tableExtra = [];
-                res.data.data.pageData.forEach((data) => {
-                    this.tableContent.push({
-                        id: data.projectIdentification,
-                        province: data.province,
-                        city: data.city,
-                        projectName: data.projectName,
-                        contact: data.customerPhone,
-                        projectDes: data.qrDescription
+                if (res.data.code == 1) {
+                    this.tableContent = [];//清空
+                    this.tableExtra = [];
+                    res.data.data.pageData.forEach((data) => {
+                        this.tableContent.push({
+                            id: data.projectIdentification,
+                            province: data.province,
+                            city: data.city,
+                            projectName: data.projectName,
+                            contact: data.customerPhone,
+                            projectDes: data.qrDescription
+                        });
+                        this.tableExtra.push({
+                            id: data.id,
+                            projectPic: data.qrCode
+                        });
                     });
-                    this.tableExtra.push({
-                        id: data.id,
-                        projectPic: data.qrCode
-                    });
-                });
+
+                }
+
+                else {
+                    this.$message.error('请在项目管理中添加项目！');
+                }
             }).catch((err) => {
-                this.$message.error('获取信息失败！');
+                this.$message.error('请在项目管理中添加项目！');
             });
         },
         //级联省改变时

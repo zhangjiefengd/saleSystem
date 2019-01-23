@@ -19,7 +19,7 @@
                 <img class="imgstyle" src="../../../assets/img/brandBGC/change.png" alt="">
               </label>
               <input type='file' name='photos' id="upfile" style="position: absolute;clip:rect(0 0 0 0);">
-              <div v-loading="image.loading" element-loading-text="荣耀图片上传中" v-for="(image, index) in content" class="hide" :key="index"
+              <div v-loading="image.loading" element-loading-text="历程图片上传中" v-for="(image, index) in content" class="hide" :key="index"
                    style="float: left" :class="[{show: index==number}]">
                 <img v-if="image.image" :src="image.image" alt="">
               </div>

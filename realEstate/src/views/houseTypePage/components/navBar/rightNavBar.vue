@@ -39,11 +39,11 @@ export default {
     created() {
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.title = res.data.data;
+            res.data.data ? this.title = res.data.data : '';
             if(this.title[0]) {
                 this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[0].id)
                 .then(res => {           
-                    this.dataAll = res.data.data;
+                    res.data.data ? this.dataAll = res.data.data : '';
                     if (this.dataAll && this.dataAll[0]) {
                         this.dataAll.forEach((data) => {
                             this.imgSrc.push(data);
