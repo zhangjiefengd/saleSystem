@@ -150,7 +150,6 @@ export default {
 
           this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('@/assets/img/homeBackground.png')
         }
-
       })
     //请求激活的模块
     // this.$axios.get("/module/main", {params:{'select':'true'}})

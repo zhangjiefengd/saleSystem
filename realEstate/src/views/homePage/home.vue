@@ -16,7 +16,7 @@ import getImage from '../../ultis/getImage.js'
 export default {
   data() {
     return {
-      imgIndexBack: '',
+      imgIndexBack: require('../../assets/img/index/back.jpg'),
       imgBig: "",
       imgProBig: "",
       imgProject: '',
@@ -24,33 +24,35 @@ export default {
       word: ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
       url: ["/projectIntroduce", "/brand", "/houseType", "/nearBy" ],
       check: 0,
-      icon: []
+      icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')]
     }
   },
   created() {
     //请求首页项目图片和背景图片
     this.$axios.get("/basic/mainPage/get")
     .then(res => {
-      if (screen.width > 1024){
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
-        this.imgProBig = getImage(res.data.data.projectLogoLocation, 1);
-      }else {
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
-        this.imgProBig = getImage(res.data.data.projectLogoLocation, 2);
+      if (res.data.code == 1) {
+        if (screen.width > 1024){
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
+          this.imgProBig = getImage(res.data.data.projectLogoLocation, 1);
+        }else {
+          res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 2) : '';
+          this.imgProBig = getImage(res.data.data.projectLogoLocation, 2);
+        }
+        res.data.data.backgroundImageLocation ? this.imgIndexBack = getImage(res.data.data.backgroundImageLocation, 5) : '';
+        // this.imgBig = res.data.data.backgroundImage.fileName;
+        this.imgProject = getImage(res.data.data.projectLogoLocation, 5);
+        res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : '';
+        res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : '';
+        res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : '';
+        res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : '';
+        // this.imgProBig = res.data.data.projectImage.fileName;
+        res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : "";
+        res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
+        res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : "";
+        res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : "";
+        this.check = 1;
       }
-      this.imgIndexBack = getImage(res.data.data.backgroundImageLocation, 5);
-      // this.imgBig = res.data.data.backgroundImage.fileName;
-      this.imgProject = getImage(res.data.data.projectLogoLocation, 5);
-      this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1);
-      this.icon[1] = getImage(res.data.data.brandOverviewBar, 1);
-      this.icon[2] = getImage(res.data.data.unitDisplayBar, 1);
-      this.icon[3] = getImage(res.data.data.projectAroundBar, 1);
-      // this.imgProBig = res.data.data.projectImage.fileName;
-      res.data.data && res.data.data.projectIntroductionBar ? this.icon[0] = getImage(res.data.data.projectIntroductionBar, 1) : "";
-      res.data.data && res.data.data.brandOverviewBar ? this.icon[1] = getImage(res.data.data.brandOverviewBar, 1) : "";
-      res.data.data && res.data.data.unitDisplayBar ? this.icon[2] = getImage(res.data.data.unitDisplayBar, 1) : "";
-      res.data.data && res.data.data.projectAroundBar ? this.icon[3] = getImage(res.data.data.projectAroundBar, 1) : "";
-      this.check = 1;
       // this.judgeModule();
     })
     .catch(error => {

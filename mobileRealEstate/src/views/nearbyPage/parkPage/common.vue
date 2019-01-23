@@ -2,10 +2,14 @@
   <div class="content" style="position:relative;overflow: hidden;">
     <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
+<<<<<<< HEAD
       <!--<top/>-->
     </div>
     <div class="imgBox">
       <img id="targetObj" style="position:absolute;transform-origin:center" :src="map">
+=======
+      <!-- <top/> -->
+>>>>>>> 80dffc3f9b4343bb4fa3a9d3473cbd19a1128f32
     </div>
     <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->
     <!-- <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt="" @click="goHistory()"> -->

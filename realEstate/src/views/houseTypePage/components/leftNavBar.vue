@@ -1,5 +1,5 @@
 <template>
-    <div id="leftNavBar">
+    <div id="leftNavBar" :style='{backgroundColor: backColor}'>
         <div class="leftLogo">
             <img :src="imgLogo" alt=""/>
         </div>
@@ -32,13 +32,22 @@ import getImage from '../../../ultis/getImage.js'
             intial: 1,//为点击一次户型使得有边框在0上
             houseNum: 0,
             imgLogo: "",
-            numHanzi: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八"]
+            backColor: '#ffffff',
+            navHover: '#dfc29d',
+            navclick: '#c1a077',
+            navSelect: '#c7ad8c'
+            // numHanzi: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八"]
         }
     }, 
     created() {
         this.$axios.get("/basic/guidePage/get")
         .then((res) => {
-        
+            if (res.data.code == 1) {
+                res.data.data.houseTypeNavigationNoneStatusStyle  ? this.backColor = res.data.data.houseTypeNavigationNoneStatusStyle  : "";
+                res.data.data.houseTypeNavigationSuspensionStatusStyle ? this.navHover = res.data.data.houseTypeNavigationSuspensionStatusStyle : "";
+                res.data.data.houseTypeNavigationClickStatusStyle ? this.navclick = res.data.data.houseTypeNavigationClickStatusStyle : "";
+                res.data.data.houseTypeNavigationClickedStatusStyle  ? this.navSelect = res.data.data.houseTypeNavigationClickedStatusStyle  : "";
+            }
             res.data.data && res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 1) : "";
             // console.log(this.imgLogo);
         })
@@ -47,7 +56,7 @@ import getImage from '../../../ultis/getImage.js'
         });
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.worlds = res.data.data.reverse();
+            this.worlds = res.data.data;
         })
         .catch(error => {
             console.log(error);

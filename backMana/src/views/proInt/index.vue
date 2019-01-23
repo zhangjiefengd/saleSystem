@@ -42,6 +42,7 @@ export default {
             "appear": "none",
             "appearCome": "block",
             head: ip + ':8080/static/image/',
+            id: 0
         }
     },
     created() {
@@ -50,6 +51,7 @@ export default {
         .then((res) => {
             res.data.data && res.data.data.backgroundImageLocation ? this.imgProjectBack = this.getImage(res.data.data.backgroundImageLocation, 2) : "";
             res.data.data && res.data.data.content ? this.projectWord = res.data.data.content : "";
+            res.data.data && res.data.data.id ? this.id = res.data.data.id : '';
         })
         .catch((error) => {
             this.$message.error('获取失败,请上传内容！');
@@ -84,6 +86,7 @@ export default {
                         message: '背景上传成功！',
                         type: 'success'
                     });
+                    this.id = res.data.data.id;
                     this.tijiaoTwo();
                 }).catch((error) =>{
                     this.$message.error('背景上传失败！');
@@ -94,20 +97,34 @@ export default {
         tijiaoTwo() {
             let config = {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded' 
+                    'Content-Type': 'application/json' 
                 }
             }
             if (this.appear == 'none') {
-                this.$axios.post('/project/info/update',qs.stringify({
-                    introductionContent: $('textarea').val(),
-                }) , config).then( (res) => {
-                    this.$message({
-                        message: '文字上传成功！',
-                        type: 'success'
+                if (this.id) {
+                    this.$axios.post('/project/info/update',{
+                        content: $('textarea').val(),
+                        id: this.id
+                    }, config).then( (res) => {
+                        this.$message({
+                            message: '文字上传成功！',
+                            type: 'success'
+                        });
+                    }).catch((error) =>{
+                        this.$message.error('文字上传失败！');
                     });
-                }).catch((error) =>{
-                    this.$message.error('文字上传失败！');
-                });
+                } else {
+                    this.$axios.post('/project/info/update',qs.stringify({
+                        content: $('textarea').val(),
+                    }) , config).then( (res) => {
+                        this.$message({
+                            message: '文字上传成功！',
+                            type: 'success'
+                        });
+                    }).catch((error) =>{
+                        this.$message.error('文字上传失败！');
+                    });
+                }
             }else {
                 this.$message({
                     message: '请确定修改好的文字（点击旁侧）',

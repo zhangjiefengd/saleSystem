@@ -6,7 +6,7 @@
               <span>项目介绍</span>
           </div>
           <div class="wordContent">
-
+            <span :style='{color: colorContent}'>&nbsp;&nbsp;&nbsp;&nbsp;{{ projectWord }}</span>
           </div>
       </div>
       <div class="backImage"  @click="clickBack">
@@ -31,23 +31,27 @@ export default {
       D3D: require('../../assets/img/index/3D.png'),
       check: 0,
       imgBig: "",
-      conDisplay: 'none'
+      conDisplay: 'none',
+      colorContent: '#ffffff'
     }
   },
   created() {
     //请求首页项目图片和背景图片
     this.$axios.get("/project/info/get")
     .then(res => {
-      if (screen.width > 1024){
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
-      }else {
-        this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
+      if (res.data.code == 1) {
+        if (screen.width > 1024){
+          this.imgBig = getImage(res.data.data.backgroundImageLocation, 1);
+        }else {
+          this.imgBig = getImage(res.data.data.backgroundImageLocation, 2);
+        }
+        // this.imgProjectBack = res.data.data.image.fileName;
+        this.imgProjectBack = getImage(res.data.data.backgroundImageLocation, 4);
+        // this.imgBig = res.data.data.image.fileName;
+        this.projectWord = res.data.data.content;
+        res.data.data.fontStyle ? this.colorContent = res.data.data.fontStyle : '';
+        this.check = 1;
       }
-      // this.imgProjectBack = res.data.data.image.fileName;
-      this.imgProjectBack = getImage(res.data.data.backgroundImageLocation, 4);
-      // this.imgBig = res.data.data.image.fileName;
-      this.projectWord = res.data.data.content;
-      this.check = 1;
     })
     .catch(error => {
       console.log(error);
@@ -70,16 +74,6 @@ export default {
       this.conDisplay = 'none';
       this.$forceUpdate();
     },
-    //添加介绍的文字
-    addWords() {
-      // console.log(document.getElementsByClassName('wordContent')[0]);
-      let wordIntrol = "<span>&nbsp;&nbsp;&nbsp;&nbsp;" + this.projectWord + "</span>";//为内容区域所添加的字符串
-      if (document.getElementsByClassName('wordContent')) {
-
-        document.getElementsByClassName('wordContent')[0].innerHTML = wordIntrol;
-        // $('.wordContent').html(wordIntrol);
-      }
-    },
     //返回
     clickBack() {
       this.$router.push({path: '/index'});;
@@ -88,7 +82,7 @@ export default {
   
   watch: {
       projectWord() {
-          this.addWords();
+          // this.addWords();
       },
       imgBig() {
         var ele = document.querySelector('.projectIntroduce');

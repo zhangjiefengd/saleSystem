@@ -5,7 +5,7 @@
             <i class="el-icon-close" @click='colorCancel'></i>
         </div>
         <div class="content">
-            <table cellpadding='0' cellspacing='0'>
+            <table cellpadding='0' cellspacing='0' @click='openMiss'>
                 <tr height='10%'>
                     <td>修改按钮</td>
                     <td>无状态</td>
@@ -15,7 +15,7 @@
                 </tr>
                 <tr height='10%'>
                     <td>导航按钮</td>
-                    <td><colorPicker v-model="colorNoTab" v-on:change="headleNoTab"></colorPicker></td>
+                    <td><colorPicker @click='viewPicker' v-model="colorNoTab" v-on:change="headleNoTab"></colorPicker></td>
                     <td><colorPicker v-model="colorStopTab" v-on:change="headleStopTab"></colorPicker></td>
                     <td><colorPicker v-model="colorClickTab" v-on:change="headleClickTab"></colorPicker></td>
                     <td><colorPicker v-model="colorSelectTab" v-on:change="headleSelectTab"></colorPicker></td>
@@ -49,7 +49,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import {getUrl} from '../../../../utils/urlGet.js'
+import {getUrl} from '../../utils/urlGet.js'
 export default {
     data() {
         return {
@@ -73,6 +73,7 @@ export default {
     },
     mounted() {
         const colorButton = document.getElementsByClassName('colorBtn');
+        const open = document.getElementsByClassName('open');
         for (let i = 0; i < colorButton.length; i++) {
             colorButton[i].style.width = '100%';
             colorButton[i].style.height = '100%';
@@ -106,6 +107,18 @@ export default {
         colorOk() {
 
         },
+        viewPicker(e) {
+            e.stopPropagation();
+            open[0].style.display = 'block';
+            alert(1);
+        },
+        openMiss(e) {
+            e.stopPropagation();
+            const open = document.getElementsByClassName('open');
+            for (let i = 0; i < open.length; i++) {
+                open[i].style.opacity = 0;
+            }
+        },
         colorCancel() {
             this.$forceUpdate();
             this.$emit('colorCancel');
@@ -132,8 +145,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../../styles/main.scss";
-@import "../../../../styles/mixin.scss";
+@import "../../styles/main.scss";
+@import "../../styles/mixin.scss";
 .colorManage {
     width: px2rem(800);
     height: px2rem(800);
