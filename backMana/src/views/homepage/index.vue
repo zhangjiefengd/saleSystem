@@ -332,16 +332,16 @@ import getImage from '../../utils/getImage.js'
             cursor: pointer;
         }
         .projectLogo {
-            width: transverse(357);
-            height: vertical(246);
+            width: transverse(569);
+            height: vertical(339);
             margin: 10% auto;
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
         .bottomDiv {
-            width: transverse(1409);
+            width: transverse(1236);
             height: px2rem(scalePx(210));
-            margin: 15% auto;
+            margin: 10% auto;
             @include fj();
             cursor: pointer;
             .word {
@@ -359,9 +359,9 @@ import getImage from '../../utils/getImage.js'
                     height: px2rem(scalePx(94));
                 }
                 .wordTitle {
-                    width: px2rem(scalePx(158));
-                    height: px2rem(scalePx(39));
-                    @include sc(px2rem(scalePx(39)));
+                    // width: px2rem(scalePx(158));
+                    // height: px2rem(scalePx(39));
+                    @include sc(px2rem(scalePx(30)));
                 }
             }
         }

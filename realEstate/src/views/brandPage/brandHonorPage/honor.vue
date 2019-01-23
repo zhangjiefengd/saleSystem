@@ -7,8 +7,8 @@
         </div>
         <ul class="words">
           <li v-for="(world, index) in worlds" :key="index">
-            <span class="honor-spot"></span>
-            <span>{{ world.enterpriseHonorInfo }}</span>
+            <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
+            <span :style="[{color: world.honorTextColor}]">{{ world.enterpriseHonorInfo }}</span>
           </li>
         </ul>
       </div>
@@ -55,6 +55,14 @@ export default {
       .then(res => {
         if (res.data.data) {
           this.worlds = res.data.data
+          this.worlds.map(item => {
+            if (!item.enterpriseHonorFontstyle) {
+              item.honorTextColor = '#333333'
+            }
+            if (!item.enterpriseHonorPointStyle) {
+              item.pointStyle = '#c7ad8c'
+            }
+          })
         }
       })
       .catch(error => {
@@ -173,7 +181,7 @@ export default {
       position: relative;
       .word-line {
         position: absolute;
-        left: px2rem(7.5);
+        left: px2rem(7);
         bottom: 0;
         width: px2rem(1);
         height: calc(100% - 17px);

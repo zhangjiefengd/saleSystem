@@ -6,8 +6,8 @@
     <div class="brandCultureWords">
       <ul class="brandCultureScroll">
         <li v-for="(title, index) in brandCultureTitle" :key="index">
-          <p class="brandCultureTitle"> {{ title.title }} </p>
-          <p class="brandCultureContent">  {{ title.content }} </p>
+          <p class="brandCultureTitle" :style="[{color: titleColor}]"> {{ title.title }} </p>
+          <p class="brandCultureContent" :style="[{color: contentColor}]">  {{ title.content }} </p>
         </li>
       </ul>
       <div class="honorWordRemind" v-if="wordRemind">
@@ -93,16 +93,24 @@ export default {
       brandCultureNum: Number,
       wordRemind: true,
       head: 'http://118.24.113.182:80/',
-      backgroundImage: ''
+      backgroundImage: '',
+      titleColor: '',
+      contentColor: ''
     }
   },
   created() {
     this.$axios.get('/brand/enterpriseCulture/get')
       .then(res => {
-        this.brandCultureTitle = res.data.data
-        this.brandCultureNum = res.data.data.length
-        if (this.brandCultureNum > 3) {
-          this.wordRemind = true
+
+        if (res.data.data) {
+
+          this.brandCultureTitle = res.data.data
+          this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
+          this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#999999'
+          this.brandCultureNum = res.data.data.length
+          if (this.brandCultureNum > 3) {
+            this.wordRemind = true
+          }
         }
       })
       .catch(error => {
@@ -110,8 +118,12 @@ export default {
       })
     this.$axios.get('/brand/enterpriseCulture/image/get')
       .then(res => {
-        this.brandCultureImage = getImage(res.data.data.mainImageLocation, 3)
-        this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
+
+        if (res.data.data) {
+
+          this.brandCultureImage = getImage(res.data.data.mainImageLocation, 3)
+          this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
+        }
       })
       .catch(error => {
         console.log(error)

@@ -75,7 +75,7 @@
           </ul>
         </div>
 
-        <div class="user-info-submit"><input @click="submitCustomInfo" type="submit"></div>
+        <div class="user-info-submit"><input @click="submitCustomInfo" type="submit" value="提交"></div>
       </div>
     </div>
     <div class="infoRemind" v-show="infoRemind">

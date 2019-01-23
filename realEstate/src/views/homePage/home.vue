@@ -171,9 +171,9 @@ export default {
   // filter: blur(4px);
   transition: all 0.7s;
   .projectImg {
-    width: px2rem(357);
+    width: px2rem(569);
     @include cl();
-    top: vertical(254);
+    top: vertical(175);
     // filter: blur(4px);
     transition: all 0.7s;
   }
@@ -181,24 +181,24 @@ export default {
     filter: blur(0);
   }
   .module {
-    width: transverse(1409);
-    height: vertical(290);
+    width: transverse(1236);
+    height: vertical(261);
     @include cl();
-    top: vertical(705);
+    top: vertical(729);
     @include fj();
     .smallNav {
       cursor: pointer;
-      @include fj(space-around);
+      @include fj();
       align-items: center;
       flex-direction: column;
-      width: px2rem(286);
-      height: px2rem(290);
-      padding: px2rem(41) px2rem(75) px2rem(41) px2rem(75);
+      width: px2rem(258);
+      height: px2rem(261);
+      padding: px2rem(41) px2rem(65) px2rem(41) px2rem(65);
       img {
-        width: px2rem(136);
+        width: px2rem(114);
       }
       span {
-        @include sc(px2rem(34));
+        @include sc(px2rem(30));
       }
     }
     .smallNav:hover {

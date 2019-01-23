@@ -1,5 +1,5 @@
 <template>
-  
+
 </template>
 <script>
 
@@ -10,4 +10,3 @@ export default {
   BASE_URL
 }
 </script>
-  

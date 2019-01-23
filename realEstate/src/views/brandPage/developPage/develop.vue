@@ -14,12 +14,12 @@
                   <div class="word-time-title">
                     <div>
                       <div>
-                        <span class="word-time">{{ world.step }}</span>
-                        <span class="word-title">{{ world.developTitle }}</span>
+                        <span class="word-time" :style="[{color: developStepStyle}]">{{ world.step }}</span>
+                        <span class="word-title" :style="[{color: developTitleStyle}]">{{ world.developTitle }}</span>
                       </div>
                     </div>
                   </div>
-                  <div class="word-content">
+                  <div class="word-content"  :style="[{color: developcontentStyle}]">
                     {{ world.enterpriseDevelopInfo }}
                   </div>
                 </div>
@@ -53,6 +53,9 @@
         worlds: '',
         number: 0,
         num: 0,
+        developStepStyle: '',
+        developTitleStyle: '',
+        developcontentStyle: '',
         backBig: '',
         head: ip + ':8080/static/image/',
         conDisplay: 'none'
@@ -62,6 +65,9 @@
       this.$axios.get('/brand/enterpriseDevelop/get')
         .then(res => {
           if (res.data.data) {
+            this.developStepStyle = res.data.data.enterpriseDevelopStepStyle ? res.data.data.enterpriseDevelopStepStyle : '#ffffff'
+            this.developTitleStyle = res.data.data.enterpriseDevelopTitleStyle ? res.data.data.enterpriseDevelopTitleStyle : '#e2e2e2'
+            this.developcontentStyle = res.data.data.enterpriseDevelopFontStyle ? res.data.data.enterpriseDevelopFontStyle : '#e2e2e2'
             this.num = res.data.data.length
             this.worlds = res.data.data
             this.worlds.map((item, index) => {
@@ -225,7 +231,7 @@
                 }
 
                 span {
-                  display: inline-block;
+                  display: block;
                   font-size: px2rem(36);
                   color: #e2e2e2;
                 }

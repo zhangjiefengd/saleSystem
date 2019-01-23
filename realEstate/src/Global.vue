@@ -1,5 +1,5 @@
 <template>
-  
+
 </template>
 <script>
 // const BASE_URL = 'http://47.106.120.37:8080/saleSystem'

@@ -41,26 +41,26 @@
             <div class="worldFather">
               <div class="worldIntro">
                 <div class="worldTitle">
-                  <p v-if="!worlds.enterpriseName" class="title" @click="changeTitle" :class="[{hide: titleAuto}]">
+                  <p :style="[{color: titleColor}]" v-if="!worlds.enterpriseName" class="title" @click="changeTitle" :class="[{hide: titleAuto}]">
                     输入企业名称</p>
-                  <p v-if="worlds.enterpriseName" class="title" @click="changeTitle" :class="[{hide: titleAuto}]">{{
+                  <p :style="[{color: titleColor}]" v-if="worlds.enterpriseName" class="title" @click="changeTitle" :class="[{hide: titleAuto}]">{{
                     worlds.enterpriseName
                     }}</p>
                   <form action="introduction/title">
-                    <input v-if="worlds.enterpriseName" class="title" placeholder="输入企业名称" type="text" autofocus @blur="changeTitle" :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
-                    <input v-if="!worlds.enterpriseName" class="title" placeholder="输入企业名称" type="text" autofocus @blur="changeTitle" value="" :class="[{hide: !titleAuto}]">
+                    <input :style="[{color: titleColor}]" v-if="worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
+                    <input :style="[{color: titleColor}]" v-if="!worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus value="" :class="[{hide: !titleAuto}]">
                   </form>
                   <div></div>
                 </div>
                 <div class="contentWorld">
-                  <p v-if="!worlds.enterpriseIntroduction" class="content" @click="changeContent"
+                  <p :style="[{color: contentColor}]" v-if="!worlds.enterpriseIntroduction" class="content" @click="changeContent"
                      :class="[{hide: contentAuto}]">
                     输入企业介绍</p>
-                  <p v-if="worlds.enterpriseIntroduction" class="content" @click="changeContent"
+                  <p :style="[{color: contentColor}]" v-if="worlds.enterpriseIntroduction" class="content" @click="changeContent"
                      :class="[{hide: contentAuto}]">{{
                     worlds.enterpriseIntroduction }} </p>
                   <form action="introduction/text">
-                    <textarea rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
+                    <textarea :style="[{color: contentColor}]" rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
                               :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
                     </textarea>
                     <input type="submit" id="submit2" style="display:none">
@@ -75,6 +75,9 @@
                   </label>
                 </div>
               </div>
+              <!--<div class="changeColor">-->
+                <!--<button v-show="changeColorButton" @click="changeColor">修改字体颜色</button>-->
+              <!--</div>-->
             </div>
           </div>
 
@@ -84,6 +87,9 @@
             </svg>
           </button>
           <router-view></router-view>
+          <!--<color-manage></color-manage>-->
+          <!--<colorPicker v-show="showChangeTitleColor" v-model="titleColor" style="z-index: 1000;" />-->
+          <!--<colorPicker v-show="showChangeContentColor" v-model="contentColor" style="z-index: 1000;" />-->
         </div>
       </div>
     </div>
@@ -91,6 +97,7 @@
 </template>
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
+  // import colorManage from '../../../components/colorManage'
   import qs from 'qs'
 
   export default {
@@ -111,7 +118,13 @@
         contentAuto: false,
         changeImageNum: 0,
         head: 'http://118.24.113.182:8080/static/image/',
-        timer: ''
+        timer: '',
+        titleColor: '',
+        contentColor: '',
+        // showChangeTitleColor: false,
+        // showChangeContentColor: false,
+        // changeColorButton: false,
+        // controlShowColor: true
       }
     },
     created() {
@@ -148,7 +161,7 @@
       }
     },
     methods: {
-      clickBack: function() {
+      clickBack () {
         this.$router.push({ path: '/index' })
       },
       getData() {
@@ -156,6 +169,7 @@
           .then(res => {
             if (res.data.data) {
               this.worlds = res.data.data
+              console.log(this.worlds)
               this.title = res.data.data.enterpriseName
               this.content = res.data.data.enterpriseIntroduction
               this.videoMp4 = res.data.data.videoUrl
@@ -207,28 +221,47 @@
         return url
       },
       changeTitle() {
-        this.titleAuto = !this.titleAuto
-        var title1 = document.getElementsByClassName('title')
-        this.worlds.enterpriseName = title1[1].value
-        if (!this.titleAuto) {
-          this.timer = setInterval(() => {
-            this.autoPlay()
-          }, 5000)
-        } else {
-          clearInterval(this.timer)
-        }
+
+        // if (this.controlShowColor) {
+
+          this.titleAuto = !this.titleAuto
+          // this.changeColorButton = this.titleAuto
+          // this.showChangeTitleColor = false
+          // this.controlShowColor = !this.controlShowColor
+          var title1 = document.getElementsByClassName('title')
+          this.worlds.enterpriseName = title1[1].value
+          if (!this.titleAuto) {
+            this.timer = setInterval(() => {
+              this.autoPlay()
+            }, 5000)
+          } else {
+            clearInterval(this.timer)
+          }
+
+        // } else {
+        //
+        //   this.controlShowColor = true
+        // }
       },
       changeContent() {
-        this.contentAuto = !this.contentAuto
-        var content1 = document.getElementsByClassName('content')
-        this.worlds.enterpriseIntroduction = content1[2].value
-        if (!this.contentAuto) {
-          this.timer = setInterval(() => {
-            this.autoPlay()
-          }, 2000)
-        } else {
-          clearInterval(this.timer)
-        }
+
+        // if (this.controlShowColor) {
+
+          this.contentAuto = !this.contentAuto
+          // this.changeColorButton = this.contentAuto
+          // this.showChangeContentColor = false
+          var content1 = document.getElementsByClassName('content')
+          this.worlds.enterpriseIntroduction = content1[2].value
+          if (!this.contentAuto) {
+            this.timer = setInterval(() => {
+              this.autoPlay()
+            }, 2000)
+          } else {
+            clearInterval(this.timer)
+          }
+        // } else {
+        //   this.controlShowColor = true
+        // }
       },
       deleteImg(index) {
         if (this.images[index].id) {
@@ -329,6 +362,15 @@
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
         return this.head + imgSplit[0] + '_' + imgSplit[i] + '.' + imgSplit[imgSplit.length - 1]
+      },
+      changeColor() {
+        if (this.titleAuto) {
+          this.showChangeTitleColor = !this.showChangeTitleColor
+        } else {
+          this.showChangeContentColor = !this.showChangeContentColor
+        }
+      },
+      headleChangeColor() {
       }
     }
   }
@@ -386,7 +428,7 @@
       flex-direction: column;
 
       .addImg {
-        width: px3rem(25);
+        width: px2rem(25);
         height: px2rem(25);
       }
 
@@ -578,9 +620,9 @@
       > .worldFather {
         width: 100%;
         height: 100%;
-        @include fj(center);
+        @include fj(space-around);
         align-items: center;
-        height: 80%;
+        flex-direction: column;
       }
 
       .worldIntro {
@@ -640,11 +682,8 @@
       }
 
       .videoIntro {
-        position: absolute;
-        width: 100%;
+        width: 90%;
         height: 10%;
-        right: 9%;
-        bottom: 0;
         opacity: 0.7;
 
         > div {
@@ -672,6 +711,12 @@
               height: 100%;
             }
           }
+        }
+      }
+      .changeColor {
+        width: 90%;
+        >button {
+
         }
       }
     }

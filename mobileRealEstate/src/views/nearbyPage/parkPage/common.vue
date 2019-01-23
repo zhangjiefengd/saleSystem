@@ -2,9 +2,11 @@
   <div class="content" :style="{backgroundImage: 'url('+ back +')' ,position:'relative',overflow: 'hidden',}">
     <div class="header">
             <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt="" @click="go()"> -->
-      <!-- <top/> -->
+      <!--<top/>-->
     </div>
-    <img id="targetObj" @click="scale" style="position:absolute;transform-origin:center" :src="map">
+    <div class="imgBox">
+      <img id="targetObj" style="position:absolute;transform-origin:center" :src="map">
+    </div>
     <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->
     <!-- <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt="" @click="goHistory()"> -->
     <!-- <input type="button" value="重置" @click="reset()" > -->
@@ -214,13 +216,11 @@ export default {
     height: px2rem(61);
     position: absolute;
     top: 0;
-        // img {
-        //   width: px2rem(64);
-        //   height: px2rem(64);
-        //   position: absolute;
-        //   top: px2rem(29);
-        //   right: px2rem(27);
-        // }
+  }
+  >.imgBox {
+    width: 100%;
+    height: px2rem(541);
+    position: relative;
   }
   #targetObj {
     width: 100%;

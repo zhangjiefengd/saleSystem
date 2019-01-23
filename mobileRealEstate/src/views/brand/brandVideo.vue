@@ -17,7 +17,6 @@ export default {
     this.$axios.get("/introduction")
       .then(res => {
         this.src1 = res.data.data.videoUrl;
-        console.log(this.src1)
       })
       .catch(error => {
         console.log(error);

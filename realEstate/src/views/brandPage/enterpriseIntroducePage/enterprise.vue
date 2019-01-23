@@ -13,7 +13,7 @@
     </transition-group>
     <div class="introduce">
       <div class="worldIntro">
-        <p v-if="worlds.enterpriseIntroduction">{{ worlds.enterpriseIntroduction }} </p>
+        <p v-if="worlds.enterpriseIntroduction" :style="[{color: contentColor}]">{{ worlds.enterpriseIntroduction }} </p>
         <p v-else></p>
         <div @click="bigVideo">
           <img src="../../../assets/img/leftNav/video.jpg" alt="">
@@ -38,6 +38,8 @@ export default {
     return {
       images: '',
       worlds: '',
+      titleColor: '',
+      contentColor: '#333333',
       worldBgc: '',
       videoWorld: '',
       videoMp4: '',
@@ -57,6 +59,8 @@ export default {
       .then(res => {
         if (res.data.data) {
           this.worlds = res.data.data
+          this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#'
+          this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#333333'
         }
       })
       .catch(error => {
@@ -133,29 +137,29 @@ export default {
         }, 4000)
       }
     },
-    getImage(data, i) {
+    getImage (data, i) {
       const imgSplit = data.split(/\_|\./g)
-      let index = i;
+      let index = i
       while (imgSplit.length - 1 <= index) {
-        index--;
+        index--
       }
-      return this.head + imgSplit[0] + "_" + imgSplit[index] + "." + imgSplit[imgSplit.length - 1];
+      return this.head + imgSplit[0] + '_' + imgSplit[index] + '.' + imgSplit[imgSplit.length - 1]
     },
     haveCon() {
-      this.conDisplay = 'flex';
-      this.$forceUpdate();
+      this.conDisplay = 'flex'
+      this.$forceUpdate()
     },
     closeInfo() {
-      this.conDisplay = 'none';
-            this.$forceUpdate();
-        },
+      this.conDisplay = 'none'
+      this.$forceUpdate()
+    },
   },
   components: {
     contact,
-        contactContent
+    contactContent
   },
   watch: {
-    images() {
+    images () {
       let that = this
       let ele = document.getElementsByTagName('img')
       let imgUrl = []
@@ -193,48 +197,6 @@ export default {
     }
   }
 }
-// window.onload = function () {
-// 	var startX,endX;
-// 	var box = document.querySelector('.touchevent')
-// 	box.addEventListener('touchstart', function(event){
-// 	//  console.log(event)
-// 		var Touch = event.touches[0]
-// 		startX = parseInt(Touch.clientX);
-// 		// console.log(startX)
-// 	//  alert(Touch.screenY + '\n' + Touch.clientY+'\n'+
-// 		//Touch.pageY+'\n'+Touch.radiusX + '\n' + Touch.radiusY + '\n' +
-// 	//  Touch.rotationAngle
-// 		//)
-// 		event.preventDefault()
-// 	},false)
-
-// 	box.addEventListener('touchmove', function(event){
-// 		var touchend = event.touches[0];
-// 		endX = parseInt(touchend.clientX)
-// 		// console.log('end'+endX)
-// 		event.preventDefault()
-// 	},false)
-
-// 	box.addEventListener('touchend', function(event){
-// 		var x = endX - startX;
-// 		// console.log('X='+x)
-// 		if (x>0) {
-
-// 		}
-// 		event.preventDefault()
-// 	},false)
-
-// 	// var body = document.body
-// 	// body.addEventListener('touchstart',function(ev){
-// 	// 	console.log('body', ev)
-// 	// 	event.preventDefault()
-// 	// })
-// 	// body.addEventListener('touchmove',function(ev){
-// 	// 	console.log('body', ev)
-// 	// 	event.preventDefault()
-// 	// })
-// }
-
 </script>
 <style lang="scss" scoped>
 @import '../../../styles/main.scss';
@@ -328,7 +290,7 @@ export default {
         }
       }
       >p {
-        // width: calc(100% - 30/16rem);
+        width: 100%;
         height: 80%;
         line-height: px2rem(45);
         float: right;
