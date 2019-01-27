@@ -19,7 +19,7 @@
                 <img class="imgstyle" src="../../../assets/img/brandBGC/change.png" alt="">
               </label>
               <input type='file' name='photos' id="upfile" style="position: absolute;clip:rect(0 0 0 0);">
-              <div v-loading="image.loading" element-loading-text="历程图片上传中" v-for="(image, index) in content" class="hide" :key="index"
+              <div v-loading="image.loading" element-loading-text="图片上传中" v-for="(image, index) in content" class="hide" :key="index"
                    style="float: left" :class="[{show: index==number}]">
                 <img v-if="image.image" :src="image.image" alt="">
               </div>
@@ -30,32 +30,32 @@
                   <div class="world hide" v-for="(item, index) in content" :key="index"
                        :class="[{show: index==number}]">
                     <div>
-                      <div class="title" @click="changeTitle(index)" :class="[{hide1: titleAuto}]">
+                      <div :style="[{color: item.developStepStyle}]" class="title" @click="changeTitle(index)" :class="[{hide1: titleAuto}]">
                         {{ item.step }}
                       </div>
-                      <input class="title" style="float: left" type="text" autofocus @blur="changeTitle(index)"
+                      <input class="title" style="float: left;color: #000;" type="text" autofocus @blur="changeTitle(index)"
                              :value="item.step" :class="[{hide1: !titleAuto}]">
-                      <input class="title" style="width: 50%;float: left;display: none;" type="text" autofocus
+                      <input class="title" style="width: 50%;float: left;display: none;color: #000;" type="text" autofocus
                              @blur="changeTitle(index)"
                              :value="item.step" :class="[{hide1: !titleAuto}]">
-                      <div class="head" @click="changeHead(index)" :class="[{hide1: headAuto}]">
+                      <div :style="[{color: item.developTitleStyle}]" class="head" @click="changeHead(index)" :class="[{hide1: headAuto}]">
                         {{ item.developTitle }}
                       </div>
-                      <input class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
+                      <input style="color: #000" class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
                              :class="[{hide1: !headAuto}]">
                     </div>
                     <div>
-                      <p class="content2" @click="changeContent(index)" :class="[{hide1: contentAuto}]">
+                      <p :style="[{color: item.developcontentStyle}]" class="content2" @click="changeContent(index)" :class="[{hide1: contentAuto}]">
                         {{ item.enterpriseDevelopInfo}}
                       </p>
-                      <textarea style="color: #000;" type="text" class="content2" autofocus @blur="changeContent(index)"
+                      <textarea style="color: #000" type="text" class="content2" autofocus @blur="changeContent(index)"
                                 :value="item.enterpriseDevelopInfo" :class="[{hide1: !contentAuto}]">
                       </textarea>
                     </div>
                   </div>
                 </div>
                 <ul class="worldIntroBottom">
-                  <li v-for="(Image,index) in content" :key="index" :class="[{changeStyle: index == number}]"
+                  <li v-for="(Image,index) in content" :style="[{backgroundColor: (index==number) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index" :class="[{changeStyle: index == number}]"
                       @click="changeAll(index)">
                   </li>
                 </ul>
@@ -81,7 +81,7 @@
     name: 'develop',
     data() {
       return {
-        background: '',
+        background: require('@/assets/img/background.jpg'),
         content: [],
         changeContent1: '',
         number: 0,
@@ -96,7 +96,12 @@
         contentAuto: false,
         id: 0,
         head: ip + ':8080/static/image/',
-        bgcLoading: false
+        bgcLoading: false,
+        pointSelectedStyle: '#d0d0d0',
+        pointUnselectedStyle: '#d0d0d0',
+        developStepStyle: '#ffffff',
+        developTitleStyle: '#e2e2e2',
+        developcontentStyle: '#e2e2e2',
       }
     },
     created() {
@@ -130,6 +135,7 @@
           })
         } else {
           var img = this.getUrl(backgroundImg.files[0])
+          this.$forceUpdate()
           this.background = img
         }
       }
@@ -140,14 +146,24 @@
           .then(res => {
             if (res.data.data) {
               this.content = res.data.data
+
+              this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
+              this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
+
               for (let i = 0; i < this.content.length; i++) {
                 if (this.content[i].enterpriseDevelopImageLocation !== null) {
                   this.content[i].image = this.getImage(this.content[i].enterpriseDevelopImageLocation, 3)
                 } else {
                   this.content[i].image = ''
                 }
+
+                this.content[i].enterpriseDevelopStepStyle = this.content[i].developStepStyle ? this.content[i].enterpriseDevelopStepStyle : '#e0e0e0'
+                this.content[i].enterpriseDevelopTitleStyle = this.content[i].developTitleStyle ? this.content[i].enterpriseDevelopTitleStyle : '#e2e2e2'
+                this.content[i].enterpriseDevelopFontStyle = this.content[i].developcontentStyle ? this.content[i].enterpriseDevelopFontStyle : '#e2e2e2'
               }
               this.listen = JSON.parse(JSON.stringify(this.content))
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {
@@ -156,7 +172,9 @@
         this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
           .then(res => {
             if (res.data.data) {
-              this.background = this.getImage(res.data.data.imageLocation, 3)
+              res.data.data.imageLocation ? this.background = this.getImage(res.data.data.imageLocation, 3) : ''
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
       },
@@ -171,7 +189,10 @@
         var defaultContent = {
           'developTitle': '默认标题',
           'enterpriseDevelopInfo': '默认内容',
-          'step': '时间自定义'
+          'step': '时间自定义',
+          'developStepStyle': '#e0e0e0',
+          'developTitleStyle': 'e2e2e2',
+          'developcontentStyle': 'e2e2e2'
         }
         this.$axios({
           method: 'post',
@@ -472,7 +493,6 @@
                     width: 100%;
                     height: 30%;
                     color: #ffffff;
-                    background-color: transparent;
                     font-size: px2rem(25);
                     border: 1px dotted #fff;
                   }
@@ -483,7 +503,6 @@
                     height: 30%;
                     font-size: px2rem(25);
                     color: #e2e2e2;
-                    background-color: transparent;
                     margin: 1rem 0;
                     border: 1px dotted #fff;
                   }
@@ -521,7 +540,7 @@
                 @include fj(center);
                 align-items: center;
                 background-color: #e2e2e2;
-                border: solid 1px #c79f62;
+                border-radius: 50%;
                 cursor: pointer;
                 margin-left: px2rem(10);
               }

@@ -277,14 +277,14 @@ export default {
 
 .content {
     width: 100%;
-    height: px2rem(592);
+    height: 100%;
     @include fj();
     flex-direction: column;
-    position: relative;
+    // position: relative;
     // position: absolute;
     .pic {
         width: 100%;
-        height: px2rem(540);
+        height: 91.2%;
         position: relative;
         overflow: hidden;
         ul {
@@ -303,7 +303,7 @@ export default {
     }
     .intro {
         width: 100%;
-        height: px2rem(50);
+        height: 8.8%;
         margin-top: -0rem;
         transform: translateY(-100%);
         @include fj(center);
@@ -322,7 +322,7 @@ export default {
     }
     .pageNum {
         width: 100%;
-        height: px2rem(35);
+        height: px2rem(38);
             // background-color: #fff;
         position: relative;
         span {

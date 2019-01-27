@@ -36,7 +36,7 @@ export default {
   name: 'honor',
   data () {
     return {
-      background: '',
+      background: require('@/assets/img/background.jpg'),
       honorPhoto: '',
       worldLogo: '',
       back: '',
@@ -71,9 +71,9 @@ export default {
     this.$axios.get('/brand/enterpriseHonor/backHonorImage/get')
       .then(res => {
         if (res.data.data) {
-          this.background = getImage(res.data.data.imageLocation, 1)
+          this.background = res.data.data.imageLocation ? getImage(res.data.data.imageLocation, 1) : require('@/assets/img/background.jpg')
           if (screen.width > 1024) {
-            this.backBig = getImage(res.data.data.imageLocation, 1)
+            this.backBig = getImage(res.data.data.imageLocation, 2)
           } else {
             this.backBig = getImage(res.data.data.imageLocation, 2)
           }
@@ -88,7 +88,7 @@ export default {
           this.honorPhoto = res.data.data
           this.honorPhoto.map((item, index) => {
             if (item.imageLocation) {
-              this.honorPhoto[index].image = getImage(item.imageLocation, 1)
+              this.honorPhoto[index].image = getImage(item.imageLocation, 2)
             }
           })
         }

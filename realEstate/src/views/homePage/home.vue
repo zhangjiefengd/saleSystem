@@ -196,6 +196,7 @@ export default {
       padding: px2rem(41) px2rem(65) px2rem(41) px2rem(65);
       img {
         width: px2rem(114);
+        height: px2rem(114);
       }
       span {
         @include sc(px2rem(30));

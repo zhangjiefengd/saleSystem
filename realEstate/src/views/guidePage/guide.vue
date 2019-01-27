@@ -154,6 +154,7 @@ export default {
     align-items: center;
     .guideLogo {
       width: px2rem(403);
+      height: px2rem(286);
       // filter: blur(4px);
       transition: all 0.7s;
     }

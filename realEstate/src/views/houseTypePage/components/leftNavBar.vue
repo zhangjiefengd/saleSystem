@@ -151,6 +151,7 @@ import getImage from '../../../ultis/getImage.js'
         align-items: flex-end;
         img {
             width: px2rem(179);
+            height: px2rem(123);
         }
     }
     #leftWorld {

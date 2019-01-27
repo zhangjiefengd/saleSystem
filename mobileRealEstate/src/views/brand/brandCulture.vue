@@ -93,7 +93,7 @@ export default {
       brandCultureNum: Number,
       wordRemind: true,
       head: 'http://118.24.113.182:80/',
-      backgroundImage: '',
+      backgroundImage: require('@/assets/img/background.png'),
       titleColor: '',
       contentColor: ''
     }
@@ -108,9 +108,9 @@ export default {
           this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
           this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#999999'
           this.brandCultureNum = res.data.data.length
-          if (this.brandCultureNum > 3) {
-            this.wordRemind = true
-          }
+          // if (this.brandCultureNum > 3) {
+          //   this.wordRemind = true
+          // }
         }
       })
       .catch(error => {
@@ -122,7 +122,15 @@ export default {
         if (res.data.data) {
 
           this.brandCultureImage = getImage(res.data.data.mainImageLocation, 3)
-          this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
+      .then(res => {
+        if (res.data.data) {
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
         }
       })
       .catch(error => {
@@ -140,10 +148,11 @@ export default {
   },
   mounted () {
     setTimeout(()=>{
-      if (brandCultureScroll.offsetHeight === brandCultureScroll.scrollHeight) {
-        this.wordRemind = false;
-      }else {
+      console.log(brandCultureScroll.offsetHeight, brandCultureScroll.scrollHeight)
+      if (brandCultureScroll.offsetHeight < brandCultureScroll.scrollHeight) {
         this.wordRemind = true;
+      } else {
+        this.wordRemind = false;
       }
     },100);
     var brandCultureScroll = document.getElementsByClassName('brandCultureScroll')[0];

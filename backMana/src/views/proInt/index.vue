@@ -53,12 +53,12 @@ export default {
         //请求公园类型
         this.$axios.get("/project/info/get")
         .then((res) => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 res.data.data && res.data.data.backgroundImageLocation ? this.imgProjectBack = this.getImage(res.data.data.backgroundImageLocation, 2) : "";
                 res.data.data && res.data.data.content ? this.projectWord = res.data.data.content : "";
                 res.data.data && res.data.data.id ? this.id = res.data.data.id : '';            
                 res.data.data && res.data.data.fontStyle ? this.colorContent = res.data.data.fontStyle : '';
-                res.data.data.titleStyle  ? this.titleColor = res.data.data.titleStyle  : '';
+                res.data.data && res.data.data.titleStyle  ? this.titleColor = res.data.data.titleStyle  : '';
                 res.data.data.fontBackgroundStyle  ? this.fontBackgroundStyle = res.data.data.fontBackgroundStyle  : '';
                 res.data.data.titleBackgroundStyle  ? this.titleBackgroundStyle = res.data.data.titleBackgroundStyle  : '';
             }else if (res.data.code == 0) {
@@ -67,7 +67,7 @@ export default {
             
         })
         .catch((error) => {
-            this.$message.error('请在项目管理添加项目！');
+            this.$message.error('获取失败！');
         });
     },
     mounted() {
@@ -137,9 +137,9 @@ export default {
                         this.$message.error('文字上传失败！');
                     });
                 } else {
-                    this.$axios.post('/project/info/update',qs.stringify({
+                    this.$axios.post('/project/info/update', {
                         content: $('textarea').val(),
-                    }) , config).then( (res) => {
+                    } , config).then( (res) => {
                         if (res.data.code == 1) {
                             this.$message({
                                 message: '文字上传成功！',

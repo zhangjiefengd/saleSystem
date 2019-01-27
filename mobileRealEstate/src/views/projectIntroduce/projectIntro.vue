@@ -15,7 +15,7 @@ export default {
   name: 'projectIntro',
   data() {
     return {
-      backgroundImage: '',
+      backgroundImage: require('@/assets/img/background.png'),
       words: '',
       backgroundSize: ''
     }
@@ -23,11 +23,12 @@ export default {
   created() {
     this.$axios.get('/project/info/get')
       .then(res=>{
+
         if (res.data.data) {
-          res.data.data.backgroundImageLocation ? this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 2): '';
-          res.data.data.content ? this.words = res.data.data.content : '';
+
+          res.data.data.backgroundImageLocation ? this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 1) : ''
+          this.words = res.data.data.content;
         }
-        
     })
     this.$nextTick(()=>{
       document.title = '项目介绍'
@@ -75,6 +76,7 @@ export default {
         @include lineHeight(48);
         letter-spacing: .1em;
         text-indent: 2em;
+        overflow-y: auto;
       }
     }
   }

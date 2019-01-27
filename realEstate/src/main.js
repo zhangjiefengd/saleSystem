@@ -33,6 +33,8 @@ Vue.use(VueLazyComponent)
 
 Vue.prototype.GLOBAL = global
 Axios.defaults.baseURL = global.BASE_URL
+
+Axios.defaults.withCredentials = true;
 Vue.prototype.$axios = Axios;
 Vue.use(VueVideoPlayer);
 Vue.use(luyou)

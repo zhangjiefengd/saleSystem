@@ -179,7 +179,7 @@ export default {
   position: relative;
   .picA {
     width: 100%;
-    height: px2rem(540);
+    height: 91.2%;;
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }

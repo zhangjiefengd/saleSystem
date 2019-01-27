@@ -37,7 +37,7 @@ export default {
   name: 'culture',
   data () {
     return {
-      cultureBackground: '',
+      cultureBackground: require('@/assets/img/background.jpg'),
       titles: '',
       contents: '',
       culturePicture: '',
@@ -46,24 +46,23 @@ export default {
       head: ip + ':8080/static/image/',
       logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
       conDisplay: 'none',
-      titleColor: '',
-      contentColor: ''
+      titleColor: '#666666',
+      contentColor: '#666666'
     }
   },
   created () {
     this.$axios.get('/brand/enterpriseCulture/get')
       .then(res => {
         if (res.data.data) {
-          console.log(res.data.data)
           this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
           this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#666666'
           this.titles = res.data.data
           this.contents = res.data.data.content
           this.titles.map((item, index) => {
             if (index > 3) {
-              item.logo = this.logo[index-3]
+              item.logo = this.logo[index - 3]
             } else {
-              item.logo = this.logo[index]
+              item.logo = item.iconLocation ? item.iconLocation : this.logo[index]
             }
           })
         }
@@ -75,10 +74,10 @@ export default {
       .then(res => {
         if (res.data.data) {
           this.culturePicture = getImage(res.data.data.mainImageLocation, 1)
-          this.cultureBackground = getImage(res.data.data.backgroundImageLocation, 1)
+          this.cultureBackground = res.data.data.backgroundImageLocation ? getImage(res.data.data.backgroundImageLocation, 1) : require('@/assets/img/background.jpg')
           if (screen.width > 1024) {
-            this.backBig = getImage(res.data.data.backgroundImageLocation, 1)
-            this.culBig = getImage(res.data.data.mainImageLocation, 1)
+            this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
+            this.culBig = getImage(res.data.data.mainImageLocation, 2)
           } else {
             this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
             this.culBig = getImage(res.data.data.mainImageLocation, 2)

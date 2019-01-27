@@ -19,6 +19,18 @@ export default {
       back: require('../../../assets/img/goHouseHistory/houseBack.jpg')
     }
   },
+  created() {
+        this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+               
+                res.data.data.surroundingBackgroundImageLocation ? this.back = res.data.data.surroundingBackgroundImageLocation : '';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+  },
   methods: {
     
   },

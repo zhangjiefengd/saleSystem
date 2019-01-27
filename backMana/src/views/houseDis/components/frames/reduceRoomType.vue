@@ -86,7 +86,7 @@ export default {
     font-weight: 600;
     float: left;
     position: absolute;
-    top: 28.8%;
+    top: 27.8%;
     left: 63%;
     .houseTitle {
         width: 100%;

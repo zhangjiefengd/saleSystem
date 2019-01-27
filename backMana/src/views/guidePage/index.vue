@@ -173,6 +173,7 @@ export default {
                     message: 'LOGO上传成功！',
                     type: 'success'
             });
+            res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
             this.tijiaoThree();
           }else if (res.data.code == 0) {
             this.$message.error('请在项目管理添加项目！');

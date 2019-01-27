@@ -20,7 +20,7 @@
             </div>
             <div class="brandHistoryNum">
               <ul>
-                <li v-for="(a, index) in brandHistory" :key="index" :class="[{changeStyle: index==brandHistoryNum}]" @click="changeBrandHistory(index)">
+                <li v-for="(a, index) in brandHistory" :style="[{backgroundColor: (index==brandHistoryNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index" :class="[{changeStyle: index==brandHistoryNum}]" @click="changeBrandHistory(index)">
                 </li>
               </ul>
             </div>
@@ -162,7 +162,9 @@ export default {
       endX: 0,
       x: 0,
       head: 'http://118.24.113.182:80/',
-      backgroundImage: ''
+      backgroundImage: require('@/assets/img/background.png'),
+      pointSelectedStyle: '#d0d0d0',
+      pointUnselectedStyle: '#d0d0d0'
     }
   },
   created() {
@@ -171,7 +173,9 @@ export default {
 
         if (res.data.data) {
 
-          this.brandHistory = res.data.data;
+          this.brandHistory = res.data.data
+          this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
+          this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
           this.brandHistory.map((item, index) => {
             if (item.enterpriseDevelopImageLocation) {
               this.brandHistory[index].image = getImage(item.enterpriseDevelopImageLocation, 3)
@@ -185,12 +189,10 @@ export default {
       .catch(error => {
         console.log(error)
       })
-    this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
       .then(res => {
-
         if (res.data.data) {
-
-          this.backgroundImage = getImage(res.data.data.imageLocation, 3)
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
         }
       })
       .catch(error => {

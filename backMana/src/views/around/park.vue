@@ -513,18 +513,16 @@ export default {
                         #cha {
                             width: px2rem(25);
                             height: px2rem(25);
-                            float: left;
-                            margin-top: -110px;
-                            margin-left: -20px;
+                            margin-top: -70%;
+                            transform: translateX(-100%);
                             visibility: hidden;
                         }
                         .bottomDiv {
                             width: 100%;
                             height: px2rem(40);
                             background-color: #3d455a;
-                            float: left;
-                            margin-left: -98%;
-                            margin-top: px2rem(160);
+                            margin-left: -110%;
+                            margin-top: 65%;
                             opacity: 0.8;
                             display: flex;
                             justify-content: center;

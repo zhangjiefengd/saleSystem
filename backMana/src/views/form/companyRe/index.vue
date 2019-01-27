@@ -35,7 +35,7 @@
                  :class="[{show: index==imageNum}]">
           </div>
           <ul class="spot">
-            <li v-for="(image, index) in images" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
+            <li v-for="(image, index) in images" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" @click="buttonChange(index)" :key="index" :class="[{changeStyle: index==imageNum}]"></li>
           </ul>
           <div class="introduce">
             <div class="worldFather">
@@ -47,8 +47,8 @@
                     worlds.enterpriseName
                     }}</p>
                   <form action="introduction/title">
-                    <input :style="[{color: titleColor}]" v-if="worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
-                    <input :style="[{color: titleColor}]" v-if="!worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus value="" :class="[{hide: !titleAuto}]">
+                    <input style="color: #000;" v-if="worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
+                    <input style="color: #000;" v-if="!worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus value="" :class="[{hide: !titleAuto}]">
                   </form>
                   <div></div>
                 </div>
@@ -60,7 +60,7 @@
                      :class="[{hide: contentAuto}]">{{
                     worlds.enterpriseIntroduction }} </p>
                   <form action="introduction/text">
-                    <textarea :style="[{color: contentColor}]" rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
+                    <textarea style="color: #000;" rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
                               :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
                     </textarea>
                     <input type="submit" id="submit2" style="display:none">
@@ -119,8 +119,10 @@
         changeImageNum: 0,
         head: 'http://118.24.113.182:8080/static/image/',
         timer: '',
-        titleColor: '',
-        contentColor: '',
+        titleColor: '#c7ad8b',
+        contentColor: '#333333',
+        pointSelectedStyle: '#ffffff',
+        pointUnselectedStyle: '#ffffff'
         // showChangeTitleColor: false,
         // showChangeContentColor: false,
         // changeColorButton: false,
@@ -168,11 +170,25 @@
         this.$axios.get('/brand/enterpriseIntroduction/get')
           .then(res => {
             if (res.data.data) {
+
               this.worlds = res.data.data
-              console.log(this.worlds)
               this.title = res.data.data.enterpriseName
               this.content = res.data.data.enterpriseIntroduction
               this.videoMp4 = res.data.data.videoUrl
+
+              this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#c7ad8b'
+              this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#333333'
+              this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#ffffff'
+              this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#ffffff'
+
+            } else if (res.data.code == 0) {
+
+              this.$message.error('请在项目管理添加项目！');
+              this.worlds = {
+                enterpriseName: '请输入企业名称',
+                enterpriseIntroduction: '输入企业介绍'
+              }
+
             } else {
               this.worlds = {
                 enterpriseName: '请输入企业名称',
@@ -185,11 +201,17 @@
           })
         this.$axios.post('/brand/enterpriseIntroduction/image/get')
           .then(res => {
-            this.changeImageNum = res.data.data
-            this.images = res.data.data
-            this.images.map((item, index) => {
-              this.images[index].image = this.getImage(item.imageLocation, 3)
-            })
+            if (res.data.data) {
+
+              this.changeImageNum = res.data.data
+              this.images = res.data.data
+              this.images.map((item, index) => {
+                this.images[index].image = this.getImage(item.imageLocation, 3)
+              })
+            }
+            if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
+            }
           })
           .catch(error => {
             console.log(error)
@@ -567,7 +589,7 @@
       height: 100%;
       position: absolute;
       z-index: 1;
-
+      border: 1px dotted #fff;
       img {
         width: 100%;
         height: 100%;
@@ -634,7 +656,6 @@
           height: 50%;
           @include fj(space-between);
           align-items: center;
-
           .title {
             width: 100%;
             height: px2rem(30);
@@ -664,7 +685,6 @@
           float: right;
           margin-top: vertical(20);
           color: #333333;
-
           .content {
             width: 100%;
             text-indent: 2em;

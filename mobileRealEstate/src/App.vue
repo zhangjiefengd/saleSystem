@@ -1,11 +1,7 @@
 <template>
   <div class="all">
     <router-view/>
-<<<<<<< HEAD
-     <top></top>
-=======
     <top></top>
->>>>>>> 80dffc3f9b4343bb4fa3a9d3473cbd19a1128f32
   </div>
 </template>
 

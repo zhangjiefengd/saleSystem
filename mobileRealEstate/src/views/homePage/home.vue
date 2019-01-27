@@ -5,7 +5,7 @@
     </div>
     <div class="projectList">
       <ul class="homeModule">
-        <router-link tag="li" :to="module.url" v-for="(module, index) in moduleIndex" :key="index">
+        <router-link tag="li" :to="module.url" :style="[{backgroundColor: module.bgColor}]" v-for="(module, index) in moduleIndex" :key="index">
           <img :src="module.icon" alt="">
          <span> {{ module.description }} </span>
         </router-link>
@@ -41,14 +41,14 @@
     @include fj(center);
     align-items: center;
     .homeModule {
-      width: px2rem(505);
+      width: 90%;
       height: px2rem(224);
       @include fj(center);
       align-items: center;
       flex-wrap: wrap;
       margin-left: px2rem(-16);
       li {
-        width: px2rem(176);
+        width: 40%;
         height: px2rem(86);
         background-color: #ffffff;
         box-shadow: 0px 8px 10px 0px
@@ -64,7 +64,7 @@
         }
         span {
           color: #000000;
-          @include fontSize(30);
+          @include fontSize(28);
           @include lineHeight(30);
           letter-spacing: .1em;
         }
@@ -92,7 +92,7 @@ export default {
       imgIndexBack: require('../../assets/img/index/首页1.jpg'),
       imgProject: "",
       homeLogo: '',
-      homeBgc: require('../../assets/img/index/首页1.jpg'),
+      homeBgc: require('@/assets/img/homeBackground.png'),
       moduleIndex: [],
       icon: [require('../../assets/img/index/icon1.png'),require('../../assets/img/index/icon2.png'),require('../../assets/img/index/icon3.png'),require('../../assets/img/index/icon4.png')],
       moduleIndex: [
@@ -113,7 +113,11 @@ export default {
           description: "楼盘周边",
           icon: require('../../assets/img/index/icon4.png')
         },
-      ]
+      ],
+      brandBgColor: '#ffffff',
+      projectBgColor: '#ffffff',
+      unitBgColor: '#ffffff',
+      aroundBgColor: '#ffffff',
     }
   },
   created() {
@@ -134,20 +138,24 @@ export default {
             this.moduleIndex.map((item, index) => {
               if (item.url === '/projectIntroduce' && i === 'projectIntroductionBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
+                res.data.data.projectIntroductionNoneStatusStyle ? item.bgColor = this.projectBgColor : ''
               }
               if (item.url === '/brand' && i === 'brandOverviewBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
+                res.data.data.brandOverviewNoneStatusStyle ? item.bgColor = this.brandBgColor : ''
               }
               if (item.url === '/houseType' && i === 'unitDisplayBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
+                res.data.data.unitDisplayNoneStatusStyle ? item.bgColor = this.unitBgColor : ''
               }
               if (item.url === '/nearBy' && i === 'projectAroundBar' && res.data.data[i]) {
                 item.icon = getImage(res.data.data[i], 3)
+                res.data.data.projectAroundNoneStatusStyle ? item.bgColor = this.aroundBgColor : ''
               }
             })
           }
 
-          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('../../assets/img/index/首页1.jpg')
+          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('../../assets/img/homeBackground.png')
         }
       })
     //请求激活的模块

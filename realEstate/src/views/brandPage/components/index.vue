@@ -5,7 +5,7 @@
       <img :src="companyLogo" alt="">
     </div>
     <ul id="LeftWorld">
-      <router-link @click.native="closeLinkInfo" tag="li" v-for="(world, index) in worlds" :key="index" :to="world.address" :class="index==Num?leftBottom:''">
+      <router-link @click.native="closeLinkInfo(index)" tag="li" v-for="(world, index) in worlds" :key="index" :to="world.address" :class="index==Num?leftBottom:''">
         {{ world.name }}
       </router-link>
     </ul>
@@ -49,7 +49,11 @@ export default {
       Num: 0,
       leftBottom: 'leftBottom',
       isShowInfo: false,
-      companyLogo: ''
+      companyLogo: '',
+      clickStatus: '#c1a077',
+      clickedStatus: '#c7ad8c',
+      clickNoneStatus: '#ffffff',
+      upStatus: '#dfc29d'
     }
   },
   created () {
@@ -60,13 +64,64 @@ export default {
       .catch(error => {
         console.log(error)
       })
+    this.$axios.post('/brand/enterpriseStyle/get')
+      .then((res) => {
+        if (res.data.data) {
+          this.clickNoneStatus = res.data.data.brandInfoNoneStatusStyle ? res.data.data.brandInfoNoneStatusStyle : '#ffffff'
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  mounted () {
+    var oUl = document.getElementById('LeftWorld')
+    var oLi = oUl.getElementsByTagName('li')
+    for (let i = 0; i < oLi.length; i++) {
+      if (oLi[i].className === ('router-link-exact-active router-link-active')) {
+        this.Num = i
+      }
+      oLi[i].onmouseover = () => {
+        for (let j = 0; j < oLi.length; j++) {
+          if (this.Num === j) {
+            oLi[j].style.backgroundColor = this.clickedStatus
+            oLi[j].style.color = '#ffffff'
+          }
+        }
+        oLi[i].style.backgroundColor = this.upStatus
+        oLi[i].style.color = '#ffffff'
+      }
+      oLi[i].onmouseleave = () => {
+        for (let j = 0; j < oLi.length; j++) {
+          if (this.Num !== j) {
+            oLi[j].style.backgroundColor = this.clickNoneStatus
+            oLi[j].style.color = '#666666'
+          } else {
+            oLi[j].style.backgroundColor = this.clickedStatus
+            oLi[j].style.color = '#ffffff'
+          }
+        }
+      }
+      oLi[i].onmousedown = () => {
+        oLi[i].style.backgroundColor = this.clickedStatus
+      }
+      oLi[i].onmouseup = () => {
+        for (let j = 0; j < oLi.length; j++) {
+          if (i !== j) {
+            oLi[j].style.backgroundColor = this.clickNoneStatus
+            oLi[j].style.color = '#666666'
+          }
+        }
+      }
+    }
   },
   methods: {
     clickBack: function () {
       this.$router.push({path: '/index'})
     },
-    closeLinkInfo: function () {
+    closeLinkInfo: function (i) {
       this.isShowInfo = false
+      this.Num = i
     },
     showInfo: function () {
       this.isShowInfo = !this.isShowInfo
@@ -133,6 +188,8 @@ export default {
         align-items: center;
         cursor: pointer;
         color: #727272;
+        background-color: #fff;
+        transition: all .5s;
         &:hover {
           background-color: #dfc29d;
         }

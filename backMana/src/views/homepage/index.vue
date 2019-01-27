@@ -271,7 +271,7 @@ import getImage from '../../utils/getImage.js'
                         }
                     }
                     this.$axios.post('/basic/mainPage/update', formdata, config).then( (res) => {
-                        if (red.data.code == 1 ) {
+                        if (res.data.code == 1 ) {
                             this.$message({
                                 message: this.word[3] + '上传成功！',
                                 type: 'success'

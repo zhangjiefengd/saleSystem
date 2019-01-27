@@ -2,21 +2,21 @@
   <div id="enterprise" class="honor">
     <div class="enterpriseImage">
       <transition-group tag="ul" :name="change">
-        <li v-for="(image, index) in images" :key="image" v-show="index == imageNum">
+        <li v-for="(image, index) in images" :key="image.image" v-show="index == imageNum">
           <img :src="image.image" alt="">
         </li>
       </transition-group>
     </div>
 
     <transition-group tag="ul" class="spot">
-      <li v-for="(image, index) in images" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
+      <li v-for="(image, index) in images" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
       <div class="worldIntro">
         <p v-if="worlds.enterpriseIntroduction" :style="[{color: contentColor}]">{{ worlds.enterpriseIntroduction }} </p>
         <p v-else></p>
         <div @click="bigVideo">
-          <img src="../../../assets/img/leftNav/video.jpg" alt="">
+          <img :src="videoIcon" alt="">
         </div>
       </div>
     </div>
@@ -38,12 +38,11 @@ export default {
     return {
       images: '',
       worlds: '',
-      titleColor: '',
+      titleColor: '#c7ad8b',
       contentColor: '#333333',
       worldBgc: '',
-      videoWorld: '',
       videoMp4: '',
-      videoStop: '',
+      videoIcon: require('@/assets/img/leftNav/video.jpg'),
       imageNum: 0,
       timer: '',
       startX: 0,
@@ -51,7 +50,9 @@ export default {
       x: 0,
       change: '',
       head: ip + ':8080/static/image/',
-      conDisplay: 'none'
+      conDisplay: 'none',
+      pointSelectedStyle: '#ffffff',
+      pointUnselectedStyle: '#ffffff'
     }
   },
   created () {
@@ -59,8 +60,11 @@ export default {
       .then(res => {
         if (res.data.data) {
           this.worlds = res.data.data
-          this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#'
+          this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#c7ad8b'
           this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#333333'
+          this.videoIcon = res.data.data.playIcoLocation ? res.data.data.playIcoLocation : require('@/assets/img/leftNav/video.jpg')
+          this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#ffffff'
+          this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#ffffff'
         }
       })
       .catch(error => {
@@ -244,7 +248,7 @@ export default {
       width: px2rem(14);
       height: px2rem(14);
       border-radius: 50%;
-      margin-left: px2rem(5);
+      margin-left: px2rem(30);
       background-color: #ffffff;
     }
     .changeStyle {
@@ -270,9 +274,9 @@ export default {
     }
     .worldIntro {
       position: absolute;
-      right: px2rem(150);
+      right: px2rem(200);
       top: vertical(200);
-      width: 77%;
+      width: px2rem(623);
       height: 68%;
       background-color: #ffffff;
       background-color: rgba(250, 250, 250, 0.85);
@@ -290,13 +294,13 @@ export default {
         }
       }
       >p {
-        width: 100%;
+        width: 90%;
         height: 80%;
-        line-height: px2rem(45);
-        float: right;
+        line-height: px2rem(40);
         text-indent: 2em;
-        letter-spacing: .1em;
         font-size: px2rem(28);
+        letter-spacing: 1px;
+        font-family: FZHTJW--GB1-0;
         margin: vertical(72) px2rem(40) 0 px2rem(30);
         color: #333333;
       }

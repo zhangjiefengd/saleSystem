@@ -34,7 +34,7 @@
                     </div>
                     <div class="word-all">
                       <div class="titleFather">
-                        <p v-if="item.title !== null" class="title" @click="changeTitle(index)"
+                        <p :style="[{color: item.titleColor}]" v-if="item.title !== null" class="title" @click="changeTitle(index)"
                            :class="[{hide: item.titleB}]">{{ item.title }}</p>
 
                         <textarea v-if="item.title !== null" class="title" type="text" autofocus @blur="changeBack(index)"
@@ -42,7 +42,7 @@
                         </textarea>
                       </div>
                       <div class="content1Father">
-                        <p class="content1" v-if="item.content !== null" @click="changeContent(index)"
+                        <p :style="[{color: item.contentColor}]" class="content1" v-if="item.content !== null" @click="changeContent(index)"
                            :class="[{hide: item.contentB}]">{{ item.content }}</p>
 
                         <textarea class="content1" v-if="item.content !== null" type="text" autofocus
@@ -81,13 +81,15 @@
         world: [],
         worldNum: 0,
         contentAuto: false,
-        backgroundImage: '',
+        backgroundImage: require('@/assets/img/background.jpg'),
         cultureImage: '',
         cultureText: [],
         listen: [],
         head: ip + ':8080/static/image/',
         bgcLoading: false,
         cultureLoading: false,
+        defaultTitleColor: '#a0a',
+        defaultContentColor: '#666666',
         logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
       }
     },
@@ -127,9 +129,10 @@
 
             if (res.data.data) {
 
-              console.log(res.data.data)
-              this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3)
+              res.data.data.backgroundImageLocation ? this.backgroundImage = this.getImage(res.data.data.backgroundImageLocation, 3) : ''
               this.cultureImage = this.getImage(res.data.data.mainImageLocation, 3)
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
         this.$axios.get('/brand/enterpriseCulture/get')
@@ -144,7 +147,11 @@
                 item.image = this.logo[index]
                 item.contentB = false
                 item.titleB = false
+                item.titleColor = item.titleStyle ? item.titleStyle : '#666666'
+                item.contentColor = item.fontStyle ? item.fontStyle : '#666666'
               })
+            } else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
             }
           })
           .catch(error => {
@@ -210,7 +217,9 @@
             'id': 0,
             'title': '请编辑文字',
             'content': '请编辑文字',
-            'image': this.logo[this.cultureText.length]
+            'image': this.logo[this.cultureText.length],
+            'titleColor': this.defaultTitleColor,
+            'contentColor': this.defaultContentColor
           })
         } else {
           this.$message({
@@ -481,6 +490,7 @@
           width: 100%;
           height: 50%;
           @include fj();
+          border: 1px dotted #fff;
 
           > img {
             width: 100%;
@@ -563,7 +573,7 @@
                   .titleFather {
                     width: 100%;
                     height: auto;
-                    > p.title {
+                    > .title {
                       width: 100%;
                       font-size: px2rem(28);
                       word-wrap: break-word;
@@ -577,7 +587,8 @@
                   .content1Father {
                     width: 100%;
                     height: auto;
-                    > p.content1 {
+                    > .content1 {
+                      width: 100%;
                       margin: 0;
                       font-size: px2rem(22);
                       word-wrap: break-word;

@@ -158,11 +158,11 @@ export default {
             if (res.data.code == 1) {
                 if (res.data.data && res.data.data.length) {
                     this.totalNum = res.data.data.length;//让页码总数增加
+                    this.allPro = res.data.data;
                 }
             }else if (res.data.code == 0) {
                 this.$message.error('请在项目管理添加项目！');
             }
-            
             
         }).catch((err) => {
             this.$message.error('获取项目失败！请添加项目');
@@ -471,20 +471,26 @@ export default {
         //删除项目
         deleteProject() {
             this.deleteIndex.forEach((data) => {
-                this.$axios.delete('/manage/project/delete?projectInfoId='+data).then((res) => {
-                    this.$message({
-                        message: '删除成功！',
-                        type: 'success'
-                    });     
-                    this.$forceUpdate();
-                    this.totalNum--;
-                    this.isClickSelect ? this.getSelectPage(this.currentPage) : this.getPageInfo(this.currentPage);
-                    this.updateSelectDown();//存省市
-                    // this.router.go(0);     
-                    this.$store.dispatch('changePro', {project: true})
-                }).catch((err) => {
-                    this.$message.error('删除失败！');
-                });
+                var name=confirm("确认删除该项目吗？")
+                if (name==true)
+                {
+                    this.$axios.delete('/manage/project/delete?projectInfoId='+data).then((res) => {
+                        this.$message({
+                            message: '删除成功！',
+                            type: 'success'
+                        });     
+                        this.$forceUpdate( );
+                        this.totalNum--;
+                        this.isClickSelect ? this.getSelectPage(this.currentPage) : this.getPageInfo(this.currentPage);
+                        this.updateSelectDown();//存省市
+                        // this.router.go(0);     
+                        this.$store.dispatch('changePro', {project: true})
+                    }).catch((err) => {
+                        this.$message.error('删除失败！');
+                    }); 
+                }
+                
+                
             });
             // this.contentIndex.forEach((data) => {
             //     this.$forceUpdate();
