@@ -14,8 +14,8 @@
                   <img :src="title.logo" alt="">
                 </div>
                 <div class="word-content">
-                  <h2 v-if="title.content !== null" :style="[{color: titleColor}]">{{ title.title }}</h2>
-                  <p v-if="title.content !== null" :style="[{color: contentColor}]">{{ title.content }}</p>
+                  <h2 v-if="title.content !== null" :style="[{color: title.titleColor}]">{{ title.title }}</h2>
+                  <p v-if="title.content !== null" :style="[{color: title.contentColor}]">{{ title.content }}</p>
                 </div>
               </div>
             </div>
@@ -54,11 +54,11 @@ export default {
     this.$axios.get('/brand/enterpriseCulture/get')
       .then(res => {
         if (res.data.data) {
-          this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
-          this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#666666'
           this.titles = res.data.data
           this.contents = res.data.data.content
           this.titles.map((item, index) => {
+            item.titleColor = item.titleStyle ? item.titleStyle : '#666666'
+            item.contentColor = item.fontStyle ? item.fontStyle : '#666666'
             if (index > 3) {
               item.logo = this.logo[index - 3]
             } else {

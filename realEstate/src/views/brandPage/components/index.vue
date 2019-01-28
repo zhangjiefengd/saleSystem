@@ -82,11 +82,24 @@ export default {
         this.Num = i
       }
       oLi[i].onmouseover = () => {
+        for (let j = 0; j < oLi.length; j++) {
+          if (this.Num === j) {
+            oLi[j].style.backgroundColor = this.clickedStatus
+            oLi[j].style.color = '#ffffff'
+          }
+        }
         oLi[i].style.backgroundColor = this.upStatus
+        oLi[i].style.color = '#ffffff'
       }
       oLi[i].onmouseleave = () => {
-        if (this.Num !== i) {
-          oLi[i].style.backgroundColor = this.clickNoneStatus
+        for (let j = 0; j < oLi.length; j++) {
+          if (this.Num !== j) {
+            oLi[j].style.backgroundColor = this.clickNoneStatus
+            oLi[j].style.color = '#666666'
+          } else {
+            oLi[j].style.backgroundColor = this.clickedStatus
+            oLi[j].style.color = '#ffffff'
+          }
         }
       }
       oLi[i].onmousedown = () => {
@@ -96,6 +109,7 @@ export default {
         for (let j = 0; j < oLi.length; j++) {
           if (i !== j) {
             oLi[j].style.backgroundColor = this.clickNoneStatus
+            oLi[j].style.color = '#666666'
           }
         }
       }

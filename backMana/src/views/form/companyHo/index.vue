@@ -45,10 +45,10 @@
                 <div class="word-line">
                 </div>
                 <li v-for="(world, index) in worlds" v-if="index < 8" :key="index">
-                  <span class="honor-spot"></span>
-                  <span class="world" :class="[{hide: worldAuto}]"
+                  <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
+                  <span :style="[{color: world.honorTextColor}]" class="world" :class="[{hide: worldAuto}]"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
-                  <input class="world" type="text" autofocus @blur="changeback(index)"
+                  <input style="color: #000" class="world" type="text" autofocus @blur="changeback(index)"
                          :value="world.enterpriseHonorInfo"
                          :class="[{hide: !worldAuto}]">
                   <label for="shanchu" class="deleteword" @click="deleteWorld(index)">X</label>
@@ -86,7 +86,9 @@
     name: 'honor',
     data() {
       return {
-        background: {},
+        background: {
+          image: require('@/assets/img/background.jpg')
+        },
         honorPhoto: [],
         honorPhotoListen: [],
         worldLogo: '../../../img/brandBgc/worldLogo.png',
@@ -100,7 +102,9 @@
         imageNum: 0,
         worldAuto: false,
         head: ip + ':8080/static/image/',
-        bgcLoading: false
+        bgcLoading: false,
+        defaultTextColor: '#ffffff',
+        defaultPointColor: '#c7ad8c'
       }
     },
     created() {
@@ -151,6 +155,15 @@
             if (res.data.data) {
               this.worldNum = res.data.data
               this.worlds = res.data.data
+              this.worlds.map(item => {
+
+                if (!item.enterpriseHonorFontstyle) {
+                  item.honorTextColor = '#ffffff'
+                }
+                if (!item.enterpriseHonorPointStyle) {
+                  item.pointStyle = '#c7ad8c'
+                }
+              })
               this.worldlisten = JSON.parse(JSON.stringify(res.data.data))
             } else if (res.data.code == 0) {
               this.$message.error('请在项目管理添加项目！');
@@ -163,6 +176,7 @@
         this.$axios.get('/brand/enterpriseHonor/honorImage/get')
           .then(res => {
             if (res.data.data) {
+
               this.photoNum = res.data.data.length
               this.honorPhoto = res.data.data
               this.honorPhoto.map(item => {
@@ -182,8 +196,10 @@
           .then(res => {
             if (res.data.data) {
               this.background = res.data.data
+
               if (this.background.imageLocation) {
-                this.background.image = this.getImage(this.background.imageLocation, 3)
+
+                this.background.imageLocation ? this.background.image = this.getImage(this.background.imageLocation, 3) : ''
               }
             } else if (res.data.code == 0) {
               this.$message.error('请在项目管理添加项目！');
@@ -211,7 +227,10 @@
       addWorld() {
         if (this.worlds.length < 8) {
           var setWorld = {
-            'enterpriseHonorInfo': '请编辑文字'
+            'enterpriseHonorInfo': '请编辑文字',
+            'honorTextColor': this.defaultTextColor,
+            'pointStyle': this.defaultPointColor
+
           }
           this.$set(this.worlds, this.worlds.length, setWorld)
         } else {
@@ -713,7 +732,7 @@
         @include fj(center);
         align-items: center;
         overflow: hidden;
-
+        border: 1px dotted #fff;
         .left, .right {
           width: transverse(120);
           height: vertical(200);

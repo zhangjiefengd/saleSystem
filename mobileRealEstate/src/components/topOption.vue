@@ -5,7 +5,7 @@
         <li @click="backHome"> <span>首页</span></li>
         <li @click="showCollect" v-show="!isCollect" style="text-align: right"><span>我有意向</span>></li>
       </ul>
-      <div v-show="isCollect">
+      <div v-show="isCollect" class="collectInfo">
 
         <div class="company-info">
           <div class="company-wechat">微信公众号</div>
@@ -283,7 +283,7 @@
   }
   .all-head {
     width: 100%;
-    height: px2rem(50);
+    height: px2rem(48);
     @include fj();
     align-items: flex-end;
     @include fontSize(34);
@@ -293,6 +293,13 @@
       align-items: flex-end;
       cursor: pointer;
     }
+  }
+  .collectInfo {
+    width: 100%;
+    height: calc(100% - 3rem);
+    @include fj(space-around);
+    align-items: center;
+    flex-direction: column;
   }
   .company-info {
     width: 100%;
@@ -323,6 +330,7 @@
     height: px2rem(400);
     margin-top: px2rem(30);
     border-top: px2rem(1) solid #e7e7e7;
+    position: relative;
     >ul {
       width: 100%;
       height: 100%;
@@ -411,16 +419,16 @@
         }
 
         .priceSelect {
-          width: 50.4%;
+          width: 56%;
           height: px2rem(228);
           position: absolute;
-          left: 32%;
-          top: px2rem(530);
+          left: 30%;
+          top: px2rem(130);
           background-color: #ffffff;
           box-shadow: 0px px2rem(5) px2rem(18) 0px rgba(0, 0, 0, 0.1);
           border-radius: 0 0 px2rem(6) px2rem(6);
           overflow: auto;
-
+          z-index: 1000;
           li {
             width: 100%;
             height: px2rem(32);

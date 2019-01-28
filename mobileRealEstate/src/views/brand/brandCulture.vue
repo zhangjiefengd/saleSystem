@@ -108,9 +108,9 @@ export default {
           this.titleColor = res.data.data.titleStyle ? res.data.data.titleStyle : '#666666'
           this.contentColor = res.data.data.fontStyle ? res.data.data.fontStyle : '#999999'
           this.brandCultureNum = res.data.data.length
-          if (this.brandCultureNum > 3) {
-            this.wordRemind = true
-          }
+          // if (this.brandCultureNum > 3) {
+          //   this.wordRemind = true
+          // }
         }
       })
       .catch(error => {
@@ -148,10 +148,11 @@ export default {
   },
   mounted () {
     setTimeout(()=>{
-      if (brandCultureScroll.offsetHeight === brandCultureScroll.scrollHeight) {
-        this.wordRemind = false;
-      }else {
+      console.log(brandCultureScroll.offsetHeight, brandCultureScroll.scrollHeight)
+      if (brandCultureScroll.offsetHeight < brandCultureScroll.scrollHeight) {
         this.wordRemind = true;
+      } else {
+        this.wordRemind = false;
       }
     },100);
     var brandCultureScroll = document.getElementsByClassName('brandCultureScroll')[0];

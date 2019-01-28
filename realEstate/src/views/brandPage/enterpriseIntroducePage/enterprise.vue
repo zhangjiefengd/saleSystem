@@ -248,7 +248,7 @@ export default {
       width: px2rem(14);
       height: px2rem(14);
       border-radius: 50%;
-      margin-left: px2rem(5);
+      margin-left: px2rem(30);
       background-color: #ffffff;
     }
     .changeStyle {
@@ -274,9 +274,9 @@ export default {
     }
     .worldIntro {
       position: absolute;
-      right: px2rem(150);
+      right: px2rem(200);
       top: vertical(200);
-      width: 77%;
+      width: px2rem(623);
       height: 68%;
       background-color: #ffffff;
       background-color: rgba(250, 250, 250, 0.85);
@@ -294,13 +294,13 @@ export default {
         }
       }
       >p {
-        width: 100%;
+        width: 90%;
         height: 80%;
-        line-height: px2rem(45);
-        float: right;
+        line-height: px2rem(40);
         text-indent: 2em;
-        letter-spacing: .1em;
         font-size: px2rem(28);
+        letter-spacing: 1px;
+        font-family: FZHTJW--GB1-0;
         margin: vertical(72) px2rem(40) 0 px2rem(30);
         color: #333333;
       }

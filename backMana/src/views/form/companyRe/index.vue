@@ -47,8 +47,8 @@
                     worlds.enterpriseName
                     }}</p>
                   <form action="introduction/title">
-                    <input :style="[{color: titleColor}]" v-if="worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
-                    <input :style="[{color: titleColor}]" v-if="!worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus value="" :class="[{hide: !titleAuto}]">
+                    <input style="color: #000;" v-if="worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus :value="worlds.enterpriseName" :class="[{hide: !titleAuto}]">
+                    <input style="color: #000;" v-if="!worlds.enterpriseName" @blur="changeTitle" class="title" placeholder="输入企业名称" type="text" autofocus value="" :class="[{hide: !titleAuto}]">
                   </form>
                   <div></div>
                 </div>
@@ -60,7 +60,7 @@
                      :class="[{hide: contentAuto}]">{{
                     worlds.enterpriseIntroduction }} </p>
                   <form action="introduction/text">
-                    <textarea :style="[{color: contentColor}]" rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
+                    <textarea style="color: #000;" rows="15" type="text" placeholder="输入企业介绍" class="content" autofocus @blur="changeContent"
                               :value="worlds.enterpriseIntroduction" :class="[{hide: !contentAuto}]">
                     </textarea>
                     <input type="submit" id="submit2" style="display:none">
@@ -589,7 +589,7 @@
       height: 100%;
       position: absolute;
       z-index: 1;
-
+      border: 1px dotted #fff;
       img {
         width: 100%;
         height: 100%;
@@ -656,7 +656,6 @@
           height: 50%;
           @include fj(space-between);
           align-items: center;
-
           .title {
             width: 100%;
             height: px2rem(30);
@@ -686,7 +685,6 @@
           float: right;
           margin-top: vertical(20);
           color: #333333;
-
           .content {
             width: 100%;
             text-indent: 2em;

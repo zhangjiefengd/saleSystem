@@ -14,12 +14,12 @@
                   <div class="word-time-title">
                     <div>
                       <div>
-                        <span class="word-time" :style="[{color: developStepStyle}]">{{ world.step }}</span>
-                        <span class="word-title" :style="[{color: developTitleStyle}]">{{ world.developTitle }}</span>
+                        <span class="word-time" :style="[{color: world.developStepStyle}]">{{ world.step }}</span>
+                        <span class="word-title" :style="[{color: world.developTitleStyle}]">{{ world.developTitle }}</span>
                       </div>
                     </div>
                   </div>
-                  <div class="word-content"  :style="[{color: developcontentStyle}]">
+                  <div class="word-content"  :style="[{color: world.developcontentStyle}]">
                     {{ world.enterpriseDevelopInfo }}
                   </div>
                 </div>
@@ -53,9 +53,6 @@
         worlds: '',
         number: 0,
         num: 0,
-        developStepStyle: '#ffffff',
-        developTitleStyle: '#e2e2e2',
-        developcontentStyle: '#e2e2e2',
         backBig: '',
         head: ip + ':8080/static/image/',
         conDisplay: 'none',
@@ -67,9 +64,6 @@
       this.$axios.get('/brand/enterpriseDevelop/get')
         .then(res => {
           if (res.data.data) {
-            this.developStepStyle = res.data.data.enterpriseDevelopStepStyle ? res.data.data.enterpriseDevelopStepStyle : '#ffffff'
-            this.developTitleStyle = res.data.data.enterpriseDevelopTitleStyle ? res.data.data.enterpriseDevelopTitleStyle : '#e2e2e2'
-            this.developcontentStyle = res.data.data.enterpriseDevelopFontStyle ? res.data.data.enterpriseDevelopFontStyle : '#e2e2e2'
             this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#d0d0d0'
             this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#d0d0d0'
             this.num = res.data.data.length
@@ -78,6 +72,10 @@
               if (item.enterpriseDevelopImageLocation) {
                 this.worlds[index].image = getImage(item.enterpriseDevelopImageLocation, 1)
               }
+              item.developStepStyle = item.enterpriseDevelopStepStyle ? item.enterpriseDevelopStepStyle : '#ffffff'
+              item.developTitleStyle = item.enterpriseDevelopFontStyle ? item.enterpriseDevelopFontStyle : '#e2e2e2'
+              item.developcontentStyle = item.enterpriseDevelopTitleStyle ? item.enterpriseDevelopTitleStyle : '#e2e2e2'
+
             })
           }
         })

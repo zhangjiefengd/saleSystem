@@ -25,18 +25,11 @@ export default {
       .then(res=>{
 
         if (res.data.data) {
+
+          res.data.data.backgroundImageLocation ? this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 1) : ''
           this.words = res.data.data.content;
         }
     })
-    this.$axios.post('/common/mobileCommonBackgroundImage/get')
-      .then(res => {
-        if (res.data.data) {
-          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
     this.$nextTick(()=>{
       document.title = '项目介绍'
     })
@@ -83,6 +76,7 @@ export default {
         @include lineHeight(48);
         letter-spacing: .1em;
         text-indent: 2em;
+        overflow-y: auto;
       }
     }
   }

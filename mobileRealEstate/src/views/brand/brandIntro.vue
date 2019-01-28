@@ -49,9 +49,9 @@ export default {
       change: '',
       wordRemind: true,
       head: 'http://118.24.113.182:80/',
-      titleColor: '',
-      contentColor: '',
-      videoIcon: '',
+      titleColor: '#c7ad8b',
+      contentColor: '#474747',
+      videoIcon: require('@/assets/img/brand/video.png'),
       backgroundImg: require('@/assets/img/background.png'),
       pointSelectedStyle: '#ffffff',
       pointUnselectedStyle: '#ffffff'
