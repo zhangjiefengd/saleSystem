@@ -120,6 +120,7 @@ export default {
       this.$router.push({path: '/index'})
     },
     closeLinkInfo: function (i) {
+      // console.log(i)
       this.isShowInfo = false
       this.Num = i
     },

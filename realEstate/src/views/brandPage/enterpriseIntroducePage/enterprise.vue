@@ -9,7 +9,7 @@
     </div>
 
     <transition-group tag="ul" class="spot">
-      <li v-for="(image, index) in images" :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
+      <li v-for="(image, index) in images"  :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
       <div class="worldIntro">

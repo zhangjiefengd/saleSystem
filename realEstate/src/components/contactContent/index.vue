@@ -105,6 +105,7 @@ export default {
           this.$axios.get('/manage/project/get').then((respond) => {
               respond.data.data.forEach(data => {
                   if (data.id == res.data.data) {
+                    // console.log(data)
                       this.code = data.projectIdentification;
                       this.qrWord = data.qrDescription;
                       this.qrTel = data.customerPhone;
@@ -160,13 +161,21 @@ export default {
             formdata.append('customer_phone', this.tel);
             formdata.append('customer_price', this.selectPrice);
             formdata.append('house_type', this.houseType);
-                    const config = {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'  
-                        }
-                    }
-            this.$axios.post('https://xymind.net:3000/api/sales_management/customer_information', formdata, config).then((res) => {
-                if (res.data.status == 200) {
+            const config = {
+                headers: {
+    //                 'Content-Type': 'multipart/form-data'  
+                       'Content-Type':'application/json;charset=utf-8'
+                }
+            }
+            var data = {
+              "item_code": "123",
+              "item_name": "兴海物联本部",
+              "customer_phone": "18603053943",
+              "customer_price": "1.0-1.5万元/平",
+              "house_type": "二居室&"
+            }
+            this.$post('/api/sales_management/customer_information', data ,'https://xymind.net:3000').then((res) => {
+                if (res.status == 200) {
                     this.infoDisplay = 'none';
                     this.infoSub = '提交成功'
                     this.successDisplay = 'flex';
