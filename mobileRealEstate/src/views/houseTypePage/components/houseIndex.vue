@@ -117,7 +117,7 @@ export default {
     this.routeClass();
     // document.getElementsByClassName('houseEvery')[0].click();
     // console.log(document.getElementsByClassName('houseEvery')[0]);
-    this.watch();
+    // this.watch();
     this.watchDiv();
   },
   methods: {
@@ -370,7 +370,7 @@ export default {
       this.routeClass();
       // this.addhouseNum();
       // $('.houseEvery').eq(0).css('color', '#c7ad8b');
-      this.watch();
+      // this.watch();
       // this.watchDiv();
       // this.arrowClick();
       // this.houseTypeClick();
