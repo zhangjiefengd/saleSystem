@@ -320,7 +320,7 @@ export default {
     height: 100%;
     // background-image: url('../../../assets/img/index/background.jpg');
     background-repeat: no-repeat;
-    background-size: auto 100%;
+    background-size: 100% 100%;
     // background-color: #1E1E1E;
     // background-color: #202020;
     // @include fj(center);
@@ -387,7 +387,7 @@ export default {
         }
         .pageNum {
             width: 100%;
-            height: 6.4%;
+            height: 10%;
             // background-color: #fff;
             position: relative;
             span {

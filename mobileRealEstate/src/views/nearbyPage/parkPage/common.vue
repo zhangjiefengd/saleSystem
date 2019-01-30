@@ -28,7 +28,7 @@ export default {
       .post("/surround/surroundingFacilities/get")
       .then(res => {
         if (res.data.data) {
-          res.data.data.imageLocation ? this.map = getImage(res.data.data.imageLocation, 3) :'';
+          res.data.data.imageLocation ? this.map = getImage(res.data.data.imageLocation, 1) :'';
         }
       })
       .catch(error => {
@@ -207,7 +207,7 @@ export default {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: 100% 100%;
   position: relative;
   // background-image: url('../../../assets/img/index/background.jpg');
   // @include fj(center);

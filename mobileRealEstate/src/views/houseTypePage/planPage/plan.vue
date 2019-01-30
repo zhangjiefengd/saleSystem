@@ -191,7 +191,7 @@ export default {
   }
   .pageNum {
     width: 100%;
-    height: 6.4%;;
+    height: 10%;;
             // background-color: #fff;
     position: relative;
             span {

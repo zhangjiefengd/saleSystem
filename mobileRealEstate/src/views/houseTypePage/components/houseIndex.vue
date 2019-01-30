@@ -387,7 +387,7 @@ export default {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
-    background-size: auto 93%;
+    background-size: 100% 93%;
     // background-image: url('../../../assets/img/index/background.jpg');
     // background-color: #202020;
     @include fj();
