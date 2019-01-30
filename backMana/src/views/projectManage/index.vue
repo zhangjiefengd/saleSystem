@@ -49,44 +49,44 @@
                     @select-all='selectAll'>
                     <el-table-column
                     type="selection"
-                    width="55">
+                    min-width="5.8%">
                     </el-table-column>
                     <el-table-column
                     prop="id"
                     label="项目标识"
-                    width="120">
+                    min-width="12.6%">
                     </el-table-column>
                     <el-table-column
                     prop="province"
                     label="省/市"
-                    width="130">
+                    min-width="13.6%">
                     </el-table-column>
                     <el-table-column
                     prop="city"
                     label="市/区"
-                    width="130">
+                    min-width="13.6%">
                     </el-table-column>
                     <el-table-column
                     label="项目"
-                    width="130"
+                    min-width="13.6%"
                     type=5>
                         <template slot-scope="scope"><a href='javascript:;'>{{scope.row.projectName}}</a></template>
                     </el-table-column>
                     <el-table-column
                     prop="contact"
                     label="联系电话"
-                    width="130">
+                    min-width="13.6%">
                     </el-table-column>
                     <el-table-column
                     prop="projectDes"
                     label="二维码描述"
-                    width="130"
+                    min-width="13.6%"
                     type=7>
                     </el-table-column>
                     <el-table-column
                     prop="projectPic"
                     label="二维码"
-                    width="130"
+                    min-width="13.6%"
                     type=7>
                         <template slot-scope="scope"><a href='javascript:;'>点击查看</a></template>
                     </el-table-column>
