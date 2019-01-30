@@ -201,7 +201,7 @@ export default {
                 }).catch((err) => {
                     // alert('提交失败!');
                     this.infoDisplay = 'none';
-                    this.infoSub = '提交失败';
+                    this.infoSub = '系统异常，请稍后重试';
                     this.successDisplay = 'flex';
                     this.$forceUpdate();
                     this.imgSub = fail;
@@ -227,7 +227,7 @@ export default {
             }
         } else {
                 this.infoDisplay = 'none';
-                this.infoSub = '系统异常，请稍后重试';
+                this.infoSub = '请输入电话号码';
                 this.successDisplay = 'flex';
                 this.$forceUpdate();
                 this.imgSub = fail;
