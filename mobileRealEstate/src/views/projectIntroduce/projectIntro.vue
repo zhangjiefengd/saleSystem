@@ -56,7 +56,7 @@ export default {
   position: relative;
   .wordIntro {
     width: 100%;
-    height: px2rem(340);
+    height: 40%;
     color: #000000;
     background-color: #d1d1d1;
     opacity: .7;

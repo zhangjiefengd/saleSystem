@@ -245,17 +245,17 @@ export default {
     padding-top: px2rem(3);
     @include fj(center);
     li {
-      width: px2rem(14);
-      height: px2rem(14);
+      width: px2rem(15);
+      height: px2rem(15);
       border-radius: 50%;
       margin-left: px2rem(30);
       background-color: #ffffff;
     }
     .changeStyle {
-      width: px2rem(20);
-      height: px2rem(20);
+      width: px2rem(34);
+      height: px2rem(15);
       margin-top: px2rem(-3);
-      border-radius: 50%;
+      border-radius: 7px;
       background-color: #ffffff;
     }
   }
@@ -287,6 +287,7 @@ export default {
         margin-right: px2rem(50);
         @include fj(space-between);
         align-items: center;
+        cursor: pointer;
         >img {
           width: 100%;
           height: 100%;
@@ -294,15 +295,15 @@ export default {
         }
       }
       >p {
-        width: 90%;
+        width: 85%;
         height: 80%;
         line-height: px2rem(40);
         text-indent: 2em;
         font-size: px2rem(28);
         letter-spacing: 1px;
-        font-family: FZHTJW--GB1-0;
-        margin: vertical(72) px2rem(40) 0 px2rem(30);
+        margin: px2rem(50) px2rem(50) 0 px2rem(50);
         color: #333333;
+        font-family: 'FZHei';
       }
     }
   }

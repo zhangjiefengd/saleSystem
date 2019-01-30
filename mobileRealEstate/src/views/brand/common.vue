@@ -40,14 +40,16 @@ export default {
       Num: 0,
       leftBottom: 'leftBottom',
       borderRight: 'borderRight',
-      backgroundImage: '',
+      backgroundImage: require('@/assets/img/background.png'),
       head: 'http://118.24.113.182:80/'
     }
   },
   created(){
-    this.$axios.get('/brand/enterpriseCulture/image/get')
+    this.$axios.post('/common/mobileCommonBackgroundImage/get')
       .then(res => {
-        this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 3)
+        if (res.data.data) {
+          res.data.data ? this.backgroundImage = getImage(res.data.data, 1) : ''
+        }
       })
       .catch(error => {
         console.log(error)

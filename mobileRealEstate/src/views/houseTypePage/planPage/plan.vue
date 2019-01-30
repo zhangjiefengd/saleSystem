@@ -2,7 +2,7 @@
 <!-- :style="{backgroundImage: 'url(' + imgPlanBack + ')'}" -->
 <!-- v-lazy:background-image='imgPlanBack' -->
   <div class="content">
-    <img :src='imgPlanBack' alt="" class="picA" id="targetObj" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
+    <img v-show='imgPlanBack' :src='imgPlanBack' alt="" class="picA" id="targetObj" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
     <!-- <img src="../../../assets/img/rightHouseNav/fullScreen.png" class="full"> -->
     <div class="pageNum">
       <span>1/1</span>

@@ -9,11 +9,15 @@ import global from './http/Global.vue'
 import getElement from './utils/getElement'
 import $ from 'jquery'
 
+import {post,get} from './http/http.js'
+Vue.prototype.$post = post;
+Vue.prototype.$get = get;
+
 Vue.prototype.$get = getElement
 
 Vue.prototype.GLOBAL = global
 Axios.defaults.baseURL = global.BASE_URL
-Axios.defaults.withCredentials = true;
+Axios.defaults.withCredentials = false;
 Vue.prototype.$axios = Axios;
 
 Vue.config.productionTip = false

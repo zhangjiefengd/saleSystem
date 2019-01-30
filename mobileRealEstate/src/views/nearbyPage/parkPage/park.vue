@@ -6,7 +6,7 @@
         </div>
         <div class="middle" >
             <div class="pic">
-                <img class="conPic" style="width:100%;" v-show="check" @click="scale()" v-for="a in img" :src="a" alt="" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
+                <img class="conPic" style="width:100%;" v-show="img" @click="scale()" v-for="a in img" :src="a" alt="" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
             </div>
             <div class="intro">
                 <!-- <img src='../../../assets/img/rightHouseNav/fullScreen.png' style="visibility: hidden;"> -->

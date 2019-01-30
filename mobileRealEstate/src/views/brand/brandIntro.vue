@@ -1,5 +1,5 @@
 <template>
-  <div class="brandIntro" :style="[{backgroundImage: 'url(' + backgroundImg + ')'}]">
+  <div class="brandIntro">
     <div class="brandIntroLunbo">
       <div class="brandIntroPhoto touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
         <transition-group tag="ul" :name="change">
@@ -107,10 +107,10 @@ export default {
     var parentBox = document.getElementsByClassName('brandIntroWordContent')[0]
     var contentBox = document.getElementsByClassName('brandIntroContent')[0]
     setTimeout(()=>{
-      if (contentBox.offsetHeight == parentBox.scrollHeight) {
-        this.wordRemind = false;
-      }else {
+      if (contentBox.offsetHeight >= parentBox.offsetHeight) {
         this.wordRemind = true;
+      } else {
+        this.wordRemind = false;
       }
     },100);
     var brandWorldScroll = document.getElementsByClassName('brandIntroWordContent')[0];

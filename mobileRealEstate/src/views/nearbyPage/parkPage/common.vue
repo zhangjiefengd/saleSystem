@@ -5,7 +5,7 @@
       <!--<top/>-->
     </div>
     <div class="imgBox">
-      <img id="targetObj" @click="scale" style="position:absolute;transform-origin:center" :src="map">
+      <img v-show='map' id="targetObj" @click="scale" style="position:absolute;transform-origin:center" :src="map">
     </div>
     <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->
     <!-- <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt="" @click="goHistory()"> -->
