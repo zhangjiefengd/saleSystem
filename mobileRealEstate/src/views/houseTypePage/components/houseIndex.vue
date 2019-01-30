@@ -484,11 +484,10 @@ export default {
           height: 100%;
           position: relative;
           @include fj(center);
-          // overflow: hidden;
         }
 
         .oneHouse {
-          min-width: px2rem(162);
+          min-width: px2rem(92);
           height: 100%;
           @include fj();
           align-items: center;
