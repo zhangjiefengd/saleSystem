@@ -18,7 +18,9 @@ import VueLazyload from 'vue-lazyload'
 import pic from './assets/img/index/loading.jpg'
 import Contact from './components/haveContact'
 // import './styles/mixin.scss'
-
+import {post,get} from './http/http.js'
+Vue.prototype.$post = post;
+Vue.prototype.$get = get;
 
 Vue.use(VueLazyload, {
   preload: 1.3,//预加载的宽高
@@ -34,7 +36,7 @@ Vue.use(VueLazyComponent)
 Vue.prototype.GLOBAL = global
 Axios.defaults.baseURL = global.BASE_URL
 
-Axios.defaults.withCredentials = true;
+Axios.defaults.withCredentials = false;
 Vue.prototype.$axios = Axios;
 Vue.use(VueVideoPlayer);
 Vue.use(luyou)
