@@ -480,7 +480,7 @@ export default {
           align-items: center;
         }
         >div {
-          width: px2rem(656);
+          width: 90%;
           height: 100%;
           position: relative;
           @include fj(center);
