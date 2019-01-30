@@ -1,7 +1,7 @@
 <template>
     <div id="leftNavBar">
         <div class="leftLogo">
-            <img :src="imgLogo" alt=""/>
+            <img v-show='imgLogo' :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
             <router-link class="nav" tag="div" v-for="(word, index) in words" :key="index"  @mouseover.native="hover(index)" @mouseout.native="hoverOut(index)" @mousedown.native="mouseDown(index)" @mouseup.native="leave(index)" @click.native="changeColor(index)"  :to="word.toUrl" >

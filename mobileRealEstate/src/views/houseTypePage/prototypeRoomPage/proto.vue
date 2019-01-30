@@ -322,7 +322,7 @@ export default {
     }
     .pageNum {
         width: 100%;
-        height: px2rem(38);
+        height: 6.4%;
             // background-color: #fff;
         position: relative;
         span {

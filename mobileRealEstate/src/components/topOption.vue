@@ -198,7 +198,7 @@
               'Content-Type': 'multipart/form-data'
             }
           }
-          this.$axios.post('https://xymind.net:3000/api/sales_management/customer_information', formdata, config)
+          this.$axios.post('https://iot.xhmind.com:3000/api/sales_management/customer_information', formdata, config)
             .then((res) => {
               if (res.data.status === 200) {
                 this.infoRemind = true

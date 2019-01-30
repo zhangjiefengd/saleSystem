@@ -1,6 +1,6 @@
 <template>
 <!-- v-lazy:background-image='imgProjectBack' -->
-  <div class="projectIntroduce" v-show="check" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
+  <div class="projectIntroduce" v-show="imgProjectBack" :style="{backgroundImage: 'url(' + imgProjectBack + ')'}">
       <div class="projectWord" :style='{backgroundColor: fontBackgroundStyle}'>
           <div class="wordTitle" :style='{backgroundColor: titleBackgroundStyle}'>
               <span :style='{color: titleColor}'>项目介绍</span>
@@ -10,7 +10,7 @@
           </div>
       </div>
       <div class="backImage"  @click="clickBack">
-        <img src="@/assets/img/brandBGC/back.png" alt="">
+        <img src="../../assets/img/goHouseHistory/goHistory.png" alt="">
       </div>
       <contact @haveCon='haveCon'></contact>
       <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
@@ -42,7 +42,7 @@ export default {
     //请求首页项目图片和背景图片
     this.$axios.get("/project/info/get")
     .then(res => {
-      if (res.data.code == 1) {
+      if (res.data.code == 1 && res.data.data) {
         if (screen.width > 1024){
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
         }else {
@@ -118,7 +118,7 @@ export default {
   width: 100%;
   height: 100%;
   // filter: blur(4px);
-  transition: all 0.7s;
+  // transition: all 0.7s;
   .projectWord {
       width: px2rem(509);
       height: px2rem(924);

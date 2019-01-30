@@ -5,8 +5,8 @@
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
             </div>
             <div class="middleHouse">
-                <div class="bigPic" :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrlMin + ')'}">
-
+                <div class="bigPic" v-show='picUrlMin' :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrlMin + ')'}">
+                    <span >加载中...</span>
                 </div>
                 <right @event='getPicUrl' @eventB='checkEffect' @checkVR='checkVR' @haha='haha' :intial=1 ref="rightA"></right>
             </div>
@@ -82,11 +82,14 @@ export default {
         getPicUrl(clickUrl) {
             // this.check++;
             this.picUrl = clickUrl;
+            const ele = document.querySelector('.bigPic');
+            const span = ele.getElementsByTagName('span')[0];
+            span.style.display = 'block';
             this.picUrlMin = getImage(clickUrl, 5);
             if (screen.width > 1024) {
-                this.picUrlBig = getImage(clickUrl, 1);
-            } else {
                 this.picUrlBig = getImage(clickUrl, 2);
+            } else {
+                this.picUrlBig = getImage(clickUrl, 3);
             }
         },
         chuFa(val, val2) {
@@ -125,7 +128,7 @@ export default {
         contactContent
     },
     watch: {
-        picUrl() {
+        picUrlBig() {
             var ele = document.querySelector('.bigPic');
             var imgUrl = this.picUrlBig;
             var imgObject = new Image();
@@ -135,6 +138,8 @@ export default {
                 this.imgBack = imgUrl;
                 // console.log(this.imgProjectBack);
                 ele.style.backgroundImage = 'url(' + this.imgBack + ')';
+                const span = ele.getElementsByTagName('span')[0];
+                span.style.display = 'none';
                 // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
                 ele.setAttribute('class', 'bigPic complete');
                 
@@ -182,11 +187,18 @@ export default {
                 width: px2rem(1107);
                 height: 100%;
                 margin-left: transverse(95);
-                border: px2rem(6) solid white;
+                border: px2rem(3) solid;
+                border-bottom: px2rem(5) solid;
+                // border-style: solid;
+                box-sizing: border-box;
                 background-repeat: no-repeat;
-                background-size: percentage(1094 / 1098) percentage(761 / 765);
-                filter: blur(10px);
-                transition: all 0.7s;
+                background-size: 100% 100%;
+                @include fj(center);
+                align-items: center;
+                span {
+                    @include sc(px2rem(40), white);
+                    font-style:italic;
+                }
             }
             .complete {
                 filter: blur(0);

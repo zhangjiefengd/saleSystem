@@ -37,8 +37,11 @@ export default {
     created() {
         //请求户类型
         this.$axios.get("/house/houseType/get").then(res => {
-            this.houseName = res.data.data[0].houseTypeName;
-            this.id = res.data.data[0].id;
+            if(res.data.data) {
+                this.houseName = res.data.data[0].houseTypeName;
+                this.id = res.data.data[0].id;
+            }
+            
         }).catch(error => {
             console.log(error);
         });

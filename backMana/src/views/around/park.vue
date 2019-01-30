@@ -126,7 +126,7 @@ export default {
     created() {
         this.$axios.get("/surround/publicUtilities/get")
         .then(res => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 res.data.data.forEach((content, i) => {
                     if (content.imageType == 1) {
                         this.public.push(content);

@@ -1,6 +1,6 @@
 <template>
 <!-- :style="{backgroundImage: 'url(' + imgPlanBack + ')'}" -->
-  <div class="content" style="background-color:#F2EBE1" :style="{backgroundImage: 'url(' + imgPlanBack + ')'}">
+  <div class="content" v-show='imgPlanBack' style="background-color:#F2EBE1" :style="{backgroundImage: 'url(' + imgPlanBack + ')'}">
     <div id="changePosition">
       <div class="topHouse">
         <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
@@ -54,9 +54,9 @@ export default {
                 if(this.dataAll.houseTypeImageLocation) {
                   this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 5);
                   if (screen.width > 1024){
-                    this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 1);
-                  }else {
                     this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 2);
+                  }else {
+                    this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 3);
                   }
                 }else {
                   this.imgPlanBack = no;
@@ -96,9 +96,9 @@ export default {
             if(this.dataAll.houseTypeImageLocation) {
               this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 5);
               if (screen.width > 1024){
-                this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 1);
-              }else {
                 this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 2);
+              }else {
+                this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 3);
               }
             }else {
               this.imgPlanBack = no;
@@ -120,9 +120,9 @@ export default {
             if(this.dataAll.houseTypeImageLocation) {
               this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 5);
               if (screen.width > 1024){
-                this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 1);
-              }else {
                 this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 2);
+              }else {
+                this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 3);
               }
               this.$forceUpdate();
             }else {
@@ -152,7 +152,7 @@ export default {
       },
       //得到户型
       getHouseTwo() {
-        this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 1);
+        this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 2);
       },
       changeCate() {
             
@@ -199,7 +199,7 @@ export default {
     height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    filter: blur(4px);
+    // filter: blur(4px);
     transition: all 0.7s;
     position: relative;
     // img {

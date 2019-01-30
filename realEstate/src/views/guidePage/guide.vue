@@ -2,7 +2,7 @@
 <!-- :style="{backgroundImage: 'url(' + imgBack + ')'}"  -->
   <div class="guidePage"  v-show="check" :style="{backgroundImage: 'url(' + imgBack + ')'}" @click="goIndex()">
     <div class="content">
-      <img :src=imgLogo alt="logo" class="guideLogo">
+      <img v-show='imgLogo' :src=imgLogo alt="logo" class="guideLogo">
       <!-- <div class="click">
         <img src="../../assets/img/guidePage/click.png"/>
         <span>·点击探索·</span>
@@ -43,7 +43,7 @@ export default {
     //获取引导页数据
     this.$axios.get("/basic/guidePage/get")
     .then((res) => {
-      if (res.data.code == 1) {
+      if (res.data.code == 1 && res.data.data) {
         if (screen.width > 1024){
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
           res.data.data.projectLogoLocation ? this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1) : '';

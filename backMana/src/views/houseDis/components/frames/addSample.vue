@@ -50,7 +50,7 @@ export default {
         //请求房间类型
         this.$axios.get('/house/roomType/get').then((res) => {
 
-            this.roomType = res.data.data;
+             res.data.data ? this.roomType = res.data.data : '';
         }).catch((err) => {
             this.$message.error('获取房间类型失败！');
         });

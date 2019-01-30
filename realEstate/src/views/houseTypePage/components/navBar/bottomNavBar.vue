@@ -40,7 +40,7 @@ export default {
         });
         this.$axios.get("/house/houseTypeStyle/get")
         .then((res) => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 res.data.data.houseTypeSwitchClickedStatusStyle ? this.botSelect = res.data.data.houseTypeSwitchClickedStatusStyle   : "";
                 res.data.data.houseTypeSwitchFontNoneStatusStyle  ? this.noneFont = res.data.data.houseTypeSwitchFontNoneStatusStyle    : "";
                 res.data.data.houseTypeSwitchFontClickedStatusStyle  ? this.clickFont = res.data.data.houseTypeSwitchFontClickedStatusStyle    : "";

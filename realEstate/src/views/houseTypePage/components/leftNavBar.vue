@@ -1,7 +1,7 @@
 <template>
     <div id="leftNavBar" :style='{backgroundColor: backColor}'>
         <div class="leftLogo">
-            <img :src="imgLogo" alt=""/>
+            <img v-show='imgLogo' :src="imgLogo" alt=""/>
         </div>
         <div id="leftWorld">
             <div name='houseTypeChoose' v-for="(world,index) in worlds" :key="index" @mouseover="hover(index)" @mouseout="hoverOut(index)" @mousedown="mouseDown(index)" @mouseup="leave(index)" @click="changeColor(index)" :class="[{changeColor: index==changeIndex}]" >
@@ -52,7 +52,7 @@ import getImage from '../../../ultis/getImage.js'
         });
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 this.worlds = res.data.data;
             }
             
@@ -62,7 +62,7 @@ import getImage from '../../../ultis/getImage.js'
         });
         this.$axios.get("/house/houseTypeStyle/get")
         .then((res) => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 res.data.data.houseTypeNavigationNoneStatusStyle  ? this.backColor = res.data.data.houseTypeNavigationNoneStatusStyle  : "";
                 res.data.data.houseTypeNavigationSuspensionStatusStyle ? this.navHover = res.data.data.houseTypeNavigationSuspensionStatusStyle : "";
                 res.data.data.houseTypeNavigationClickStatusStyle ? this.navClick = res.data.data.houseTypeNavigationClickStatusStyle : "";
@@ -163,7 +163,7 @@ import getImage from '../../../ultis/getImage.js'
         // flex-direction: column;
         // align-items: center;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: auto;
         @include scrollBarTwo();
         div {
             width: 100%;

@@ -75,7 +75,7 @@
                     <el-table-column
                     prop="contact"
                     label="联系电话"
-                    show-overflow-tooltip>
+                    width="130">
                     </el-table-column>
                     <el-table-column
                     prop="projectDes"
@@ -100,7 +100,7 @@
                 </el-pagination>
             </div>
             <div class="sureSub">
-                <el-button @click="deleteProject" type="danger"  plain>确认删除</el-button>
+                <el-button @click="deleteProject" type="danger" :disabled="disabled"  plain>确认删除</el-button>
             </div>
         </div>
         <div class="markPro" :style="{display: markVisibility}">
@@ -147,6 +147,7 @@ export default {
             deleteIndex: [],//删除的id
             contentIndex: [],//删除的content的索引
             currentPage: 0,//当前页码
+            disabled: true
         }
     },
     created() {
@@ -248,10 +249,10 @@ export default {
                 concurrentPage: page, 
                 pageSize: 7
             }, config).then((res) => {
-                if (res.data.code == 1) {
+                if (res.data.code == 1 && res.data.data) {
                     this.tableContent = [];//清空
                     this.tableExtra = [];
-                    res.data.data.pageData.forEach((data) => {
+                    res.data.data.pageData && res.data.data.pageData.forEach((data) => {
                         this.tableContent.push({
                             id: data.projectIdentification,
                             province: data.province,
@@ -460,6 +461,12 @@ export default {
                     }
                 });
             });
+            this.$forceUpdate();
+            if(this.deleteIndex.length) {
+                this.disabled = false;
+            } else {
+                this.disabled = true;
+            }
         },
         selectAll(selection) {
             this.deleteIndex = [];
@@ -470,6 +477,7 @@ export default {
         },
         //删除项目
         deleteProject() {
+            
             this.deleteIndex.forEach((data) => {
                 var name=confirm("确认删除该项目吗？")
                 if (name==true)

@@ -1,6 +1,6 @@
 <template>
   <div class="indexPage"  v-show="check" :style="{backgroundImage: 'url(' + imgIndexBack + ')'}" >
-    <img :src="imgProject" alt="projectImg" class="projectImg">
+    <img v-show='imgProject' :src="imgProject" alt="projectImg" class="projectImg">
     <div class="module">
       <div class="smallNav" v-for="(m, a) in word" @click="skip(url[a])">
         <img :src="icon[a]" alt="" class="navLogo">
@@ -32,7 +32,7 @@ export default {
     //请求首页项目图片和背景图片
     this.$axios.get("/basic/mainPage/get")
     .then(res => {
-      if (res.data.code == 1) {
+      if (res.data.code == 1 && res.data.data) {
         if (screen.width > 1024){
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
           res.data.data.projectLogoLocation ? this.imgProBig = getImage(res.data.data.projectLogoLocation, 1) : '';
@@ -165,7 +165,8 @@ export default {
 
 .indexPage {
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 60.9%;
+  background-color: white;
   width: 100%;
   height: 100%;
   // filter: blur(4px);

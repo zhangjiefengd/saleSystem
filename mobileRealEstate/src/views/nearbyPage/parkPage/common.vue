@@ -208,9 +208,10 @@ export default {
   height: 100%;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  position: relative;
   // background-image: url('../../../assets/img/index/background.jpg');
-  @include fj(center);
-  align-items: center;
+  // @include fj(center);
+  // align-items: center;
   .header {
     width: 100%;
     height: px2rem(61);
@@ -220,12 +221,14 @@ export default {
   >.imgBox {
     width: 100%;
     height: px2rem(541);
-    position: relative;
+    position: absolute;
+    top: 18.8%;
   }
   #targetObj {
     width: 100%;
     height: px2rem(541);
     z-index: 1;
+    
   }
   #come {
     width: px2rem(64);

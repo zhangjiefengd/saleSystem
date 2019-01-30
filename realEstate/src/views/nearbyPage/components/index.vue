@@ -22,7 +22,7 @@ export default {
   created() {
         this.$axios.get("/surround/surroundingTypeStyle/get")
         .then((res) => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                
                 res.data.data.surroundingBackgroundImageLocation ? this.back = res.data.data.surroundingBackgroundImageLocation : '';
             }

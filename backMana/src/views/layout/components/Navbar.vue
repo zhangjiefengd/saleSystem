@@ -113,7 +113,7 @@ export default {
       this.allProject = [];
       this.nowPro = "";
       this.$axios.get('/manage/project/get').then((res) => {
-        if (res.data.code == 1) {
+        if (res.data.code == 1  && res.data.data) {
           //存省
           res.data.data.forEach((data) => {
             this.projects.unshift({

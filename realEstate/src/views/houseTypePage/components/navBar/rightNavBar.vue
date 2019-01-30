@@ -158,10 +158,10 @@ export default {
     },
     watch: {
         dataAll() {
-            if (this.imgSrc && this.imgSrc[0]) {
-                this.clickUrl = this.imgSrc[0].sampleRoomImageLocation;
-                this.$emit('event', this.clickUrl);
-            }
+            // if (this.imgSrc && this.imgSrc[0]) {
+            //     this.clickUrl = this.imgSrc[0].sampleRoomImageLocation;
+            //     this.$emit('event', this.clickUrl);
+            // }
         },
         //进行模糊渲染
         imgSrc() {
@@ -171,9 +171,9 @@ export default {
             let imgObject = [];
             for (let i = 0; i < this.imgSrc.length; i++) {
                 if (screen.width > 1024){
-                    imgUrl[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 1);
-                }else {
                     imgUrl[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 2);
+                }else {
+                    imgUrl[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 3);
                 }  
                 // imgUrl[i] = this.imgSrc[i].houseTypeImage.image.fileName;
                 imgObject[i] = new Image();
@@ -277,12 +277,12 @@ export default {
             .smallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(6) solid transparent;
+                border: px2rem(4) solid transparent;
                 
                 .imgRight {
                     width: 100%;
                     height: 100%;
-                    filter: blur(4px);
+                    // filter: blur(4px);
                     transition: all 0.7s;
                 }
                 .complete {
@@ -292,13 +292,13 @@ export default {
             .addSmallRight {
                 height: 100%;
                 width: px2rem(235);
-                border-width: px2rem(6);
+                border-width: px2rem(4);
                 border-style: solid;
                 // border-color: white;
                 .imgRight {
                     width: 100%;
                     height: 100%;
-                    filter: blur(4px);
+                    // filter: blur(4px);
                     transition: all 0.7s;
                 }
                 .complete {

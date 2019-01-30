@@ -4,7 +4,7 @@
             <div class="Title"><span>样板间</span></div>
             <div class="pic">
                 <div class="add" ref="add" v-for="(house, i) in sampleRoomImage">
-                    <img :src="getImage(house.sampleRoomImageLocation, 2)" @click='handlePictureCardPreview(getImage(house.sampleRoomImageLocation, 1))'>
+                    <img :src="getImage(house.sampleRoomImageLocation, 4)" @click='handlePictureCardPreview(getImage(house.sampleRoomImageLocation, 2))'>
                     <img :src="chaPic" id="cha" class="chaOne" @click='deleteSample(i, house)'>
                     <div class="bottomDiv">{{ house.roomTypeName }}展示图</div>
                 </div>
@@ -15,7 +15,7 @@
             <div class="Title"><span>户型图</span></div>
             <div class="pic">
                 <div class="addThree">
-                    <img @click='addHouseTypePic' :src='houseTypeImage && houseTypeImage.houseTypeImageLocation ? getImage(houseTypeImage.houseTypeImageLocation,1) : addBig' id="ha" class="duTe">
+                    <img @click='addHouseTypePic' :src='houseTypeImage && houseTypeImage.houseTypeImageLocation ? getImage(houseTypeImage.houseTypeImageLocation,4) : addBig' id="ha" class="duTe">
                     <img :src="chaPic" id="cha" class="chaOne"  :style="{display: chaDisplay}" @click='deleteHouseTypePic'>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export default {
         //首先呈现户型一的相关内容
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 this.title = res.data.data;
                 if(this.title[0]) {
                     if (this.title[0].houseTypeVrUrl) {
@@ -91,17 +91,19 @@ export default {
                     this.projectId = this.title[0].id;
                     //请求样板间
                     this.$axios.get('/house/sampleRoomImage/get?houseTypeId=' + this.title[0].id).then((res) => {
-                        this.sampleRoomImage = res.data.data;
+                         res.data.data ? this.sampleRoomImage = res.data.data : '';
                     }).catch((err) => {
                         this.$message.error('获取样板间失败！');
                     });
                     //请求户型图
                     this.$axios.get('/house/houseTypeImage/get?houseTypeId=' + this.title[0].id).then((res) => {
-                        this.houseTypeImage = res.data.data;
-                        if (this.houseTypeImage) {
-                            this.chaDisplay = 'block';
-                        } else {
-                            this.chaDisplay = 'none';
+                        if(res.data.data){ 
+                            this.houseTypeImage = res.data.data;
+                            if (this.houseTypeImage) {
+                                this.chaDisplay = 'block';
+                            } else {
+                                this.chaDisplay = 'none';
+                            }
                         }
                     }).catch((err) => {
                         this.$message.error('获取户型图失败！');

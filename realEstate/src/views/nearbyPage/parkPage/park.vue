@@ -5,8 +5,8 @@
                 <img src="../../../assets/img/goHouseHistory/goHistory.png" @click="goHistory()">
             </div>
             <div class="middleHouse">
-                <div class="bigPic" :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrl + ')'}">
-
+                <div class="bigPic" v-show='picUrl' :style="{borderColor: borderColor,backgroundImage: 'url(' + picUrl + ')'}">
+                    <span :style='{spanDisplay: spanDisplay}'>加载中...</span>
                 </div>
                 <right @event='getPicUrl' @eventB='checkEffect' :intial=2 ref="rightA"></right>
             </div>
@@ -23,6 +23,7 @@ import bottom from '../components/bottomNavBar'
 import right from "../components/rightNavBar";
 import contact from '../../../components/haveContact'
 import contactContent from '../../../components/contactContent'
+import getImage from '../../../ultis/getImage.js'
 export default {
     data() {
         return {
@@ -33,15 +34,17 @@ export default {
             housePlans: [],
             intial: 2,
             conDisplay: 'none',
-            borderColor: '#ffffff'
+            borderColor: '#ffffff',
+            imgBack: '',
+            picUrlBig: '',
+            spanDisplay: 'block'
         }
     },
     created() {
         this.$axios.get("/surround/surroundingTypeStyle/get")
         .then((res) => {
             if (res.data.code == 1) {
-                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
-                
+                res.data.data.surroundingBorderStyle   ? this.borderColor = res.data.data.surroundingBorderStyle     : "";
             }
         })
         .catch(error => {
@@ -57,7 +60,15 @@ export default {
             this.$router.push('/index') 
         },
         getPicUrl(clickUrl) {
-            this.picUrl = clickUrl;
+            this.picUrl = getImage(clickUrl, 5);
+            const ele = document.querySelector('.bigPic');
+            const span = ele.getElementsByTagName('span')[0];
+            span.style.display = 'block';
+            if (screen.width > 1024) {
+                this.picUrlBig = getImage(clickUrl, 2);
+            } else {
+                this.picUrlBig = getImage(clickUrl, 3);
+            }
         },
         chuFa(val, val2) {
             this.$refs.rightA.$emit('changeHouse', val, val2);
@@ -85,6 +96,27 @@ export default {
         right,
         contact,
         contactContent
+    },
+    watch: {
+        picUrlBig() {
+            var ele = document.querySelector('.bigPic');
+            var imgUrl = this.picUrlBig;
+            var imgObject = new Image();
+
+            imgObject.src = imgUrl;
+            imgObject.onload = function () {
+                this.imgBack = imgUrl;
+                // console.log(this.imgProjectBack);
+                const span = ele.getElementsByTagName('span')[0];
+                span.style.display = 'none';
+                
+                ele.style.backgroundImage = 'url(' + this.imgBack + ')';
+                // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+                ele.setAttribute('class', 'bigPic complete');
+                
+                
+            }           
+        }
     }
 }
 </script>
@@ -123,12 +155,19 @@ export default {
                 width: px2rem(1107);
                 height: 100%;
                 margin-left: transverse(95);
-                border-width: px2rem(6);
+                border-width: px2rem(3);
                 border-style: solid;
+                border-bottom: px2rem(5) solid;
                 background-repeat: no-repeat;
-                background-size: percentage(1094 / 1098) percentage(761 / 765);
-                filter: blur(4px);
-                transition: all 0.7s;
+                background-size: 100% 100%;
+                @include fj(center);
+                align-items: center;
+                span {
+                    @include sc(px2rem(40), white);
+                    font-style:italic;
+                }
+                // filter: blur(4px);
+                // transition: all 0.7s;
             }
             .complete {
                 filter: blur(0);

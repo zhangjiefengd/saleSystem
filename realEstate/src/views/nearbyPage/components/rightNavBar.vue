@@ -49,7 +49,7 @@ export default {
                             this.mini.push(getImage(data.imageLocation, 5));
                         } 
                     });
-                    this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
+                    this.clickUrl = this.imgSrc[this.viewNum].imageLocation;
                     this.$emit('event', this.clickUrl);
                 }
                 
@@ -74,7 +74,7 @@ export default {
                         } 
                     });
 
-                    this.clickUrl = getImage(this.imgSrc[this.viewNum].imageLocation, 1);
+                    this.clickUrl = this.imgSrc[this.viewNum].imageLocation;
                     this.$emit('event', this.clickUrl);
                 }
                 
@@ -83,10 +83,10 @@ export default {
                 console.log(error);
             });
         }
-        this.$axios.get("/house/houseTypeStyle/get")
+        this.$axios.get("/surround/surroundingTypeStyle/get")
         .then((res) => {
             if (res.data.code == 1) {
-                res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
+                res.data.data.surroundingBorderStyle   ? this.borderColor = res.data.data.surroundingBorderStyle     : "";
                 document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
                 document.getElementsByClassName('addSmallRight')[0] ? document.getElementsByClassName('addSmallRight')[0].style.borderColor = this.borderColor : '';
             }
@@ -102,7 +102,7 @@ export default {
         //点击右边的框，样式发生变化
         changeDivClass(m) {
             this.click = m;
-            this.clickUrl = getImage(this.imgSrc[m - 1].imageLocation, 1);
+            this.clickUrl = this.imgSrc[m - 1].imageLocation;
             this.$emit('event', this.clickUrl);
             setTimeout(() => {
                 document.getElementsByClassName('addArrowRight')[0] ? document.getElementsByClassName('addArrowRight')[0].style.borderRightColor = this.borderColor : '';
@@ -230,13 +230,13 @@ export default {
             .smallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(6) solid transparent;
+                border: px2rem(4) solid transparent;
                 box-sizing: border-box;
                 overflow: visible;
                 .imgRight {
                     width: 100%;
                     height: 100%;
-                    filter: blur(4px);
+                    // filter: blur(4px);
                     transition: all 0.7s;
                 }
                 .complete {
@@ -246,13 +246,13 @@ export default {
             .addSmallRight {
                 height: 100%;
                 width: px2rem(235);
-                border: px2rem(6) solid white;
+                border: px2rem(4) solid white;
                 box-sizing: border-box;
                 overflow: visible;
                 .imgRight {
                     width: 100%;
                     height: 100%;
-                    filter: blur(4px);
+                    // filter: blur(4px);
                     transition: all 0.7s;
                 }
                 .complete {

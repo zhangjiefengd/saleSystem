@@ -56,7 +56,7 @@ import getImage from '../../utils/getImage.js'
             //请求类型
             this.$axios.get("/basic/mainPage/get")
             .then(res => {
-                if(res.data.code == 1) {
+                if(res.data.code == 1 && res.data.data) {
                     res.data.data && res.data.data.backgroundImageLocation ? this.imgBack = getImage(res.data.data.backgroundImageLocation, 3) : "";
                         // const logoImgSplit = res.data.data.projectLogoLocation.split(/\_|\./g);
                         // this.projectLogo = this.head + logoImgSplit[0] + "_" + logoImgSplit[3] + "." + logoImgSplit[6];
@@ -331,7 +331,8 @@ import getImage from '../../utils/getImage.js'
         position: relative;
         top: px2rem(20);
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size: 100% 60.9%;
+        background-color: #fff;
         #gai,#gaiTwo {
             width: px2rem(103);
             height: px2rem(34);

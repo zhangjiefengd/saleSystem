@@ -1,6 +1,6 @@
 <template>
   <div class="content" style="position:relative;overflow: hidden;">
-    <img draggable="true" id="targetObj" class="target" :src="map">
+    <img draggable="true" id="targetObj" class="target" v-show='map' :src="map">
     <img id="come" src="../../../assets/img/goHouseHistory/goHistory.png" alt @click="goHistory()">
     <contact @haveCon='haveCon'></contact>
     <contact-content @closeInfo='closeInfo' :style='{display: conDisplay}'></contact-content>
@@ -170,7 +170,7 @@ export default {
     top: 0;
   }
   .target {
-    filter: blur(4px);
+    // filter: blur(4px);
     transition: all 0.7s;
   }
   .complete {

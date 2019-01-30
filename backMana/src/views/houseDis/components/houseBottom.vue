@@ -32,7 +32,7 @@ export default {
     created() {
         //请求房间类型
         this.$axios.get("/house/houseType/get").then(res => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 this.houseType = res.data.data;
                 this.houseType.forEach((house) => {
                     this.visibility.push('none');

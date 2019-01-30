@@ -20,7 +20,7 @@
                     <table border="0">
                         <tr>
                             <td><span>电话：</span></td>
-                            <td><input class="tel con" v-model="tel" placeholder="请输入您的手机号"/></td>
+                            <td><input  type="tel"  class="tel con" v-model="tel" placeholder="请输入您的手机号"/></td>
                         </tr>
                         <tr>
                             <td><span>价格：</span></td>
@@ -155,68 +155,79 @@ export default {
             }
         }
         if (this.tel) {
-            let formdata = new FormData();
-            formdata.append('item_code', this.code);
-            formdata.append('item_name', this.proName);
-            formdata.append('customer_phone', this.tel);
-            formdata.append('customer_price', this.selectPrice);
-            formdata.append('house_type', this.houseType);
-            const config = {
-                headers: {
-    //                 'Content-Type': 'multipart/form-data'  
-                       'Content-Type':'application/json;charset=utf-8'
-                }
-            }
-            var data = {
-              "item_code": "123",
-              "item_name": "兴海物联本部",
-              "customer_phone": "18603053943",
-              "customer_price": "1.0-1.5万元/平",
-              "house_type": "二居室&"
-            }
-            this.$post('/api/sales_management/customer_information', data ,'https://xymind.net:3000').then((res) => {
-                if (res.status == 200) {
-                    this.infoDisplay = 'none';
-                    this.infoSub = '提交成功'
-                    this.successDisplay = 'flex';
-                    this.$forceUpdate();
-                    this.imgSub = success;
-                    setTimeout(() => {
-                        this.tel = '';
-                        this.infoDisplay = 'block';
-                        this.successDisplay = 'none';
-                        this.$emit('closeInfo');
-                    }, 3000);
-                } else {
+            const mobilevalid = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;
+            if (mobilevalid.test(this.tel)){
+                let formdata = new FormData();
+                formdata.append('item_code', this.code);
+                formdata.append('item_name', this.proName);
+                formdata.append('customer_phone', this.tel);
+                formdata.append('customer_price', this.selectPrice);
+                formdata.append('house_type', this.houseType);
+
+                this.$axios({
+                    method: 'post',
+                    url: 'https://iot.xhmind.com/api/sales_management/customer_information',
+                    data: formdata,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'  
+                    }
+                }).then((res) => {
+                    if (res.data.status == 200) {
+                        this.infoDisplay = 'none';
+                        this.infoSub = '您的意向我已收到，会尽快联系您';
+                        this.successDisplay = 'flex';
+                        this.$forceUpdate();
+                        this.imgSub = success;
+                        setTimeout(() => {
+                            this.tel = '';
+                            this.infoDisplay = 'block';
+                            this.successDisplay = 'none';
+                            this.$emit('closeInfo');
+                        }, 3000);
+                    } else {
+                        this.infoDisplay = 'none';
+                        this.infoSub = '提交失败';
+                        this.successDisplay = 'flex';
+                        this.$forceUpdate();
+                        this.imgSub = fail;
+                        setTimeout(() => {
+                            this.tel = '';
+                            this.infoDisplay = 'block';
+                            this.successDisplay = 'none';
+                            this.$emit('closeInfo');
+                        }, 3000);
+                    }
+                
+                }).catch((err) => {
+                    // alert('提交失败!');
                     this.infoDisplay = 'none';
                     this.infoSub = '提交失败';
                     this.successDisplay = 'flex';
                     this.$forceUpdate();
                     this.imgSub = fail;
                     setTimeout(() => {
-                        this.tel = '';
-                        this.infoDisplay = 'block';
-                        this.successDisplay = 'none';
-                        this.$emit('closeInfo');
-                    }, 3000);
-                }
-            }).catch((err) => {
-                // alert('提交失败!');
+                            this.tel = '';
+                            this.infoDisplay = 'block';
+                            this.successDisplay = 'none';
+                            this.$emit('closeInfo');
+                        }, 3000);
+                });
+            } else {
                 this.infoDisplay = 'none';
-                this.infoSub = '提交失败';
+                this.infoSub = '请输入正确的电话号码';
                 this.successDisplay = 'flex';
                 this.$forceUpdate();
                 this.imgSub = fail;
                 setTimeout(() => {
-                        this.tel = '';
-                        this.infoDisplay = 'block';
-                        this.successDisplay = 'none';
-                        this.$emit('closeInfo');
-                    }, 3000);
-            });
+                            this.tel = '';
+                            this.infoDisplay = 'block';
+                            this.successDisplay = 'none';
+                            // this.$emit('closeInfo');
+                        }, 3000);
+            }
         } else {
                 this.infoDisplay = 'none';
-                this.infoSub = '提交失败';
+                this.infoSub = '系统异常，请稍后重试';
                 this.successDisplay = 'flex';
                 this.$forceUpdate();
                 this.imgSub = fail;
@@ -224,7 +235,7 @@ export default {
                         this.tel = '';
                         this.infoDisplay = 'block';
                         this.successDisplay = 'none';
-                        this.$emit('closeInfo');
+                        // this.$emit('closeInfo');
                     }, 3000);
         }
         
@@ -260,11 +271,12 @@ export default {
         width: px2rem(773);
         height: px2rem(490);
         background-color: #fff;
-        padding: px2rem(124) px2rem(181) px2rem(124) px2rem(181);
+        padding-top: px2rem(124);
+        padding-bottom: px2rem(124);
         @include fj();
         align-items: center;
         flex-direction: column;
-        @include sc(px2rem(50), #666666);
+        @include sc(px2rem(40), #666666);
         font-weight: normal;
         font-stretch: normal;
         letter-spacing: px2rem(5);

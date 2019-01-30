@@ -71,7 +71,7 @@ export default {
   created() {
     this.$axios.get("/basic/guidePage/get")
     .then(res => {
-      if (res.data.code == 1) {
+      if (res.data.code == 1 && res.data.data) {
         // 切块图片
         if (res.data.data && res.data.data.backgroundImageLocation) {
           const backImgSplit = res.data.data.backgroundImageLocation.split(/\_|\./g);

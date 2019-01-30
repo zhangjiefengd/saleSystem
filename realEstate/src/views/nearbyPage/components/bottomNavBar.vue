@@ -24,7 +24,7 @@ export default {
   created() {
       this.$axios.get("/surround/surroundingTypeStyle/get")
         .then((res) => {
-            if (res.data.code == 1) {
+            if (res.data.code == 1 && res.data.data) {
                 const active = document.getElementsByClassName('active')[0];
                 const activeTwo = document.getElementsByClassName('activeTwo')[0];
                 res.data.data.surroundingSwitchClickedStatusStyle  ? this.botSelect = res.data.data.surroundingSwitchClickedStatusStyle    : "";

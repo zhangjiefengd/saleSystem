@@ -129,7 +129,7 @@ export default {
     checkVR(val, cate) {
       // alert(val);
       if(!this.house[val].houseTypeVrUrl) {
-        $('#three').css('display', 'none');
+        $('#three').css('opacity', 0);
         if (cate == 2) {
           // $('#two').click();
           // this.$router.push({path:'/houseType/plan',
@@ -148,7 +148,7 @@ export default {
 
       }else {
         // console.log(2);
-        $('#three').css('display', 'flex');
+        $('#three').css('opacity', 1);
       }
     },
     //判断路由改变类型样式
@@ -285,17 +285,6 @@ export default {
       $('.houseEvery').eq(index).css('color', this.navSelect);
       this.num = index;
       this.$refs.content.$emit('giveNum', index);
-    },
-    //随时监控左边栏的位置
-    watch() {
-      let timer = setInterval(() => {
-        for (let i = 0; i < this.houseNum; i++) {
-          if ($('.houseEvery').eq(i).css('color') == '#c7ad8b' && this.$refs.content) {
-
-            // this.$refs.content.$emit('giveNum', i);
-          }
-        }
-      },100);
     },
     watchDiv() {
       const timer = setInterval(() => {
