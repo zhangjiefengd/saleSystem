@@ -32,11 +32,16 @@ export default {
     created() {
         //请求房间类型
         this.$axios.get("/house/houseType/get").then(res => {
-            this.houseType = res.data.data;
-            this.houseType.forEach((house) => {
-                this.visibility.push('none');
-                this.clickColor.push('#9ea6b1');
-            });
+            if (res.data.code == 1) {
+                this.houseType = res.data.data;
+                this.houseType.forEach((house) => {
+                    this.visibility.push('none');
+                    this.clickColor.push('#9ea6b1');
+                });
+            }else if (res.data.code == 0) {
+                this.$message.error('请在项目管理添加项目！');
+            }
+            
         }).catch(error => {
             console.log(error);
         });

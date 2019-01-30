@@ -1,5 +1,5 @@
 <template>
-  <div class="brandHistory" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
+  <div class="brandHistory">
     <div class="brandHistoryBox" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
       <transition-group :name="change">
         <div class="brandHistoryPhoto" v-for="(image, index1) in brandHistory" :key="index1*10" v-show="index1==brandHistoryNum">

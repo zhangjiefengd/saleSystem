@@ -3,7 +3,7 @@
       <div class="leftContent">
         <left-nav></left-nav>
       </div>
-      <div class="rightContent">
+      <div class="rightContent" :style="{backgroundImage: 'url(' + back +')'}">
         <router-view  ref="park"/>
       </div>
   </div>
@@ -15,8 +15,21 @@ export default {
   name: 'houseType',
   data() {
     return {
-      nearNum: 0
+      nearNum: 0,
+      back: require('../../../assets/img/goHouseHistory/houseBack.jpg')
     }
+  },
+  created() {
+        this.$axios.get("/surround/surroundingTypeStyle/get")
+        .then((res) => {
+            if (res.data.code == 1) {
+               
+                res.data.data.surroundingBackgroundImageLocation ? this.back = res.data.data.surroundingBackgroundImageLocation : '';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
   },
   methods: {
     

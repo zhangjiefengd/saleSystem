@@ -46,19 +46,19 @@ export default {
       if (res.data.code == 1) {
         if (screen.width > 1024){
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 1) : '';
-          this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1);
+          res.data.data.projectLogoLocation ? this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 1) : '';
         }else {
           res.data.data.backgroundImageLocation ? this.imgBig = getImage(res.data.data.backgroundImageLocation, 2) : '';
-          this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 2);
+          res.data.data.projectLogoLocation ? this.imgLogoBig = getImage(res.data.data.projectLogoLocation, 2) : '';
         }
         res.data.data.backgroundImageLocation ? this.imgBack = getImage(res.data.data.backgroundImageLocation, 5) : '';
         // this.imgBig = res.data.data.backgroundImage.fileName;
         // this.imgBack = intial;
-        this.imgLogo = getImage(res.data.data.projectLogoLocation, 5);
+        res.data.data.projectLogoLocation ? this.imgLogo = getImage(res.data.data.projectLogoLocation, 5) : '';
         // this.imgLogoBig = res.data.data.logo.fileName;
-        this.word[0] = res.data.data.projectHost;
-        this.word[1] = res.data.data.projectLocation;
-        this.word[2] = res.data.data.projectHotline;
+        res.data.data.projectHost ? this.word[0] = res.data.data.projectHost : '';
+        res.data.data.projectLocation ? this.word[1] = res.data.data.projectLocation : '';
+        res.data.data.projectHotline ? this.word[2] = res.data.data.projectHotline : '';
         res.data.data.projectLocationFontStyle ? this.colorBussiness = res.data.data.projectLocationFontStyle : '';
         res.data.data.projectHostFontStyle ? this.colorAddress = res.data.data.projectHostFontStyle : '';
         res.data.data.projectHotlineFontStyle ? this.colorTel = res.data.data.projectHotlineFontStyle : '';
@@ -154,6 +154,7 @@ export default {
     align-items: center;
     .guideLogo {
       width: px2rem(403);
+      height: px2rem(286);
       // filter: blur(4px);
       transition: all 0.7s;
     }

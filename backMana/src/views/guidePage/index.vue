@@ -96,11 +96,13 @@ export default {
         res.data.data &&res.data.data.projectHostIconLocation ? this.address = getImage(res.data.data.projectHostIconLocation, 2) : '';
         res.data.data &&res.data.data.projectHotlineIconLocation ? this.tel = getImage(res.data.data.projectHotlineIconLocation, 2) : '';
         res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
+      } else if (res.data.code == 0) {
+        this.$message.error('请在项目管理添加项目！');
       }
 
     })
     .catch(error => {
-      this.$message.error('获取失败，请上传内容！');
+      this.$message.error('获取失败');
     });
   },
   mounted() {
@@ -135,12 +137,16 @@ export default {
           }
         }
         this.$axios.post('/basic/guidePage/image/update', formdata, config).then( (res) => {
-                this.$message({
+          if (res.data.code == 1) {
+            this.$message({
                     message: '背景上传成功！',
                     type: 'success'
-                });
-                res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
-                this.tijiaoTwo();
+            });
+            res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
+            this.tijiaoTwo();
+          }else if (res.data.code == 0) {
+            this.$message.error('请在项目管理添加项目！');
+          }
                 
         }).catch((error) =>{
           this.$message.error('图片太大，提交失败！');
@@ -161,11 +167,17 @@ export default {
           }
         }
         this.$axios.post('/basic/guidePage/image/update', formdata, config).then( (res) => {
-                this.$message({
+
+          if (res.data.code == 1) {
+            this.$message({
                     message: 'LOGO上传成功！',
                     type: 'success'
-                });
-                this.tijiaoThree();
+            });
+            res.data.data && res.data.data.id ? this.id = res.data.data.id : "";
+            this.tijiaoThree();
+          }else if (res.data.code == 0) {
+            this.$message.error('请在项目管理添加项目！');
+          }
         }).catch((error) =>{
           this.$message.error('提交失败！');
           this.tijiaoThree();
@@ -187,10 +199,15 @@ export default {
             projectLocation: this.word[1],
             projectHotline: this.word[2]
           }, config).then( (res) => {
-                  this.$message({
+            if (res.data.code == 1) {
+              this.$message({
                       message: '文字上传成功！',
                       type: 'success'
-                  });
+              });
+            }else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
+            }
+              
           }).catch((error) =>{
             this.$message.error('提交失败！');
             return;
@@ -201,10 +218,16 @@ export default {
             projectLocation: this.word[1],
             projectHotline: this.word[2]
           }, config).then( (res) => {
+            if (res.data.code == 1) {
                   this.$message({
                       message: '文字上传成功！',
                       type: 'success'
                   });
+            }else if (res.data.code == 0) {
+              this.$message.error('请在项目管理添加项目！');
+            }
+                  
+                
           }).catch((error) =>{
             this.$message.error('提交失败！');
             return;
@@ -394,7 +417,7 @@ export default {
         img {
           width: px2rem(22);
         }
-        border: px2rem(1) dashed white;
+        border: px2rem(1) dashed black;
       }
       span:hover {
         border: 1px solid $colorAll;

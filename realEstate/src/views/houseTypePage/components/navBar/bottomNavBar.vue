@@ -29,7 +29,7 @@ export default {
   created() {
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.house = res.data.data;
+            res.data.data ? this.house = res.data.data : '';
         //     if (!this.house[0].houseTypeVrUrl) {
         //         document.getElementById('typeClassThree').style.display = 'none';
         //         document.getElementsByClassName('chooseSmall')[0].style.width = '20%';

@@ -414,7 +414,7 @@ export default {
     }
     .middle {
       width: 100%;
-      height: 44.4%;
+      height: 46%;
       // position: absolute;
       // top: 18.8%;
       // background-color: #fff;

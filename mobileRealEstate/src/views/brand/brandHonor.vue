@@ -1,5 +1,5 @@
 <template>
-  <div class="brandHonor" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
+  <div class="brandHonor">
     <div>
       <div class="brandHonorPhoto">
         <div class="brandHonorPhotoLeft" v-if="brandHonorPhoto.length > 1" @click="brandHonorLeftChange">
@@ -45,13 +45,13 @@
   }
   .brandHonorPhoto {
     width: 100%;
-    height: px2rem(496);
+    height: 70%;
     position: relative;
     @include fj(center);
     align-items: center;
     >div {
       width: px2rem(36);
-      height: px2rem(150);
+      height: 100%;
       position: absolute;
       z-index: 99;
       @include fj(center);
@@ -84,7 +84,7 @@
     }
   }
   .brandHonorIntro {
-    height: calc(100% - 30rem);
+    height: 70%;
     overflow-y: auto;
     position: relative;
     .brandHonorwords {

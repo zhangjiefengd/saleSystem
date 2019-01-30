@@ -28,7 +28,11 @@ export default {
     created() {
         this.$axios.post("/surround/surroundingFacilities/get")
             .then(res => {
-                res.data.data && res.data.data.imageLocation ? this.imgBack = this.getImage(res.data.data.imageLocation, 1) : "";
+                if (res.data.code == 1) {
+                    res.data.data && res.data.data.imageLocation ? this.imgBack = this.getImage(res.data.data.imageLocation, 1) : "";
+                }else if (res.data.code == 0) {
+                    this.$message.error('请在项目管理中添加项目！');
+                }
             })
             .catch(error => {
                 this.$message.error('获取失败,请上传内容！');

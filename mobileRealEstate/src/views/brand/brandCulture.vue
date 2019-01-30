@@ -1,5 +1,5 @@
 <template>
-  <div class="brandCulture" :style="{ 'background-image': 'url(' + backgroundImage + ')'}">
+  <div class="brandCulture">
     <div class="brandCulturePhoto">
       <img :src="brandCultureImage" alt="">
     </div>
@@ -147,15 +147,14 @@ export default {
     }
   },
   mounted () {
+    var brandCultureScroll = document.getElementsByClassName('brandCultureScroll')[0];
     setTimeout(()=>{
-      console.log(brandCultureScroll.offsetHeight, brandCultureScroll.scrollHeight)
       if (brandCultureScroll.offsetHeight < brandCultureScroll.scrollHeight) {
         this.wordRemind = true;
       } else {
         this.wordRemind = false;
       }
     },100);
-    var brandCultureScroll = document.getElementsByClassName('brandCultureScroll')[0];
     brandCultureScroll.addEventListener('scroll', ()=>{
       var allheight = parseInt(brandCultureScroll.scrollHeight);
       var judeHeight = Math.ceil(brandCultureScroll.scrollTop) + Math.ceil(brandCultureScroll.offsetHeight);

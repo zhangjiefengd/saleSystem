@@ -44,23 +44,26 @@ export default {
        
       this.$axios.get("/house/houseType/get")
       .then(res => {
-        this.title = res.data.data;
+        res.data.data ? this.title = res.data.data : '';
           if(this.title[this.houseNum]) {
             this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
             .then(res => {           
-              this.dataAll = res.data.data;
-              this.check = 1;
-              if(this.dataAll.houseTypeImageLocation) {
-                this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 5);
-                if (screen.width > 1024){
-                  this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 1);
+              if (res.data.data) {
+                this.dataAll = res.data.data;
+                this.check = 1;
+                if(this.dataAll.houseTypeImageLocation) {
+                  this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 5);
+                  if (screen.width > 1024){
+                    this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 1);
+                  }else {
+                    this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 2);
+                  }
                 }else {
-                  this.imgBig = getImage(this.dataAll.houseTypeImageLocation, 2);
-                }
-              }else {
-                this.imgPlanBack = no;
-                document.querySelector('.content').setAttribute('class', 'content complete');
-              }           
+                  this.imgPlanBack = no;
+                  document.querySelector('.content').setAttribute('class', 'content complete');
+                }  
+              }
+                       
             })
             .catch(error => {
               console.log(error);

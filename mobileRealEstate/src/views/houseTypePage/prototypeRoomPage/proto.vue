@@ -46,21 +46,21 @@ export default {
     created() {
         this.$axios.get("/house/houseType/get")
         .then(res => {
-            this.title = res.data.data;
+            res.data.data ? this.title = res.data.data : '';
             if(this.title[0]) {
                 this.$axios.get("/house/sampleRoomImage/get?houseTypeId=" + this.title[0].id)
                 .then(res => {  
-                    this.house = res.data.data;
+                    res.data.data ? this.house = res.data.data : '';
                     if (this.house[this.houseNum] && this.house[this.houseNum].sampleRoomImageLocation) {
                         this.houseSampleRoomsNum = this.house.length;
                         this.imgSrc = this.house;
                         // console.log(this.imgSrc.length );
                         for (let i = 0; i < this.houseSampleRoomsNum; i++) {
-                            this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 3);
+                            this.imgSrc[i].sampleRoomImageLocation ? this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 3) : '';
                         }
                         // this.img[0] = getImage(this.imgSrc[this.houseSampleRoomsNum - 1].sampleRoomImageLocation, 3);
                         // this.check = 1;
-                        this.name = this.imgSrc[0].roomTypeName;
+                        this.imgSrc[0].roomTypeName ? this.name = this.imgSrc[0].roomTypeName : '';
                         // if (this.imgSrc.length > 1) {
                         //     this.imgLeft = window.innerWidth*(-1);
                         //     $('.conPic').eq(0).css('marginLeft', this.imgLeft + 'px');
@@ -277,14 +277,14 @@ export default {
 
 .content {
     width: 100%;
-    height: px2rem(592);
+    height: 100%;
     @include fj();
     flex-direction: column;
-    position: relative;
+    // position: relative;
     // position: absolute;
     .pic {
         width: 100%;
-        height: px2rem(540);
+        height: 91.2%;
         position: relative;
         overflow: hidden;
         ul {
@@ -303,7 +303,7 @@ export default {
     }
     .intro {
         width: 100%;
-        height: px2rem(50);
+        height: 8.8%;
         margin-top: -0rem;
         transform: translateY(-100%);
         @include fj(center);
@@ -322,7 +322,7 @@ export default {
     }
     .pageNum {
         width: 100%;
-        height: px2rem(35);
+        height: px2rem(38);
             // background-color: #fff;
         position: relative;
         span {

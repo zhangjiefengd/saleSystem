@@ -39,7 +39,7 @@ export default {
             picUrlBig: '',
             conDisplay: 'none',
             borderColor: '#ffffff',
-            back: '../../../assets/img/goHouseHistory/houseBack.jpg'
+            back: require('../../../assets/img/goHouseHistory/houseBack.jpg')
         }
     },
     created() {
@@ -47,7 +47,7 @@ export default {
         .then((res) => {
             if (res.data.code == 1) {
                 res.data.data.houseTypeBorderStyle  ? this.borderColor = res.data.data.houseTypeBorderStyle    : "";
-                
+                res.data.data.houseTypeBackgroundImageLocation ? this.back = res.data.data.houseTypeBackgroundImageLocation : '';
             }
         })
         .catch(error => {

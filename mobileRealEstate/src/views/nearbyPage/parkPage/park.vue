@@ -50,57 +50,60 @@ export default {
 
         this.$axios.get("/surround/publicUtilities/get")
             .then(res => {
-                this.park = res.data.data;
-                this.park.forEach(data => {
-                    if (data.imageType == 1) {
-                        this.common.push(data);
-                    } else if (data.imageType == 0) {
-                        this.garden.push(data);
-                    }
-                });
-                this.numAll = this.park.length;
-                //装2个类型的图片
-                if (this.common[0] && this.garden[0]) {
-                    for (let i = 1; i < this.common.length + 1; i++) {
-                        if (this.common[i - 1]) {
-                            this.img[i] = getImage(this.common[i - 1].imageLocation, 3);
+                if (res.data.data) {
+                    this.park = res.data.data;
+                    this.park.forEach(data => {
+                        if (data.imageType == 1) {
+                            this.common.push(data);
+                        } else if (data.imageType == 0) {
+                            this.garden.push(data);
                         }
-                    }
-                    let commonL = this.common.length + 1
-                    for (let i = this.common.length + 1; i < this.numAll; i++) {
-                        if (this.garden[i - commonL]) {
-                            this.img[i] = getImage(this.garden[i - commonL].imageLocation, 3);
+                    });
+                    this.numAll = this.park.length;
+                    //装2个类型的图片
+                    if (this.common[0] && this.garden[0]) {
+                        for (let i = 1; i < this.common.length + 1; i++) {
+                            if (this.common[i - 1]) {
+                                this.img[i] = getImage(this.common[i - 1].imageLocation, 3);
+                            }
                         }
-                    }
-                    this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 3);
-                    // console.log(this.img);
-                    this.check = 1;
-                }
-                // this.check = 1;
-                //装2个类型的名字
-                if (this.common[0] && this.garden[0]) {
-                    for (let i = 1; i <= this.common.length; i++) {
-                        if (this.common[i - 1]) {
-                            this.nameAll[i] = this.common[i - 1].placeTypName;
+                        let commonL = this.common.length + 1
+                        for (let i = this.common.length + 1; i < this.numAll; i++) {
+                            if (this.garden[i - commonL]) {
+                                this.img[i] = getImage(this.garden[i - commonL].imageLocation, 3);
+                            }
                         }
+                        this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 3);
+                        // console.log(this.img);
+                        this.check = 1;
                     }
-                    let commonL = this.common.length + 1;
-                    for (let i = this.common.length + 1; i < this.numAll; i++) {
-                        if (this.garden[i - commonL]) {
-                            this.nameAll[i] = this.garden[i - commonL].placeTypName;
+                    // this.check = 1;
+                    //装2个类型的名字
+                    if (this.common[0] && this.garden[0]) {
+                        for (let i = 1; i <= this.common.length; i++) {
+                            if (this.common[i - 1]) {
+                                this.nameAll[i] = this.common[i - 1].placeTypName;
+                            }
                         }
-                    }
-                    this.nameAll[0] = this.garden[this.garden.length - 1].placeTypName;
-                    this.name = this.nameAll[1];
+                        let commonL = this.common.length + 1;
+                        for (let i = this.common.length + 1; i < this.numAll; i++) {
+                            if (this.garden[i - commonL]) {
+                                this.nameAll[i] = this.garden[i - commonL].placeTypName;
+                            }
+                        }
+                        this.nameAll[0] = this.garden[this.garden.length - 1].placeTypName;
+                        this.name = this.nameAll[1];
 
-                }
+                    }
 
-                if (this.img.length > 1) {
-                    this.imgLeft = window.innerWidth*(-1);
-                    $('.conPic').eq(0).css('marginLeft', this.imgLeft + 'px');
-                }else {
-                    $('.conPic').eq(0).css('marginLeft', 0 + 'px');
+                    if (this.img.length > 1) {
+                        this.imgLeft = window.innerWidth*(-1);
+                        $('.conPic').eq(0).css('marginLeft', this.imgLeft + 'px');
+                    }else {
+                        $('.conPic').eq(0).css('marginLeft', 0 + 'px');
+                    }
                 }
+                
 
             })
             .catch(error => {

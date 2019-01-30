@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {  //使用"/api"来代替"http://f.apiplus.c" 
+        target: 'https://xymind.net:3000', //源地址 
+        changeOrigin: true, //改变源 
+        pathRewrite: { 
+          '^/api': 'https://xymind.net:3000' //路径重写   //这里可以写成空字符串 'api':''
+        } 
+      } 
+    },
 
     // Various Dev Server settings
     host: '0.0.0.0', // can be overwritten by process.env.HOST

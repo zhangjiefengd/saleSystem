@@ -188,12 +188,13 @@
                 enterpriseName: '请输入企业名称',
                 enterpriseIntroduction: '输入企业介绍'
               }
-
+              this.title = JSON.parse(JSON.stringify(this.worlds))
             } else {
               this.worlds = {
                 enterpriseName: '请输入企业名称',
                 enterpriseIntroduction: '输入企业介绍'
               }
+              this.title = JSON.parse(JSON.stringify(this.worlds))
             }
           })
           .catch(error => {

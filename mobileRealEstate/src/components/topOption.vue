@@ -1,5 +1,5 @@
 <template>
-  <div class="home-option" :style="[{height: optionHeight}, {background: optionBackground}]">
+  <div class="home-option" @click="clearChoose" :style="[{height: optionHeight}, {background: optionBackground}]">
     <div class="component-box" v-show="isShowHead">
       <ul class="all-head" :style="[{color: headColor}]">
         <li @click="backHome"> <span>首页</span></li>
@@ -17,14 +17,15 @@
 
         <div class="user-info">
           <ul>
-            <li class="user-phone">
+            <li class="user-phone" style="position: relative">
               <span><span style="color: #e01">*</span><span> 电话：</span></span>
-              <div><input type="number" id="customPhone" placeholder="请输入您的手机号"></div>
+              <div><input v-model="showPhoneNum" id="customPhone" placeholder="请输入您的手机号" @input="watchPhone"></div>
+              <span class="phoneRemindInfo"> {{ phoneRemindInfo }}</span>
             </li>
             <li class="produce-price">
               <span> 价格：</span>
               <div>
-                <div class="price con"  @click='priceDis'>
+                <div class="price con"  @click.stop='priceDis'>
                   {{selectPrice}}
                   <span :style='{display: placeholder}'>请选择理想价位</span>
                   <img src='../assets/img/brand/down.png'/>
@@ -113,7 +114,9 @@
         houseType: '',
         isShowHead: true,
         headColor: '#000000',
-        backHeadColor: ''
+        backHeadColor: '',
+        phoneRemindInfo: '',
+        showPhoneNum: ''
       }
     },
     created () {
@@ -145,6 +148,9 @@
           path: '/'
         })
       },
+      clearChoose: function () {
+        this.priceDisplay = 'none'
+      },
       showCollect: function () {
         this.isCollect = !this.isCollect
 
@@ -175,8 +181,8 @@
         this.houseType = '';
         const houseTypeDom = document.getElementsByClassName('house-num');
         const phone = document.getElementById('customPhone').value
-        const phoneReg = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/
-        const smallPhoneReg = /^1[34578]\d{9}$/
+        const phoneReg = /0\d{2,3}-\d{7,8}/
+        const smallPhoneReg = /^1[3456789]\d{9}$/
 
         for (let i in houseTypeDom) {
 
@@ -195,17 +201,20 @@
           formdata.append('house_type', this.houseType);
           const config = {
             headers: {
-              'Content-Type': 'multipart/form-data'
+              'Content-Type': 'multipart/form-data',
+              'Access-Control-Allow-Origin': '*'
             }
           }
-          this.$axios.post('https://xymind.net:3000/api/sales_management/customer_information', formdata, config)
+          this.$axios.post('https://iot.xhmind.com/api/sales_management/customer_information', formdata, config)
             .then((res) => {
               if (res.data.status === 200) {
                 this.infoRemind = true
-                this.returnInfo = '提交成功'
+                this.returnInfo = '您的意向我已收到，将会尽快联系您。'
                 document.getElementById('customPhone').value = ''
                 this.selectPrice = ''
                 this.placeholder = 'block'
+                this.showPhoneNum = ''
+                this.isSuccess = true
                 for (let i in houseTypeDom) {
 
                   if(houseTypeDom[i].children && houseTypeDom[i].children[0].checked) {
@@ -217,6 +226,7 @@
                 this.$forceUpdate()
                 setTimeout(() => {
                   this.infoRemind = false
+                  this.isSuccess = false
                 }, 3000);
               } else {
                 this.infoRemind = true
@@ -233,7 +243,7 @@
           if (phone === '') {
             this.returnInfo = '手机号不能为空'
           } else {
-            this.returnInfo = '请填写正确的手机号'
+            this.returnInfo = '请输入正确的联系方式'
           }
           this.$forceUpdate();
           setTimeout(() => {
@@ -244,6 +254,9 @@
       },
       closeRemind: function () {
         this.infoRemind = false
+      },
+      watchPhone: function () {
+        this.showPhoneNum = this.showPhoneNum.replace(/[^\d-]/g, '')
       }
     },
     watch: {
@@ -280,10 +293,13 @@
   z-index: 999;
   .component-box {
     width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .all-head {
     width: 100%;
-    height: px2rem(48);
+    height: px2rem(50);
     @include fj();
     align-items: flex-end;
     @include fontSize(34);
@@ -296,7 +312,7 @@
   }
   .collectInfo {
     width: 100%;
-    height: calc(100% - 3rem);
+    height: 100%;
     @include fj(space-around);
     align-items: center;
     flex-direction: column;
@@ -328,7 +344,6 @@
   .user-info {
     width: 100%;
     height: px2rem(400);
-    margin-top: px2rem(30);
     border-top: px2rem(1) solid #e7e7e7;
     position: relative;
     >ul {
@@ -349,17 +364,25 @@
           display: inline-block;
           color: #000000;
         }
+        .phoneRemindInfo {
+          width: 14%;
+          color: #e01;
+          position: absolute;
+          right: 0; top: 0;
+          @include fontSize(10);
+          text-align: center;
+        }
         >div, >ul {
           width: 70%;
         }
       }
       .user-phone {
-        height: px2rem(45);
+        height: px2rem(50);
         >div {
           width: 70%;
           height: 100%;
           >input {
-            width: 80%;
+            width: 90%;
             height: 100%;
             outline: none;
             padding: 0 1rem;
@@ -371,7 +394,7 @@
       }
       .produce-price {
         width: 100%;
-        height: px2rem(45);
+        height: px2rem(50);
         >div {
           width: 70%;
           height: 100%;
@@ -385,8 +408,8 @@
               width: px2rem(30);
               height: px2rem(16);
             }
-            cursor: pointer;
             span {
+              display: block;
               @include fontSize(25);
               color: #666666;
               letter-spacing: .2em;
@@ -394,7 +417,7 @@
           }
           .con {
             background-color: #f0f0f0;
-            width: 80%;
+            width: 90%;
             height: 100%;
             @include fontSize(25);
             color: #333333;
@@ -419,33 +442,32 @@
         }
 
         .priceSelect {
-          width: 56%;
+          width: 63%;
           height: px2rem(228);
           position: absolute;
           left: 30%;
-          top: px2rem(130);
+          top: px2rem(140);
           background-color: #ffffff;
           box-shadow: 0px px2rem(5) px2rem(18) 0px rgba(0, 0, 0, 0.1);
           border-radius: 0 0 px2rem(6) px2rem(6);
           overflow: auto;
-          z-index: 1000;
+          z-index: 9999;
+          @include fontSize(25);
           li {
             width: 100%;
             height: px2rem(32);
             margin-top: px2rem(6);
             @include fj(center);
             align-items: center;
-            @include sc(px2rem(28), #666666);
+            @include fontSize(25);
+            color: #666666;
             letter-spacing: px2rem(1);
-            cursor: pointer;
           }
 
           li:hover {
             background-color: rgba(199, 173, 140, 0.4);
           }
         }
-
-
       }
       .house-type {
         align-items: flex-start;
@@ -462,6 +484,8 @@
             >input {
               -webkit-appearance: none;
               -moz-appearance: none;
+              background-color:transparent;
+              border-color:transparent;
               width: px2rem(20);
               height: px2rem(20);
               background-color: #fff;

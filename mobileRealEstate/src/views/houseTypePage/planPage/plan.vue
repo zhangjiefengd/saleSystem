@@ -29,12 +29,12 @@ export default {
     }
     this.$axios.get("/house/houseType/get")
     .then(res => {
-      this.title = res.data.data;
+      res.data.data ? this.title = res.data.data : '';
         if(this.title[this.houseNum]) {
           this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
-            this.dataAll = res.data.data;
-            this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 3);
+            res.data.data ? this.dataAll = res.data.data : '';
+            this.dataAll.houseTypeImageLocation ? this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 3) : '';
           })
           .catch(error => {
             console.log(error);
@@ -179,7 +179,7 @@ export default {
   position: relative;
   .picA {
     width: 100%;
-    height: px2rem(540);
+    height: 91.2%;;
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }

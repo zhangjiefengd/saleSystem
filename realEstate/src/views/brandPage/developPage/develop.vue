@@ -70,7 +70,7 @@
             this.worlds = res.data.data
             this.worlds.map((item, index) => {
               if (item.enterpriseDevelopImageLocation) {
-                this.worlds[index].image = getImage(item.enterpriseDevelopImageLocation, 1)
+                this.worlds[index].image = getImage(item.enterpriseDevelopImageLocation, 2)
               }
               item.developStepStyle = item.enterpriseDevelopStepStyle ? item.enterpriseDevelopStepStyle : '#ffffff'
               item.developTitleStyle = item.enterpriseDevelopFontStyle ? item.enterpriseDevelopFontStyle : '#e2e2e2'
@@ -85,9 +85,9 @@
       this.$axios.get('/brand/enterpriseDevelop/backgroundImage/get')
         .then(res => {
           if (res.data.data) {
-            this.developBackground = res.data.data.imageLocation ? getImage(res.data.data.imageLocation, 1) : require('@/assets/img/background.jpg')
+            this.developBackground = res.data.data.imageLocation ? getImage(res.data.data.imageLocation, 2) : require('@/assets/img/background.jpg')
             if (screen.width > 1024) {
-              this.backBig = getImage(res.data.data.imageLocation, 1)
+              this.backBig = getImage(res.data.data.imageLocation, 2)
             } else {
               this.backBig = getImage(res.data.data.imageLocation, 2)
             }
@@ -210,7 +210,6 @@
               width: 100%;
               height: 100%;
               @include fj(center);
-              font-family: FZHTJW;
               overflow: hidden;
 
               .word-time-title {
@@ -275,9 +274,10 @@
             }
 
             .changeStyle {
-              width: px2rem(30);
-              border-radius: 5px;
-              background-color: #d0d0d0;
+              width: px2rem(34);
+              height: px2rem(15);
+              border-radius: 7px;
+              background-color: #ffffff;
             }
           }
         }

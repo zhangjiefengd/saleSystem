@@ -8,7 +8,7 @@
         <ul class="words">
           <li v-for="(world, index) in worlds" :key="index">
             <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
-            <span :style="[{color: world.honorTextColor}]">{{ world.enterpriseHonorInfo }}</span>
+            <span class="text" :style="[{color: world.honorTextColor}]">{{ world.enterpriseHonorInfo }}</span>
           </li>
         </ul>
       </div>
@@ -73,7 +73,7 @@ export default {
         if (res.data.data) {
           this.background = res.data.data.imageLocation ? getImage(res.data.data.imageLocation, 1) : require('@/assets/img/background.jpg')
           if (screen.width > 1024) {
-            this.backBig = getImage(res.data.data.imageLocation, 1)
+            this.backBig = getImage(res.data.data.imageLocation, 2)
           } else {
             this.backBig = getImage(res.data.data.imageLocation, 2)
           }
@@ -88,7 +88,7 @@ export default {
           this.honorPhoto = res.data.data
           this.honorPhoto.map((item, index) => {
             if (item.imageLocation) {
-              this.honorPhoto[index].image = getImage(item.imageLocation, 1)
+              this.honorPhoto[index].image = getImage(item.imageLocation, 2)
             }
           })
         }
@@ -197,14 +197,19 @@ export default {
           @include fj(flex-start);
           align-items: center;
           margin-top: px2rem(50);
+          position: relative;
           .honor-spot {
             width: px2rem(15);
             height: px2rem(15);
             background-color: #c7ad8c;
             border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
           }
-          >span {
-            text-indent: 1.2em;
+          >span.text {
+            margin-left: 1.2em;
             color: #333333;
           }
           >img {

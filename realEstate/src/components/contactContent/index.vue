@@ -162,10 +162,12 @@ export default {
             formdata.append('house_type', this.houseType);
                     const config = {
                         headers: {
-                            'Content-Type': 'multipart/form-data'  
+                            'Content-Type': 'multipart/form-data',
+                            'Access-Control-Allow-Origin': '*'
                         }
                     }
             this.$axios.post('https://xymind.net:3000/api/sales_management/customer_information', formdata, config).then((res) => {
+                console.log(res.data)
                 if (res.data.status == 200) {
                     this.infoDisplay = 'none';
                     this.infoSub = '提交成功'

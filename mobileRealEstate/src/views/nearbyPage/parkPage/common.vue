@@ -5,7 +5,7 @@
       <!--<top/>-->
     </div>
     <div class="imgBox">
-      <img id="targetObj" style="position:absolute;transform-origin:center" :src="map">
+      <img id="targetObj" @click="scale" style="position:absolute;transform-origin:center" :src="map">
     </div>
     <!-- <img src="../../../assets/img/goHouseHistory/back.png" alt id="come" @click="go()"> -->
     <!-- <img id="come" src="../../../assets/img/goHouseHistory/goHistory2.png" alt="" @click="goHistory()"> -->
@@ -28,7 +28,7 @@ export default {
       .post("/surround/surroundingFacilities/get")
       .then(res => {
         if (res.data.data) {
-          this.map = getImage(res.data.data.imageLocation, 3);
+          res.data.data.imageLocation ? this.map = getImage(res.data.data.imageLocation, 3) :'';
         }
       })
       .catch(error => {

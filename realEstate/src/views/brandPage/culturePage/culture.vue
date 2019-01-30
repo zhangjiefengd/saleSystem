@@ -76,8 +76,8 @@ export default {
           this.culturePicture = getImage(res.data.data.mainImageLocation, 1)
           this.cultureBackground = res.data.data.backgroundImageLocation ? getImage(res.data.data.backgroundImageLocation, 1) : require('@/assets/img/background.jpg')
           if (screen.width > 1024) {
-            this.backBig = getImage(res.data.data.backgroundImageLocation, 1)
-            this.culBig = getImage(res.data.data.mainImageLocation, 1)
+            this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
+            this.culBig = getImage(res.data.data.mainImageLocation, 2)
           } else {
             this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
             this.culBig = getImage(res.data.data.mainImageLocation, 2)

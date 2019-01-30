@@ -113,49 +113,54 @@ export default {
       this.allProject = [];
       this.nowPro = "";
       this.$axios.get('/manage/project/get').then((res) => {
-                    //存省
-        res.data.data.forEach((data) => {
-          this.projects.unshift({
-            "value": data.projectName,
-            "id": data.id
-          });
-        });      
-        //获取当前项目
-        this.$axios.post('/manage/concurrentProject/get').then((res) => {
-          this.projects.forEach((project) => {
-            if (project.id == res.data.data) {
-              this.nowPro = project.value;
-            }
-          });
-          if (this.nowPro == "") {
-            const config = {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded' 
+        if (res.data.code == 1) {
+          //存省
+          res.data.data.forEach((data) => {
+            this.projects.unshift({
+              "value": data.projectName,
+              "id": data.id
+            });
+          });      
+          //获取当前项目
+          this.$axios.post('/manage/concurrentProject/get').then((res) => {
+            this.projects.forEach((project) => {
+              if (project.id == res.data.data) {
+                this.nowPro = project.value;
               }
-            }
-            this.$axios.post('/manage/concurrentProject/update', qs.stringify({projectId: this.allProject[0].id}), config).then((res) => {
-              if (res.data.code == 1) {
-                  // this.$message({
-                  //   message: '切换成功！',
-                  //   type: 'success'
-                  // });
-                  setTimeout(() => {
-                    this.$router.go(0);
-                  }, 500);
-                  
-              } else {
+            });
+            if (this.nowPro == "") {
+              const config = {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded' 
+                }
+              }
+              this.$axios.post('/manage/concurrentProject/update', qs.stringify({projectId: this.allProject[0].id}), config).then((res) => {
+                if (res.data.code == 1) {
+                    // this.$message({
+                    //   message: '切换成功！',
+                    //   type: 'success'
+                    // });
+                    setTimeout(() => {
+                      this.$router.go(0);
+                    }, 500);
+                    
+                } else {
+                  this.$message.error('切换失败！');
+                }
+              }).catch((err) => {
                 this.$message.error('切换失败！');
-              }
-            }).catch((err) => {
-              this.$message.error('切换失败！');
-            });   
-          }
-        }).catch((err) => {
-          this.$message.error('获取当前项目失败！');
-        });
-        this.allProject.length <= 20 && this.projects.forEach((data) => {
-          this.allProject.push(data);
-        })
+              });   
+            }
+          }).catch((err) => {
+            this.$message.error('请在项目管理添加项目！');
+          });
+          this.allProject.length <= 20 && this.projects.forEach((data) => {
+            this.allProject.push(data);
+          })
+        }else if (res.data.code == 0) {
+          this.$message.error('请在项目管理添加项目！');
+        }
+                  
       }).catch((err) => {
         this.$message.error('获取项目失败！');
       });   
