@@ -56,7 +56,7 @@ export default {
                         this.imgSrc = this.house;
                         // console.log(this.imgSrc.length );
                         for (let i = 0; i < this.houseSampleRoomsNum; i++) {
-                            this.imgSrc[i].sampleRoomImageLocation ? this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 3) : '';
+                            this.imgSrc[i].sampleRoomImageLocation ? this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 2) : '';
                         }
                         // this.img[0] = getImage(this.imgSrc[this.houseSampleRoomsNum - 1].sampleRoomImageLocation, 3);
                         // this.check = 1;
@@ -108,7 +108,7 @@ export default {
                         this.imgSrc = this.house;
                         // console.log(this.imgSrc.length );
                         for (let i = 0; i < this.houseSampleRoomsNum; i++) {
-                            this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 3);
+                            this.img[i] = getImage(this.imgSrc[i].sampleRoomImageLocation, 2);
                         }
                         this.check = 1;
                         this.name = this.imgSrc[0].roomTypeName;

@@ -34,7 +34,7 @@ export default {
           this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             res.data.data ? this.dataAll = res.data.data : '';
-            this.dataAll.houseTypeImageLocation ? this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 3) : '';
+            this.dataAll.houseTypeImageLocation ? this.imgPlanBack = getImage(this.dataAll.houseTypeImageLocation, 2) : '';
           })
           .catch(error => {
             console.log(error);
@@ -54,7 +54,7 @@ export default {
           this.$axios.get("/house/houseTypeImage/get?houseTypeId=" + this.title[this.houseNum].id)
           .then(res => { 
             this.dataAll = res.data.data;
-            this.imgPlanBack = this.dataAll && this.dataAll.houseTypeImageLocation && getImage(this.dataAll.houseTypeImageLocation, 3);
+            this.imgPlanBack = this.dataAll && this.dataAll.houseTypeImageLocation && getImage(this.dataAll.houseTypeImageLocation, 2);
           })
           .catch(error => {
             console.log(error);

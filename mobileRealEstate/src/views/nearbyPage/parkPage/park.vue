@@ -64,16 +64,16 @@ export default {
                     if (this.common[0] && this.garden[0]) {
                         for (let i = 1; i < this.common.length + 1; i++) {
                             if (this.common[i - 1]) {
-                                this.img[i] = getImage(this.common[i - 1].imageLocation, 3);
+                                this.img[i] = getImage(this.common[i - 1].imageLocation, 2);
                             }
                         }
                         let commonL = this.common.length + 1
                         for (let i = this.common.length + 1; i < this.numAll; i++) {
                             if (this.garden[i - commonL]) {
-                                this.img[i] = getImage(this.garden[i - commonL].imageLocation, 3);
+                                this.img[i] = getImage(this.garden[i - commonL].imageLocation, 2);
                             }
                         }
-                        this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 3);
+                        this.img[0] = getImage(this.garden[this.garden.length - 1].imageLocation, 2);
                         // console.log(this.img);
                         this.check = 1;
                     }
