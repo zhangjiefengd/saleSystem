@@ -111,7 +111,7 @@ export default {
                 span.style.display = 'none';
                 
                 ele.style.backgroundImage = 'url(' + this.imgBack + ')';
-                // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+                // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');;
                 ele.setAttribute('class', 'bigPic complete');
                 
                 
@@ -153,11 +153,10 @@ export default {
             margin-top: px2rem(167);
             .bigPic {
                 width: px2rem(1107);
-                height: 100%;
+                height: 99.2%;
                 margin-left: transverse(95);
                 border-width: px2rem(3);
                 border-style: solid;
-                border-bottom: px2rem(5) solid;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
                 @include fj(center);

@@ -102,6 +102,7 @@ $colorAll: #666666;
   &::-webkit-scrollbar-track-piece {
     overflow-x: hidden;
     background: #fff;
+    display: none;
   }
 
   &::-webkit-scrollbar-button {
@@ -129,15 +130,18 @@ $colorAll: #666666;
     width: px2rem(6);
     overflow-x: hidden;
     border-radius: 0;
+    display: none;
   }
 
   &::-webkit-scrollbar-corner {
     background: #dadbdd;
+    display: none;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #dadbdd;
     border-radius: 2px;
     overflow-x: hidden;
+    display: none;
   }
 }

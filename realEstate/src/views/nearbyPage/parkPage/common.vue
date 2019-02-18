@@ -67,6 +67,9 @@ export default {
         },
         getPicUrl(clickUrl) {
             this.picUrl = getImage(clickUrl, 5);
+            const ele = document.querySelector('.bigPic');
+            const span = ele.getElementsByTagName('span')[0];
+            span.style.display = 'block';
             if (screen.width > 1024) {
                 this.picUrlBig = getImage(clickUrl, 2);
             } else {
@@ -160,10 +163,9 @@ export default {
             // background-color: white;
             .bigPic {
                 width: px2rem(1107);
-                height: 100%;
+                height: 99.2%;
                 margin-left: transverse(95);
                 border: px2rem(3) solid ;
-                border-bottom: px2rem(5) solid;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
                 @include fj(center);
