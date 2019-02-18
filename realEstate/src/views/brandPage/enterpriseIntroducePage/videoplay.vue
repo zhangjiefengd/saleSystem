@@ -12,7 +12,7 @@
       </video-player>
     </div>-->
     <div class="backImage"  @click="clickBack">
-      <img src="@/assets/img/brandBGC/back.png" alt="">
+      <img src="../../../assets/img/goHouseHistory/goHistory.png" alt="">
     </div> 
     <!-- <embed src='http://player.youku.com/player.php/sid/XMzU3MTI4NTYwNA==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'>
     </embed> -->

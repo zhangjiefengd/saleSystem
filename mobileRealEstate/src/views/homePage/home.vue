@@ -155,7 +155,7 @@ export default {
             })
           }
 
-          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 3) : require('../../assets/img/homeBackground.png')
+          this.homeBgc = res.data.data.mobileBackgroundImageLocation ? getImage(res.data.data.mobileBackgroundImageLocation, 2) : require('../../assets/img/homeBackground.png')
         }
       })
     //请求激活的模块

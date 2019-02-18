@@ -42,7 +42,7 @@ export default {
       contentColor: '#333333',
       worldBgc: '',
       videoMp4: '',
-      videoIcon: require('@/assets/img/leftNav/video.jpg'),
+      videoIcon: require('@/assets/img/leftNav/video.png'),
       imageNum: 0,
       timer: '',
       startX: 0,
@@ -62,7 +62,7 @@ export default {
           this.worlds = res.data.data
           this.titleColor = res.data.data.enterpriseFontBackgroundStyle ? res.data.data.enterpriseFontBackgroundStyle : '#c7ad8b'
           this.contentColor = res.data.data.enterpriseFontStyle ? res.data.data.enterpriseFontStyle : '#333333'
-          this.videoIcon = res.data.data.playIcoLocation ? res.data.data.playIcoLocation : require('@/assets/img/leftNav/video.jpg')
+          this.videoIcon = res.data.data.playIcoLocation ? res.data.data.playIcoLocation : require('@/assets/img/leftNav/video.png')
           this.pointSelectedStyle = res.data.data.pointSelectedStyle ? res.data.data.pointSelectedStyle : '#ffffff'
           this.pointUnselectedStyle = res.data.data.pointUnselectedStyle ? res.data.data.pointUnselectedStyle : '#ffffff'
         }

@@ -65,12 +65,12 @@ export default {
     z-index: 99;
     .wordIntroContent {
       width: 100%;
-      height: 19rem;
+      height: 100%;
       @include fj(center);
       align-items: center;
       p {
         width: 85%;
-        height: 15rem;
+        height: 90%;
         color: #000000;
         @include fontSize(28);
         @include lineHeight(48);

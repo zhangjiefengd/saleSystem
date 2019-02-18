@@ -1,9 +1,9 @@
 <template>
   <div class="home-option" @click="clearChoose" :style="[{height: optionHeight}, {background: optionBackground}]">
     <div class="component-box" v-show="isShowHead">
-      <ul class="all-head" :style="[{color: headColor}]">
+      <ul class="all-head" :style="[{color: headColor}, {marginTop: marginTop}, {height: topHeight}]">
         <li @click="backHome"> <span>首页</span></li>
-        <li @click="showCollect" v-show="!isCollect" style="text-align: right"><span>我有意向</span>></li>
+        <li @click="showCollect" v-show="!isCollect"><span>我有意向></span></li>
       </ul>
       <div v-show="isCollect" class="collectInfo">
 
@@ -107,6 +107,8 @@
         placeholder: 'block',
         priceDisplay: 'none',
         optionHeight: 'auto',
+        marginTop: '10px',
+        topHeight: '25px',
         optionBackground: 'transparent',
         wechatQr: '',
         projectName: '',
@@ -144,6 +146,8 @@
         this.isCollect = false
         this.optionBackground = 'transparent'
         this.optionHeight = 'auto'
+        this.marginTop = '10px'
+        this.topHeight = '25px'
         this.$router.push({
           path: '/'
         })
@@ -156,12 +160,23 @@
 
         if (this.optionHeight === 'auto') {
           this.optionHeight = '100%'
+          this.marginTop = '0'
+          this.topHeight = '5%'
           this.optionBackground = 'url(' + require('../assets/img/index/background.jpg') + ')'
           this.headColor = '#000000'
         } else {
           this.optionHeight = 'auto'
+          this.marginTop = '10px'
+          this.topHeight = '25px'
           this.optionBackground = 'transparent'
           this.headColor = this.backHeadColor
+        }
+        if (this.isCollect) {
+          var docEl = document.getElementsByTagName('html')[0]
+          var styleNum = docEl.style.fontSize.replace('px', '')
+          if (Number(styleNum) < 10) {
+            docEl.style.fontSize = '10px'
+          }
         }
       },
       priceDis() {
@@ -299,7 +314,7 @@
   }
   .all-head {
     width: 100%;
-    height: px2rem(50);
+    height: 5%;
     @include fj();
     align-items: flex-end;
     @include fontSize(34);
@@ -307,7 +322,11 @@
       height: 100%;
       @include fj();
       align-items: flex-end;
-      cursor: pointer;
+      >span {
+        display: block;
+        @include fj(center);
+        align-items: center;
+      }
     }
   }
   .collectInfo {
@@ -343,7 +362,6 @@
   }
   .user-info {
     width: 100%;
-    height: px2rem(400);
     border-top: px2rem(1) solid #e7e7e7;
     position: relative;
     >ul {
