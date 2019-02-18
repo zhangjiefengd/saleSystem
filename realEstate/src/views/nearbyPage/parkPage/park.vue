@@ -111,7 +111,7 @@ export default {
                 span.style.display = 'none';
                 
                 ele.style.backgroundImage = 'url(' + this.imgBack + ')';
-                // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+                // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');;
                 ele.setAttribute('class', 'bigPic complete');
                 
                 
