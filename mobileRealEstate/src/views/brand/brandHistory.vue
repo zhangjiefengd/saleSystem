@@ -5,6 +5,7 @@
         <div class="brandHistoryPhoto" v-for="(image, index1) in brandHistory" :key="index1*10" v-show="index1==brandHistoryNum">
           <img v-if="image.image !== null" :src="image.image" alt="">
         </div>
+      </transition-group>
         <div class="brandHistorywords" v-for="(image, index) in brandHistory" :key="image.id" v-show="index==brandHistoryNum">
           <div class="brandHistoryBody">
             <div class="brandHistoryHead" :style="[{color: image.stepColor}]">
@@ -26,7 +27,6 @@
             </div>
           </div>
         </div>
-      </transition-group>
     </div>
   </div>
 </template>
@@ -105,15 +105,16 @@
             height: px2rem(14);
             @include fontSize(30);
             @include lineHeight(48);
-            margin-left: px2rem(14);
+            margin-left: px2rem(5);
             border-radius: 50%;
             text-align: center;
             background-color: #d0d0d0;
           }
           .changeStyle {
-            width: 30px;
+            width: px2rem(30);
+            height: px2rem(14);
             border-radius: 5px;
-            background-color: #d0d0d0;
+            background-color: #ffdaaa;
           }
         }
       }

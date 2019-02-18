@@ -5,9 +5,11 @@
     <img v-if="developBackground == null" src="" alt="">
     <div class="content">
       <div class="content1">
-        <div class="pictureIntro">
-          <div class="hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
+        <transition-group :name="change" tag="div" class="pictureIntro">
+          <div v-for="(world, index) in worlds" :key="world.image" v-show="index === number">
             <img v-if="world.image !== null" :src="world.image" alt="">
+          </div>
+        </transition-group>
             <div class="worldIntro">
               <div class="worldIntroTop">
                 <div class="world hide" v-for="(world, index) in worlds" :key="index" :class="[{show: index==number}]">
@@ -30,8 +32,6 @@
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
       </div>
     </div>
     <contact @haveCon='haveCon'></contact>
@@ -57,7 +57,9 @@
         head: ip + ':8080/static/image/',
         conDisplay: 'none',
         pointSelectedStyle: '#d0d0d0',
-        pointUnselectedStyle: '#d0d0d0'
+        pointUnselectedStyle: '#d0d0d0',
+        timer: '',
+        change: ''
       }
     },
     created() {
@@ -96,6 +98,11 @@
         .catch(error => {
           console.log(error)
         })
+      this.$nextTick(() => {
+        this.timer = setInterval(() => {
+          this.autoPlay()
+        }, 4000)
+      })
     },
     components: {
       contact,
@@ -106,6 +113,13 @@
         this.conDisplay = 'flex';
         this.$forceUpdate();
       },
+      autoPlay () {
+        this.number++
+        this.change = 'photoSlideLeft'
+        if (this.number > this.worlds.length - 1) {
+          this.number = 0
+        }
+      },
       closeInfo() {
         this.conDisplay = 'none';
         this.$forceUpdate();
@@ -114,7 +128,16 @@
         this.$router.push({path: '/index'})
       },
       changeAll(index) {
+        clearInterval(this.timer)
+        if (this.number < index) {
+          this.change = 'photoSlideRight'
+        } else {
+          this.change = 'photoSlideLeft'
+        }
         this.number = index
+        this.timer = setInterval(() => {
+          this.autoPlay()
+        }, 4000)
       },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
@@ -172,17 +195,16 @@
       .content1 {
         width: transverse(1650);
         height: vertical(800);
+        position: relative;
 
         .pictureIntro {
-          position: relative;
           width: 100%;
           height: 100%;
-          float: left;
-          overflow: hidden;
 
           > div {
             width: 100%;
             height: 100%;
+            position: absolute;
 
             > img {
               width: 100%;
@@ -293,4 +315,32 @@
   .complete {
     // filter: blur(0);
   }
+.photoSlideLeft-enter {
+  transform: translateX(100%);
+}
+.photoSlideLeft-enter-to {
+  transition: all 1s ease;
+  transform: translateX(0);
+}
+.photoSlideLeft-leave {
+  transform: translateX(0);
+}
+.photoSlideLeft-leave-to {
+  transition: all 1s ease;
+  transform: translateX(-100%);
+}
+.photoSlideRight-enter-to {
+  transition: all 1s ease;
+  transform: translateX(0);
+}
+.photoSlideRight-leave-active {
+  transition: all 1s ease;
+  transform: translateX(100%);
+}
+.photoSlideRight-enter {
+  transform: translateX(-100%);
+}
+.photoSlideRight-leave {
+  transform: translateX(200%);
+}
 </style>

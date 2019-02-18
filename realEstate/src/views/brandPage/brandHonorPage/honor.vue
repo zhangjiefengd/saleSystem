@@ -3,8 +3,8 @@
     <img :src="background" alt="">
     <div class="content">
       <div class="worlds">
-        <div class="word-line">
-        </div>
+        <!-- <div class="word-line">
+        </div> -->
         <ul class="words">
           <li v-for="(world, index) in worlds" :key="index">
             <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>

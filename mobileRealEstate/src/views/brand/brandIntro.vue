@@ -269,7 +269,6 @@ export default {
       @include fontSize(30);
       @include lineHeight(45);
       text-indent: 2em;
-      letter-spacing: .15em;
       color: #fffffe;
       overflow-y: auto;
       .brandIntroContent {

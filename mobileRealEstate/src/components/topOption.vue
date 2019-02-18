@@ -271,7 +271,7 @@
         this.infoRemind = false
       },
       watchPhone: function () {
-        this.showPhoneNum = this.showPhoneNum.replace(/[^\d-]/g, '')
+        this.showPhoneNum = this.showPhoneNum.replace(/[^\d]/g, '')
       }
     },
     watch: {

@@ -103,6 +103,11 @@ export default {
     },
     changeImage (index) {
       clearInterval(this.timer)
+      if (this.imageNum < index) {
+        this.change = 'photoSlideRight'
+      } else {
+        this.change = 'photoSlideLeft'
+      }
       this.imageNum = index
       this.timer = setInterval(() => {
         this.autoPlay()
@@ -248,13 +253,12 @@ export default {
       width: px2rem(15);
       height: px2rem(15);
       border-radius: 50%;
-      margin-left: px2rem(30);
+      margin-left: px2rem(10);
       background-color: #ffffff;
     }
     .changeStyle {
       width: px2rem(34);
       height: px2rem(15);
-      margin-top: px2rem(-3);
       border-radius: 7px;
       background-color: #ffffff;
     }
