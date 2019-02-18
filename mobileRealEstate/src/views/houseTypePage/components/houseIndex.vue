@@ -321,8 +321,15 @@ export default {
       this.end = parseInt(ev.touches[0].clientX);
       const allHouse = document.getElementsByClassName('allHouse')[0];
       const bigDiv = document.getElementsByClassName('bigHouse')[0];
-      const allHouseWidth = window.getComputedStyle(allHouse, null).width;
-      const bigDivWidth = window.getComputedStyle(bigDiv, null).width;
+      let allHouseWidth;
+      let bigDivWidth;
+      if(window.getComputedStyle){
+        allHouseWidth = window.getComputedStyle(allHouse, null).width;
+        bigDivWidth = window.getComputedStyle(bigDiv, null).width;
+      } else {
+        allHouseWidth = allHouse.currentStyle[width];
+        bigDivWidth = bigDiv.currentStyle[width];
+      }
       const maxLeft = parseInt(allHouseWidth) - parseInt(bigDivWidth);
       this.x = this.end - this.start;
       if (this.x < 0) {

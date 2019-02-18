@@ -185,10 +185,10 @@ export default {
             // background-color: white;
             .bigPic {
                 width: px2rem(1107);
-                height: 100%;
+                height: 99.2%;
                 margin-left: transverse(95);
                 border: px2rem(3) solid;
-                border-bottom: px2rem(5) solid;
+                // border-bottom: px2rem(5) solid;
                 // border-style: solid;
                 box-sizing: border-box;
                 background-repeat: no-repeat;

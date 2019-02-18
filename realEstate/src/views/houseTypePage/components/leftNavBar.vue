@@ -157,7 +157,7 @@ import getImage from '../../../ultis/getImage.js'
     #leftWorld {
         width: 100%;
         margin-top: px2rem(110);
-        height: vertical(500);
+        height: vertical(545);
         // background-color: #fff;
         // @include fj(space-around);
         // flex-direction: column;
@@ -167,7 +167,7 @@ import getImage from '../../../ultis/getImage.js'
         @include scrollBarTwo();
         div {
             width: 100%;
-            height: px2rem(110);
+            height: 22.22%;
             text-align: center;
             @include sc(px2rem(36), #666666);
             @include fj(center);
