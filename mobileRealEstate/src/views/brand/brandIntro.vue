@@ -100,7 +100,7 @@ export default {
       document.title = '企业介绍'
 			this.timer = setInterval(() => {
 			  this.autoPlay()
-			}, 4000);
+			}, 5000);
     })
   },
   mounted () {
@@ -154,12 +154,12 @@ export default {
 				this.left()
 				this.timer = setInterval(() => {
 					this.autoPlay()
-				}, 4000);
+				}, 5000);
 			}else if(this.x<0) {
 				this.autoPlay()
 				this.timer = setInterval(() => {
 					this.autoPlay()
-				}, 4000)
+				}, 5000)
 			}
 		},
 		brandVideo() {
@@ -210,7 +210,7 @@ export default {
       width: 100%;
       height: px2rem(20);
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       @include fj(center);
       align-items: center;
       .spot {
@@ -240,7 +240,7 @@ export default {
       height: px2rem(66);
       position: absolute;
       right: px2rem(25);
-      bottom: px2rem(25);
+      bottom: px2rem(16);
       img {
         width: 100%;
         height: 100%;

@@ -20,7 +20,7 @@
                     <table border="0">
                         <tr>
                             <td><span>电话：</span></td>
-                            <td><input  type="tel"  class="tel con" v-model="tel" placeholder="请输入您的手机号"/></td>
+                            <td><input  type="tel"  class="tel con" v-model="tel" placeholder="请输入您的手机号"  @input="watchPhone"/></td>
                         </tr>
                         <tr>
                             <td><span>价格：</span></td>
@@ -123,6 +123,9 @@ export default {
   methods: {
       closeInfo() {
           this.$emit('closeInfo');
+      },
+      watchPhone: function () {
+        this.tel = this.tel.replace(/[^\d]/g, '')
       },
       //选择户型
       selectHouse(i) {

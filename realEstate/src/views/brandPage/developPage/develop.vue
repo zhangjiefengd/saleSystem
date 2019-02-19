@@ -101,7 +101,7 @@
       this.$nextTick(() => {
         this.timer = setInterval(() => {
           this.autoPlay()
-        }, 4000)
+        }, 5000)
       })
     },
     components: {
@@ -137,7 +137,7 @@
         this.number = index
         this.timer = setInterval(() => {
           this.autoPlay()
-        }, 4000)
+        }, 5000)
       },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)

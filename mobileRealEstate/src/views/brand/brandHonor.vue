@@ -39,13 +39,13 @@
   flex-direction: column;
   overflow: auto;
   >div {
-    width:  85%;
-    height: px2rem(1100);
-    margin-top: 4rem;
+    width: 85%;
+    height: 95%;
   }
   .brandHonorPhoto {
     width: 100%;
-    height: 70%;
+    height: 60%;
+    margin-top: 45px;
     position: relative;
     @include fj(center);
     align-items: center;
@@ -84,7 +84,7 @@
     }
   }
   .brandHonorIntro {
-    height: 70%;
+    height: 40%;
     overflow-y: auto;
     position: relative;
     .brandHonorwords {
@@ -113,10 +113,9 @@
   }
   .honorWordRemind {
     width: 100%;
-    height: px2rem(80);
+    height: 5%;
     @include fj(center);
     align-items: center;
-    margin-top: px2rem(20);
     img {
       width: px2rem(30);
       height: px2rem(20);

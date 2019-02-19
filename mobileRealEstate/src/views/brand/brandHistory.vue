@@ -19,14 +19,14 @@
                 {{ image.enterpriseDevelopInfo }}
               </p>
             </div>
+          </div>
+        </div>
             <div class="brandHistoryNum">
               <ul>
                 <li v-for="(a, index) in brandHistory" :style="[{backgroundColor: (index==brandHistoryNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index" :class="[{changeStyle: index==brandHistoryNum}]" @click="changeBrandHistory(index)">
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@
     }
     .brandHistorywords {
       width: 100%;
-      height: px2rem(250);
+      height: 45%;
       position: absolute;
       bottom: 0;
       background-color: #3e3e3e;
@@ -60,7 +60,7 @@
       @include fj(center);
       .brandHistoryBody {
         width: 90%;
-        height: 100%;
+        height: 85%;
         @include fj(center);
         align-items: flex-start;
         flex-direction: column;
@@ -90,32 +90,33 @@
         }
       }
 
-      .brandHistoryNum {
-        width: 100%;
-        height: 20%;
+    }
+    .brandHistoryNum {
+      width: 100%;
+      @include fj(center);
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      ul {
+        width: 80%;
+        height: px2rem(20);
         @include fj(center);
         align-items: center;
-        ul {
-          width: 80%;
-          height: px2rem(48);
-          @include fj(center);
-          align-items: center;
-          li {
-            width: px2rem(14);
-            height: px2rem(14);
-            @include fontSize(30);
-            @include lineHeight(48);
-            margin-left: px2rem(5);
-            border-radius: 50%;
-            text-align: center;
-            background-color: #d0d0d0;
-          }
-          .changeStyle {
-            width: px2rem(30);
-            height: px2rem(14);
-            border-radius: 5px;
-            background-color: #ffdaaa;
-          }
+        li {
+          width: px2rem(14);
+          height: px2rem(14);
+          @include fontSize(30);
+          @include lineHeight(48);
+          margin-left: px2rem(5);
+          border-radius: 50%;
+          text-align: center;
+          background-color: #d0d0d0;
+        }
+        .changeStyle {
+          width: px2rem(30);
+          height: px2rem(14);
+          border-radius: 5px;
+          background-color: #ffdaaa;
         }
       }
     }
@@ -165,7 +166,8 @@ export default {
       head: 'http://118.24.113.182:80/',
       backgroundImage: require('@/assets/img/background.png'),
       pointSelectedStyle: '#d0d0d0',
-      pointUnselectedStyle: '#d0d0d0'
+      pointUnselectedStyle: '#d0d0d0',
+      timer: ''
     }
   },
   created() {
@@ -201,6 +203,9 @@ export default {
       })
     this.$nextTick(()=>{
       document.title = '发展历程'
+      this.timer = setInterval(() => {
+        this.autoPlay()
+      }, 5000)
     })
   },
   methods: {
@@ -211,6 +216,13 @@ export default {
         this.change = 'photoSlideLeft';
       }
       this.brandHistoryNum = index;
+    },
+    autoPlay () {
+      this.brandHistoryNum++
+      this.change = 'photoSlideRight'
+      if (this.brandHistoryNum > this.brandHistory.length - 1) {
+        this.brandHistoryNum = 0
+      }
     },
 		touchstart(ev) {
       clearInterval(this.timer);
@@ -234,6 +246,9 @@ export default {
           this.brandHistoryNum = 0;
         }
 			}
+      this.timer = setInterval(() => {
+        this.autoPlay()
+      }, 5000)
 		},
     getImage (data, i) {
       const imgSplit = data.split(/\_|\./g)

@@ -87,7 +87,7 @@ export default {
     this.$nextTick(() => {
       this.timer = setInterval(() => {
         this.autoPlay()
-      }, 4000)
+      }, 5000)
     })
   },
   methods: {
@@ -137,13 +137,13 @@ export default {
         this.left()
         this.timer = setInterval(() => {
           this.autoPlay()
-        }, 4000)
+        }, 5000)
       } else if (this.x < 0) {
         clearInterval(this.timer)
         this.autoPlay()
         this.timer = setInterval(() => {
           this.autoPlay()
-        }, 4000)
+        }, 5000)
       }
     },
     getImage (data, i) {
