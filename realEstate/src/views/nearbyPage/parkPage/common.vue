@@ -159,11 +159,11 @@ export default {
             height: percentage(725 / 905);
             display: flex;
             align-items: center;
-            margin-top: px2rem(167);
+            margin-top: px2rem(150);
             // background-color: white;
             .bigPic {
                 width: px2rem(1107);
-                height: 99.2%;
+                height: 100%;
                 margin-left: transverse(95);
                 border: px2rem(3) solid ;
                 background-repeat: no-repeat;
