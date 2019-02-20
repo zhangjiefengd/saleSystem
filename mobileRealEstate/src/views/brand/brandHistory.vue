@@ -7,6 +7,7 @@
         </div>
       </transition-group>
         <div class="brandHistorywords" v-for="(image, index) in brandHistory" :key="image.id" v-show="index==brandHistoryNum">
+          <div class="brandShadow"></div>
           <div class="brandHistoryBody">
             <div class="brandHistoryHead" :style="[{color: image.stepColor}]">
               {{ image.step }}
@@ -43,6 +44,7 @@
     position: relative;
     .brandHistoryPhoto {
       position: absolute;
+      z-index: 0;
       width: 100%;
       height: 100%;
       img {
@@ -55,15 +57,23 @@
       height: 45%;
       position: absolute;
       bottom: 0;
-      background-color: #3e3e3e;
-      opacity: 0.8;
       @include fj(center);
+      .brandShadow {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        background-color: #3e3e3e;
+        opacity: 0.8;
+      }
       .brandHistoryBody {
         width: 90%;
         height: 85%;
         @include fj(center);
         align-items: flex-start;
         flex-direction: column;
+        position: absolute;
+        z-index: 99;
         .brandHistoryHead {
           width: auto;
           height: px2rem(50);
