@@ -222,6 +222,7 @@ export default {
                 >p {
                   height: calc(100% - 2rem);
                   font-size: px2rem(25);
+                  margin-top: px2rem(16);
                   letter-spacing: .2em;
                   word-wrap: break-word;
                   word-break: break-all;

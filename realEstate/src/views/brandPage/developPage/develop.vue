@@ -16,7 +16,7 @@
                   <div class="word-time-title">
                     <div>
                       <div>
-                        <span class="word-time" :style="[{color: world.developStepStyle}]">{{ world.step }}</span>
+                        <span class="word-time" :style="[{color: world.developStepStyle}]">{{ world.step }}</span><br/>
                         <span class="word-title" :style="[{color: world.developTitleStyle}]">{{ world.developTitle }}</span>
                       </div>
                     </div>
@@ -76,7 +76,7 @@
               }
               item.developStepStyle = item.enterpriseDevelopStepStyle ? item.enterpriseDevelopStepStyle : '#ffffff'
               item.developTitleStyle = item.enterpriseDevelopFontStyle ? item.enterpriseDevelopFontStyle : '#e2e2e2'
-              item.developcontentStyle = item.enterpriseDevelopTitleStyle ? item.enterpriseDevelopTitleStyle : '#e2e2e2'
+              item.developcontentStyle = item.enterpriseDevelopTitleStyle ? item.enterpriseDevelopTitleStyle : '#ededed'
 
             })
           }
@@ -221,11 +221,13 @@
           @include fj(center);
           align-items: center;
           flex-direction: column;
-          background-color: rgba(90, 90, 90, .85);
+          background-color: #3b3b3b;
+          opacity: 0.8;
 
           .worldIntroTop {
             width: 100%;
-            height: 65%;
+            height: auto;
+            min-height: 50%;
             overflow: auto;
 
             .world {
@@ -244,7 +246,7 @@
                   content: '';
                   float: right;
                   height: 100%;
-                  border-right: 3px solid #9c9c9c;
+                  border-right: px2rem(3) solid #9c9c9c;
                 }
 
                 > div {
@@ -254,14 +256,14 @@
                 }
 
                 span {
-                  display: block;
+                  display: inline-block;
                   font-size: px2rem(36);
                   color: #e2e2e2;
                 }
 
                 .word-time {
                   color: #ffffff;
-                  border-bottom: 2px solid #9c9c9c;
+                  border-bottom: px2rem(2) solid #9c9c9c;
                 }
               }
 
@@ -272,16 +274,16 @@
                 margin: 0 px2rem(40);
                 font-size: px2rem(30);
                 letter-spacing: .1em;
-                color: #e2e2e2;
+                color: #ededed;
               }
             }
           }
 
           .worldIntroBottom {
             width: 100%;
-            height: 26%;
+            height: 18%;
             @include fj(center);
-            align-items: center;
+            align-items: flex-end;
 
             li {
               width: px2rem(15);

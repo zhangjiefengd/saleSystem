@@ -68,7 +68,7 @@
           width: auto;
           height: px2rem(50);
           color: #ffffff;
-          padding: 0 .5rem;
+          padding: 0.5rem;
           background-color: #c7ad8b;
           @include fontSize(28);
           @include fj(center);

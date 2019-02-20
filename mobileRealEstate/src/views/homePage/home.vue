@@ -55,7 +55,7 @@
         rgba(29, 35, 40, 0.05);
         @include fj(center);
         align-items: center;
-        margin-top: px2rem(16);
+        margin-bottom: px2rem(16);
         margin-left: px2rem(16);
         img {
           width: px2rem(40);

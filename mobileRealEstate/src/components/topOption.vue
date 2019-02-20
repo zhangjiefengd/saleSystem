@@ -162,7 +162,7 @@
           this.optionHeight = '100%'
           this.marginTop = '0'
           this.topHeight = '5%'
-          this.optionBackground = 'url(' + require('../assets/img/index/background.jpg') + ')'
+          this.optionBackground = 'url(' + require('../assets/img/index/noIndexBack.png') + ')'
           this.headColor = '#000000'
         } else {
           this.optionHeight = 'auto'
