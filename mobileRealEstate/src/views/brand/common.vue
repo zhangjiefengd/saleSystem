@@ -106,7 +106,6 @@ export default {
       @include fj(center);
       align-items: center;
       @include fontSize(28);
-      font-weight: bold;
       border-right: 1px solid #e6e6e6;
     }
     .router-link-active {

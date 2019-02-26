@@ -84,19 +84,18 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/houseDis',
+    path: '/proInt',
     component: Layout,
-    redirect: '/houseDis',
-    name: 'houseDis',
+    redirect: '/proInt/index',
     meta: {
-      requireAuth: true,
+      requireAuth: true
     },
     children: [
       {
         path: 'index',
-        name: 'Table',
-        component: () => import('@/views/houseDis/index'),
-        meta: { title: '户型展示', icon: 'project' }
+        name: 'proInt',
+        component: () => import('@/views/proInt/index'),
+        meta: { title: '项目介绍', icon: 'table' }
       }
     ]
   },
@@ -135,18 +134,19 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/proInt',
+    path: '/houseDis',
     component: Layout,
-    redirect: '/proInt/index',
+    redirect: '/houseDis',
+    name: 'houseDis',
     meta: {
-      requireAuth: true
+      requireAuth: true,
     },
     children: [
       {
         path: 'index',
-        name: 'proInt',
-        component: () => import('@/views/proInt/index'),
-        meta: { title: '项目介绍', icon: 'table' }
+        name: 'Table',
+        component: () => import('@/views/houseDis/index'),
+        meta: { title: '户型展示', icon: 'project' }
       }
     ]
   },

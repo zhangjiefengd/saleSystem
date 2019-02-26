@@ -57,6 +57,7 @@
       height: 45%;
       position: absolute;
       bottom: 0;
+      left: 0;
       @include fj(center);
       .brandShadow {
         width: 100%;

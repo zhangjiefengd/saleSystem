@@ -211,6 +211,7 @@ export default {
       height: px2rem(20);
       position: absolute;
       bottom: 10px;
+      left: 0;
       @include fj(center);
       align-items: center;
       .spot {
