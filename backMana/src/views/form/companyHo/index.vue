@@ -42,8 +42,8 @@
           <div class="content">
             <form action="" method="post">
               <ul class="worlds">
-                <div class="word-line">
-                </div>
+                <!-- <div class="word-line">
+                </div> -->
                 <li v-for="(world, index) in worlds" :key="index">
                   <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
                   <span :style="[{color: world.honorTextColor}]" class="world" v-if="!worldAuto"
