@@ -575,12 +575,18 @@
                     height: auto;
                     > .title {
                       width: 100%;
+                      max-height: 25px;
                       font-size: px2rem(28);
                       word-wrap: break-word;
                       color: #666666;
                       margin: 0;
                       border: 1px dotted #fff;
                       letter-spacing: .2em;
+                      overflow: hidden scroll;
+                      scrollbar-width: none;
+                      &::-webkit-scrollbar {
+                        width: 0;
+                      }
                     }
                   }
 
@@ -589,12 +595,18 @@
                     height: auto;
                     > .content1 {
                       width: 100%;
+                      height: 60px;
                       margin: 0;
                       font-size: px2rem(22);
                       word-wrap: break-word;
                       border: 1px dotted #fff;
                       color: #666666;
                       letter-spacing: .1em;
+                      overflow: hidden scroll;
+                      scrollbar-width: none;
+                      &::-webkit-scrollbar {
+                        width: 0;
+                      }
                     }
                   }
                 }

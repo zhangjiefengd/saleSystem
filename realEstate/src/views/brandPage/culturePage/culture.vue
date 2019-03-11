@@ -219,6 +219,14 @@ export default {
                 color: #666666;
                 margin-left: px2rem(32);
                 letter-spacing: .3em;
+                >h2 {
+                  height: 33px;
+                  overflow: hidden scroll;
+                  scrollbar-width: none;
+                  &::-webkit-scrollbar {
+                    width: 0;
+                  }
+                }
                 >p {
                   height: calc(100% - 2rem);
                   font-size: px2rem(25);
@@ -226,7 +234,11 @@ export default {
                   letter-spacing: .2em;
                   word-wrap: break-word;
                   word-break: break-all;
-                  overflow: hidden;
+                  overflow: hidden scroll;
+                  scrollbar-width: none;
+                  &::-webkit-scrollbar {
+                    width: 0;
+                  }
                 }
               }
             }

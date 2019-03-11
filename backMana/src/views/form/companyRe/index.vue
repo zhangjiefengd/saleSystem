@@ -654,7 +654,6 @@
         > .worldTitle {
           float: right;
           width: 60%;
-          height: 50%;
           @include fj(space-between);
           align-items: center;
           .title {

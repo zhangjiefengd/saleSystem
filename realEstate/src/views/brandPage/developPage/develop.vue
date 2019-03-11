@@ -227,6 +227,7 @@
           .worldIntroTop {
             width: 100%;
             height: auto;
+            max-height: 120px;
             min-height: 50%;
             overflow: auto;
 
@@ -241,6 +242,11 @@
                 height: 100%;
                 float: left;
                 margin-left: px2rem(40);
+                overflow: hidden scroll;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                  width: 0;
+                }
 
                 &:before {
                   content: '';
@@ -259,11 +265,26 @@
                   display: inline-block;
                   font-size: px2rem(36);
                   color: #e2e2e2;
+                  margin-right: px2rem(40);
                 }
 
                 .word-time {
+                  height: 40px;
                   color: #ffffff;
                   border-bottom: px2rem(2) solid #9c9c9c;
+                  overflow: hidden scroll;
+                  scrollbar-width: none;
+                  &::-webkit-scrollbar {
+                    width: 0;
+                  }
+                }
+                .word-title {
+                  height: 80px;
+                  overflow: hidden scroll;
+                  scrollbar-width: none;
+                  &::-webkit-scrollbar {
+                    width: 0;
+                  }
                 }
               }
 
@@ -275,6 +296,11 @@
                 font-size: px2rem(30);
                 letter-spacing: .1em;
                 color: #ededed;
+                overflow: hidden scroll;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                  width: 0;
+                }
               }
             }
           }

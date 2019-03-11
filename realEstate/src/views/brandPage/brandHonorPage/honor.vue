@@ -178,6 +178,7 @@ export default {
       width: transverse(800);
       height: vertical(900);
       margin-left: vertical(40);
+      overflow: hidden;
       position: relative;
       .word-line {
         position: absolute;
@@ -188,10 +189,18 @@ export default {
         background-color: #999999;
       }
       .words {
-        @include fj(flex-start);
-        flex-direction: column;
-        margin-top: px2rem(-55);
+        width: 100%;
+        height: 100%;
+        // @include fj(flex-start);
+        // flex-direction: column;
+        margin-top: px2rem(-50);
+        overflow: hidden scroll;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          width: 0;
+        }
         li {
+          width: 100%;
           font-size: px2rem(30);
           line-height: 34px;
           @include fj(flex-start);

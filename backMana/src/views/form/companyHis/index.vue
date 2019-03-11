@@ -33,16 +33,16 @@
                       <div :style="[{color: item.developStepStyle}]" class="title" @click="changeTitle(index)" :class="[{hide1: titleAuto}]">
                         {{ item.step }}
                       </div>
-                      <input class="title" style="float: left;color: #000;" type="text" autofocus @blur="changeTitle(index)"
-                             :value="item.step" :class="[{hide1: !titleAuto}]">
-                      <input class="title" style="width: 50%;float: left;display: none;color: #000;" type="text" autofocus
+                      <textarea class="title" style="float: left;color: #000;" type="text" autofocus @blur="changeTitle(index)"
+                             :value="item.step" :class="[{hide1: !titleAuto}]"></textarea>
+                      <textarea class="title" style="width: 50%;float: left;display: none;color: #000;" type="text" autofocus
                              @blur="changeTitle(index)"
-                             :value="item.step" :class="[{hide1: !titleAuto}]">
+                             :value="item.step" :class="[{hide1: !titleAuto}]"></textarea>
                       <div :style="[{color: item.developTitleStyle}]" class="head" @click="changeHead(index)" :class="[{hide1: headAuto}]">
                         {{ item.developTitle }}
                       </div>
-                      <input style="color: #000" class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
-                             :class="[{hide1: !headAuto}]">
+                      <textarea style="color: #000" class="head" type="text" autofocus @blur="changeHead(index)" :value="item.developTitle"
+                             :class="[{hide1: !headAuto}]"></textarea>
                     </div>
                     <div>
                       <p :style="[{color: item.developcontentStyle}]" class="content2" @click="changeContent(index)" :class="[{hide1: contentAuto}]">
@@ -495,6 +495,11 @@
                     color: #ffffff;
                     font-size: px2rem(25);
                     border: 1px dotted #fff;
+                    overflow: hidden scroll;
+                    scrollbar-width: none;
+                    &::-webkit-scrollbar {
+                      width: 0;
+                    }
                   }
 
                   .head {
@@ -505,6 +510,11 @@
                     color: #e2e2e2;
                     margin: 1rem 0;
                     border: 1px dotted #fff;
+                    overflow: hidden scroll;
+                    scrollbar-width: none;
+                    &::-webkit-scrollbar {
+                      width: 0;
+                    }
                   }
                   .content2 {
                     width: 100%;
@@ -517,6 +527,7 @@
                     align-items: flex-start;
                     color: #fffffe;
                     border: 1px dotted #fff;
+                    overflow: hidden scroll;
                   }
                 }
 

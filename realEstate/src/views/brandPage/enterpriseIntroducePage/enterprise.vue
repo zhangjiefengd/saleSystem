@@ -308,6 +308,11 @@ export default {
         margin: px2rem(50) px2rem(50) 0 px2rem(50);
         color: #333333;
         font-family: 'FZHei';
+        overflow: hidden scroll;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          width: 0;
+        }
       }
     }
   }

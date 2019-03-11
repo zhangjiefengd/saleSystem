@@ -44,13 +44,13 @@
               <ul class="worlds">
                 <div class="word-line">
                 </div>
-                <li v-for="(world, index) in worlds" v-if="index < 8" :key="index">
+                <li v-for="(world, index) in worlds" :key="index">
                   <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
-                  <span :style="[{color: world.honorTextColor}]" class="world" :class="[{hide: worldAuto}]"
+                  <span :style="[{color: world.honorTextColor}]" class="world" v-if="!worldAuto"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
-                  <input style="color: #000" class="world" type="text" autofocus @blur="changeback(index)"
+                  <textarea style="color: #000" class="world" type="text" autofocus @blur="changeback(index)"
                          :value="world.enterpriseHonorInfo"
-                         :class="[{hide: !worldAuto}]">
+                         v-else></textarea>
                   <label for="shanchu" class="deleteword" @click="deleteWorld(index)">X</label>
                   <input type="button" style="display: none" id="shanchu">
                 </li>
@@ -531,12 +531,13 @@
   }
 
   .changeword {
+    position: absolute;
+    bottom: px2rem(-35);
+    left: .5rem;
     width: px2rem(120);
-    height: px2rem(34);
+    height: px2rem(35);
     background-color: #edf0f5;
     border-radius: px2rem(4);
-    margin-top: .5rem;
-    margin-left: 1rem;
     border: 0;
     padding: 0;
   }
@@ -663,9 +664,10 @@
       align-items: center;
       flex-direction: row-reverse;
       > form {
+        width: px2rem(600);
+        height: px2rem(500);
+        overflow: hidden scroll;
         .worlds {
-          width: px2rem(600);
-          height: vertical(560);
           float: left;
           @include fj(space-between);
           flex-direction: column;
@@ -694,7 +696,9 @@
             }
 
             > .world {
+              display: inline-block;
               width: px2rem(500);
+              min-height: 30px;
               margin-left: 1em;
               color: #ffffff;
               text-align: left;
