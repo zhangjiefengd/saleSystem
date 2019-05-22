@@ -158,7 +158,6 @@
           }
         ))
           .then(res => {
-            res.data.code = 1
             this.$store.state.user.loginStatus = res.data.code
             if (res.data.code === 1) {
               this.loading = true

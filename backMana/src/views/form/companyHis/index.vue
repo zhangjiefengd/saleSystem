@@ -95,7 +95,7 @@
         headAuto: false,
         contentAuto: false,
         id: 0,
-        head: ip + ':8080/static/image/',
+        head: ip + '/static/image/',
         bgcLoading: false,
         pointSelectedStyle: '#d0d0d0',
         pointUnselectedStyle: '#d0d0d0',

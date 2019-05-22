@@ -101,7 +101,7 @@
         photoNum: 0,
         imageNum: 0,
         worldAuto: false,
-        head: ip + ':8080/static/image/',
+        head: ip + '/static/image/',
         bgcLoading: false,
         defaultTextColor: '#ffffff',
         defaultPointColor: '#c7ad8c'

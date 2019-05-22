@@ -1,8 +1,8 @@
 <template>
 <div id="leftNav">
   <div id="leftNavBar">
-    <div class="leftLogo" >
-      <img :src="companyLogo" alt="">
+    <div class="leftLogo">
+      <img class="companyLogo" :src="companyLogo" alt="">
     </div>
     <ul id="LeftWorld">
       <router-link @click.native="closeLinkInfo(index)" tag="li" v-for="(world, index) in worlds" :key="index" :to="world.address" :class="index==Num?leftBottom:''">
@@ -13,10 +13,10 @@
        <img src="../../../assets/img/leftNav/eat.png" alt="">
     </div> -->
   </div>
-  <div class="backImage"  @click="clickBack">
-    <img src="../../../assets/img/goHouseHistory/goHistory.png" alt="">
+  <div class="backImage" >
+    <img @click="clickBack" src="../../../assets/img/goHouseHistory/goHistory.png" alt="">
   </div>
-    <router-view></router-view>
+  <router-view></router-view>
   <!--</transition>-->
 </div>
 </template>
@@ -53,13 +53,15 @@ export default {
       clickStatus: '#c1a077',
       clickedStatus: '#c7ad8c',
       clickNoneStatus: '#ffffff',
-      upStatus: '#dfc29d'
+      upStatus: '#dfc29d',
+      logo: ''
     }
   },
   created () {
     this.$axios.get('/basic/guidePage/get')
       .then((res) => {
-        (res.data.data && res.data.data.projectLogoLocation) ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 1) : this.companyLogo = require('@/assets/img/leftNav/logo.png')
+        (res.data.data && res.data.data.projectLogoLocation) ? this.companyLogo = getImage(res.data.data.projectLogoLocation, 4) : this.companyLogo = require('@/assets/img/leftNav/logo.png')
+        this.logo = getImage(res.data.data.projectLogoLocation, 1)
       })
       .catch(error => {
         console.log(error)
@@ -73,6 +75,7 @@ export default {
       .catch(error => {
         console.log(error)
       })
+    
   },
   mounted () {
     var oUl = document.getElementById('LeftWorld')
@@ -131,6 +134,15 @@ export default {
   watch: {
     worlds () {
       this.Num = this.worlds.length - 1
+    },
+    companyLogo () {
+      var newImage = new Image()
+      newImage.src = this.logo
+      newImage.onload = () => {
+        this.projectLogoLocation = this.logo
+        document.getElementsByClassName('companyLogo')[0].setAttribute('src', this.companyLogo)
+        document.getElementsByClassName('companyLogo')[0].style.filter = 'blur(0)'
+      }  
     }
   }
 }
@@ -154,7 +166,9 @@ export default {
     >img {
       width: px2rem(57);
       height: px2rem(50);
+      cursor: pointer;
     }
+    cursor: pointer;
   }
   #leftNavBar {
     width: transverse(260);
@@ -166,9 +180,11 @@ export default {
       width: px2rem(179);
       margin: px2rem(90) auto;
       margin-bottom: 0;
+      transition: all .75;
       >img {
         width: 100%;
         height: 100%;
+        filter: blur(2px);
       }
     }
     #LeftWorld {

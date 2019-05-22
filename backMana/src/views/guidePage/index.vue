@@ -58,7 +58,7 @@ export default {
       "appear": "none",
       "appearCome": "block",
       "success": [],
-      head: ip + ':8080/static/image/',
+      head: ip + '/static/image/',
       color: '',
       colorBussiness: '#666666',
       colorAddress: '#666666',

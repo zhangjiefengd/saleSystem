@@ -1,7 +1,7 @@
 <template>
   <div id="develop">
     <!-- <img v-if="background[0]" v-lazy="background[0].backgroundImage.fileName" alt=""> -->
-    <img v-if="developBackground !== null" :src="developBackground" alt="">
+    <img v-if="developBackground !== null" class="back" :src="developBackground" alt="">
     <img v-if="developBackground == null" src="" alt="">
     <div class="content">
       <div class="content1">
@@ -150,7 +150,7 @@
     },
     watch: {
       backBig() {
-        var ele = document.querySelector('.honor');
+        var ele = document.getElementsByClassName('back')[0]
         var imgUrl = this.backBig
         var imgObject = new Image()
 
@@ -159,13 +159,12 @@
         imgObject.onload = function () {
           let time = setInterval(() => {
             this.developBackground = imgUrl
-            // console.log(this.imgProjectBack);
-            document.getElementsByClassName('back')[0].src = this.developBackground
-            // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+
+            ele.setAttribute('src', this.developBackground)
+            
             ele.setAttribute('class', 'honor complete')
           }, 100)
         }
-        // }, 100);
       }
     }
   }
@@ -179,6 +178,7 @@
     height: 100%;
     float: left;
     position: relative;
+    transition: all 0.7s;
 
     > img {
       width: 100%;
@@ -341,7 +341,7 @@
   }
 
   .complete {
-    // filter: blur(0);
+    filter: blur(0);
   }
 .photoSlideLeft-enter {
   transform: translateX(100%);

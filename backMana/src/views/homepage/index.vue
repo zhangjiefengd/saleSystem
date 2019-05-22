@@ -48,8 +48,7 @@ import getImage from '../../utils/getImage.js'
                 "word": ["项目介绍", "品牌概况", "户型展示", "楼盘周边"],
                 "modifyIcon": require('../../assets/img/modifyIcon.jpg'),
                 // "icon": [require('../../assets/img/icon1.png'),require('../../assets/img/icon2.png'),require('../../assets/img/icon3.png'),require('../../assets/img/icon4.png')],
-                icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')],
-                "head": 'http://192.168.43.127:80/'
+                icon: [require('../../assets/img/index/介绍.png'), require('../../assets/img/index/品牌概况.png'), require('../../assets/img/index/户型.png'), require('../../assets/img/index/楼盘周边.png')]
             }
         },
         created() {

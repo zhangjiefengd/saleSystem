@@ -85,7 +85,7 @@
         cultureImage: '',
         cultureText: [],
         listen: [],
-        head: ip + ':8080/static/image/',
+        head: ip + '/static/image/',
         bgcLoading: false,
         cultureLoading: false,
         defaultTitleColor: '#a0a',

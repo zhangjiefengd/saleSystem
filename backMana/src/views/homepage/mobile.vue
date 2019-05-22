@@ -176,7 +176,7 @@ export default {
           icon: require('../../assets/img/icon4.png')
         },
       ],
-      head: ip + ':8080/static/image/',
+      head: ip + '/static/image/',
       bgcLoading: false,
       logoLoading: false
     }

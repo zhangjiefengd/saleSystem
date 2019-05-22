@@ -3,7 +3,7 @@
     <div class="enterpriseImage">
       <transition-group tag="ul" :name="change">
         <li v-for="(image, index) in images" :key="image.image" v-show="index == imageNum">
-          <img :src="image.image" alt="">
+          <img class="enterpriseImg" :src="image.image" alt="">
         </li>
       </transition-group>
     </div>
@@ -73,6 +73,7 @@ export default {
     this.$axios.post('/brand/enterpriseIntroduction/image/get')
       .then(res => {
         if (res.data.data) {
+          console.log(res.data.data)
           this.images = res.data.data
           this.images.map((item, index) => {
             if (item.imageLocation) {
@@ -170,7 +171,7 @@ export default {
   watch: {
     images () {
       let that = this
-      let ele = document.getElementsByTagName('img')
+      let ele = document.getElementsByClassName('enterpriseImg')
       let imgUrl = []
       let imgObject = []
       let num = 0
@@ -211,7 +212,7 @@ export default {
 @import '../../../styles/main.scss';
 @import '../../../styles/mixin.scss';
 .touchevent {
-  width: 75%;
+  width: 100%;
   height: 100%;
   position: absolute;
   z-index: 90;
@@ -269,7 +270,7 @@ export default {
     float: right;
     position: absolute;
     right: 0;
-    z-index: 88;
+    z-index: 92;
     >img {
       width: 100%;
       height: 100%;

@@ -41,7 +41,7 @@ export default {
             projectWord: "",
             "appear": "none",
             "appearCome": "block",
-            head: ip + ':8080/static/image/',
+            head: ip + '/static/image/',
             id: 0,
             colorContent: '#ffffff',
             titleColor: '#ffffff',

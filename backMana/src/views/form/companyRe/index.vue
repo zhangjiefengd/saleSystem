@@ -98,6 +98,7 @@
 <script>
   import { iconfont } from '../../../utils/iconfont.js'
   // import colorManage from '../../../components/colorManage'
+  import ip from '../../../../static/ip'
   import qs from 'qs'
 
   export default {
@@ -117,7 +118,7 @@
         titleAuto: false,
         contentAuto: false,
         changeImageNum: 0,
-        head: 'http://118.24.113.182:8080/static/image/',
+        head: ip + '/static/image/',
         timer: '',
         titleColor: '#c7ad8b',
         contentColor: '#333333',
@@ -510,7 +511,7 @@
           width: 100%;
           height: 80%;
           float: left;
-          overflow-y: scroll;
+          overflow: hidden auto;
 
           > .img {
             width: 15%;

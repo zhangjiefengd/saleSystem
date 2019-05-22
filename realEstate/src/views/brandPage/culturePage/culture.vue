@@ -1,6 +1,6 @@
 <template>
 	<div id="culture">
-    <img :src="cultureBackground" alt="">
+    <img class="cultureBgc" :src="cultureBackground" alt="">
     <div class="content">
       <div>
         <div class="contentTop">
@@ -47,7 +47,8 @@ export default {
       logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
       conDisplay: 'none',
       titleColor: '#666666',
-      contentColor: '#666666'
+      contentColor: '#666666',
+      CutureImage: ''
     }
   },
   created () {
@@ -73,7 +74,9 @@ export default {
     this.$axios.get('/brand/enterpriseCulture/image/get')
       .then(res => {
         if (res.data.data) {
-          this.culturePicture = getImage(res.data.data.mainImageLocation, 1)
+          this.culturePicture = getImage(res.data.data.mainImageLocation, 4)
+          this.CutureImage = getImage(res.data.data.mainImageLocation, 1)
+          
           this.cultureBackground = res.data.data.backgroundImageLocation ? getImage(res.data.data.backgroundImageLocation, 1) : require('@/assets/img/background.jpg')
           if (screen.width > 1024) {
             this.backBig = getImage(res.data.data.backgroundImageLocation, 2)
@@ -112,32 +115,31 @@ export default {
   },
   watch: {
     backBig () {
-      var ele = document.querySelector('.honor');
+      var ele = document.querySelector('.cultureBgc');
       var imgUrl = this.backBig
       var imgObject = new Image()
 
       imgObject.src = imgUrl
       imgObject.onload = function () {
         this.cultureBackground = imgUrl
-        // console.log(this.imgProjectBack);
-        document.getElementsByClassName('back')[0].src = this.cultureBackground;
-        // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
+        
+        document.getElementsByClassName('cultureBgc')[0].setAttribute('src', this.cultureBackground)
+        
         ele.setAttribute('class', 'honor complete');
 
       }
     },
     culBig () {
-      var ele = document.querySelector('.culture');
-      var imgUrl = this.culturePicture;
-      var imgObject = new Image();
+      var ele = document.getElementsByClassName('contentTop')
+      
+      var imgObject = new Image()
 
-      imgObject.src = imgUrl;
-      imgObject.onload = function () {
-        this.culturePicture = imgUrl;
-        // console.log(this.imgProjectBack);
-        ele.src = this.culturePicture;
-        // $('#muluguanli').css('background','url(res/skin/dist/img/zongheguanli_bg.png)  no-repeat');
-        ele.setAttribute('class', 'culture complete');
+      imgObject.src = this.CutureImage
+      imgObject.onload = () => {
+
+        this.culturePicture = this.CutureImage
+        
+        document.getElementsByClassName('contentTop')[0].style.filter = 'blur(0)'
       }
     }
   }
@@ -171,16 +173,11 @@ export default {
         height: 40%;
         @include fj();
         flex-direction: column-reverse;
+        filter: blur(2px);
+        transition: all .75s;
         >img {
           width: 100%;
           height: 90%;
-        }
-        .culture {
-          // filter: blur(4px);
-          transition: all 2s;
-        }
-        .complete {
-            // filter: blur(0);
         }
       }
       .contentBottom {

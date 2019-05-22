@@ -61,7 +61,7 @@ export default {
             chaPic: require('../../../assets/img/cha.png'),//叉图片
             sampleRoomImage: [],
             houseTypeImage: {},
-            head: ip + ':8080/static/image/',
+            head: ip + '/static/image/',
             chaDisplay: 'none',//户型图的叉叉是否显现
             dialogImageUrl: '',
             dialogVisible: false,
