@@ -206,6 +206,11 @@
             })
             this.content.push(res.data.data)
             this.listen.push(res.data.data)
+          } else {
+            this.$message({
+              message: '添加失败',
+              type: 'warning'
+            })
           }
         })
       },
@@ -228,7 +233,10 @@
               })
               this.number = 0
             } else {
-              console.log(res)
+              this.$message({
+                message: '删除失败',
+                type: 'warning'
+              })
             }
           })
         }
@@ -283,6 +291,11 @@
                 })
                 bgc = null
                 this.bgcLoading = false
+              } else {
+                this.$message({
+                  message: '背景图片上传失败',
+                  type: 'warning'
+                })
               }
             })
         }
@@ -301,6 +314,11 @@
                     type: 'success'
                   })
                   this.listen = JSON.parse(JSON.stringify(this.content))
+                } else {
+                  this.$message({
+                    message: '历程信息上传失败',
+                    type: 'warning'
+                  })
                 }
               })
           }
@@ -321,6 +339,11 @@
                     })
                     this.changeImage = []
                     this.content[i].loading = false
+                  } else {
+                    this.$message({
+                      message: '历程图片上传失败',
+                      type: 'warning'
+                    })
                   }
                 })
                 .catch(res => {

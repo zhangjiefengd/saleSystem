@@ -33,7 +33,7 @@ export default {
     return {
       videoMp4: '',
       playerOptions: {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+        // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
         autoplay: false, //如果true,浏览器准备好时开始回放。
         muted: false, // 默认情况下将会消除任何音频。
         loop: false, // 导致视频一结束就重新开始。
@@ -47,6 +47,7 @@ export default {
         }],
         // poster: "poster.jpg", //你的封面地址
         width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
           timeDivider: true,
@@ -67,7 +68,7 @@ export default {
       .then(res => {
         // this.back = res.data.enterprise.Images.back;
         // this.src1 = res.data.data.videoUrl;
-        this.playerOptions.sources[0].src = "http://player.youku.com/player.php/sid/XMzU3MTI4NTYwNA==/v.swf";
+        this.playerOptions.sources[0].src = res.data.data.videoUrl
         // this.$refs.video.src = 'http://player.youku.com/player.php/sid/XMzU3MTI4NTYwNA==/v.swf'
       })
       .catch(error => {
@@ -109,6 +110,9 @@ export default {
   .player {
     width: 100%;
     height: 100%;
+    .vjs-custom-skin > .video-js {
+      height: 100%;
+    }
   }
   .backImage {
     height: vertical(125);

@@ -360,6 +360,11 @@
                   })
                   this.images[index].id = res.data.data.id
                   this.images[index].bgcLoading = false
+                } else {
+                  this.$message({
+                    message: '图片上传失败',
+                    type: 'warning'
+                  })
                 }
               })
               .catch(res => {
@@ -378,6 +383,11 @@
                 this.$message({
                   message: '公司信息上传成功',
                   type: 'success'
+                })
+              } else {
+                this.$message({
+                  message: '公司信息上传失败，检查字数是否超过限制',
+                  type: 'warning'
                 })
               }
             })

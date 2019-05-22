@@ -233,6 +233,7 @@ export default {
                   word-break: break-all;
                   overflow: hidden scroll;
                   scrollbar-width: none;
+                  padding-bottom: 20px;
                   &::-webkit-scrollbar {
                     width: 0;
                   }

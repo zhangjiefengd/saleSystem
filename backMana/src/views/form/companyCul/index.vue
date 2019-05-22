@@ -88,7 +88,7 @@
         head: ip + '/static/image/',
         bgcLoading: false,
         cultureLoading: false,
-        defaultTitleColor: '#a0a',
+        defaultTitleColor: '#666666',
         defaultContentColor: '#666666',
         logo: [require('@/assets/img/dingwei.png'), require('@/assets/img/tuoguan.png'), require('@/assets/img/zerenxin.png'), require('@/assets/img/zuanshi.png')],
       }
@@ -249,6 +249,11 @@
                   message: '删除成功',
                   type: 'success'
                 })
+              } else {
+                this.$message({
+                  message: '删除失败',
+                  type: 'warning'
+                })
               }
             })
           }
@@ -291,6 +296,11 @@
                   })
                   this.cultureText[i].id = res.data.data.id
                   this.listen[i] = res.data.data
+                } else {
+                  this.$message({
+                    message: '添加失败',
+                    type: 'warning'
+                  })
                 }
               })
           } else if (this.cultureText[i].title !== this.listen[i].title || this.cultureText[i].content !== this.listen[i].content) {
@@ -307,6 +317,11 @@
                   this.$message({
                     message: '修改成功',
                     type: 'success'
+                  })
+                } else {
+                  this.$message({
+                    message: '修改失败',
+                    type: 'warning'
                   })
                 }
               })

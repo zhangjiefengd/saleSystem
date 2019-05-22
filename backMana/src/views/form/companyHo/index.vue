@@ -46,11 +46,12 @@
                 </div> -->
                 <li v-for="(world, index) in worlds" :key="index">
                   <span class="honor-spot" :style="[{backgroundColor: world.pointStyle}]"></span>
-                  <span :style="[{color: world.honorTextColor}]" class="world" v-if="!worldAuto"
+                  <span :style="[{color: world.honorTextColor}, {display: worldAuto ? 'none' : block}]" class="world"
                         @click="changeworld(index)">{{ world.enterpriseHonorInfo }}</span>
                   <textarea style="color: #000" class="world" type="text" autofocus @blur="changeback(index)"
                          :value="world.enterpriseHonorInfo"
-                         v-else></textarea>
+                         :style="[{display: !worldAuto ? 'none' : block}]"
+                        ></textarea>
                   <label for="shanchu" class="deleteword" @click="deleteWorld(index)">X</label>
                   <input type="button" style="display: none" id="shanchu">
                 </li>
@@ -258,6 +259,11 @@
                   message: '文字删除成功',
                   type: 'success'
                 })
+              } else {
+                 this.$message({
+                  message: '文字删除失败',
+                  type: 'warning'
+                })
               }
             })
           }
@@ -294,6 +300,11 @@
                   type: 'success'
                 })
                 this.honorPhoto.splice(index, 1)
+              } else {
+                this.$message({
+                  message: '荣誉图片删除失败',
+                  type: 'warning'
+                })
               }
             })
           } else {
@@ -345,6 +356,11 @@
                 })
                 bgc = null
                 this.bgcLoading = false
+              } else {
+                this.$message({
+                  message: '背景图片更换失败',
+                  type: 'warning'
+                })
               }
             })
         }
@@ -366,6 +382,11 @@
                     message: '文字上传成功',
                     type: 'success'
                   })
+                } else {
+                  this.$message({
+                    message: '文字上传失败',
+                    type: 'warning'
+                  })
                 }
               })
           } else {
@@ -386,6 +407,11 @@
                         type: 'success'
                       })
                       this.worldlisten[index1] = this.worlds[index]
+                    } else {
+                      this.$message({
+                        message: '文字修改失败',
+                        type: 'warning'
+                      })
                     }
                   })
               }
@@ -408,6 +434,11 @@
                   })
                   this.honorPhoto[i].id = res.data.data.id
                   this.honorPhoto[i].loading = false
+                } else {
+                  this.$message({
+                    message: '荣誉图片上传失败',
+                    type: 'warning'
+                  })
                 }
               })
           }
@@ -444,6 +475,9 @@
 
   .hide {
     display: none;
+  }
+  .hide1 {
+    display: none !important;
   }
 
   .allSubmit {
