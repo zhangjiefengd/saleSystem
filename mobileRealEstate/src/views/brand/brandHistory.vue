@@ -58,11 +58,12 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      @include fj(center);
       .brandShadow {
         width: 100%;
         height: 100%;
         position: absolute;
+        left: 0;
+        bottom: 0;
         z-index: 0;
         background-color: #3e3e3e;
         opacity: 0.8;
@@ -74,6 +75,8 @@
         align-items: flex-start;
         flex-direction: column;
         position: absolute;
+        left: 5%;
+        top: 0;
         z-index: 99;
         .brandHistoryHead {
           width: auto;
@@ -108,6 +111,7 @@
       align-items: center;
       position: absolute;
       bottom: 10px;
+      left: 0;
       ul {
         width: 80%;
         height: px2rem(20);
@@ -174,7 +178,7 @@ export default {
       startX: 0,
       endX: 0,
       x: 0,
-      head: 'http://118.24.113.182:80/',
+      head: 'http://139.9.80.230:8080/',
       backgroundImage: require('@/assets/img/background.png'),
       pointSelectedStyle: '#d0d0d0',
       pointUnselectedStyle: '#d0d0d0',

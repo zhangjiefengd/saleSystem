@@ -92,7 +92,7 @@ export default {
       brandCultureContent: '',
       brandCultureNum: Number,
       wordRemind: true,
-      head: 'http://118.24.113.182:80/',
+      head: 'http://139.9.80.230:8080/',
       backgroundImage: require('@/assets/img/background.png'),
       titleColor: '',
       contentColor: ''

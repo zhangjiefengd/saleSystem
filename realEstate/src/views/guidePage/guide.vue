@@ -65,7 +65,7 @@ export default {
         res.data.data.projectLocationIconLocation ? this.bussiness = getImage(res.data.data.projectLocationIconLocation, 2) : '';
         res.data.data.projectHostIconLocation ? this.address = getImage(res.data.data.projectHostIconLocation, 2) : '';
         res.data.data.projectHotlineIconLocation ? this.tel = getImage(res.data.data.projectHotlineIconLocation, 2) : '';
-       
+
       }
       this.check = 1;
     })
@@ -145,7 +145,7 @@ export default {
   // filter: blur(4px);
   transition: all 0.7s;
   .content {
-    width: px2rem(1562);
+    /*width: px2rem(1562);*/
     height: vertical(730);
     margin: px2rem(254) auto;
     margin-bottom: px2rem(68);
@@ -176,9 +176,13 @@ export default {
     }
     .guideInfor {
       width: 100%;
-      height: px2rem(40);
+      height: px2rem(80);
       @include fj();
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       align-items: center;
+      justify-content: space-around;
       .bottomInfor {
         @include sc(px2rem(30));
         img {

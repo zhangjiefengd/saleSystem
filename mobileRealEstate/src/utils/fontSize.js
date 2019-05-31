@@ -2,6 +2,7 @@
   var dpr = window.devicePixelRatio || 1;
   if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {  //判断iPhone|iPad|iPod|iOS
     var dpr = window.devicePixelRatio * 1.2 || 1;
+    console.log(dpr)
   } else if (/(Android)/i.test(navigator.userAgent)) {   //判断Android
     var dpr = 1;
   } else {  //pc

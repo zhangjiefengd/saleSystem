@@ -29,6 +29,7 @@ export default {
           res.data.data.backgroundImageLocation ? this.backgroundImage = getImage(res.data.data.backgroundImageLocation, 1) : ''
           this.words = res.data.data.content;
         }
+        console.log(this.backgroundImage)
     })
     this.$nextTick(()=>{
       document.title = '项目介绍'

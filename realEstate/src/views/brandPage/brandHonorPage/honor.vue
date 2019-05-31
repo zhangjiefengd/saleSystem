@@ -191,14 +191,10 @@ export default {
       .words {
         width: 100%;
         height: 100%;
-        // @include fj(flex-start);
-        // flex-direction: column;
         margin-top: px2rem(-50);
-        overflow: hidden scroll;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-          width: 0;
-        }
+        overflow-y: auto;
+        overflow-x: hidden;
+        @include overText();
         li {
           width: 100%;
           font-size: px2rem(30);

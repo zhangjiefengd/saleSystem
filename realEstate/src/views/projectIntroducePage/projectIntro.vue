@@ -143,6 +143,9 @@ export default {
           width: px2rem(392);
           height: px2rem(500);
           margin: px2rem(57) auto;
+          overflow-y: auto;
+          overflow-x: hidden;
+          @include overText();
           span {
               @include sc(px2rem(24), #ffffff);
               line-height: px2rem(48);

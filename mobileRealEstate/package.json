@@ -12,9 +12,13 @@
   "dependencies": {
     "array-includes": "^3.0.3",
     "axios": "^0.18.0",
+    "fastclick": "^1.0.6",
     "jquery": "^3.3.1",
+    "video.js": "^7.5.4",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

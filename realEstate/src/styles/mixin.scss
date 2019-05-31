@@ -58,7 +58,26 @@ $colorAll: #666666;
   display: flex;
   justify-content: $type;
 }
+@mixin overText($color: #c7ad8d) {
+  &::-webkit-scrollbar {  
+    width: px2rem(5);
+    overflow: hidden auto;
+  }  
 
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: lightgray;
+  }  
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $color;
+  }  
+  &::-webkit-scrollbar-button {
+    height: 0;
+    background-color: #eee;
+  }
+}
 @mixin scrollBar {
   &::-webkit-scrollbar-track-piece {
     overflow-x: hidden; 

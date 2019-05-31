@@ -24,7 +24,7 @@
 .homePage {
   width: 100%;
   height: 100%;
-  background-size: cover;
+  background-size: 100% 100%;
   .homeHead {
     width: 100%;
     height: 58%;
@@ -42,16 +42,16 @@
     align-items: center;
     .homeModule {
       width: 90%;
-      height: px2rem(224);
+      height: px2rem(256);
       @include fj(center);
       align-items: center;
       flex-wrap: wrap;
       margin-left: px2rem(-16);
       li {
         width: 40%;
-        height: px2rem(86);
+        height: px2rem(102);
         background-color: #ffffff;
-        box-shadow: 0px 8px 10px 0px
+        box-shadow: 0px 8px 12px 0px
         rgba(29, 35, 40, 0.05);
         @include fj(center);
         align-items: center;

@@ -104,6 +104,7 @@
           margin: 0 px2rem(5);
         }
         span {
+          width: calc(100% - 1rem);
           @include fontSize(30);
           color: #fff;
           @include lineHeight(50);
@@ -162,7 +163,7 @@ export default {
       imageNum: 0,
       change: '',
       wordRemind: true,
-      head: 'http://118.24.113.182:80/',
+      head: 'http://139.9.80.230:8080/',
       backgroundImage: require('@/assets/img/background.png')
     }
   },

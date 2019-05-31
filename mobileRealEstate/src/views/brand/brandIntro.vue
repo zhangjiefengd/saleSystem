@@ -48,7 +48,7 @@ export default {
       x: 0,
       change: '',
       wordRemind: true,
-      head: 'http://118.24.113.182:80/',
+      head: 'http:/http://139.9.80.230:8081/',
       titleColor: '#c7ad8b',
       contentColor: '#474747',
       videoIcon: require('@/assets/img/brand/video.png'),
@@ -217,6 +217,7 @@ export default {
       .spot {
         position: absolute;
         bottom: 0;
+        left: 10%;
         width: 80%;
         height: px2rem(15);
         z-index: 2;

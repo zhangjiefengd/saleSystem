@@ -9,7 +9,7 @@
     </div>
 
     <transition-group tag="ul" class="spot">
-      <li v-for="(image, index) in images"  :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="image"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
+      <li v-for="(image, index) in images"  :style="[{backgroundColor: (index==imageNum) ? pointSelectedStyle : pointUnselectedStyle}]" :key="index"  @click="changeImage(index)" :class="[{changeStyle: index==imageNum}]"></li>
     </transition-group>
     <div class="introduce">
       <div class="worldIntro">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="touchevent" @touchstart.stop.prevent="touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
+    <div class="touchevent" @touchstart.stop.prevent=" touchstart" @touchmove.stop.prevent="touchmove" @touchend.stop.prevent="touchend">
     </div>
     <router-view></router-view>
     <contact @haveCon='haveCon'></contact>
@@ -73,7 +73,6 @@ export default {
     this.$axios.post('/brand/enterpriseIntroduction/image/get')
       .then(res => {
         if (res.data.data) {
-          console.log(res.data.data)
           this.images = res.data.data
           this.images.map((item, index) => {
             if (item.imageLocation) {
@@ -105,9 +104,9 @@ export default {
     changeImage (index) {
       clearInterval(this.timer)
       if (this.imageNum < index) {
-        this.change = 'photoSlideRight'
-      } else {
         this.change = 'photoSlideLeft'
+      } else {
+        this.change = 'photoSlideRight'
       }
       this.imageNum = index
       this.timer = setInterval(() => {
@@ -126,6 +125,7 @@ export default {
       }
     },
     touchstart (ev) {
+      console.log(ev)
       this.startX = parseInt(ev.touches[0].clientX)
     },
     touchmove (ev) {
@@ -270,7 +270,6 @@ export default {
     float: right;
     position: absolute;
     right: 0;
-    z-index: 92;
     >img {
       width: 100%;
       height: 100%;
@@ -285,10 +284,12 @@ export default {
       height: 68%;
       background-color: #ffffff;
       background-color: rgba(250, 250, 250, 0.85);
+      z-index: 92;
       >div {
         float: right;
         width: px2rem(80);
         height: px2rem(60);
+        margin-top: px2rem(25);
         margin-right: px2rem(50);
         @include fj(space-between);
         align-items: center;
@@ -301,7 +302,7 @@ export default {
       }
       >p {
         width: 85%;
-        height: 80%;
+        height: 75%;
         line-height: px2rem(40);
         text-indent: 2em;
         font-size: px2rem(28);
@@ -309,11 +310,9 @@ export default {
         margin: px2rem(50) px2rem(50) 0 px2rem(50);
         color: #333333;
         font-family: 'FZHei';
-        overflow: hidden scroll;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-          width: 0;
-        }
+        overflow-y: auto;
+        overflow-x: hidden;
+        @include overText();
       }
     }
   }

@@ -4,7 +4,11 @@
     <img v-if="developBackground !== null" class="back" :src="developBackground" alt="">
     <img v-if="developBackground == null" src="" alt="">
     <div class="content">
-      <div class="content1">
+      <div class="content1"
+        @touchstart.stop.prevent=" touchstart"
+        @touchmove.stop.prevent="touchmove"
+        @touchend.stop.prevent="touchend"
+        >
         <transition-group :name="change" tag="div" class="pictureIntro">
           <div v-for="(world, index) in worlds" :key="world.image" v-show="index === number">
             <img v-if="world.image !== null" :src="world.image" alt="">
@@ -59,7 +63,10 @@
         pointSelectedStyle: '#d0d0d0',
         pointUnselectedStyle: '#d0d0d0',
         timer: '',
-        change: ''
+        change: '',
+        startX: 0,
+        endX: 0,
+        x: 0,
       }
     },
     created() {
@@ -139,6 +146,32 @@
           this.autoPlay()
         }, 5000)
       },
+      touchstart (ev) {
+        this.startX = parseInt(ev.touches[0].clientX)
+      },
+      touchmove (ev) {
+        this.endX = parseInt(ev.touches[0].clientX)
+      },
+      touchend (ev) {
+        this.x = this.endX - this.startX
+        if (this.x > 0) {
+          clearInterval(this.timer)
+          this.number--
+          this.change = 'photoSlideRight'
+          if (this.number < 0) {
+            this.number = this.worlds.length - 1
+          }
+          this.timer = setInterval(() => {
+            this.autoPlay()
+          }, 5000)
+        } else if (this.x < 0) {
+          clearInterval(this.timer)
+          this.autoPlay()
+          this.timer = setInterval(() => {
+            this.autoPlay()
+          }, 5000)
+        }
+      },
       getImage(data, i) {
         const imgSplit = data.split(/\_|\./g)
         let index = i;
@@ -196,7 +229,6 @@
         width: transverse(1650);
         height: vertical(800);
         position: relative;
-
         .pictureIntro {
           width: 100%;
           height: 100%;
@@ -227,8 +259,7 @@
           .worldIntroTop {
             width: 100%;
             height: auto;
-            max-height: 120px;
-            min-height: 50%;
+            height: px2rem(120);
             overflow: auto;
 
             .world {
@@ -241,12 +272,7 @@
                 width: 30%;
                 height: 100%;
                 float: left;
-                margin-left: px2rem(40);
-                overflow: hidden scroll;
-                scrollbar-width: none;
-                &::-webkit-scrollbar {
-                  width: 0;
-                }
+                margin-left: 3%;
 
                 &:before {
                   content: '';
@@ -263,44 +289,38 @@
 
                 span {
                   display: inline-block;
-                  font-size: px2rem(36);
+                  font-size: px2rem(34);
                   color: #e2e2e2;
                   margin-right: px2rem(40);
                 }
 
                 .word-time {
-                  height: 40px;
                   color: #ffffff;
+                  height: px2rem(50);
                   border-bottom: px2rem(2) solid #9c9c9c;
-                  overflow: hidden scroll;
-                  scrollbar-width: none;
-                  &::-webkit-scrollbar {
-                    width: 0;
-                  }
+                  overflow-y: auto;
+                  overflow-x: hidden;
+                  @include overText();
                 }
                 .word-title {
-                  height: 80px;
-                  overflow: hidden scroll;
-                  scrollbar-width: none;
-                  &::-webkit-scrollbar {
-                    width: 0;
-                  }
+                  height: px2rem(48);
+                  overflow-y: auto;
+                  overflow-x: hidden;
+                  @include overText();
                 }
               }
 
               .word-content {
-                width: 60%;
+                width: 61%;
                 height: 100%;
                 float: left;
-                margin: 0 px2rem(40);
+                margin: 0 3%;
                 font-size: px2rem(30);
                 letter-spacing: .1em;
                 color: #ededed;
-                overflow: hidden scroll;
-                scrollbar-width: none;
-                &::-webkit-scrollbar {
-                  width: 0;
-                }
+                overflow-y: auto;
+                overflow-x: hidden;
+                @include overText();
               }
             }
           }
@@ -315,10 +335,6 @@
               width: px2rem(15);
               height: px2rem(15);
               background-color: #d0d0d0;
-              float: left;
-              @include fj(center);
-              align-items: center;
-              border: solid 1px #d0d0d0;
               border-radius: 50%;
               margin-left: px2rem(10);
             }

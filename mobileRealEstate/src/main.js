@@ -8,6 +8,18 @@ import fontSize from './utils/fontSize'
 import global from './http/Global.vue'
 import getElement from './utils/getElement'
 import $ from 'jquery'
+import VideoPlayer from 'vue-video-player'
+import FastClick from 'fastclick'
+
+Vue.use(VideoPlayer);
+
+FastClick.attach(document.body);
+FastClick.prototype.needsClick = function (target) {
+  setTimeout(() => {
+    return ((/\bneedsclick\b/).test(target.className) || (/\bvjs/).test(target.className));
+  })
+}
+
 
 import {post,get} from './http/http.js'
 Vue.prototype.$post = post;

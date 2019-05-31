@@ -217,26 +217,21 @@ export default {
                 margin-left: px2rem(32);
                 letter-spacing: .3em;
                 >h2 {
-                  height: 33px;
-                  overflow: hidden scroll;
-                  scrollbar-width: none;
-                  &::-webkit-scrollbar {
-                    width: 0;
-                  }
+                  height: 36px;
+                  overflow-y: auto;
+                  overflow-x: hidden;
+                  @include overText();
                 }
                 >p {
-                  height: calc(100% - 2rem);
+                  height: calc(100% - 48px);
                   font-size: px2rem(25);
                   margin-top: px2rem(16);
                   letter-spacing: .2em;
                   word-wrap: break-word;
                   word-break: break-all;
-                  overflow: hidden scroll;
-                  scrollbar-width: none;
-                  padding-bottom: 20px;
-                  &::-webkit-scrollbar {
-                    width: 0;
-                  }
+                  overflow-y: auto;
+                  overflow-x: hidden;
+                  @include overText();
                 }
               }
             }

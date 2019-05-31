@@ -5,9 +5,8 @@ import App from './App'
 import router from './router'
 import Axios from 'axios'
 import VueVideoPlayer from 'vue-video-player'
+import FastClick from 'fastclick'
 import fontSize from './ultis/fontSize'
-import 'video.js/dist/video-js.css'
-import 'vue-video-player/src/custom-theme.css'
 import jquery from 'jquery'
 import './assets/bootstrap.min'  
 import global from './Global.vue'
@@ -31,6 +30,14 @@ Vue.use(VueLazyload, {
 })
 
 Vue.use(VueLazyComponent)
+
+FastClick.attach(document.body)
+FastClick.prototype.needsClick = function (target) {
+  // alert(target.className)
+  setTimeout(() => {
+    return ((/\bneedsclick\b/).test(target.className) || (/\bvjs/).test(target.className));
+  })
+}
 
 
 Vue.prototype.GLOBAL = global
